@@ -211,15 +211,111 @@ public protocol BasicLearnListener: ParseTreeListener {
 	 */
 	func exitWhile_statement(_ ctx: BasicLearnParser.While_statementContext)
 	/**
-	 * Enter a parse tree produced by {@link BasicLearnParser#logical}.
+	 * Enter a parse tree produced by {@link BasicLearnParser#special_function}.
 	 - Parameters:
 	   - ctx: the parse tree
 	 */
-	func enterLogical(_ ctx: BasicLearnParser.LogicalContext)
+	func enterSpecial_function(_ ctx: BasicLearnParser.Special_functionContext)
 	/**
-	 * Exit a parse tree produced by {@link BasicLearnParser#logical}.
+	 * Exit a parse tree produced by {@link BasicLearnParser#special_function}.
 	 - Parameters:
 	   - ctx: the parse tree
 	 */
-	func exitLogical(_ ctx: BasicLearnParser.LogicalContext)
+	func exitSpecial_function(_ ctx: BasicLearnParser.Special_functionContext)
+	/**
+	 * Enter a parse tree produced by {@link BasicLearnParser#show}.
+	 - Parameters:
+	   - ctx: the parse tree
+	 */
+	func enterShow(_ ctx: BasicLearnParser.ShowContext)
+	/**
+	 * Exit a parse tree produced by {@link BasicLearnParser#show}.
+	 - Parameters:
+	   - ctx: the parse tree
+	 */
+	func exitShow(_ ctx: BasicLearnParser.ShowContext)
+	/**
+	 * Enter a parse tree produced by {@link BasicLearnParser#pythagoras}.
+	 - Parameters:
+	   - ctx: the parse tree
+	 */
+	func enterPythagoras(_ ctx: BasicLearnParser.PythagorasContext)
+	/**
+	 * Exit a parse tree produced by {@link BasicLearnParser#pythagoras}.
+	 - Parameters:
+	   - ctx: the parse tree
+	 */
+	func exitPythagoras(_ ctx: BasicLearnParser.PythagorasContext)
+	/**
+	 * Enter a parse tree produced by {@link BasicLearnParser#list_select}.
+	 - Parameters:
+	   - ctx: the parse tree
+	 */
+	func enterList_select(_ ctx: BasicLearnParser.List_selectContext)
+	/**
+	 * Exit a parse tree produced by {@link BasicLearnParser#list_select}.
+	 - Parameters:
+	   - ctx: the parse tree
+	 */
+	func exitList_select(_ ctx: BasicLearnParser.List_selectContext)
+	/**
+	 * Enter a parse tree produced by {@link BasicLearnParser#list_functions}.
+	 - Parameters:
+	   - ctx: the parse tree
+	 */
+	func enterList_functions(_ ctx: BasicLearnParser.List_functionsContext)
+	/**
+	 * Exit a parse tree produced by {@link BasicLearnParser#list_functions}.
+	 - Parameters:
+	   - ctx: the parse tree
+	 */
+	func exitList_functions(_ ctx: BasicLearnParser.List_functionsContext)
+	/**
+	 * Enter a parse tree produced by {@link BasicLearnParser#perimeter_tri}.
+	 - Parameters:
+	   - ctx: the parse tree
+	 */
+	func enterPerimeter_tri(_ ctx: BasicLearnParser.Perimeter_triContext)
+	/**
+	 * Exit a parse tree produced by {@link BasicLearnParser#perimeter_tri}.
+	 - Parameters:
+	   - ctx: the parse tree
+	 */
+	func exitPerimeter_tri(_ ctx: BasicLearnParser.Perimeter_triContext)
+	/**
+	 * Enter a parse tree produced by {@link BasicLearnParser#square_root_absolute}.
+	 - Parameters:
+	   - ctx: the parse tree
+	 */
+	func enterSquare_root_absolute(_ ctx: BasicLearnParser.Square_root_absoluteContext)
+	/**
+	 * Exit a parse tree produced by {@link BasicLearnParser#square_root_absolute}.
+	 - Parameters:
+	   - ctx: the parse tree
+	 */
+	func exitSquare_root_absolute(_ ctx: BasicLearnParser.Square_root_absoluteContext)
+	/**
+	 * Enter a parse tree produced by {@link BasicLearnParser#area_tri}.
+	 - Parameters:
+	   - ctx: the parse tree
+	 */
+	func enterArea_tri(_ ctx: BasicLearnParser.Area_triContext)
+	/**
+	 * Exit a parse tree produced by {@link BasicLearnParser#area_tri}.
+	 - Parameters:
+	   - ctx: the parse tree
+	 */
+	func exitArea_tri(_ ctx: BasicLearnParser.Area_triContext)
+	/**
+	 * Enter a parse tree produced by {@link BasicLearnParser#square}.
+	 - Parameters:
+	   - ctx: the parse tree
+	 */
+	func enterSquare(_ ctx: BasicLearnParser.SquareContext)
+	/**
+	 * Exit a parse tree produced by {@link BasicLearnParser#square}.
+	 - Parameters:
+	   - ctx: the parse tree
+	 */
+	func exitSquare(_ ctx: BasicLearnParser.SquareContext)
 }

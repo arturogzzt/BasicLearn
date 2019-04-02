@@ -1,7 +1,7 @@
 grammar BasicLearn;
 
 program
-    : 'program' ID ';' ('declaration'|'function')* 'body'
+    : 'program' ID ';' 'declaration'* 'function'* 'body'
     ;
 
 body
@@ -9,23 +9,23 @@ body
     ;
 
 statement
-    : ('expression' ';' | 'function_call' ';' | 'assignment' ';' | 'if' | 'repeat' | 'while')+
+    : ('function_call' ';' | 'assignment' ';' | 'if' | 'repeat' | 'while' | 'special_functions')
     ;
 
 expression
-    :  BOOL | 'exp' (LESSTHAN | MORETHAN | LESSOREQUAL | MOREOREQUAL | EQUALS | NOTEQUALS | ASSIGN) 'exp'
+    :  'exp' (LESSTHAN | MORETHAN | LESSOREQUAL | MOREOREQUAL | EQUALS | NOTEQUALS | ASSIGN) 'exp' (('and' | 'or') 'expression')?
     ;
 
 exp 
-    : 'term' (ADD | SUBS)?
+    : 'term' (ADD | SUBS 'exp')?
     ;
 
 term 
-    : 'factor' (MULT | DIV)?
+    : 'factor' (MULT | DIV 'term')?
     ;
 
 factor 
-    : LEFTPAREN 'expression' RIGHTPAREN | ID LEFTBRACKET 'exp' RIGHTBRACKET | CTE_I | CTE_F
+    : LEFTPAREN 'expression' RIGHTPAREN | ID (LEFTBRACKET 'exp' RIGHTBRACKET | LEFTPAREN 'exp' RIGHTPAREN) | CTE_I | CTE_F | 'true' | 'false'
     ;
 
 assignment 
@@ -61,17 +61,48 @@ if_statement
     ;
 
 repeat_statement
-    : 'repeat' LEFTPAREN CTE_I RIGHTPAREN 'block'
+    : 'repeat' LEFTPAREN 'exp' RIGHTPAREN 'block'
     ;
 
 while_statement
-    : 'while' LEFTPAREN 'expression' ('logical' 'expression')* RIGHTPAREN 'block'
+    : 'while' LEFTPAREN 'expression' RIGHTPAREN 'block'
     ;
 
-logical 
-    : 'and' | 'or'
+special_function
+    : 'area_tri' | 'perimeter_tri' | 'list_select' | 'show' | 'pythagoras' | 'listfunctions' | 'square_root_absolute' | 'square'
     ;
 
+show
+    : 'show' LEFTPAREN ('expression' | 'cte_string') RIGHTPAREN ';'
+    ;
+
+pythagoras
+    : ('pythagorasHyp' | 'pythagorasSide') LEFTPAREN 'exp' ',' 'exp' RIGHTPAREN ';'
+    ;
+
+list_select
+    : 'select' LEFTPAREN CTE_I ',' ID RIGHTPAREN ';'
+    ;
+
+list_functions
+    : ('first' | 'last' | 'order' | 'orderDesc' | 'size') LEFTPAREN ID RIGHTPAREN ';'
+    ;
+
+perimeter_tri
+    : 'perimeterTri' LEFTPAREN (ID | CTE_I | CTE_F) ',' (ID | CTE_I | CTE_F) ',' (ID | CTE_I | CTE_F) RIGHTPAREN ';'
+    ;
+
+square_root_absolute
+    : ('square_root' | 'absolute') LEFTPAREN 'exp' RIGHTPAREN ';'
+    ;
+
+area_tri
+    : 'areaTri' LEFTPAREN 'exp' ',' 'exp' RIGHTPAREN ';'
+    ;
+
+square
+    : ('perimeterRec' | 'perimeterSq' | 'areaSq' | 'areaRec') LEFTPAREN 'exp' ',' 'exp' RIGHTPAREN ';'
+    ;
 
 ID : [A-Z|a-z]([A-Za-z0-9_])*;
 CTE_I : [0-9]+;

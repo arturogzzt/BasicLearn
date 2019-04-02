@@ -236,13 +236,117 @@ open class BasicLearnBaseListener: BasicLearnListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	open func enterLogical(_ ctx: BasicLearnParser.LogicalContext) { }
+	open func enterSpecial_function(_ ctx: BasicLearnParser.Special_functionContext) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	open func exitLogical(_ ctx: BasicLearnParser.LogicalContext) { }
+	open func exitSpecial_function(_ ctx: BasicLearnParser.Special_functionContext) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	open func enterShow(_ ctx: BasicLearnParser.ShowContext) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	open func exitShow(_ ctx: BasicLearnParser.ShowContext) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	open func enterPythagoras(_ ctx: BasicLearnParser.PythagorasContext) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	open func exitPythagoras(_ ctx: BasicLearnParser.PythagorasContext) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	open func enterList_select(_ ctx: BasicLearnParser.List_selectContext) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	open func exitList_select(_ ctx: BasicLearnParser.List_selectContext) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	open func enterList_functions(_ ctx: BasicLearnParser.List_functionsContext) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	open func exitList_functions(_ ctx: BasicLearnParser.List_functionsContext) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	open func enterPerimeter_tri(_ ctx: BasicLearnParser.Perimeter_triContext) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	open func exitPerimeter_tri(_ ctx: BasicLearnParser.Perimeter_triContext) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	open func enterSquare_root_absolute(_ ctx: BasicLearnParser.Square_root_absoluteContext) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	open func exitSquare_root_absolute(_ ctx: BasicLearnParser.Square_root_absoluteContext) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	open func enterArea_tri(_ ctx: BasicLearnParser.Area_triContext) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	open func exitArea_tri(_ ctx: BasicLearnParser.Area_triContext) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	open func enterSquare(_ ctx: BasicLearnParser.SquareContext) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	open func exitSquare(_ ctx: BasicLearnParser.SquareContext) { }
 
 	/**
 	 * {@inheritDoc}

@@ -20,13 +20,18 @@ open class BasicLearnParser: Parser {
                  T__6 = 7, T__7 = 8, T__8 = 9, T__9 = 10, T__10 = 11, T__11 = 12, 
                  T__12 = 13, T__13 = 14, T__14 = 15, T__15 = 16, T__16 = 17, 
                  T__17 = 18, T__18 = 19, T__19 = 20, T__20 = 21, T__21 = 22, 
-                 T__22 = 23, T__23 = 24, ID = 25, CTE_I = 26, CTE_F = 27, 
-                 BOOL = 28, LESSTHAN = 29, MORETHAN = 30, LESSOREQUAL = 31, 
-                 MOREOREQUAL = 32, EQUALS = 33, NOTEQUALS = 34, ASSIGN = 35, 
-                 ADD = 36, SUBS = 37, MULT = 38, DIV = 39, LEFTPAREN = 40, 
-                 RIGHTPAREN = 41, LEFTBRACKET = 42, RIGHTBRACKET = 43, LEFTCURL = 44, 
-                 RIGHTCURL = 45, NUMBER = 46, DECIMAL = 47, SENTENCE = 48, 
-                 AND = 49, OR = 50
+                 T__22 = 23, T__23 = 24, T__24 = 25, T__25 = 26, T__26 = 27, 
+                 T__27 = 28, T__28 = 29, T__29 = 30, T__30 = 31, T__31 = 32, 
+                 T__32 = 33, T__33 = 34, T__34 = 35, T__35 = 36, T__36 = 37, 
+                 T__37 = 38, T__38 = 39, T__39 = 40, T__40 = 41, T__41 = 42, 
+                 T__42 = 43, T__43 = 44, T__44 = 45, T__45 = 46, T__46 = 47, 
+                 T__47 = 48, T__48 = 49, T__49 = 50, T__50 = 51, T__51 = 52, 
+                 ID = 53, CTE_I = 54, CTE_F = 55, BOOL = 56, LESSTHAN = 57, 
+                 MORETHAN = 58, LESSOREQUAL = 59, MOREOREQUAL = 60, EQUALS = 61, 
+                 NOTEQUALS = 62, ASSIGN = 63, ADD = 64, SUBS = 65, MULT = 66, 
+                 DIV = 67, LEFTPAREN = 68, RIGHTPAREN = 69, LEFTBRACKET = 70, 
+                 RIGHTBRACKET = 71, LEFTCURL = 72, RIGHTCURL = 73, NUMBER = 74, 
+                 DECIMAL = 75, SENTENCE = 76, AND = 77, OR = 78
 	}
 
 	public
@@ -34,25 +39,38 @@ open class BasicLearnParser: Parser {
             RULE_exp = 4, RULE_term = 5, RULE_factor = 6, RULE_assignment = 7, 
             RULE_block = 8, RULE_declaration = 9, RULE_type = 10, RULE_function = 11, 
             RULE_function_call = 12, RULE_parameters = 13, RULE_if_statement = 14, 
-            RULE_repeat_statement = 15, RULE_while_statement = 16, RULE_logical = 17
+            RULE_repeat_statement = 15, RULE_while_statement = 16, RULE_special_function = 17, 
+            RULE_show = 18, RULE_pythagoras = 19, RULE_list_select = 20, 
+            RULE_list_functions = 21, RULE_perimeter_tri = 22, RULE_square_root_absolute = 23, 
+            RULE_area_tri = 24, RULE_square = 25
 
 	public
 	static let ruleNames: [String] = [
 		"program", "body", "statement", "expression", "exp", "term", "factor", 
 		"assignment", "block", "declaration", "type", "function", "function_call", 
-		"parameters", "if_statement", "repeat_statement", "while_statement", "logical"
+		"parameters", "if_statement", "repeat_statement", "while_statement", "special_function", 
+		"show", "pythagoras", "list_select", "list_functions", "perimeter_tri", 
+		"square_root_absolute", "area_tri", "square"
 	]
 
 	private static let _LITERAL_NAMES: [String?] = [
 		nil, "'program'", "';'", "'declaration'", "'function'", "'body'", "'start'", 
-		"'block'", "'expression'", "'function_call'", "'assignment'", "'if'", 
-		"'repeat'", "'while'", "'exp'", "'term'", "'factor'", "'expressiom'", 
-		"'statement'", "'type'", "','", "'void'", "'parameters'", "'logical'", 
-		"'else'", nil, nil, nil, nil, "'<'", "'>'", "'<='", "'>='", "'equal'", 
-		"'notEqual'", "'='", "'+'", "'-'", "'*'", "'/'", "'('", "')'", "'['", 
-		"']'", "'{'", "'}'", "'number'", "'decimal'", "'sentence'", "'and'", "'or'"
+		"'block'", "'function_call'", "'assignment'", "'if'", "'repeat'", "'while'", 
+		"'special_functions'", "'exp'", "'expression'", "'term'", "'factor'", 
+		"'true'", "'false'", "'expressiom'", "'statement'", "'type'", "','", "'void'", 
+		"'parameters'", "'logical'", "'else'", "'area_tri'", "'perimeter_tri'", 
+		"'list_select'", "'show'", "'pythagoras'", "'listfunctions'", "'square_root_absolute'", 
+		"'square'", "'cte_string'", "'pythagorasHyp'", "'pythagorasSide'", "'select'", 
+		"'first'", "'last'", "'order'", "'orderDesc'", "'size'", "'perimeterTri'", 
+		"'square_root'", "'absolute'", "'areaTri'", "'perimeterRec'", "'perimeterSq'", 
+		"'areaSq'", "'areaRec'", nil, nil, nil, nil, "'<'", "'>'", "'<='", "'>='", 
+		"'equal'", "'notEqual'", "'='", "'+'", "'-'", "'*'", "'/'", "'('", "')'", 
+		"'['", "']'", "'{'", "'}'", "'number'", "'decimal'", "'sentence'", "'and'", 
+		"'or'"
 	]
 	private static let _SYMBOLIC_NAMES: [String?] = [
+		nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, 
+		nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, 
 		nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, 
 		nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, "ID", "CTE_I", 
 		"CTE_F", "BOOL", "LESSTHAN", "MORETHAN", "LESSOREQUAL", "MOREOREQUAL", 
@@ -119,40 +137,45 @@ open class BasicLearnParser: Parser {
 	    }
 		do {
 		 	try enterOuterAlt(_localctx, 1)
-		 	setState(36)
+		 	setState(52)
 		 	try match(BasicLearnParser.Tokens.T__0.rawValue)
-		 	setState(37)
+		 	setState(53)
 		 	try match(BasicLearnParser.Tokens.ID.rawValue)
-		 	setState(38)
+		 	setState(54)
 		 	try match(BasicLearnParser.Tokens.T__1.rawValue)
-		 	setState(42)
+		 	setState(58)
 		 	try _errHandler.sync(self)
 		 	_la = try _input.LA(1)
 		 	while (//closure
 		 	 { () -> Bool in
-		 	      let testSet: Bool = _la == BasicLearnParser.Tokens.T__2.rawValue || _la == BasicLearnParser.Tokens.T__3.rawValue
+		 	      let testSet: Bool = _la == BasicLearnParser.Tokens.T__2.rawValue
 		 	      return testSet
 		 	 }()) {
-		 		setState(39)
-		 		_la = try _input.LA(1)
-		 		if (!(//closure
-		 		 { () -> Bool in
-		 		      let testSet: Bool = _la == BasicLearnParser.Tokens.T__2.rawValue || _la == BasicLearnParser.Tokens.T__3.rawValue
-		 		      return testSet
-		 		 }())) {
-		 		try _errHandler.recoverInline(self)
-		 		}
-		 		else {
-		 			_errHandler.reportMatch(self)
-		 			try consume()
-		 		}
+		 		setState(55)
+		 		try match(BasicLearnParser.Tokens.T__2.rawValue)
 
 
-		 		setState(44)
+		 		setState(60)
 		 		try _errHandler.sync(self)
 		 		_la = try _input.LA(1)
 		 	}
-		 	setState(45)
+		 	setState(64)
+		 	try _errHandler.sync(self)
+		 	_la = try _input.LA(1)
+		 	while (//closure
+		 	 { () -> Bool in
+		 	      let testSet: Bool = _la == BasicLearnParser.Tokens.T__3.rawValue
+		 	      return testSet
+		 	 }()) {
+		 		setState(61)
+		 		try match(BasicLearnParser.Tokens.T__3.rawValue)
+
+
+		 		setState(66)
+		 		try _errHandler.sync(self)
+		 		_la = try _input.LA(1)
+		 	}
+		 	setState(67)
 		 	try match(BasicLearnParser.Tokens.T__4.rawValue)
 
 		}
@@ -192,9 +215,9 @@ open class BasicLearnParser: Parser {
 	    }
 		do {
 		 	try enterOuterAlt(_localctx, 1)
-		 	setState(47)
+		 	setState(69)
 		 	try match(BasicLearnParser.Tokens.T__5.rawValue)
-		 	setState(48)
+		 	setState(70)
 		 	try match(BasicLearnParser.Tokens.T__6.rawValue)
 
 		}
@@ -229,75 +252,56 @@ open class BasicLearnParser: Parser {
 	 open func statement() throws -> StatementContext {
 		var _localctx: StatementContext = StatementContext(_ctx, getState())
 		try enterRule(_localctx, 4, BasicLearnParser.RULE_statement)
-		var _la: Int = 0
 		defer {
 	    		try! exitRule()
 	    }
 		do {
 		 	try enterOuterAlt(_localctx, 1)
-		 	setState(59) 
+		 	setState(80)
 		 	try _errHandler.sync(self)
-		 	_la = try _input.LA(1)
-		 	repeat {
-		 		setState(59)
-		 		try _errHandler.sync(self)
-		 		switch (BasicLearnParser.Tokens(rawValue: try _input.LA(1))!) {
-		 		case .T__7:
-		 			setState(50)
-		 			try match(BasicLearnParser.Tokens.T__7.rawValue)
-		 			setState(51)
-		 			try match(BasicLearnParser.Tokens.T__1.rawValue)
+		 	switch (BasicLearnParser.Tokens(rawValue: try _input.LA(1))!) {
+		 	case .T__7:
+		 		setState(72)
+		 		try match(BasicLearnParser.Tokens.T__7.rawValue)
+		 		setState(73)
+		 		try match(BasicLearnParser.Tokens.T__1.rawValue)
 
-		 			break
+		 		break
 
-		 		case .T__8:
-		 			setState(52)
-		 			try match(BasicLearnParser.Tokens.T__8.rawValue)
-		 			setState(53)
-		 			try match(BasicLearnParser.Tokens.T__1.rawValue)
+		 	case .T__8:
+		 		setState(74)
+		 		try match(BasicLearnParser.Tokens.T__8.rawValue)
+		 		setState(75)
+		 		try match(BasicLearnParser.Tokens.T__1.rawValue)
 
-		 			break
+		 		break
 
-		 		case .T__9:
-		 			setState(54)
-		 			try match(BasicLearnParser.Tokens.T__9.rawValue)
-		 			setState(55)
-		 			try match(BasicLearnParser.Tokens.T__1.rawValue)
+		 	case .T__9:
+		 		setState(76)
+		 		try match(BasicLearnParser.Tokens.T__9.rawValue)
 
-		 			break
+		 		break
 
-		 		case .T__10:
-		 			setState(56)
-		 			try match(BasicLearnParser.Tokens.T__10.rawValue)
+		 	case .T__10:
+		 		setState(77)
+		 		try match(BasicLearnParser.Tokens.T__10.rawValue)
 
-		 			break
+		 		break
 
-		 		case .T__11:
-		 			setState(57)
-		 			try match(BasicLearnParser.Tokens.T__11.rawValue)
+		 	case .T__11:
+		 		setState(78)
+		 		try match(BasicLearnParser.Tokens.T__11.rawValue)
 
-		 			break
+		 		break
 
-		 		case .T__12:
-		 			setState(58)
-		 			try match(BasicLearnParser.Tokens.T__12.rawValue)
+		 	case .T__12:
+		 		setState(79)
+		 		try match(BasicLearnParser.Tokens.T__12.rawValue)
 
-		 			break
-		 		default:
-		 			throw ANTLRException.recognition(e: NoViableAltException(self))
-		 		}
-
-		 		setState(61); 
-		 		try _errHandler.sync(self)
-		 		_la = try _input.LA(1)
-		 	} while (//closure
-		 	 { () -> Bool in
-		 	      let testSet: Bool = {  () -> Bool in
-		 	   let testArray: [Int] = [_la, BasicLearnParser.Tokens.T__7.rawValue,BasicLearnParser.Tokens.T__8.rawValue,BasicLearnParser.Tokens.T__9.rawValue,BasicLearnParser.Tokens.T__10.rawValue,BasicLearnParser.Tokens.T__11.rawValue,BasicLearnParser.Tokens.T__12.rawValue]
-		 	    return  Utils.testBitLeftShiftArray(testArray, 0)
-		 	}()
-		 	      return testSet
-		 	 }())
+		 		break
+		 	default:
+		 		throw ANTLRException.recognition(e: NoViableAltException(self))
+		 	}
 
 		}
 		catch ANTLRException.recognition(let re) {
@@ -310,10 +314,6 @@ open class BasicLearnParser: Parser {
 	}
 
 	public class ExpressionContext: ParserRuleContext {
-			open
-			func BOOL() -> TerminalNode? {
-				return getToken(BasicLearnParser.Tokens.BOOL.rawValue, 0)
-			}
 			open
 			func LESSTHAN() -> TerminalNode? {
 				return getToken(BasicLearnParser.Tokens.LESSTHAN.rawValue, 0)
@@ -368,28 +368,40 @@ open class BasicLearnParser: Parser {
 	    		try! exitRule()
 	    }
 		do {
-		 	setState(67)
+		 	try enterOuterAlt(_localctx, 1)
+		 	setState(82)
+		 	try match(BasicLearnParser.Tokens.T__13.rawValue)
+		 	setState(83)
+		 	_la = try _input.LA(1)
+		 	if (!(//closure
+		 	 { () -> Bool in
+		 	      let testSet: Bool = {  () -> Bool in
+		 	   let testArray: [Int] = [_la, BasicLearnParser.Tokens.LESSTHAN.rawValue,BasicLearnParser.Tokens.MORETHAN.rawValue,BasicLearnParser.Tokens.LESSOREQUAL.rawValue,BasicLearnParser.Tokens.MOREOREQUAL.rawValue,BasicLearnParser.Tokens.EQUALS.rawValue,BasicLearnParser.Tokens.NOTEQUALS.rawValue,BasicLearnParser.Tokens.ASSIGN.rawValue]
+		 	    return  Utils.testBitLeftShiftArray(testArray, 0)
+		 	}()
+		 	      return testSet
+		 	 }())) {
+		 	try _errHandler.recoverInline(self)
+		 	}
+		 	else {
+		 		_errHandler.reportMatch(self)
+		 		try consume()
+		 	}
+		 	setState(84)
+		 	try match(BasicLearnParser.Tokens.T__13.rawValue)
+		 	setState(87)
 		 	try _errHandler.sync(self)
-		 	switch (BasicLearnParser.Tokens(rawValue: try _input.LA(1))!) {
-		 	case .BOOL:
-		 		try enterOuterAlt(_localctx, 1)
-		 		setState(63)
-		 		try match(BasicLearnParser.Tokens.BOOL.rawValue)
-
-		 		break
-
-		 	case .T__13:
-		 		try enterOuterAlt(_localctx, 2)
-		 		setState(64)
-		 		try match(BasicLearnParser.Tokens.T__13.rawValue)
-		 		setState(65)
+		 	_la = try _input.LA(1)
+		 	if (//closure
+		 	 { () -> Bool in
+		 	      let testSet: Bool = _la == BasicLearnParser.Tokens.AND.rawValue || _la == BasicLearnParser.Tokens.OR.rawValue
+		 	      return testSet
+		 	 }()) {
+		 		setState(85)
 		 		_la = try _input.LA(1)
 		 		if (!(//closure
 		 		 { () -> Bool in
-		 		      let testSet: Bool = {  () -> Bool in
-		 		   let testArray: [Int] = [_la, BasicLearnParser.Tokens.LESSTHAN.rawValue,BasicLearnParser.Tokens.MORETHAN.rawValue,BasicLearnParser.Tokens.LESSOREQUAL.rawValue,BasicLearnParser.Tokens.MOREOREQUAL.rawValue,BasicLearnParser.Tokens.EQUALS.rawValue,BasicLearnParser.Tokens.NOTEQUALS.rawValue,BasicLearnParser.Tokens.ASSIGN.rawValue]
-		 		    return  Utils.testBitLeftShiftArray(testArray, 0)
-		 		}()
+		 		      let testSet: Bool = _la == BasicLearnParser.Tokens.AND.rawValue || _la == BasicLearnParser.Tokens.OR.rawValue
 		 		      return testSet
 		 		 }())) {
 		 		try _errHandler.recoverInline(self)
@@ -398,13 +410,12 @@ open class BasicLearnParser: Parser {
 		 			_errHandler.reportMatch(self)
 		 			try consume()
 		 		}
-		 		setState(66)
-		 		try match(BasicLearnParser.Tokens.T__13.rawValue)
+		 		setState(86)
+		 		try match(BasicLearnParser.Tokens.T__14.rawValue)
 
-		 		break
-		 	default:
-		 		throw ANTLRException.recognition(e: NoViableAltException(self))
 		 	}
+
+
 		}
 		catch ANTLRException.recognition(let re) {
 			_localctx.exception = re
@@ -445,38 +456,35 @@ open class BasicLearnParser: Parser {
 	 open func exp() throws -> ExpContext {
 		var _localctx: ExpContext = ExpContext(_ctx, getState())
 		try enterRule(_localctx, 8, BasicLearnParser.RULE_exp)
-		var _la: Int = 0
 		defer {
 	    		try! exitRule()
 	    }
 		do {
 		 	try enterOuterAlt(_localctx, 1)
-		 	setState(69)
-		 	try match(BasicLearnParser.Tokens.T__14.rawValue)
-		 	setState(71)
+		 	setState(89)
+		 	try match(BasicLearnParser.Tokens.T__15.rawValue)
+		 	setState(93)
 		 	try _errHandler.sync(self)
-		 	_la = try _input.LA(1)
-		 	if (//closure
-		 	 { () -> Bool in
-		 	      let testSet: Bool = _la == BasicLearnParser.Tokens.ADD.rawValue || _la == BasicLearnParser.Tokens.SUBS.rawValue
-		 	      return testSet
-		 	 }()) {
-		 		setState(70)
-		 		_la = try _input.LA(1)
-		 		if (!(//closure
-		 		 { () -> Bool in
-		 		      let testSet: Bool = _la == BasicLearnParser.Tokens.ADD.rawValue || _la == BasicLearnParser.Tokens.SUBS.rawValue
-		 		      return testSet
-		 		 }())) {
-		 		try _errHandler.recoverInline(self)
-		 		}
-		 		else {
-		 			_errHandler.reportMatch(self)
-		 			try consume()
-		 		}
+		 	switch (BasicLearnParser.Tokens(rawValue: try _input.LA(1))!) {
+		 	case .ADD:
+		 	 	setState(90)
+		 	 	try match(BasicLearnParser.Tokens.ADD.rawValue)
 
+		 		break
+
+		 	case .SUBS:
+		 	 	setState(91)
+		 	 	try match(BasicLearnParser.Tokens.SUBS.rawValue)
+		 	 	setState(92)
+		 	 	try match(BasicLearnParser.Tokens.T__13.rawValue)
+
+		 		break
+
+		 	case .EOF:
+		 		break
+		 	default:
+		 		break
 		 	}
-
 
 		}
 		catch ANTLRException.recognition(let re) {
@@ -518,38 +526,35 @@ open class BasicLearnParser: Parser {
 	 open func term() throws -> TermContext {
 		var _localctx: TermContext = TermContext(_ctx, getState())
 		try enterRule(_localctx, 10, BasicLearnParser.RULE_term)
-		var _la: Int = 0
 		defer {
 	    		try! exitRule()
 	    }
 		do {
 		 	try enterOuterAlt(_localctx, 1)
-		 	setState(73)
-		 	try match(BasicLearnParser.Tokens.T__15.rawValue)
-		 	setState(75)
+		 	setState(95)
+		 	try match(BasicLearnParser.Tokens.T__16.rawValue)
+		 	setState(99)
 		 	try _errHandler.sync(self)
-		 	_la = try _input.LA(1)
-		 	if (//closure
-		 	 { () -> Bool in
-		 	      let testSet: Bool = _la == BasicLearnParser.Tokens.MULT.rawValue || _la == BasicLearnParser.Tokens.DIV.rawValue
-		 	      return testSet
-		 	 }()) {
-		 		setState(74)
-		 		_la = try _input.LA(1)
-		 		if (!(//closure
-		 		 { () -> Bool in
-		 		      let testSet: Bool = _la == BasicLearnParser.Tokens.MULT.rawValue || _la == BasicLearnParser.Tokens.DIV.rawValue
-		 		      return testSet
-		 		 }())) {
-		 		try _errHandler.recoverInline(self)
-		 		}
-		 		else {
-		 			_errHandler.reportMatch(self)
-		 			try consume()
-		 		}
+		 	switch (BasicLearnParser.Tokens(rawValue: try _input.LA(1))!) {
+		 	case .MULT:
+		 	 	setState(96)
+		 	 	try match(BasicLearnParser.Tokens.MULT.rawValue)
 
+		 		break
+
+		 	case .DIV:
+		 	 	setState(97)
+		 	 	try match(BasicLearnParser.Tokens.DIV.rawValue)
+		 	 	setState(98)
+		 	 	try match(BasicLearnParser.Tokens.T__15.rawValue)
+
+		 		break
+
+		 	case .EOF:
+		 		break
+		 	default:
+		 		break
 		 	}
-
 
 		}
 		catch ANTLRException.recognition(let re) {
@@ -615,44 +620,77 @@ open class BasicLearnParser: Parser {
 	    		try! exitRule()
 	    }
 		do {
-		 	setState(86)
+		 	setState(117)
 		 	try _errHandler.sync(self)
 		 	switch (BasicLearnParser.Tokens(rawValue: try _input.LA(1))!) {
 		 	case .LEFTPAREN:
 		 		try enterOuterAlt(_localctx, 1)
-		 		setState(77)
+		 		setState(101)
 		 		try match(BasicLearnParser.Tokens.LEFTPAREN.rawValue)
-		 		setState(78)
-		 		try match(BasicLearnParser.Tokens.T__7.rawValue)
-		 		setState(79)
+		 		setState(102)
+		 		try match(BasicLearnParser.Tokens.T__14.rawValue)
+		 		setState(103)
 		 		try match(BasicLearnParser.Tokens.RIGHTPAREN.rawValue)
 
 		 		break
 
 		 	case .ID:
 		 		try enterOuterAlt(_localctx, 2)
-		 		setState(80)
+		 		setState(104)
 		 		try match(BasicLearnParser.Tokens.ID.rawValue)
-		 		setState(81)
-		 		try match(BasicLearnParser.Tokens.LEFTBRACKET.rawValue)
-		 		setState(82)
-		 		try match(BasicLearnParser.Tokens.T__13.rawValue)
-		 		setState(83)
-		 		try match(BasicLearnParser.Tokens.RIGHTBRACKET.rawValue)
+		 		setState(111)
+		 		try _errHandler.sync(self)
+		 		switch (BasicLearnParser.Tokens(rawValue: try _input.LA(1))!) {
+		 		case .LEFTBRACKET:
+		 			setState(105)
+		 			try match(BasicLearnParser.Tokens.LEFTBRACKET.rawValue)
+		 			setState(106)
+		 			try match(BasicLearnParser.Tokens.T__13.rawValue)
+		 			setState(107)
+		 			try match(BasicLearnParser.Tokens.RIGHTBRACKET.rawValue)
+
+		 			break
+
+		 		case .LEFTPAREN:
+		 			setState(108)
+		 			try match(BasicLearnParser.Tokens.LEFTPAREN.rawValue)
+		 			setState(109)
+		 			try match(BasicLearnParser.Tokens.T__13.rawValue)
+		 			setState(110)
+		 			try match(BasicLearnParser.Tokens.RIGHTPAREN.rawValue)
+
+		 			break
+		 		default:
+		 			throw ANTLRException.recognition(e: NoViableAltException(self))
+		 		}
 
 		 		break
 
 		 	case .CTE_I:
 		 		try enterOuterAlt(_localctx, 3)
-		 		setState(84)
+		 		setState(113)
 		 		try match(BasicLearnParser.Tokens.CTE_I.rawValue)
 
 		 		break
 
 		 	case .CTE_F:
 		 		try enterOuterAlt(_localctx, 4)
-		 		setState(85)
+		 		setState(114)
 		 		try match(BasicLearnParser.Tokens.CTE_F.rawValue)
+
+		 		break
+
+		 	case .T__17:
+		 		try enterOuterAlt(_localctx, 5)
+		 		setState(115)
+		 		try match(BasicLearnParser.Tokens.T__17.rawValue)
+
+		 		break
+
+		 	case .T__18:
+		 		try enterOuterAlt(_localctx, 6)
+		 		setState(116)
+		 		try match(BasicLearnParser.Tokens.T__18.rawValue)
 
 		 		break
 		 	default:
@@ -716,9 +754,9 @@ open class BasicLearnParser: Parser {
 	    }
 		do {
 		 	try enterOuterAlt(_localctx, 1)
-		 	setState(88)
+		 	setState(119)
 		 	try match(BasicLearnParser.Tokens.ID.rawValue)
-		 	setState(92)
+		 	setState(123)
 		 	try _errHandler.sync(self)
 		 	_la = try _input.LA(1)
 		 	if (//closure
@@ -726,20 +764,20 @@ open class BasicLearnParser: Parser {
 		 	      let testSet: Bool = _la == BasicLearnParser.Tokens.LEFTBRACKET.rawValue
 		 	      return testSet
 		 	 }()) {
-		 		setState(89)
+		 		setState(120)
 		 		try match(BasicLearnParser.Tokens.LEFTBRACKET.rawValue)
-		 		setState(90)
+		 		setState(121)
 		 		try match(BasicLearnParser.Tokens.CTE_I.rawValue)
-		 		setState(91)
+		 		setState(122)
 		 		try match(BasicLearnParser.Tokens.RIGHTBRACKET.rawValue)
 
 		 	}
 
-		 	setState(94)
+		 	setState(125)
 		 	try match(BasicLearnParser.Tokens.ASSIGN.rawValue)
-		 	setState(95)
-		 	try match(BasicLearnParser.Tokens.T__16.rawValue)
-		 	setState(96)
+		 	setState(126)
+		 	try match(BasicLearnParser.Tokens.T__19.rawValue)
+		 	setState(127)
 		 	try match(BasicLearnParser.Tokens.T__1.rawValue)
 
 		}
@@ -788,25 +826,25 @@ open class BasicLearnParser: Parser {
 	    }
 		do {
 		 	try enterOuterAlt(_localctx, 1)
-		 	setState(98)
+		 	setState(129)
 		 	try match(BasicLearnParser.Tokens.LEFTCURL.rawValue)
-		 	setState(100) 
+		 	setState(131) 
 		 	try _errHandler.sync(self)
 		 	_la = try _input.LA(1)
 		 	repeat {
-		 		setState(99)
-		 		try match(BasicLearnParser.Tokens.T__17.rawValue)
+		 		setState(130)
+		 		try match(BasicLearnParser.Tokens.T__20.rawValue)
 
 
-		 		setState(102); 
+		 		setState(133); 
 		 		try _errHandler.sync(self)
 		 		_la = try _input.LA(1)
 		 	} while (//closure
 		 	 { () -> Bool in
-		 	      let testSet: Bool = _la == BasicLearnParser.Tokens.T__17.rawValue
+		 	      let testSet: Bool = _la == BasicLearnParser.Tokens.T__20.rawValue
 		 	      return testSet
 		 	 }())
-		 	setState(104)
+		 	setState(135)
 		 	try match(BasicLearnParser.Tokens.RIGHTCURL.rawValue)
 
 		}
@@ -879,11 +917,11 @@ open class BasicLearnParser: Parser {
 	    }
 		do {
 		 	try enterOuterAlt(_localctx, 1)
-		 	setState(106)
-		 	try match(BasicLearnParser.Tokens.T__18.rawValue)
-		 	setState(107)
+		 	setState(137)
+		 	try match(BasicLearnParser.Tokens.T__21.rawValue)
+		 	setState(138)
 		 	try match(BasicLearnParser.Tokens.ID.rawValue)
-		 	setState(111)
+		 	setState(142)
 		 	try _errHandler.sync(self)
 		 	_la = try _input.LA(1)
 		 	if (//closure
@@ -891,28 +929,28 @@ open class BasicLearnParser: Parser {
 		 	      let testSet: Bool = _la == BasicLearnParser.Tokens.LEFTBRACKET.rawValue
 		 	      return testSet
 		 	 }()) {
-		 		setState(108)
+		 		setState(139)
 		 		try match(BasicLearnParser.Tokens.LEFTBRACKET.rawValue)
-		 		setState(109)
+		 		setState(140)
 		 		try match(BasicLearnParser.Tokens.CTE_I.rawValue)
-		 		setState(110)
+		 		setState(141)
 		 		try match(BasicLearnParser.Tokens.RIGHTBRACKET.rawValue)
 
 		 	}
 
-		 	setState(122)
+		 	setState(153)
 		 	try _errHandler.sync(self)
 		 	_la = try _input.LA(1)
 		 	while (//closure
 		 	 { () -> Bool in
-		 	      let testSet: Bool = _la == BasicLearnParser.Tokens.T__19.rawValue
+		 	      let testSet: Bool = _la == BasicLearnParser.Tokens.T__22.rawValue
 		 	      return testSet
 		 	 }()) {
-		 		setState(113)
-		 		try match(BasicLearnParser.Tokens.T__19.rawValue)
-		 		setState(114)
+		 		setState(144)
+		 		try match(BasicLearnParser.Tokens.T__22.rawValue)
+		 		setState(145)
 		 		try match(BasicLearnParser.Tokens.ID.rawValue)
-		 		setState(118)
+		 		setState(149)
 		 		try _errHandler.sync(self)
 		 		_la = try _input.LA(1)
 		 		if (//closure
@@ -920,22 +958,22 @@ open class BasicLearnParser: Parser {
 		 		      let testSet: Bool = _la == BasicLearnParser.Tokens.LEFTBRACKET.rawValue
 		 		      return testSet
 		 		 }()) {
-		 			setState(115)
+		 			setState(146)
 		 			try match(BasicLearnParser.Tokens.LEFTBRACKET.rawValue)
-		 			setState(116)
+		 			setState(147)
 		 			try match(BasicLearnParser.Tokens.CTE_I.rawValue)
-		 			setState(117)
+		 			setState(148)
 		 			try match(BasicLearnParser.Tokens.RIGHTBRACKET.rawValue)
 
 		 		}
 
 
 
-		 		setState(124)
+		 		setState(155)
 		 		try _errHandler.sync(self)
 		 		_la = try _input.LA(1)
 		 	}
-		 	setState(125)
+		 	setState(156)
 		 	try match(BasicLearnParser.Tokens.T__1.rawValue)
 
 		}
@@ -992,13 +1030,13 @@ open class BasicLearnParser: Parser {
 	    }
 		do {
 		 	try enterOuterAlt(_localctx, 1)
-		 	setState(127)
+		 	setState(158)
 		 	_la = try _input.LA(1)
 		 	if (!(//closure
 		 	 { () -> Bool in
 		 	      let testSet: Bool = {  () -> Bool in
 		 	   let testArray: [Int] = [_la, BasicLearnParser.Tokens.BOOL.rawValue,BasicLearnParser.Tokens.NUMBER.rawValue,BasicLearnParser.Tokens.DECIMAL.rawValue,BasicLearnParser.Tokens.SENTENCE.rawValue]
-		 	    return  Utils.testBitLeftShiftArray(testArray, 0)
+		 	    return  Utils.testBitLeftShiftArray(testArray, 56)
 		 	}()
 		 	      return testSet
 		 	 }())) {
@@ -1059,11 +1097,11 @@ open class BasicLearnParser: Parser {
 	    }
 		do {
 		 	try enterOuterAlt(_localctx, 1)
-		 	setState(129)
+		 	setState(160)
 		 	_la = try _input.LA(1)
 		 	if (!(//closure
 		 	 { () -> Bool in
-		 	      let testSet: Bool = _la == BasicLearnParser.Tokens.T__18.rawValue || _la == BasicLearnParser.Tokens.T__20.rawValue
+		 	      let testSet: Bool = _la == BasicLearnParser.Tokens.T__21.rawValue || _la == BasicLearnParser.Tokens.T__23.rawValue
 		 	      return testSet
 		 	 }())) {
 		 	try _errHandler.recoverInline(self)
@@ -1072,17 +1110,17 @@ open class BasicLearnParser: Parser {
 		 		_errHandler.reportMatch(self)
 		 		try consume()
 		 	}
-		 	setState(130)
+		 	setState(161)
 		 	try match(BasicLearnParser.Tokens.T__3.rawValue)
-		 	setState(131)
+		 	setState(162)
 		 	try match(BasicLearnParser.Tokens.ID.rawValue)
-		 	setState(132)
+		 	setState(163)
 		 	try match(BasicLearnParser.Tokens.LEFTPAREN.rawValue)
-		 	setState(133)
-		 	try match(BasicLearnParser.Tokens.T__21.rawValue)
-		 	setState(134)
+		 	setState(164)
+		 	try match(BasicLearnParser.Tokens.T__24.rawValue)
+		 	setState(165)
 		 	try match(BasicLearnParser.Tokens.RIGHTPAREN.rawValue)
-		 	setState(138)
+		 	setState(169)
 		 	try _errHandler.sync(self)
 		 	_la = try _input.LA(1)
 		 	while (//closure
@@ -1090,15 +1128,15 @@ open class BasicLearnParser: Parser {
 		 	      let testSet: Bool = _la == BasicLearnParser.Tokens.T__2.rawValue
 		 	      return testSet
 		 	 }()) {
-		 		setState(135)
+		 		setState(166)
 		 		try match(BasicLearnParser.Tokens.T__2.rawValue)
 
 
-		 		setState(140)
+		 		setState(171)
 		 		try _errHandler.sync(self)
 		 		_la = try _input.LA(1)
 		 	}
-		 	setState(141)
+		 	setState(172)
 		 	try match(BasicLearnParser.Tokens.T__6.rawValue)
 
 		}
@@ -1151,31 +1189,31 @@ open class BasicLearnParser: Parser {
 	    }
 		do {
 		 	try enterOuterAlt(_localctx, 1)
-		 	setState(143)
+		 	setState(174)
 		 	try match(BasicLearnParser.Tokens.ID.rawValue)
-		 	setState(144)
+		 	setState(175)
 		 	try match(BasicLearnParser.Tokens.LEFTPAREN.rawValue)
-		 	setState(145)
-		 	try match(BasicLearnParser.Tokens.T__7.rawValue)
-		 	setState(150)
+		 	setState(176)
+		 	try match(BasicLearnParser.Tokens.T__14.rawValue)
+		 	setState(181)
 		 	try _errHandler.sync(self)
 		 	_la = try _input.LA(1)
 		 	while (//closure
 		 	 { () -> Bool in
-		 	      let testSet: Bool = _la == BasicLearnParser.Tokens.T__19.rawValue
+		 	      let testSet: Bool = _la == BasicLearnParser.Tokens.T__22.rawValue
 		 	      return testSet
 		 	 }()) {
-		 		setState(146)
-		 		try match(BasicLearnParser.Tokens.T__19.rawValue)
-		 		setState(147)
-		 		try match(BasicLearnParser.Tokens.T__7.rawValue)
+		 		setState(177)
+		 		try match(BasicLearnParser.Tokens.T__22.rawValue)
+		 		setState(178)
+		 		try match(BasicLearnParser.Tokens.T__14.rawValue)
 
 
-		 		setState(152)
+		 		setState(183)
 		 		try _errHandler.sync(self)
 		 		_la = try _input.LA(1)
 		 	}
-		 	setState(153)
+		 	setState(184)
 		 	try match(BasicLearnParser.Tokens.RIGHTPAREN.rawValue)
 
 		}
@@ -1224,27 +1262,27 @@ open class BasicLearnParser: Parser {
 	    }
 		do {
 		 	try enterOuterAlt(_localctx, 1)
-		 	setState(155)
-		 	try match(BasicLearnParser.Tokens.T__18.rawValue)
-		 	setState(156)
+		 	setState(186)
+		 	try match(BasicLearnParser.Tokens.T__21.rawValue)
+		 	setState(187)
 		 	try match(BasicLearnParser.Tokens.ID.rawValue)
-		 	setState(162)
+		 	setState(193)
 		 	try _errHandler.sync(self)
 		 	_la = try _input.LA(1)
 		 	while (//closure
 		 	 { () -> Bool in
-		 	      let testSet: Bool = _la == BasicLearnParser.Tokens.T__19.rawValue
+		 	      let testSet: Bool = _la == BasicLearnParser.Tokens.T__22.rawValue
 		 	      return testSet
 		 	 }()) {
-		 		setState(157)
-		 		try match(BasicLearnParser.Tokens.T__19.rawValue)
-		 		setState(158)
-		 		try match(BasicLearnParser.Tokens.T__18.rawValue)
-		 		setState(159)
+		 		setState(188)
+		 		try match(BasicLearnParser.Tokens.T__22.rawValue)
+		 		setState(189)
+		 		try match(BasicLearnParser.Tokens.T__21.rawValue)
+		 		setState(190)
 		 		try match(BasicLearnParser.Tokens.ID.rawValue)
 
 
-		 		setState(164)
+		 		setState(195)
 		 		try _errHandler.sync(self)
 		 		_la = try _input.LA(1)
 		 	}
@@ -1295,45 +1333,45 @@ open class BasicLearnParser: Parser {
 	    }
 		do {
 		 	try enterOuterAlt(_localctx, 1)
-		 	setState(165)
-		 	try match(BasicLearnParser.Tokens.T__10.rawValue)
-		 	setState(166)
+		 	setState(196)
+		 	try match(BasicLearnParser.Tokens.T__9.rawValue)
+		 	setState(197)
 		 	try match(BasicLearnParser.Tokens.LEFTPAREN.rawValue)
-		 	setState(167)
-		 	try match(BasicLearnParser.Tokens.T__7.rawValue)
-		 	setState(172)
+		 	setState(198)
+		 	try match(BasicLearnParser.Tokens.T__14.rawValue)
+		 	setState(203)
 		 	try _errHandler.sync(self)
 		 	_la = try _input.LA(1)
 		 	while (//closure
 		 	 { () -> Bool in
-		 	      let testSet: Bool = _la == BasicLearnParser.Tokens.T__22.rawValue
+		 	      let testSet: Bool = _la == BasicLearnParser.Tokens.T__25.rawValue
 		 	      return testSet
 		 	 }()) {
-		 		setState(168)
-		 		try match(BasicLearnParser.Tokens.T__22.rawValue)
-		 		setState(169)
-		 		try match(BasicLearnParser.Tokens.T__7.rawValue)
+		 		setState(199)
+		 		try match(BasicLearnParser.Tokens.T__25.rawValue)
+		 		setState(200)
+		 		try match(BasicLearnParser.Tokens.T__14.rawValue)
 
 
-		 		setState(174)
+		 		setState(205)
 		 		try _errHandler.sync(self)
 		 		_la = try _input.LA(1)
 		 	}
-		 	setState(175)
+		 	setState(206)
 		 	try match(BasicLearnParser.Tokens.RIGHTPAREN.rawValue)
-		 	setState(176)
+		 	setState(207)
 		 	try match(BasicLearnParser.Tokens.T__6.rawValue)
-		 	setState(179)
+		 	setState(210)
 		 	try _errHandler.sync(self)
 		 	_la = try _input.LA(1)
 		 	if (//closure
 		 	 { () -> Bool in
-		 	      let testSet: Bool = _la == BasicLearnParser.Tokens.T__23.rawValue
+		 	      let testSet: Bool = _la == BasicLearnParser.Tokens.T__26.rawValue
 		 	      return testSet
 		 	 }()) {
-		 		setState(177)
-		 		try match(BasicLearnParser.Tokens.T__23.rawValue)
-		 		setState(178)
+		 		setState(208)
+		 		try match(BasicLearnParser.Tokens.T__26.rawValue)
+		 		setState(209)
 		 		try match(BasicLearnParser.Tokens.T__6.rawValue)
 
 		 	}
@@ -1353,10 +1391,6 @@ open class BasicLearnParser: Parser {
 			open
 			func LEFTPAREN() -> TerminalNode? {
 				return getToken(BasicLearnParser.Tokens.LEFTPAREN.rawValue, 0)
-			}
-			open
-			func CTE_I() -> TerminalNode? {
-				return getToken(BasicLearnParser.Tokens.CTE_I.rawValue, 0)
 			}
 			open
 			func RIGHTPAREN() -> TerminalNode? {
@@ -1388,15 +1422,15 @@ open class BasicLearnParser: Parser {
 	    }
 		do {
 		 	try enterOuterAlt(_localctx, 1)
-		 	setState(181)
-		 	try match(BasicLearnParser.Tokens.T__11.rawValue)
-		 	setState(182)
+		 	setState(212)
+		 	try match(BasicLearnParser.Tokens.T__10.rawValue)
+		 	setState(213)
 		 	try match(BasicLearnParser.Tokens.LEFTPAREN.rawValue)
-		 	setState(183)
-		 	try match(BasicLearnParser.Tokens.CTE_I.rawValue)
-		 	setState(184)
+		 	setState(214)
+		 	try match(BasicLearnParser.Tokens.T__13.rawValue)
+		 	setState(215)
 		 	try match(BasicLearnParser.Tokens.RIGHTPAREN.rawValue)
-		 	setState(185)
+		 	setState(216)
 		 	try match(BasicLearnParser.Tokens.T__6.rawValue)
 
 		}
@@ -1439,39 +1473,20 @@ open class BasicLearnParser: Parser {
 	 open func while_statement() throws -> While_statementContext {
 		var _localctx: While_statementContext = While_statementContext(_ctx, getState())
 		try enterRule(_localctx, 32, BasicLearnParser.RULE_while_statement)
-		var _la: Int = 0
 		defer {
 	    		try! exitRule()
 	    }
 		do {
 		 	try enterOuterAlt(_localctx, 1)
-		 	setState(187)
-		 	try match(BasicLearnParser.Tokens.T__12.rawValue)
-		 	setState(188)
+		 	setState(218)
+		 	try match(BasicLearnParser.Tokens.T__11.rawValue)
+		 	setState(219)
 		 	try match(BasicLearnParser.Tokens.LEFTPAREN.rawValue)
-		 	setState(189)
-		 	try match(BasicLearnParser.Tokens.T__7.rawValue)
-		 	setState(194)
-		 	try _errHandler.sync(self)
-		 	_la = try _input.LA(1)
-		 	while (//closure
-		 	 { () -> Bool in
-		 	      let testSet: Bool = _la == BasicLearnParser.Tokens.T__22.rawValue
-		 	      return testSet
-		 	 }()) {
-		 		setState(190)
-		 		try match(BasicLearnParser.Tokens.T__22.rawValue)
-		 		setState(191)
-		 		try match(BasicLearnParser.Tokens.T__7.rawValue)
-
-
-		 		setState(196)
-		 		try _errHandler.sync(self)
-		 		_la = try _input.LA(1)
-		 	}
-		 	setState(197)
+		 	setState(220)
+		 	try match(BasicLearnParser.Tokens.T__14.rawValue)
+		 	setState(221)
 		 	try match(BasicLearnParser.Tokens.RIGHTPAREN.rawValue)
-		 	setState(198)
+		 	setState(222)
 		 	try match(BasicLearnParser.Tokens.T__6.rawValue)
 
 		}
@@ -1484,39 +1499,42 @@ open class BasicLearnParser: Parser {
 		return _localctx
 	}
 
-	public class LogicalContext: ParserRuleContext {
+	public class Special_functionContext: ParserRuleContext {
 		override open
 		func getRuleIndex() -> Int {
-			return BasicLearnParser.RULE_logical
+			return BasicLearnParser.RULE_special_function
 		}
 		override open
 		func enterRule(_ listener: ParseTreeListener) {
 			if let listener = listener as? BasicLearnListener {
-				listener.enterLogical(self)
+				listener.enterSpecial_function(self)
 			}
 		}
 		override open
 		func exitRule(_ listener: ParseTreeListener) {
 			if let listener = listener as? BasicLearnListener {
-				listener.exitLogical(self)
+				listener.exitSpecial_function(self)
 			}
 		}
 	}
 	@discardableResult
-	 open func logical() throws -> LogicalContext {
-		var _localctx: LogicalContext = LogicalContext(_ctx, getState())
-		try enterRule(_localctx, 34, BasicLearnParser.RULE_logical)
+	 open func special_function() throws -> Special_functionContext {
+		var _localctx: Special_functionContext = Special_functionContext(_ctx, getState())
+		try enterRule(_localctx, 34, BasicLearnParser.RULE_special_function)
 		var _la: Int = 0
 		defer {
 	    		try! exitRule()
 	    }
 		do {
 		 	try enterOuterAlt(_localctx, 1)
-		 	setState(200)
+		 	setState(224)
 		 	_la = try _input.LA(1)
 		 	if (!(//closure
 		 	 { () -> Bool in
-		 	      let testSet: Bool = _la == BasicLearnParser.Tokens.AND.rawValue || _la == BasicLearnParser.Tokens.OR.rawValue
+		 	      let testSet: Bool = {  () -> Bool in
+		 	   let testArray: [Int] = [_la, BasicLearnParser.Tokens.T__27.rawValue,BasicLearnParser.Tokens.T__28.rawValue,BasicLearnParser.Tokens.T__29.rawValue,BasicLearnParser.Tokens.T__30.rawValue,BasicLearnParser.Tokens.T__31.rawValue,BasicLearnParser.Tokens.T__32.rawValue,BasicLearnParser.Tokens.T__33.rawValue,BasicLearnParser.Tokens.T__34.rawValue]
+		 	    return  Utils.testBitLeftShiftArray(testArray, 0)
+		 	}()
 		 	      return testSet
 		 	 }())) {
 		 	try _errHandler.recoverInline(self)
@@ -1525,6 +1543,623 @@ open class BasicLearnParser: Parser {
 		 		_errHandler.reportMatch(self)
 		 		try consume()
 		 	}
+
+		}
+		catch ANTLRException.recognition(let re) {
+			_localctx.exception = re
+			_errHandler.reportError(self, re)
+			try _errHandler.recover(self, re)
+		}
+
+		return _localctx
+	}
+
+	public class ShowContext: ParserRuleContext {
+			open
+			func LEFTPAREN() -> TerminalNode? {
+				return getToken(BasicLearnParser.Tokens.LEFTPAREN.rawValue, 0)
+			}
+			open
+			func RIGHTPAREN() -> TerminalNode? {
+				return getToken(BasicLearnParser.Tokens.RIGHTPAREN.rawValue, 0)
+			}
+		override open
+		func getRuleIndex() -> Int {
+			return BasicLearnParser.RULE_show
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BasicLearnListener {
+				listener.enterShow(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BasicLearnListener {
+				listener.exitShow(self)
+			}
+		}
+	}
+	@discardableResult
+	 open func show() throws -> ShowContext {
+		var _localctx: ShowContext = ShowContext(_ctx, getState())
+		try enterRule(_localctx, 36, BasicLearnParser.RULE_show)
+		var _la: Int = 0
+		defer {
+	    		try! exitRule()
+	    }
+		do {
+		 	try enterOuterAlt(_localctx, 1)
+		 	setState(226)
+		 	try match(BasicLearnParser.Tokens.T__30.rawValue)
+		 	setState(227)
+		 	try match(BasicLearnParser.Tokens.LEFTPAREN.rawValue)
+		 	setState(228)
+		 	_la = try _input.LA(1)
+		 	if (!(//closure
+		 	 { () -> Bool in
+		 	      let testSet: Bool = _la == BasicLearnParser.Tokens.T__14.rawValue || _la == BasicLearnParser.Tokens.T__35.rawValue
+		 	      return testSet
+		 	 }())) {
+		 	try _errHandler.recoverInline(self)
+		 	}
+		 	else {
+		 		_errHandler.reportMatch(self)
+		 		try consume()
+		 	}
+		 	setState(229)
+		 	try match(BasicLearnParser.Tokens.RIGHTPAREN.rawValue)
+		 	setState(230)
+		 	try match(BasicLearnParser.Tokens.T__1.rawValue)
+
+		}
+		catch ANTLRException.recognition(let re) {
+			_localctx.exception = re
+			_errHandler.reportError(self, re)
+			try _errHandler.recover(self, re)
+		}
+
+		return _localctx
+	}
+
+	public class PythagorasContext: ParserRuleContext {
+			open
+			func LEFTPAREN() -> TerminalNode? {
+				return getToken(BasicLearnParser.Tokens.LEFTPAREN.rawValue, 0)
+			}
+			open
+			func RIGHTPAREN() -> TerminalNode? {
+				return getToken(BasicLearnParser.Tokens.RIGHTPAREN.rawValue, 0)
+			}
+		override open
+		func getRuleIndex() -> Int {
+			return BasicLearnParser.RULE_pythagoras
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BasicLearnListener {
+				listener.enterPythagoras(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BasicLearnListener {
+				listener.exitPythagoras(self)
+			}
+		}
+	}
+	@discardableResult
+	 open func pythagoras() throws -> PythagorasContext {
+		var _localctx: PythagorasContext = PythagorasContext(_ctx, getState())
+		try enterRule(_localctx, 38, BasicLearnParser.RULE_pythagoras)
+		var _la: Int = 0
+		defer {
+	    		try! exitRule()
+	    }
+		do {
+		 	try enterOuterAlt(_localctx, 1)
+		 	setState(232)
+		 	_la = try _input.LA(1)
+		 	if (!(//closure
+		 	 { () -> Bool in
+		 	      let testSet: Bool = _la == BasicLearnParser.Tokens.T__36.rawValue || _la == BasicLearnParser.Tokens.T__37.rawValue
+		 	      return testSet
+		 	 }())) {
+		 	try _errHandler.recoverInline(self)
+		 	}
+		 	else {
+		 		_errHandler.reportMatch(self)
+		 		try consume()
+		 	}
+		 	setState(233)
+		 	try match(BasicLearnParser.Tokens.LEFTPAREN.rawValue)
+		 	setState(234)
+		 	try match(BasicLearnParser.Tokens.T__13.rawValue)
+		 	setState(235)
+		 	try match(BasicLearnParser.Tokens.T__22.rawValue)
+		 	setState(236)
+		 	try match(BasicLearnParser.Tokens.T__13.rawValue)
+		 	setState(237)
+		 	try match(BasicLearnParser.Tokens.RIGHTPAREN.rawValue)
+		 	setState(238)
+		 	try match(BasicLearnParser.Tokens.T__1.rawValue)
+
+		}
+		catch ANTLRException.recognition(let re) {
+			_localctx.exception = re
+			_errHandler.reportError(self, re)
+			try _errHandler.recover(self, re)
+		}
+
+		return _localctx
+	}
+
+	public class List_selectContext: ParserRuleContext {
+			open
+			func LEFTPAREN() -> TerminalNode? {
+				return getToken(BasicLearnParser.Tokens.LEFTPAREN.rawValue, 0)
+			}
+			open
+			func CTE_I() -> TerminalNode? {
+				return getToken(BasicLearnParser.Tokens.CTE_I.rawValue, 0)
+			}
+			open
+			func ID() -> TerminalNode? {
+				return getToken(BasicLearnParser.Tokens.ID.rawValue, 0)
+			}
+			open
+			func RIGHTPAREN() -> TerminalNode? {
+				return getToken(BasicLearnParser.Tokens.RIGHTPAREN.rawValue, 0)
+			}
+		override open
+		func getRuleIndex() -> Int {
+			return BasicLearnParser.RULE_list_select
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BasicLearnListener {
+				listener.enterList_select(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BasicLearnListener {
+				listener.exitList_select(self)
+			}
+		}
+	}
+	@discardableResult
+	 open func list_select() throws -> List_selectContext {
+		var _localctx: List_selectContext = List_selectContext(_ctx, getState())
+		try enterRule(_localctx, 40, BasicLearnParser.RULE_list_select)
+		defer {
+	    		try! exitRule()
+	    }
+		do {
+		 	try enterOuterAlt(_localctx, 1)
+		 	setState(240)
+		 	try match(BasicLearnParser.Tokens.T__38.rawValue)
+		 	setState(241)
+		 	try match(BasicLearnParser.Tokens.LEFTPAREN.rawValue)
+		 	setState(242)
+		 	try match(BasicLearnParser.Tokens.CTE_I.rawValue)
+		 	setState(243)
+		 	try match(BasicLearnParser.Tokens.T__22.rawValue)
+		 	setState(244)
+		 	try match(BasicLearnParser.Tokens.ID.rawValue)
+		 	setState(245)
+		 	try match(BasicLearnParser.Tokens.RIGHTPAREN.rawValue)
+		 	setState(246)
+		 	try match(BasicLearnParser.Tokens.T__1.rawValue)
+
+		}
+		catch ANTLRException.recognition(let re) {
+			_localctx.exception = re
+			_errHandler.reportError(self, re)
+			try _errHandler.recover(self, re)
+		}
+
+		return _localctx
+	}
+
+	public class List_functionsContext: ParserRuleContext {
+			open
+			func LEFTPAREN() -> TerminalNode? {
+				return getToken(BasicLearnParser.Tokens.LEFTPAREN.rawValue, 0)
+			}
+			open
+			func ID() -> TerminalNode? {
+				return getToken(BasicLearnParser.Tokens.ID.rawValue, 0)
+			}
+			open
+			func RIGHTPAREN() -> TerminalNode? {
+				return getToken(BasicLearnParser.Tokens.RIGHTPAREN.rawValue, 0)
+			}
+		override open
+		func getRuleIndex() -> Int {
+			return BasicLearnParser.RULE_list_functions
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BasicLearnListener {
+				listener.enterList_functions(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BasicLearnListener {
+				listener.exitList_functions(self)
+			}
+		}
+	}
+	@discardableResult
+	 open func list_functions() throws -> List_functionsContext {
+		var _localctx: List_functionsContext = List_functionsContext(_ctx, getState())
+		try enterRule(_localctx, 42, BasicLearnParser.RULE_list_functions)
+		var _la: Int = 0
+		defer {
+	    		try! exitRule()
+	    }
+		do {
+		 	try enterOuterAlt(_localctx, 1)
+		 	setState(248)
+		 	_la = try _input.LA(1)
+		 	if (!(//closure
+		 	 { () -> Bool in
+		 	      let testSet: Bool = {  () -> Bool in
+		 	   let testArray: [Int] = [_la, BasicLearnParser.Tokens.T__39.rawValue,BasicLearnParser.Tokens.T__40.rawValue,BasicLearnParser.Tokens.T__41.rawValue,BasicLearnParser.Tokens.T__42.rawValue,BasicLearnParser.Tokens.T__43.rawValue]
+		 	    return  Utils.testBitLeftShiftArray(testArray, 0)
+		 	}()
+		 	      return testSet
+		 	 }())) {
+		 	try _errHandler.recoverInline(self)
+		 	}
+		 	else {
+		 		_errHandler.reportMatch(self)
+		 		try consume()
+		 	}
+		 	setState(249)
+		 	try match(BasicLearnParser.Tokens.LEFTPAREN.rawValue)
+		 	setState(250)
+		 	try match(BasicLearnParser.Tokens.ID.rawValue)
+		 	setState(251)
+		 	try match(BasicLearnParser.Tokens.RIGHTPAREN.rawValue)
+		 	setState(252)
+		 	try match(BasicLearnParser.Tokens.T__1.rawValue)
+
+		}
+		catch ANTLRException.recognition(let re) {
+			_localctx.exception = re
+			_errHandler.reportError(self, re)
+			try _errHandler.recover(self, re)
+		}
+
+		return _localctx
+	}
+
+	public class Perimeter_triContext: ParserRuleContext {
+			open
+			func LEFTPAREN() -> TerminalNode? {
+				return getToken(BasicLearnParser.Tokens.LEFTPAREN.rawValue, 0)
+			}
+			open
+			func RIGHTPAREN() -> TerminalNode? {
+				return getToken(BasicLearnParser.Tokens.RIGHTPAREN.rawValue, 0)
+			}
+			open
+			func ID() -> [TerminalNode] {
+				return getTokens(BasicLearnParser.Tokens.ID.rawValue)
+			}
+			open
+			func ID(_ i:Int) -> TerminalNode? {
+				return getToken(BasicLearnParser.Tokens.ID.rawValue, i)
+			}
+			open
+			func CTE_I() -> [TerminalNode] {
+				return getTokens(BasicLearnParser.Tokens.CTE_I.rawValue)
+			}
+			open
+			func CTE_I(_ i:Int) -> TerminalNode? {
+				return getToken(BasicLearnParser.Tokens.CTE_I.rawValue, i)
+			}
+			open
+			func CTE_F() -> [TerminalNode] {
+				return getTokens(BasicLearnParser.Tokens.CTE_F.rawValue)
+			}
+			open
+			func CTE_F(_ i:Int) -> TerminalNode? {
+				return getToken(BasicLearnParser.Tokens.CTE_F.rawValue, i)
+			}
+		override open
+		func getRuleIndex() -> Int {
+			return BasicLearnParser.RULE_perimeter_tri
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BasicLearnListener {
+				listener.enterPerimeter_tri(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BasicLearnListener {
+				listener.exitPerimeter_tri(self)
+			}
+		}
+	}
+	@discardableResult
+	 open func perimeter_tri() throws -> Perimeter_triContext {
+		var _localctx: Perimeter_triContext = Perimeter_triContext(_ctx, getState())
+		try enterRule(_localctx, 44, BasicLearnParser.RULE_perimeter_tri)
+		var _la: Int = 0
+		defer {
+	    		try! exitRule()
+	    }
+		do {
+		 	try enterOuterAlt(_localctx, 1)
+		 	setState(254)
+		 	try match(BasicLearnParser.Tokens.T__44.rawValue)
+		 	setState(255)
+		 	try match(BasicLearnParser.Tokens.LEFTPAREN.rawValue)
+		 	setState(256)
+		 	_la = try _input.LA(1)
+		 	if (!(//closure
+		 	 { () -> Bool in
+		 	      let testSet: Bool = {  () -> Bool in
+		 	   let testArray: [Int] = [_la, BasicLearnParser.Tokens.ID.rawValue,BasicLearnParser.Tokens.CTE_I.rawValue,BasicLearnParser.Tokens.CTE_F.rawValue]
+		 	    return  Utils.testBitLeftShiftArray(testArray, 0)
+		 	}()
+		 	      return testSet
+		 	 }())) {
+		 	try _errHandler.recoverInline(self)
+		 	}
+		 	else {
+		 		_errHandler.reportMatch(self)
+		 		try consume()
+		 	}
+		 	setState(257)
+		 	try match(BasicLearnParser.Tokens.T__22.rawValue)
+		 	setState(258)
+		 	_la = try _input.LA(1)
+		 	if (!(//closure
+		 	 { () -> Bool in
+		 	      let testSet: Bool = {  () -> Bool in
+		 	   let testArray: [Int] = [_la, BasicLearnParser.Tokens.ID.rawValue,BasicLearnParser.Tokens.CTE_I.rawValue,BasicLearnParser.Tokens.CTE_F.rawValue]
+		 	    return  Utils.testBitLeftShiftArray(testArray, 0)
+		 	}()
+		 	      return testSet
+		 	 }())) {
+		 	try _errHandler.recoverInline(self)
+		 	}
+		 	else {
+		 		_errHandler.reportMatch(self)
+		 		try consume()
+		 	}
+		 	setState(259)
+		 	try match(BasicLearnParser.Tokens.T__22.rawValue)
+		 	setState(260)
+		 	_la = try _input.LA(1)
+		 	if (!(//closure
+		 	 { () -> Bool in
+		 	      let testSet: Bool = {  () -> Bool in
+		 	   let testArray: [Int] = [_la, BasicLearnParser.Tokens.ID.rawValue,BasicLearnParser.Tokens.CTE_I.rawValue,BasicLearnParser.Tokens.CTE_F.rawValue]
+		 	    return  Utils.testBitLeftShiftArray(testArray, 0)
+		 	}()
+		 	      return testSet
+		 	 }())) {
+		 	try _errHandler.recoverInline(self)
+		 	}
+		 	else {
+		 		_errHandler.reportMatch(self)
+		 		try consume()
+		 	}
+		 	setState(261)
+		 	try match(BasicLearnParser.Tokens.RIGHTPAREN.rawValue)
+		 	setState(262)
+		 	try match(BasicLearnParser.Tokens.T__1.rawValue)
+
+		}
+		catch ANTLRException.recognition(let re) {
+			_localctx.exception = re
+			_errHandler.reportError(self, re)
+			try _errHandler.recover(self, re)
+		}
+
+		return _localctx
+	}
+
+	public class Square_root_absoluteContext: ParserRuleContext {
+			open
+			func LEFTPAREN() -> TerminalNode? {
+				return getToken(BasicLearnParser.Tokens.LEFTPAREN.rawValue, 0)
+			}
+			open
+			func RIGHTPAREN() -> TerminalNode? {
+				return getToken(BasicLearnParser.Tokens.RIGHTPAREN.rawValue, 0)
+			}
+		override open
+		func getRuleIndex() -> Int {
+			return BasicLearnParser.RULE_square_root_absolute
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BasicLearnListener {
+				listener.enterSquare_root_absolute(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BasicLearnListener {
+				listener.exitSquare_root_absolute(self)
+			}
+		}
+	}
+	@discardableResult
+	 open func square_root_absolute() throws -> Square_root_absoluteContext {
+		var _localctx: Square_root_absoluteContext = Square_root_absoluteContext(_ctx, getState())
+		try enterRule(_localctx, 46, BasicLearnParser.RULE_square_root_absolute)
+		var _la: Int = 0
+		defer {
+	    		try! exitRule()
+	    }
+		do {
+		 	try enterOuterAlt(_localctx, 1)
+		 	setState(264)
+		 	_la = try _input.LA(1)
+		 	if (!(//closure
+		 	 { () -> Bool in
+		 	      let testSet: Bool = _la == BasicLearnParser.Tokens.T__45.rawValue || _la == BasicLearnParser.Tokens.T__46.rawValue
+		 	      return testSet
+		 	 }())) {
+		 	try _errHandler.recoverInline(self)
+		 	}
+		 	else {
+		 		_errHandler.reportMatch(self)
+		 		try consume()
+		 	}
+		 	setState(265)
+		 	try match(BasicLearnParser.Tokens.LEFTPAREN.rawValue)
+		 	setState(266)
+		 	try match(BasicLearnParser.Tokens.T__13.rawValue)
+		 	setState(267)
+		 	try match(BasicLearnParser.Tokens.RIGHTPAREN.rawValue)
+		 	setState(268)
+		 	try match(BasicLearnParser.Tokens.T__1.rawValue)
+
+		}
+		catch ANTLRException.recognition(let re) {
+			_localctx.exception = re
+			_errHandler.reportError(self, re)
+			try _errHandler.recover(self, re)
+		}
+
+		return _localctx
+	}
+
+	public class Area_triContext: ParserRuleContext {
+			open
+			func LEFTPAREN() -> TerminalNode? {
+				return getToken(BasicLearnParser.Tokens.LEFTPAREN.rawValue, 0)
+			}
+			open
+			func RIGHTPAREN() -> TerminalNode? {
+				return getToken(BasicLearnParser.Tokens.RIGHTPAREN.rawValue, 0)
+			}
+		override open
+		func getRuleIndex() -> Int {
+			return BasicLearnParser.RULE_area_tri
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BasicLearnListener {
+				listener.enterArea_tri(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BasicLearnListener {
+				listener.exitArea_tri(self)
+			}
+		}
+	}
+	@discardableResult
+	 open func area_tri() throws -> Area_triContext {
+		var _localctx: Area_triContext = Area_triContext(_ctx, getState())
+		try enterRule(_localctx, 48, BasicLearnParser.RULE_area_tri)
+		defer {
+	    		try! exitRule()
+	    }
+		do {
+		 	try enterOuterAlt(_localctx, 1)
+		 	setState(270)
+		 	try match(BasicLearnParser.Tokens.T__47.rawValue)
+		 	setState(271)
+		 	try match(BasicLearnParser.Tokens.LEFTPAREN.rawValue)
+		 	setState(272)
+		 	try match(BasicLearnParser.Tokens.T__13.rawValue)
+		 	setState(273)
+		 	try match(BasicLearnParser.Tokens.T__22.rawValue)
+		 	setState(274)
+		 	try match(BasicLearnParser.Tokens.T__13.rawValue)
+		 	setState(275)
+		 	try match(BasicLearnParser.Tokens.RIGHTPAREN.rawValue)
+		 	setState(276)
+		 	try match(BasicLearnParser.Tokens.T__1.rawValue)
+
+		}
+		catch ANTLRException.recognition(let re) {
+			_localctx.exception = re
+			_errHandler.reportError(self, re)
+			try _errHandler.recover(self, re)
+		}
+
+		return _localctx
+	}
+
+	public class SquareContext: ParserRuleContext {
+			open
+			func LEFTPAREN() -> TerminalNode? {
+				return getToken(BasicLearnParser.Tokens.LEFTPAREN.rawValue, 0)
+			}
+			open
+			func RIGHTPAREN() -> TerminalNode? {
+				return getToken(BasicLearnParser.Tokens.RIGHTPAREN.rawValue, 0)
+			}
+		override open
+		func getRuleIndex() -> Int {
+			return BasicLearnParser.RULE_square
+		}
+		override open
+		func enterRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BasicLearnListener {
+				listener.enterSquare(self)
+			}
+		}
+		override open
+		func exitRule(_ listener: ParseTreeListener) {
+			if let listener = listener as? BasicLearnListener {
+				listener.exitSquare(self)
+			}
+		}
+	}
+	@discardableResult
+	 open func square() throws -> SquareContext {
+		var _localctx: SquareContext = SquareContext(_ctx, getState())
+		try enterRule(_localctx, 50, BasicLearnParser.RULE_square)
+		var _la: Int = 0
+		defer {
+	    		try! exitRule()
+	    }
+		do {
+		 	try enterOuterAlt(_localctx, 1)
+		 	setState(278)
+		 	_la = try _input.LA(1)
+		 	if (!(//closure
+		 	 { () -> Bool in
+		 	      let testSet: Bool = {  () -> Bool in
+		 	   let testArray: [Int] = [_la, BasicLearnParser.Tokens.T__48.rawValue,BasicLearnParser.Tokens.T__49.rawValue,BasicLearnParser.Tokens.T__50.rawValue,BasicLearnParser.Tokens.T__51.rawValue]
+		 	    return  Utils.testBitLeftShiftArray(testArray, 0)
+		 	}()
+		 	      return testSet
+		 	 }())) {
+		 	try _errHandler.recoverInline(self)
+		 	}
+		 	else {
+		 		_errHandler.reportMatch(self)
+		 		try consume()
+		 	}
+		 	setState(279)
+		 	try match(BasicLearnParser.Tokens.LEFTPAREN.rawValue)
+		 	setState(280)
+		 	try match(BasicLearnParser.Tokens.T__13.rawValue)
+		 	setState(281)
+		 	try match(BasicLearnParser.Tokens.T__22.rawValue)
+		 	setState(282)
+		 	try match(BasicLearnParser.Tokens.T__13.rawValue)
+		 	setState(283)
+		 	try match(BasicLearnParser.Tokens.RIGHTPAREN.rawValue)
+		 	setState(284)
+		 	try match(BasicLearnParser.Tokens.T__1.rawValue)
 
 		}
 		catch ANTLRException.recognition(let re) {
