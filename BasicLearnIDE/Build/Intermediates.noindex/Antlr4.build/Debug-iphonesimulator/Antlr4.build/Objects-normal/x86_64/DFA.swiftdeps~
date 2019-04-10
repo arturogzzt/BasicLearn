@@ -1,0 +1,287 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "DFA"
+provides-nominal:
+- "6Antlr43DFAC"
+provides-member:
+- ["6Antlr43DFAC", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "!"
+- !private "+"
+- !private "-"
+- !private "<"
+- !private "=="
+- !private ">="
+- !private "ANTLRError"
+- !private "ATNConfigSet"
+- "AssignmentPrecedence"
+- "Bool"
+- "CastingPrecedence"
+- "CustomStringConvertible"
+- "DFA"
+- !private "DFASerializer"
+- "DFAState"
+- "DecisionState"
+- "Int"
+- !private "LexerDFASerializer"
+- "Mutex"
+- !private "StarLoopEntryState"
+- "String"
+- "Vocabulary"
+depends-member:
+- !private ["6Antlr410ANTLRErrorO", "deinit"]
+- !private ["6Antlr410ANTLRErrorO", "illegalState"]
+- !private ["6Antlr412ATNConfigSetC", "init"]
+- !private ["6Antlr48ATNStateC", "precedenceRuleDecision"]
+- !private ["Sa", "count"]
+- !private ["Sa", "init"]
+- !private ["Sa", "sorted"]
+- !private ["Sa", "subscript"]
+- !private ["SK", "count"]
+- !private ["SK", "init"]
+- !private ["SK", "sorted"]
+- !private ["SK", "subscript"]
+- !private ["s7CVarArgP", "count"]
+- ["s7CVarArgP", "init"]
+- !private ["s7CVarArgP", "keys"]
+- !private ["s7CVarArgP", "sorted"]
+- !private ["s7CVarArgP", "subscript"]
+- !private ["Sl", "count"]
+- ["Sl", "init"]
+- !private ["Sl", "keys"]
+- !private ["Sl", "sorted"]
+- !private ["Sl", "subscript"]
+- !private ["10Foundation15ContiguousBytesP", "count"]
+- !private ["10Foundation15ContiguousBytesP", "init"]
+- !private ["10Foundation15ContiguousBytesP", "sorted"]
+- !private ["10Foundation15ContiguousBytesP", "subscript"]
+- !private ["s28CustomDebugStringConvertibleP", "count"]
+- ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "keys"]
+- !private ["s28CustomDebugStringConvertibleP", "sorted"]
+- !private ["s28CustomDebugStringConvertibleP", "subscript"]
+- !private ["s17CustomReflectableP", "count"]
+- ["s17CustomReflectableP", "init"]
+- !private ["s17CustomReflectableP", "keys"]
+- !private ["s17CustomReflectableP", "sorted"]
+- !private ["s17CustomReflectableP", "subscript"]
+- !private ["s23CustomStringConvertibleP", "ANTLRError"]
+- !private ["s23CustomStringConvertibleP", "ATNConfigSet"]
+- !private ["s23CustomStringConvertibleP", "DFASerializer"]
+- ["s23CustomStringConvertibleP", "DFAState"]
+- !private ["s23CustomStringConvertibleP", "LexerDFASerializer"]
+- ["s23CustomStringConvertibleP", "Mutex"]
+- !private ["s23CustomStringConvertibleP", "Vocabulary"]
+- ["s23CustomStringConvertibleP", ""]
+- !private ["s23CustomStringConvertibleP", "atnStartState"]
+- !private ["s23CustomStringConvertibleP", "count"]
+- !private ["s23CustomStringConvertibleP", "decision"]
+- ["s23CustomStringConvertibleP", "description"]
+- !private ["s23CustomStringConvertibleP", "dfaStateMutex"]
+- !private ["s23CustomStringConvertibleP", "edges"]
+- ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "isAcceptState"]
+- !private ["s23CustomStringConvertibleP", "isPrecedenceDfa"]
+- !private ["s23CustomStringConvertibleP", "keys"]
+- !private ["s23CustomStringConvertibleP", "precedenceDfa"]
+- !private ["s23CustomStringConvertibleP", "precedenceRuleDecision"]
+- !private ["s23CustomStringConvertibleP", "requiresFullContext"]
+- !private ["s23CustomStringConvertibleP", "s0"]
+- !private ["s23CustomStringConvertibleP", "sorted"]
+- !private ["s23CustomStringConvertibleP", "stateNumber"]
+- !private ["s23CustomStringConvertibleP", "states"]
+- !private ["s23CustomStringConvertibleP", "subscript"]
+- !private ["s23CustomStringConvertibleP", "toString"]
+- !private ["6Antlr43DFAC", "ANTLRError"]
+- !private ["6Antlr43DFAC", "ATNConfigSet"]
+- ["6Antlr43DFAC", "Bool"]
+- !private ["6Antlr43DFAC", "DFASerializer"]
+- ["6Antlr43DFAC", "DFAState"]
+- ["6Antlr43DFAC", "DecisionState"]
+- ["6Antlr43DFAC", "Int"]
+- !private ["6Antlr43DFAC", "LexerDFASerializer"]
+- ["6Antlr43DFAC", "Mutex"]
+- !private ["6Antlr43DFAC", "StarLoopEntryState"]
+- ["6Antlr43DFAC", "String"]
+- ["6Antlr43DFAC", "Vocabulary"]
+- ["6Antlr43DFAC", "atnStartState"]
+- ["6Antlr43DFAC", "decision"]
+- ["6Antlr43DFAC", "deinit"]
+- ["6Antlr43DFAC", "description"]
+- !private ["6Antlr43DFAC", "dfaStateMutex"]
+- ["6Antlr43DFAC", "getPrecedenceStartState"]
+- ["6Antlr43DFAC", "getStates"]
+- ["6Antlr43DFAC", "init"]
+- ["6Antlr43DFAC", "isPrecedenceDfa"]
+- !private ["6Antlr43DFAC", "precedenceDfa"]
+- ["6Antlr43DFAC", "s0"]
+- ["6Antlr43DFAC", "setPrecedenceStartState"]
+- ["6Antlr43DFAC", "states"]
+- ["6Antlr43DFAC", "toLexerString"]
+- ["6Antlr43DFAC", "toString"]
+- !private ["6Antlr413DFASerializerC", "deinit"]
+- !private ["6Antlr413DFASerializerC", "description"]
+- !private ["6Antlr413DFASerializerC", "init"]
+- ["6Antlr48DFAStateC", "deinit"]
+- !private ["6Antlr48DFAStateC", "edges"]
+- !private ["6Antlr48DFAStateC", "init"]
+- !private ["6Antlr48DFAStateC", "isAcceptState"]
+- !private ["6Antlr48DFAStateC", "requiresFullContext"]
+- !private ["6Antlr48DFAStateC", "stateNumber"]
+- !private ["10Foundation12DataProtocolP", "count"]
+- !private ["10Foundation12DataProtocolP", "init"]
+- !private ["10Foundation12DataProtocolP", "sorted"]
+- !private ["10Foundation12DataProtocolP", "subscript"]
+- !private ["6Antlr413DecisionStateC", "precedenceRuleDecision"]
+- !private ["Se", "count"]
+- ["Se", "init"]
+- !private ["Se", "keys"]
+- !private ["Se", "sorted"]
+- !private ["Se", "subscript"]
+- ["SD", "init"]
+- !private ["SD", "keys"]
+- !private ["SE", "count"]
+- ["SE", "init"]
+- !private ["SE", "keys"]
+- !private ["SE", "sorted"]
+- !private ["SE", "subscript"]
+- !private ["SQ", "EMPTY_VOCABULARY"]
+- !private ["SQ", "count"]
+- !private ["SQ", "edges"]
+- ["SQ", "init"]
+- !private ["SQ", "isAcceptState"]
+- !private ["SQ", "keys"]
+- !private ["SQ", "precedenceRuleDecision"]
+- !private ["SQ", "requiresFullContext"]
+- !private ["SQ", "sorted"]
+- !private ["SQ", "stateNumber"]
+- !private ["SQ", "subscript"]
+- !private ["s5ErrorP", "illegalState"]
+- !private ["s25ExpressibleByArrayLiteralP", "count"]
+- !private ["s25ExpressibleByArrayLiteralP", "init"]
+- !private ["s25ExpressibleByArrayLiteralP", "sorted"]
+- !private ["s25ExpressibleByArrayLiteralP", "subscript"]
+- ["s30ExpressibleByDictionaryLiteralP", "init"]
+- !private ["s30ExpressibleByDictionaryLiteralP", "keys"]
+- !private ["s23ExpressibleByNilLiteralP", "subscript"]
+- !private ["SH", "EMPTY_VOCABULARY"]
+- !private ["SH", "count"]
+- !private ["SH", "edges"]
+- ["SH", "init"]
+- !private ["SH", "isAcceptState"]
+- !private ["SH", "keys"]
+- !private ["SH", "precedenceRuleDecision"]
+- !private ["SH", "requiresFullContext"]
+- !private ["SH", "sorted"]
+- !private ["SH", "stateNumber"]
+- !private ["SH", "subscript"]
+- !private ["6Antlr418LexerDFASerializerC", "deinit"]
+- !private ["6Antlr418LexerDFASerializerC", "description"]
+- !private ["6Antlr418LexerDFASerializerC", "init"]
+- !private ["SM", "count"]
+- !private ["SM", "init"]
+- !private ["SM", "sorted"]
+- !private ["SM", "subscript"]
+- !private ["10Foundation19MutableDataProtocolP", "count"]
+- !private ["10Foundation19MutableDataProtocolP", "init"]
+- !private ["10Foundation19MutableDataProtocolP", "sorted"]
+- !private ["10Foundation19MutableDataProtocolP", "subscript"]
+- ["6Antlr45MutexC", "init"]
+- !private ["6Antlr45MutexC", "synchronized"]
+- !private ["Sq", "subscript"]
+- !private ["Sk", "count"]
+- !private ["Sk", "init"]
+- !private ["Sk", "sorted"]
+- !private ["Sk", "subscript"]
+- !private ["Sm", "count"]
+- !private ["Sm", "init"]
+- !private ["Sm", "sorted"]
+- !private ["Sm", "subscript"]
+- !private ["ST", "count"]
+- ["ST", "init"]
+- !private ["ST", "keys"]
+- !private ["ST", "sorted"]
+- !private ["ST", "subscript"]
+- !private ["6Antlr418StarLoopEntryStateC", "precedenceRuleDecision"]
+- !private ["6Antlr410VocabularyC", "EMPTY_VOCABULARY"]
+- !private ["s14_ArrayProtocolP", "count"]
+- !private ["s14_ArrayProtocolP", "init"]
+- !private ["s14_ArrayProtocolP", "sorted"]
+- !private ["s14_ArrayProtocolP", "subscript"]
+- !private ["s24_DestructorSafeContainerP", "count"]
+- !private ["s24_DestructorSafeContainerP", "init"]
+- !private ["s24_DestructorSafeContainerP", "sorted"]
+- !private ["s24_DestructorSafeContainerP", "subscript"]
+- !private ["s19_HasContiguousBytesP", "count"]
+- !private ["s19_HasContiguousBytesP", "init"]
+- !private ["s19_HasContiguousBytesP", "sorted"]
+- !private ["s19_HasContiguousBytesP", "subscript"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "count"]
+- ["s35_HasCustomAnyHashableRepresentationP", "init"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "keys"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "sorted"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "subscript"]
+- !private ["s21_ObjectiveCBridgeableP", "count"]
+- ["s21_ObjectiveCBridgeableP", "init"]
+- !private ["s21_ObjectiveCBridgeableP", "keys"]
+- !private ["s21_ObjectiveCBridgeableP", "sorted"]
+- !private ["s21_ObjectiveCBridgeableP", "subscript"]
+depends-nominal:
+- !private "6Antlr410ANTLRErrorO"
+- !private "6Antlr412ATNConfigSetC"
+- !private "6Antlr48ATNStateC"
+- !private "Sa"
+- !private "SK"
+- "s7CVarArgP"
+- "Sl"
+- !private "10Foundation15ContiguousBytesP"
+- "s28CustomDebugStringConvertibleP"
+- "s17CustomReflectableP"
+- "s23CustomStringConvertibleP"
+- "6Antlr43DFAC"
+- !private "6Antlr413DFASerializerC"
+- "6Antlr48DFAStateC"
+- !private "10Foundation12DataProtocolP"
+- !private "6Antlr413DecisionStateC"
+- "Se"
+- "SD"
+- "SE"
+- "SQ"
+- !private "s5ErrorP"
+- !private "s25ExpressibleByArrayLiteralP"
+- "s30ExpressibleByDictionaryLiteralP"
+- !private "s23ExpressibleByNilLiteralP"
+- "SH"
+- !private "6Antlr418LexerDFASerializerC"
+- !private "SM"
+- !private "10Foundation19MutableDataProtocolP"
+- "6Antlr45MutexC"
+- !private "Sq"
+- !private "Sk"
+- !private "Sm"
+- "ST"
+- !private "6Antlr418StarLoopEntryStateC"
+- !private "6Antlr410VocabularyC"
+- !private "s14_ArrayProtocolP"
+- !private "s24_DestructorSafeContainerP"
+- !private "s19_HasContiguousBytesP"
+- "s35_HasCustomAnyHashableRepresentationP"
+- "s21_ObjectiveCBridgeableP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
+interface-hash: "56f932f7eabfacdbce7f8f6d39c60137"

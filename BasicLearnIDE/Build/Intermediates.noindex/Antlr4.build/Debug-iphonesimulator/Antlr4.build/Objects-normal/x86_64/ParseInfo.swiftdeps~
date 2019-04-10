@@ -1,0 +1,305 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "ParseInfo"
+provides-nominal:
+- "6Antlr49ParseInfoC"
+provides-member:
+- ["6Antlr49ParseInfoC", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "+="
+- !private "..<"
+- !private ">"
+- "Array"
+- "AssignmentPrecedence"
+- !private "DFA"
+- "DecisionInfo"
+- "Int"
+- "Int64"
+- "ParseInfo"
+- "ProfilingATNSimulator"
+depends-member:
+- !private ["6Antlr412ATNSimulatorC", "decisionToDFA"]
+- !private ["6Antlr412ATNSimulatorC", "getDecisionInfo"]
+- !private ["Sa", "append"]
+- !private ["Sa", "count"]
+- !private ["Sa", "init"]
+- !private ["Sa", "subscript"]
+- !private ["s10ArraySliceV", "LL_ATNTransitions"]
+- !private ["s10ArraySliceV", "LL_Fallback"]
+- !private ["s10ArraySliceV", "LL_TotalLook"]
+- !private ["s10ArraySliceV", "SLL_ATNTransitions"]
+- !private ["s10ArraySliceV", "SLL_TotalLook"]
+- !private ["s10ArraySliceV", "timeInPrediction"]
+- !private ["SK", "LL_ATNTransitions"]
+- !private ["SK", "LL_Fallback"]
+- !private ["SK", "LL_TotalLook"]
+- !private ["SK", "SLL_ATNTransitions"]
+- !private ["SK", "SLL_TotalLook"]
+- !private ["SK", "append"]
+- !private ["SK", "count"]
+- !private ["SK", "init"]
+- !private ["SK", "subscript"]
+- !private ["SK", "timeInPrediction"]
+- !private ["s7CVarArgP", "append"]
+- !private ["s7CVarArgP", "count"]
+- !private ["s7CVarArgP", "init"]
+- !private ["s7CVarArgP", "subscript"]
+- !private ["Sl", "LL_ATNTransitions"]
+- !private ["Sl", "LL_Fallback"]
+- !private ["Sl", "LL_TotalLook"]
+- !private ["Sl", "SLL_ATNTransitions"]
+- !private ["Sl", "SLL_TotalLook"]
+- !private ["Sl", "append"]
+- !private ["Sl", "count"]
+- !private ["Sl", "init"]
+- !private ["Sl", "subscript"]
+- !private ["Sl", "timeInPrediction"]
+- !private ["10Foundation15ContiguousBytesP", "LL_ATNTransitions"]
+- !private ["10Foundation15ContiguousBytesP", "LL_Fallback"]
+- !private ["10Foundation15ContiguousBytesP", "LL_TotalLook"]
+- !private ["10Foundation15ContiguousBytesP", "SLL_ATNTransitions"]
+- !private ["10Foundation15ContiguousBytesP", "SLL_TotalLook"]
+- !private ["10Foundation15ContiguousBytesP", "append"]
+- !private ["10Foundation15ContiguousBytesP", "count"]
+- !private ["10Foundation15ContiguousBytesP", "init"]
+- !private ["10Foundation15ContiguousBytesP", "subscript"]
+- !private ["10Foundation15ContiguousBytesP", "timeInPrediction"]
+- !private ["s28CustomDebugStringConvertibleP", "LL_ATNTransitions"]
+- !private ["s28CustomDebugStringConvertibleP", "LL_Fallback"]
+- !private ["s28CustomDebugStringConvertibleP", "LL_TotalLook"]
+- !private ["s28CustomDebugStringConvertibleP", "SLL_ATNTransitions"]
+- !private ["s28CustomDebugStringConvertibleP", "SLL_TotalLook"]
+- !private ["s28CustomDebugStringConvertibleP", "append"]
+- !private ["s28CustomDebugStringConvertibleP", "count"]
+- !private ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "subscript"]
+- !private ["s28CustomDebugStringConvertibleP", "timeInPrediction"]
+- !private ["s17CustomReflectableP", "LL_ATNTransitions"]
+- !private ["s17CustomReflectableP", "LL_Fallback"]
+- !private ["s17CustomReflectableP", "LL_TotalLook"]
+- !private ["s17CustomReflectableP", "SLL_ATNTransitions"]
+- !private ["s17CustomReflectableP", "SLL_TotalLook"]
+- !private ["s17CustomReflectableP", "append"]
+- !private ["s17CustomReflectableP", "count"]
+- !private ["s17CustomReflectableP", "init"]
+- !private ["s17CustomReflectableP", "subscript"]
+- !private ["s17CustomReflectableP", "timeInPrediction"]
+- !private ["s23CustomStringConvertibleP", "LL_ATNTransitions"]
+- !private ["s23CustomStringConvertibleP", "LL_Fallback"]
+- !private ["s23CustomStringConvertibleP", "LL_TotalLook"]
+- !private ["s23CustomStringConvertibleP", "SLL_ATNTransitions"]
+- !private ["s23CustomStringConvertibleP", "SLL_TotalLook"]
+- !private ["s23CustomStringConvertibleP", "append"]
+- !private ["s23CustomStringConvertibleP", "count"]
+- !private ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "states"]
+- !private ["s23CustomStringConvertibleP", "subscript"]
+- !private ["s23CustomStringConvertibleP", "timeInPrediction"]
+- !private ["6Antlr43DFAC", "states"]
+- !private ["6Antlr48DFAStateC", "deinit"]
+- !private ["10Foundation12DataProtocolP", "LL_ATNTransitions"]
+- !private ["10Foundation12DataProtocolP", "LL_Fallback"]
+- !private ["10Foundation12DataProtocolP", "LL_TotalLook"]
+- !private ["10Foundation12DataProtocolP", "SLL_ATNTransitions"]
+- !private ["10Foundation12DataProtocolP", "SLL_TotalLook"]
+- !private ["10Foundation12DataProtocolP", "append"]
+- !private ["10Foundation12DataProtocolP", "count"]
+- !private ["10Foundation12DataProtocolP", "init"]
+- !private ["10Foundation12DataProtocolP", "subscript"]
+- !private ["10Foundation12DataProtocolP", "timeInPrediction"]
+- !private ["6Antlr412DecisionInfoC", "LL_ATNTransitions"]
+- !private ["6Antlr412DecisionInfoC", "LL_Fallback"]
+- !private ["6Antlr412DecisionInfoC", "LL_TotalLook"]
+- !private ["6Antlr412DecisionInfoC", "SLL_ATNTransitions"]
+- !private ["6Antlr412DecisionInfoC", "SLL_TotalLook"]
+- !private ["6Antlr412DecisionInfoC", "timeInPrediction"]
+- !private ["Se", "append"]
+- !private ["Se", "count"]
+- !private ["Se", "init"]
+- !private ["Se", "subscript"]
+- !private ["SD", "count"]
+- !private ["SE", "append"]
+- !private ["SE", "count"]
+- !private ["SE", "init"]
+- !private ["SE", "subscript"]
+- !private ["SQ", "LL_ATNTransitions"]
+- !private ["SQ", "LL_Fallback"]
+- !private ["SQ", "LL_TotalLook"]
+- !private ["SQ", "SLL_ATNTransitions"]
+- !private ["SQ", "SLL_TotalLook"]
+- !private ["SQ", "append"]
+- !private ["SQ", "count"]
+- !private ["SQ", "init"]
+- !private ["SQ", "subscript"]
+- !private ["SQ", "timeInPrediction"]
+- !private ["s25ExpressibleByArrayLiteralP", "LL_ATNTransitions"]
+- !private ["s25ExpressibleByArrayLiteralP", "LL_Fallback"]
+- !private ["s25ExpressibleByArrayLiteralP", "LL_TotalLook"]
+- !private ["s25ExpressibleByArrayLiteralP", "SLL_ATNTransitions"]
+- !private ["s25ExpressibleByArrayLiteralP", "SLL_TotalLook"]
+- !private ["s25ExpressibleByArrayLiteralP", "append"]
+- !private ["s25ExpressibleByArrayLiteralP", "count"]
+- !private ["s25ExpressibleByArrayLiteralP", "init"]
+- !private ["s25ExpressibleByArrayLiteralP", "subscript"]
+- !private ["s25ExpressibleByArrayLiteralP", "timeInPrediction"]
+- !private ["s30ExpressibleByDictionaryLiteralP", "count"]
+- !private ["SH", "LL_ATNTransitions"]
+- !private ["SH", "LL_Fallback"]
+- !private ["SH", "LL_TotalLook"]
+- !private ["SH", "SLL_ATNTransitions"]
+- !private ["SH", "SLL_TotalLook"]
+- !private ["SH", "append"]
+- !private ["SH", "count"]
+- !private ["SH", "init"]
+- !private ["SH", "subscript"]
+- !private ["SH", "timeInPrediction"]
+- !private ["SM", "LL_ATNTransitions"]
+- !private ["SM", "LL_Fallback"]
+- !private ["SM", "LL_TotalLook"]
+- !private ["SM", "SLL_ATNTransitions"]
+- !private ["SM", "SLL_TotalLook"]
+- !private ["SM", "append"]
+- !private ["SM", "count"]
+- !private ["SM", "init"]
+- !private ["SM", "subscript"]
+- !private ["SM", "timeInPrediction"]
+- !private ["10Foundation19MutableDataProtocolP", "append"]
+- !private ["10Foundation19MutableDataProtocolP", "count"]
+- !private ["10Foundation19MutableDataProtocolP", "init"]
+- !private ["10Foundation19MutableDataProtocolP", "subscript"]
+- ["6Antlr49ParseInfoC", "Array"]
+- !private ["6Antlr49ParseInfoC", "DFA"]
+- ["6Antlr49ParseInfoC", "DecisionInfo"]
+- ["6Antlr49ParseInfoC", "Int"]
+- ["6Antlr49ParseInfoC", "Int64"]
+- ["6Antlr49ParseInfoC", "ProfilingATNSimulator"]
+- ["6Antlr49ParseInfoC", "atnSimulator"]
+- ["6Antlr49ParseInfoC", "getDFASize"]
+- ["6Antlr49ParseInfoC", "getDecisionInfo"]
+- ["6Antlr49ParseInfoC", "getLLDecisions"]
+- ["6Antlr49ParseInfoC", "getTotalATNLookaheadOps"]
+- ["6Antlr49ParseInfoC", "getTotalLLATNLookaheadOps"]
+- ["6Antlr49ParseInfoC", "getTotalLLLookaheadOps"]
+- ["6Antlr49ParseInfoC", "getTotalSLLATNLookaheadOps"]
+- ["6Antlr49ParseInfoC", "getTotalSLLLookaheadOps"]
+- ["6Antlr49ParseInfoC", "getTotalTimeInPrediction"]
+- ["6Antlr49ParseInfoC", "init"]
+- !private ["6Antlr418ParserATNSimulatorC", "decisionToDFA"]
+- !private ["6Antlr418ParserATNSimulatorC", "getDecisionInfo"]
+- !private ["6Antlr421ProfilingATNSimulatorC", "decisionToDFA"]
+- !private ["6Antlr421ProfilingATNSimulatorC", "getDecisionInfo"]
+- !private ["Sk", "LL_ATNTransitions"]
+- !private ["Sk", "LL_Fallback"]
+- !private ["Sk", "LL_TotalLook"]
+- !private ["Sk", "SLL_ATNTransitions"]
+- !private ["Sk", "SLL_TotalLook"]
+- !private ["Sk", "append"]
+- !private ["Sk", "count"]
+- !private ["Sk", "init"]
+- !private ["Sk", "subscript"]
+- !private ["Sk", "timeInPrediction"]
+- !private ["Sm", "LL_ATNTransitions"]
+- !private ["Sm", "LL_Fallback"]
+- !private ["Sm", "LL_TotalLook"]
+- !private ["Sm", "SLL_ATNTransitions"]
+- !private ["Sm", "SLL_TotalLook"]
+- !private ["Sm", "append"]
+- !private ["Sm", "count"]
+- !private ["Sm", "init"]
+- !private ["Sm", "subscript"]
+- !private ["Sm", "timeInPrediction"]
+- !private ["ST", "LL_ATNTransitions"]
+- !private ["ST", "LL_Fallback"]
+- !private ["ST", "LL_TotalLook"]
+- !private ["ST", "SLL_ATNTransitions"]
+- !private ["ST", "SLL_TotalLook"]
+- !private ["ST", "append"]
+- !private ["ST", "count"]
+- !private ["ST", "init"]
+- !private ["ST", "subscript"]
+- !private ["ST", "timeInPrediction"]
+- !private ["s14_ArrayProtocolP", "LL_ATNTransitions"]
+- !private ["s14_ArrayProtocolP", "LL_Fallback"]
+- !private ["s14_ArrayProtocolP", "LL_TotalLook"]
+- !private ["s14_ArrayProtocolP", "SLL_ATNTransitions"]
+- !private ["s14_ArrayProtocolP", "SLL_TotalLook"]
+- !private ["s14_ArrayProtocolP", "append"]
+- !private ["s14_ArrayProtocolP", "count"]
+- !private ["s14_ArrayProtocolP", "init"]
+- !private ["s14_ArrayProtocolP", "subscript"]
+- !private ["s14_ArrayProtocolP", "timeInPrediction"]
+- !private ["s24_DestructorSafeContainerP", "LL_ATNTransitions"]
+- !private ["s24_DestructorSafeContainerP", "LL_Fallback"]
+- !private ["s24_DestructorSafeContainerP", "LL_TotalLook"]
+- !private ["s24_DestructorSafeContainerP", "SLL_ATNTransitions"]
+- !private ["s24_DestructorSafeContainerP", "SLL_TotalLook"]
+- !private ["s24_DestructorSafeContainerP", "append"]
+- !private ["s24_DestructorSafeContainerP", "count"]
+- !private ["s24_DestructorSafeContainerP", "init"]
+- !private ["s24_DestructorSafeContainerP", "subscript"]
+- !private ["s24_DestructorSafeContainerP", "timeInPrediction"]
+- !private ["s19_HasContiguousBytesP", "append"]
+- !private ["s19_HasContiguousBytesP", "count"]
+- !private ["s19_HasContiguousBytesP", "init"]
+- !private ["s19_HasContiguousBytesP", "subscript"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "append"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "count"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "init"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "subscript"]
+- !private ["s21_ObjectiveCBridgeableP", "append"]
+- !private ["s21_ObjectiveCBridgeableP", "count"]
+- !private ["s21_ObjectiveCBridgeableP", "init"]
+- !private ["s21_ObjectiveCBridgeableP", "subscript"]
+depends-nominal:
+- !private "6Antlr412ATNSimulatorC"
+- !private "Sa"
+- !private "s10ArraySliceV"
+- !private "SK"
+- !private "s7CVarArgP"
+- !private "Sl"
+- !private "10Foundation15ContiguousBytesP"
+- !private "s28CustomDebugStringConvertibleP"
+- !private "s17CustomReflectableP"
+- !private "s23CustomStringConvertibleP"
+- !private "6Antlr43DFAC"
+- !private "6Antlr48DFAStateC"
+- !private "10Foundation12DataProtocolP"
+- !private "6Antlr412DecisionInfoC"
+- !private "Se"
+- !private "SD"
+- !private "SE"
+- !private "SQ"
+- !private "s25ExpressibleByArrayLiteralP"
+- !private "s30ExpressibleByDictionaryLiteralP"
+- !private "SH"
+- !private "SM"
+- !private "10Foundation19MutableDataProtocolP"
+- "6Antlr49ParseInfoC"
+- !private "6Antlr418ParserATNSimulatorC"
+- !private "6Antlr421ProfilingATNSimulatorC"
+- !private "Sk"
+- !private "Sm"
+- !private "ST"
+- !private "s14_ArrayProtocolP"
+- !private "s24_DestructorSafeContainerP"
+- !private "s19_HasContiguousBytesP"
+- !private "s35_HasCustomAnyHashableRepresentationP"
+- !private "s21_ObjectiveCBridgeableP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
+interface-hash: "b6c7d9e13e7e627a7a90a1c779161ba0"

@@ -1,0 +1,292 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "ANTLRInputStream"
+provides-nominal:
+- "6Antlr416ANTLRInputStreamC"
+provides-member:
+- ["6Antlr416ANTLRInputStreamC", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "+"
+- !private "+="
+- !private "-"
+- !private "..<"
+- !private "<"
+- !private "<="
+- !private "=="
+- !private ">="
+- !private "??"
+- !private "ANTLRError"
+- "ANTLRInputStream"
+- !private "Array"
+- "AssignmentPrecedence"
+- "CharStream"
+- "Character"
+- "Int"
+- "Interval"
+- "String"
+- !private "assert"
+- !private "min"
+depends-member:
+- !private ["6Antlr410ANTLRErrorO", "deinit"]
+- !private ["6Antlr410ANTLRErrorO", "illegalState"]
+- !private ["6Antlr416ANTLRInputStreamC", "ANTLRError"]
+- !private ["6Antlr416ANTLRInputStreamC", "ANTLRInputStream"]
+- !private ["6Antlr416ANTLRInputStreamC", "Array"]
+- ["6Antlr416ANTLRInputStreamC", "Character"]
+- !private ["6Antlr416ANTLRInputStreamC", "EOF"]
+- ["6Antlr416ANTLRInputStreamC", "Int"]
+- ["6Antlr416ANTLRInputStreamC", "Interval"]
+- ["6Antlr416ANTLRInputStreamC", "LA"]
+- ["6Antlr416ANTLRInputStreamC", "LT"]
+- ["6Antlr416ANTLRInputStreamC", "String"]
+- !private ["6Antlr416ANTLRInputStreamC", "UNKNOWN_SOURCE_NAME"]
+- !private ["6Antlr416ANTLRInputStreamC", "assert"]
+- ["6Antlr416ANTLRInputStreamC", "consume"]
+- ["6Antlr416ANTLRInputStreamC", "data"]
+- ["6Antlr416ANTLRInputStreamC", "deinit"]
+- ["6Antlr416ANTLRInputStreamC", "getSourceName"]
+- ["6Antlr416ANTLRInputStreamC", "getText"]
+- ["6Antlr416ANTLRInputStreamC", "index"]
+- ["6Antlr416ANTLRInputStreamC", "init"]
+- ["6Antlr416ANTLRInputStreamC", "mark"]
+- !private ["6Antlr416ANTLRInputStreamC", "min"]
+- ["6Antlr416ANTLRInputStreamC", "n"]
+- ["6Antlr416ANTLRInputStreamC", "name"]
+- ["6Antlr416ANTLRInputStreamC", "p"]
+- ["6Antlr416ANTLRInputStreamC", "release"]
+- ["6Antlr416ANTLRInputStreamC", "reset"]
+- ["6Antlr416ANTLRInputStreamC", "seek"]
+- ["6Antlr416ANTLRInputStreamC", "size"]
+- ["6Antlr416ANTLRInputStreamC", "toString"]
+- !private ["Sa", "count"]
+- !private ["Sa", "init"]
+- !private ["Sa", "subscript"]
+- !private ["s10ArraySliceV", "unicodeValue"]
+- !private ["SK", "count"]
+- !private ["SK", "init"]
+- !private ["SK", "subscript"]
+- !private ["SK", "unicodeValue"]
+- !private ["s7CVarArgP", "count"]
+- !private ["s7CVarArgP", "init"]
+- !private ["s7CVarArgP", "subscript"]
+- !private ["6Antlr410CharStreamP", "ANTLRError"]
+- !private ["6Antlr410CharStreamP", "ANTLRInputStream"]
+- !private ["6Antlr410CharStreamP", "Array"]
+- !private ["6Antlr410CharStreamP", "Character"]
+- !private ["6Antlr410CharStreamP", "EOF"]
+- ["6Antlr410CharStreamP", "LA"]
+- !private ["6Antlr410CharStreamP", "String"]
+- !private ["6Antlr410CharStreamP", "UNKNOWN_SOURCE_NAME"]
+- ["6Antlr410CharStreamP", ""]
+- !private ["6Antlr410CharStreamP", "assert"]
+- ["6Antlr410CharStreamP", "consume"]
+- !private ["6Antlr410CharStreamP", "data"]
+- ["6Antlr410CharStreamP", "getSourceName"]
+- ["6Antlr410CharStreamP", "getText"]
+- ["6Antlr410CharStreamP", "index"]
+- ["6Antlr410CharStreamP", "mark"]
+- !private ["6Antlr410CharStreamP", "min"]
+- !private ["6Antlr410CharStreamP", "n"]
+- !private ["6Antlr410CharStreamP", "name"]
+- !private ["6Antlr410CharStreamP", "p"]
+- ["6Antlr410CharStreamP", "release"]
+- ["6Antlr410CharStreamP", "seek"]
+- ["6Antlr410CharStreamP", "size"]
+- !private ["SJ", "unicodeValue"]
+- !private ["Sl", "count"]
+- !private ["Sl", "init"]
+- !private ["Sl", "subscript"]
+- !private ["Sl", "unicodeValue"]
+- !private ["SL", "init"]
+- !private ["SL", "unicodeValue"]
+- !private ["10Foundation15ContiguousBytesP", "count"]
+- !private ["10Foundation15ContiguousBytesP", "init"]
+- !private ["10Foundation15ContiguousBytesP", "subscript"]
+- !private ["10Foundation15ContiguousBytesP", "unicodeValue"]
+- !private ["s28CustomDebugStringConvertibleP", "count"]
+- !private ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "subscript"]
+- !private ["s28CustomDebugStringConvertibleP", "unicodeValue"]
+- !private ["s17CustomReflectableP", "count"]
+- !private ["s17CustomReflectableP", "init"]
+- !private ["s17CustomReflectableP", "subscript"]
+- !private ["s17CustomReflectableP", "unicodeValue"]
+- !private ["s23CustomStringConvertibleP", "count"]
+- !private ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "subscript"]
+- !private ["s23CustomStringConvertibleP", "unicodeValue"]
+- !private ["10Foundation12DataProtocolP", "count"]
+- !private ["10Foundation12DataProtocolP", "init"]
+- !private ["10Foundation12DataProtocolP", "subscript"]
+- !private ["10Foundation12DataProtocolP", "unicodeValue"]
+- !private ["Se", "count"]
+- !private ["Se", "init"]
+- !private ["Se", "subscript"]
+- !private ["SE", "count"]
+- !private ["SE", "init"]
+- !private ["SE", "subscript"]
+- !private ["SQ", "a"]
+- !private ["SQ", "b"]
+- !private ["SQ", "count"]
+- !private ["SQ", "init"]
+- !private ["SQ", "subscript"]
+- !private ["SQ", "unicodeValue"]
+- !private ["s5ErrorP", "illegalState"]
+- !private ["s25ExpressibleByArrayLiteralP", "count"]
+- !private ["s25ExpressibleByArrayLiteralP", "init"]
+- !private ["s25ExpressibleByArrayLiteralP", "subscript"]
+- !private ["s25ExpressibleByArrayLiteralP", "unicodeValue"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "unicodeValue"]
+- !private ["s32ExpressibleByStringInterpolationP", "init"]
+- !private ["s26ExpressibleByStringLiteralP", "init"]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", "init"]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", "unicodeValue"]
+- !private ["SH", "a"]
+- !private ["SH", "b"]
+- !private ["SH", "count"]
+- !private ["SH", "init"]
+- !private ["SH", "subscript"]
+- !private ["SH", "unicodeValue"]
+- !private ["6Antlr49IntStreamP", "ANTLRError"]
+- !private ["6Antlr49IntStreamP", "ANTLRInputStream"]
+- !private ["6Antlr49IntStreamP", "Array"]
+- !private ["6Antlr49IntStreamP", "Character"]
+- !private ["6Antlr49IntStreamP", "EOF"]
+- ["6Antlr49IntStreamP", "LA"]
+- !private ["6Antlr49IntStreamP", "String"]
+- !private ["6Antlr49IntStreamP", "UNKNOWN_SOURCE_NAME"]
+- ["6Antlr49IntStreamP", ""]
+- !private ["6Antlr49IntStreamP", "assert"]
+- ["6Antlr49IntStreamP", "consume"]
+- !private ["6Antlr49IntStreamP", "data"]
+- ["6Antlr49IntStreamP", "getSourceName"]
+- ["6Antlr49IntStreamP", "getText"]
+- ["6Antlr49IntStreamP", "index"]
+- ["6Antlr49IntStreamP", "mark"]
+- !private ["6Antlr49IntStreamP", "min"]
+- !private ["6Antlr49IntStreamP", "n"]
+- !private ["6Antlr49IntStreamP", "name"]
+- !private ["6Antlr49IntStreamP", "p"]
+- ["6Antlr49IntStreamP", "release"]
+- ["6Antlr49IntStreamP", "seek"]
+- ["6Antlr49IntStreamP", "size"]
+- !private ["6Antlr48IntervalC", "a"]
+- !private ["6Antlr48IntervalC", "b"]
+- !private ["s25LosslessStringConvertibleP", "init"]
+- !private ["s25LosslessStringConvertibleP", "unicodeValue"]
+- !private ["s10MirrorPathP", "init"]
+- !private ["SM", "count"]
+- !private ["SM", "init"]
+- !private ["SM", "subscript"]
+- !private ["SM", "unicodeValue"]
+- !private ["10Foundation19MutableDataProtocolP", "count"]
+- !private ["10Foundation19MutableDataProtocolP", "init"]
+- !private ["10Foundation19MutableDataProtocolP", "subscript"]
+- !private ["Sk", "count"]
+- !private ["Sk", "init"]
+- !private ["Sk", "subscript"]
+- !private ["Sk", "unicodeValue"]
+- !private ["Sm", "count"]
+- !private ["Sm", "init"]
+- !private ["Sm", "subscript"]
+- !private ["Sm", "unicodeValue"]
+- !private ["ST", "count"]
+- !private ["ST", "init"]
+- !private ["ST", "subscript"]
+- !private ["ST", "unicodeValue"]
+- !private ["SS", "init"]
+- !private ["Sy", "init"]
+- !private ["s16TextOutputStreamP", "init"]
+- !private ["s20TextOutputStreamableP", "init"]
+- !private ["s20TextOutputStreamableP", "unicodeValue"]
+- !private ["s14_ArrayProtocolP", "count"]
+- !private ["s14_ArrayProtocolP", "init"]
+- !private ["s14_ArrayProtocolP", "subscript"]
+- !private ["s14_ArrayProtocolP", "unicodeValue"]
+- !private ["s30_CustomPlaygroundQuickLookableP", "init"]
+- !private ["s30_CustomPlaygroundQuickLookableP", "unicodeValue"]
+- !private ["s24_DestructorSafeContainerP", "count"]
+- !private ["s24_DestructorSafeContainerP", "init"]
+- !private ["s24_DestructorSafeContainerP", "subscript"]
+- !private ["s24_DestructorSafeContainerP", "unicodeValue"]
+- !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "unicodeValue"]
+- !private ["s34_ExpressibleByBuiltinStringLiteralP", "init"]
+- !private ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "init"]
+- !private ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "unicodeValue"]
+- !private ["s19_HasContiguousBytesP", "count"]
+- !private ["s19_HasContiguousBytesP", "init"]
+- !private ["s19_HasContiguousBytesP", "subscript"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "count"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "init"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "subscript"]
+- !private ["s21_ObjectiveCBridgeableP", "count"]
+- !private ["s21_ObjectiveCBridgeableP", "init"]
+- !private ["s21_ObjectiveCBridgeableP", "subscript"]
+depends-nominal:
+- !private "6Antlr410ANTLRErrorO"
+- "6Antlr416ANTLRInputStreamC"
+- !private "Sa"
+- !private "s10ArraySliceV"
+- !private "SK"
+- !private "s7CVarArgP"
+- "6Antlr410CharStreamP"
+- !private "SJ"
+- !private "Sl"
+- !private "SL"
+- !private "10Foundation15ContiguousBytesP"
+- !private "s28CustomDebugStringConvertibleP"
+- !private "s17CustomReflectableP"
+- !private "s23CustomStringConvertibleP"
+- !private "10Foundation12DataProtocolP"
+- !private "Se"
+- !private "SE"
+- !private "SQ"
+- !private "s5ErrorP"
+- !private "s25ExpressibleByArrayLiteralP"
+- !private "s43ExpressibleByExtendedGraphemeClusterLiteralP"
+- !private "s32ExpressibleByStringInterpolationP"
+- !private "s26ExpressibleByStringLiteralP"
+- !private "s33ExpressibleByUnicodeScalarLiteralP"
+- !private "SH"
+- "6Antlr49IntStreamP"
+- !private "6Antlr48IntervalC"
+- !private "s25LosslessStringConvertibleP"
+- !private "s10MirrorPathP"
+- !private "SM"
+- !private "10Foundation19MutableDataProtocolP"
+- !private "Sk"
+- !private "Sm"
+- !private "ST"
+- !private "SS"
+- !private "Sy"
+- !private "s16TextOutputStreamP"
+- !private "s20TextOutputStreamableP"
+- !private "s14_ArrayProtocolP"
+- !private "s30_CustomPlaygroundQuickLookableP"
+- !private "s24_DestructorSafeContainerP"
+- !private "s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP"
+- !private "s34_ExpressibleByBuiltinStringLiteralP"
+- !private "s41_ExpressibleByBuiltinUnicodeScalarLiteralP"
+- !private "s19_HasContiguousBytesP"
+- !private "s35_HasCustomAnyHashableRepresentationP"
+- !private "s21_ObjectiveCBridgeableP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
+interface-hash: "6382da926cdf1ecee3b27dbf4b72b75f"

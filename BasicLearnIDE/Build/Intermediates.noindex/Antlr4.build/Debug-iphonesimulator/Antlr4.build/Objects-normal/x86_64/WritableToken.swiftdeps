@@ -1,0 +1,60 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "WritableToken"
+provides-nominal:
+- "6Antlr413WritableTokenP"
+provides-member:
+- ["6Antlr413WritableTokenP", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- "Int"
+- "String"
+- "Token"
+- "WritableToken"
+depends-member:
+- ["s23CustomStringConvertibleP", "Int"]
+- ["s23CustomStringConvertibleP", "String"]
+- ["s23CustomStringConvertibleP", "setChannel"]
+- ["s23CustomStringConvertibleP", "setCharPositionInLine"]
+- ["s23CustomStringConvertibleP", "setLine"]
+- ["s23CustomStringConvertibleP", "setText"]
+- ["s23CustomStringConvertibleP", "setTokenIndex"]
+- ["s23CustomStringConvertibleP", "setType"]
+- ["6Antlr45TokenP", "Int"]
+- ["6Antlr45TokenP", "String"]
+- ["6Antlr45TokenP", ""]
+- ["6Antlr45TokenP", "setChannel"]
+- ["6Antlr45TokenP", "setCharPositionInLine"]
+- ["6Antlr45TokenP", "setLine"]
+- ["6Antlr45TokenP", "setText"]
+- ["6Antlr45TokenP", "setTokenIndex"]
+- ["6Antlr45TokenP", "setType"]
+- ["6Antlr413WritableTokenP", "Int"]
+- ["6Antlr413WritableTokenP", "String"]
+- ["6Antlr413WritableTokenP", "setChannel"]
+- ["6Antlr413WritableTokenP", "setCharPositionInLine"]
+- ["6Antlr413WritableTokenP", "setLine"]
+- ["6Antlr413WritableTokenP", "setText"]
+- ["6Antlr413WritableTokenP", "setTokenIndex"]
+- ["6Antlr413WritableTokenP", "setType"]
+depends-nominal:
+- "s23CustomStringConvertibleP"
+- "6Antlr45TokenP"
+- "6Antlr413WritableTokenP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
+interface-hash: "d7514da835b0924fd4fcbfa46be013fb"

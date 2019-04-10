@@ -1,0 +1,12 @@
+version: "Apple Swift version 5.0 (swiftlang-1001.0.69.5 clang-1001.0.46.3)"
+options: "fc02a0f69eaa2b082c8a26aa6a818156"
+build_time: [1554932020, 245891000]
+inputs:
+  "/Users/mauriciogarza/Desktop/BasicLearnIDE/BasicLearnIDE/BasicLearnIDE/Compiler/BasicLearnParserATN.swift": [1554930656, 918197025]
+  "/Users/mauriciogarza/Desktop/BasicLearnIDE/BasicLearnIDE/BasicLearnIDE/ViewController.swift": [1554931024, 482161247]
+  "/Users/mauriciogarza/Desktop/BasicLearnIDE/BasicLearnIDE/BasicLearnIDE/Compiler/BasicLearnLexerATN.swift": [1554930656, 916288500]
+  "/Users/mauriciogarza/Desktop/BasicLearnIDE/BasicLearnIDE/BasicLearnIDE/Compiler/BasicLearnLexer.swift": [1554930656, 915112972]
+  "/Users/mauriciogarza/Desktop/BasicLearnIDE/BasicLearnIDE/BasicLearnIDE/Compiler/BasicLearnParser.swift": [1554930656, 917568232]
+  "/Users/mauriciogarza/Desktop/BasicLearnIDE/BasicLearnIDE/BasicLearnIDE/AppDelegate.swift": [1554927716, 76084088]
+  "/Users/mauriciogarza/Desktop/BasicLearnIDE/BasicLearnIDE/BasicLearnIDE/Compiler/BasicLearnBaseListener.swift": [1554930656, 912658403]
+  "/Users/mauriciogarza/Desktop/BasicLearnIDE/BasicLearnIDE/BasicLearnIDE/Compiler/BasicLearnListener.swift": [1554930656, 916774320]

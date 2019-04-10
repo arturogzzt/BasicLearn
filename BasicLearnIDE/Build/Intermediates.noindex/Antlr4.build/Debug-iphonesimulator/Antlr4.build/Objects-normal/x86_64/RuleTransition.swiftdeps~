@@ -1,0 +1,64 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "RuleTransition"
+provides-nominal:
+- "6Antlr414RuleTransitionC"
+provides-member:
+- ["6Antlr414RuleTransitionC", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- "ATNState"
+- "AssignmentPrecedence"
+- "Bool"
+- "Int"
+- "RuleStartState"
+- "RuleTransition"
+- "Transition"
+depends-member:
+- ["6Antlr414RuleTransitionC", "ATNState"]
+- ["6Antlr414RuleTransitionC", "Bool"]
+- ["6Antlr414RuleTransitionC", "Int"]
+- ["6Antlr414RuleTransitionC", "RuleStartState"]
+- !private ["6Antlr414RuleTransitionC", "Transition"]
+- ["6Antlr414RuleTransitionC", "deinit"]
+- ["6Antlr414RuleTransitionC", "followState"]
+- ["6Antlr414RuleTransitionC", "getSerializationType"]
+- ["6Antlr414RuleTransitionC", "init"]
+- ["6Antlr414RuleTransitionC", "isEpsilon"]
+- ["6Antlr414RuleTransitionC", "matches"]
+- ["6Antlr414RuleTransitionC", "precedence"]
+- ["6Antlr414RuleTransitionC", "ruleIndex"]
+- ["6Antlr410TransitionC", "ATNState"]
+- ["6Antlr410TransitionC", "Bool"]
+- ["6Antlr410TransitionC", "Int"]
+- !private ["6Antlr410TransitionC", "RULE"]
+- ["6Antlr410TransitionC", "RuleStartState"]
+- !private ["6Antlr410TransitionC", "Transition"]
+- ["6Antlr410TransitionC", ""]
+- ["6Antlr410TransitionC", "followState"]
+- ["6Antlr410TransitionC", "getSerializationType"]
+- ["6Antlr410TransitionC", "init"]
+- ["6Antlr410TransitionC", "isEpsilon"]
+- ["6Antlr410TransitionC", "matches"]
+- ["6Antlr410TransitionC", "precedence"]
+- ["6Antlr410TransitionC", "ruleIndex"]
+depends-nominal:
+- "6Antlr414RuleTransitionC"
+- "6Antlr410TransitionC"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
+interface-hash: "239efbeba8df2c1aaf50fdb51dffc275"

@@ -1,0 +1,126 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "InterpreterRuleContext"
+provides-nominal:
+- "6Antlr422InterpreterRuleContextC"
+provides-member:
+- ["6Antlr422InterpreterRuleContextC", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- "AssignmentPrecedence"
+- "CastingPrecedence"
+- "Int"
+- "InterpreterRuleContext"
+- "ParserRuleContext"
+depends-member:
+- !private ["s28CustomDebugStringConvertibleP", "InterpreterRuleContext"]
+- ["s28CustomDebugStringConvertibleP", ""]
+- !private ["s28CustomDebugStringConvertibleP", "copyFrom"]
+- !private ["s28CustomDebugStringConvertibleP", "fromParserRuleContext"]
+- !private ["s28CustomDebugStringConvertibleP", "getParent"]
+- !private ["s28CustomDebugStringConvertibleP", "getRuleIndex"]
+- !private ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "parent"]
+- !private ["s28CustomDebugStringConvertibleP", "ruleIndex"]
+- !private ["s23CustomStringConvertibleP", "InterpreterRuleContext"]
+- ["s23CustomStringConvertibleP", ""]
+- !private ["s23CustomStringConvertibleP", "copyFrom"]
+- !private ["s23CustomStringConvertibleP", "fromParserRuleContext"]
+- !private ["s23CustomStringConvertibleP", "getParent"]
+- !private ["s23CustomStringConvertibleP", "getRuleIndex"]
+- !private ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "parent"]
+- !private ["s23CustomStringConvertibleP", "ruleIndex"]
+- ["6Antlr422InterpreterRuleContextC", "Int"]
+- ["6Antlr422InterpreterRuleContextC", "InterpreterRuleContext"]
+- ["6Antlr422InterpreterRuleContextC", "ParserRuleContext"]
+- !private ["6Antlr422InterpreterRuleContextC", "copyFrom"]
+- ["6Antlr422InterpreterRuleContextC", "fromParserRuleContext"]
+- ["6Antlr422InterpreterRuleContextC", "getRuleIndex"]
+- ["6Antlr422InterpreterRuleContextC", "init"]
+- !private ["6Antlr422InterpreterRuleContextC", "parent"]
+- !private ["6Antlr422InterpreterRuleContextC", "ruleIndex"]
+- !private ["6Antlr49ParseTreeP", "InterpreterRuleContext"]
+- ["6Antlr49ParseTreeP", ""]
+- !private ["6Antlr49ParseTreeP", "copyFrom"]
+- !private ["6Antlr49ParseTreeP", "fromParserRuleContext"]
+- !private ["6Antlr49ParseTreeP", "getParent"]
+- !private ["6Antlr49ParseTreeP", "getRuleIndex"]
+- !private ["6Antlr49ParseTreeP", "init"]
+- !private ["6Antlr49ParseTreeP", "parent"]
+- !private ["6Antlr49ParseTreeP", "ruleIndex"]
+- ["6Antlr417ParserRuleContextC", "Int"]
+- ["6Antlr417ParserRuleContextC", "InterpreterRuleContext"]
+- ["6Antlr417ParserRuleContextC", "ParserRuleContext"]
+- ["6Antlr417ParserRuleContextC", ""]
+- !private ["6Antlr417ParserRuleContextC", "copyFrom"]
+- !private ["6Antlr417ParserRuleContextC", "deinit"]
+- ["6Antlr417ParserRuleContextC", "fromParserRuleContext"]
+- !private ["6Antlr417ParserRuleContextC", "getParent"]
+- ["6Antlr417ParserRuleContextC", "getRuleIndex"]
+- ["6Antlr417ParserRuleContextC", "init"]
+- !private ["6Antlr417ParserRuleContextC", "parent"]
+- ["6Antlr417ParserRuleContextC", "ruleIndex"]
+- ["6Antlr411RuleContextC", "Int"]
+- ["6Antlr411RuleContextC", "InterpreterRuleContext"]
+- ["6Antlr411RuleContextC", "ParserRuleContext"]
+- !private ["6Antlr411RuleContextC", "copyFrom"]
+- ["6Antlr411RuleContextC", "fromParserRuleContext"]
+- !private ["6Antlr411RuleContextC", "getParent"]
+- ["6Antlr411RuleContextC", "getRuleIndex"]
+- !private ["6Antlr411RuleContextC", "parent"]
+- ["6Antlr411RuleContextC", "ruleIndex"]
+- !private ["6Antlr48RuleNodeP", "InterpreterRuleContext"]
+- ["6Antlr48RuleNodeP", ""]
+- !private ["6Antlr48RuleNodeP", "copyFrom"]
+- !private ["6Antlr48RuleNodeP", "fromParserRuleContext"]
+- !private ["6Antlr48RuleNodeP", "getParent"]
+- !private ["6Antlr48RuleNodeP", "getRuleIndex"]
+- !private ["6Antlr48RuleNodeP", "init"]
+- !private ["6Antlr48RuleNodeP", "parent"]
+- !private ["6Antlr48RuleNodeP", "ruleIndex"]
+- !private ["6Antlr410SyntaxTreeP", "InterpreterRuleContext"]
+- ["6Antlr410SyntaxTreeP", ""]
+- !private ["6Antlr410SyntaxTreeP", "copyFrom"]
+- !private ["6Antlr410SyntaxTreeP", "fromParserRuleContext"]
+- !private ["6Antlr410SyntaxTreeP", "getParent"]
+- !private ["6Antlr410SyntaxTreeP", "getRuleIndex"]
+- !private ["6Antlr410SyntaxTreeP", "init"]
+- !private ["6Antlr410SyntaxTreeP", "parent"]
+- !private ["6Antlr410SyntaxTreeP", "ruleIndex"]
+- !private ["6Antlr44TreeP", "InterpreterRuleContext"]
+- ["6Antlr44TreeP", ""]
+- !private ["6Antlr44TreeP", "copyFrom"]
+- !private ["6Antlr44TreeP", "fromParserRuleContext"]
+- !private ["6Antlr44TreeP", "getParent"]
+- !private ["6Antlr44TreeP", "getRuleIndex"]
+- !private ["6Antlr44TreeP", "init"]
+- !private ["6Antlr44TreeP", "parent"]
+- !private ["6Antlr44TreeP", "ruleIndex"]
+depends-nominal:
+- "s28CustomDebugStringConvertibleP"
+- "s23CustomStringConvertibleP"
+- "6Antlr422InterpreterRuleContextC"
+- "6Antlr49ParseTreeP"
+- "6Antlr417ParserRuleContextC"
+- "6Antlr411RuleContextC"
+- "6Antlr48RuleNodeP"
+- "6Antlr410SyntaxTreeP"
+- "6Antlr44TreeP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
+interface-hash: "7a09bcc398f1356f2aa1e6e7aaa017e4"

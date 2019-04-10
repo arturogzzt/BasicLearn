@@ -1,0 +1,180 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "RuleTagToken"
+provides-nominal:
+- "6Antlr412RuleTagTokenC"
+provides-member:
+- ["6Antlr412RuleTagTokenC", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "+"
+- "AssignmentPrecedence"
+- "CharStream"
+- "CustomStringConvertible"
+- "Int"
+- "RuleTagToken"
+- "String"
+- "Token"
+- "TokenSource"
+- "TokenSourceAndStream"
+depends-member:
+- !private ["SK", "init"]
+- !private ["s7CVarArgP", "init"]
+- !private ["Sl", "init"]
+- !private ["SL", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s17CustomReflectableP", "init"]
+- !private ["s23CustomStringConvertibleP", "DEFAULT_CHANNEL"]
+- !private ["s23CustomStringConvertibleP", "RuleTagToken"]
+- !private ["s23CustomStringConvertibleP", "String"]
+- !private ["s23CustomStringConvertibleP", "TokenSourceAndStream"]
+- ["s23CustomStringConvertibleP", ""]
+- !private ["s23CustomStringConvertibleP", "appendInterpolation"]
+- !private ["s23CustomStringConvertibleP", "appendLiteral"]
+- !private ["s23CustomStringConvertibleP", "bypassTokenType"]
+- ["s23CustomStringConvertibleP", "description"]
+- ["s23CustomStringConvertibleP", "getChannel"]
+- ["s23CustomStringConvertibleP", "getCharPositionInLine"]
+- ["s23CustomStringConvertibleP", "getInputStream"]
+- ["s23CustomStringConvertibleP", "getLine"]
+- ["s23CustomStringConvertibleP", "getStartIndex"]
+- ["s23CustomStringConvertibleP", "getStopIndex"]
+- ["s23CustomStringConvertibleP", "getText"]
+- ["s23CustomStringConvertibleP", "getTokenIndex"]
+- ["s23CustomStringConvertibleP", "getTokenSource"]
+- ["s23CustomStringConvertibleP", "getTokenSourceAndStream"]
+- ["s23CustomStringConvertibleP", "getType"]
+- !private ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "label"]
+- !private ["s23CustomStringConvertibleP", "ruleName"]
+- ["s23CustomStringConvertibleP", "visited"]
+- !private ["Se", "init"]
+- !private ["s26DefaultStringInterpolationV", "appendInterpolation"]
+- !private ["s26DefaultStringInterpolationV", "appendLiteral"]
+- !private ["SE", "init"]
+- !private ["SQ", "init"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s32ExpressibleByStringInterpolationP", "init"]
+- !private ["s26ExpressibleByStringLiteralP", "init"]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", "init"]
+- !private ["SH", "init"]
+- !private ["s25LosslessStringConvertibleP", "init"]
+- !private ["s10MirrorPathP", "init"]
+- !private ["Sm", "init"]
+- ["6Antlr412RuleTagTokenC", "CharStream"]
+- !private ["6Antlr412RuleTagTokenC", "DEFAULT_CHANNEL"]
+- ["6Antlr412RuleTagTokenC", "Int"]
+- !private ["6Antlr412RuleTagTokenC", "RuleTagToken"]
+- ["6Antlr412RuleTagTokenC", "String"]
+- ["6Antlr412RuleTagTokenC", "TokenSource"]
+- ["6Antlr412RuleTagTokenC", "TokenSourceAndStream"]
+- !private ["6Antlr412RuleTagTokenC", "bypassTokenType"]
+- ["6Antlr412RuleTagTokenC", "deinit"]
+- ["6Antlr412RuleTagTokenC", "description"]
+- ["6Antlr412RuleTagTokenC", "getChannel"]
+- ["6Antlr412RuleTagTokenC", "getCharPositionInLine"]
+- ["6Antlr412RuleTagTokenC", "getInputStream"]
+- ["6Antlr412RuleTagTokenC", "getLabel"]
+- ["6Antlr412RuleTagTokenC", "getLine"]
+- ["6Antlr412RuleTagTokenC", "getRuleName"]
+- ["6Antlr412RuleTagTokenC", "getStartIndex"]
+- ["6Antlr412RuleTagTokenC", "getStopIndex"]
+- ["6Antlr412RuleTagTokenC", "getText"]
+- ["6Antlr412RuleTagTokenC", "getTokenIndex"]
+- ["6Antlr412RuleTagTokenC", "getTokenSource"]
+- ["6Antlr412RuleTagTokenC", "getTokenSourceAndStream"]
+- ["6Antlr412RuleTagTokenC", "getType"]
+- ["6Antlr412RuleTagTokenC", "init"]
+- !private ["6Antlr412RuleTagTokenC", "label"]
+- !private ["6Antlr412RuleTagTokenC", "ruleName"]
+- ["6Antlr412RuleTagTokenC", "visited"]
+- !private ["ST", "init"]
+- !private ["SS", "init"]
+- !private ["s27StringInterpolationProtocolP", "appendInterpolation"]
+- !private ["s27StringInterpolationProtocolP", "appendLiteral"]
+- !private ["Sy", "init"]
+- !private ["s16TextOutputStreamP", "appendInterpolation"]
+- !private ["s16TextOutputStreamP", "appendLiteral"]
+- !private ["s16TextOutputStreamP", "init"]
+- !private ["s20TextOutputStreamableP", "init"]
+- !private ["6Antlr45TokenP", "DEFAULT_CHANNEL"]
+- !private ["6Antlr45TokenP", "RuleTagToken"]
+- !private ["6Antlr45TokenP", "String"]
+- !private ["6Antlr45TokenP", "TokenSourceAndStream"]
+- ["6Antlr45TokenP", ""]
+- !private ["6Antlr45TokenP", "bypassTokenType"]
+- ["6Antlr45TokenP", "description"]
+- ["6Antlr45TokenP", "getChannel"]
+- ["6Antlr45TokenP", "getCharPositionInLine"]
+- ["6Antlr45TokenP", "getInputStream"]
+- ["6Antlr45TokenP", "getLine"]
+- ["6Antlr45TokenP", "getStartIndex"]
+- ["6Antlr45TokenP", "getStopIndex"]
+- ["6Antlr45TokenP", "getText"]
+- ["6Antlr45TokenP", "getTokenIndex"]
+- ["6Antlr45TokenP", "getTokenSource"]
+- ["6Antlr45TokenP", "getTokenSourceAndStream"]
+- ["6Antlr45TokenP", "getType"]
+- !private ["6Antlr45TokenP", "init"]
+- !private ["6Antlr45TokenP", "label"]
+- !private ["6Antlr45TokenP", "ruleName"]
+- ["6Antlr45TokenP", "visited"]
+- !private ["6Antlr420TokenSourceAndStreamC", "EMPTY"]
+- !private ["s30_CustomPlaygroundQuickLookableP", "init"]
+- !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s34_ExpressibleByBuiltinStringLiteralP", "init"]
+- !private ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "init"]
+- !private ["s19_HasContiguousBytesP", "init"]
+- !private ["s21_ObjectiveCBridgeableP", "init"]
+depends-nominal:
+- !private "SK"
+- !private "s7CVarArgP"
+- !private "Sl"
+- !private "SL"
+- !private "s28CustomDebugStringConvertibleP"
+- !private "s17CustomReflectableP"
+- "s23CustomStringConvertibleP"
+- !private "Se"
+- !private "s26DefaultStringInterpolationV"
+- !private "SE"
+- !private "SQ"
+- !private "s43ExpressibleByExtendedGraphemeClusterLiteralP"
+- !private "s32ExpressibleByStringInterpolationP"
+- !private "s26ExpressibleByStringLiteralP"
+- !private "s33ExpressibleByUnicodeScalarLiteralP"
+- !private "SH"
+- !private "s25LosslessStringConvertibleP"
+- !private "s10MirrorPathP"
+- !private "Sm"
+- "6Antlr412RuleTagTokenC"
+- !private "ST"
+- !private "SS"
+- !private "s27StringInterpolationProtocolP"
+- !private "Sy"
+- !private "s16TextOutputStreamP"
+- !private "s20TextOutputStreamableP"
+- "6Antlr45TokenP"
+- !private "6Antlr420TokenSourceAndStreamC"
+- !private "s30_CustomPlaygroundQuickLookableP"
+- !private "s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP"
+- !private "s34_ExpressibleByBuiltinStringLiteralP"
+- !private "s41_ExpressibleByBuiltinUnicodeScalarLiteralP"
+- !private "s19_HasContiguousBytesP"
+- !private "s21_ObjectiveCBridgeableP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
+interface-hash: "6f995ade58df1d413ee72d909b00e111"

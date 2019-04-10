@@ -1,0 +1,235 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "DFASerializer"
+provides-nominal:
+- "6Antlr413DFASerializerC"
+provides-member:
+- ["6Antlr413DFASerializerC", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "!="
+- !private "+"
+- !private "+="
+- !private "-"
+- !private "=="
+- "AssignmentPrecedence"
+- "CustomStringConvertible"
+- "DFA"
+- "DFASerializer"
+- "DFAState"
+- "Int"
+- "String"
+- "TernaryPrecedence"
+- "Vocabulary"
+depends-member:
+- !private ["s18AdditiveArithmeticP", "max"]
+- !private ["Sa", "enumerated"]
+- !private ["SK", "enumerated"]
+- !private ["SK", "init"]
+- !private ["Sz", "max"]
+- !private ["s7CVarArgP", "enumerated"]
+- !private ["s7CVarArgP", "init"]
+- !private ["s7CVarArgP", "max"]
+- !private ["Sl", "enumerated"]
+- !private ["Sl", "init"]
+- !private ["SL", "init"]
+- !private ["SL", "max"]
+- !private ["10Foundation15ContiguousBytesP", "enumerated"]
+- !private ["s28CustomDebugStringConvertibleP", "enumerated"]
+- !private ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s17CustomReflectableP", "enumerated"]
+- !private ["s17CustomReflectableP", "init"]
+- !private ["s17CustomReflectableP", "max"]
+- !private ["s23CustomStringConvertibleP", "Int"]
+- !private ["s23CustomStringConvertibleP", "String"]
+- ["s23CustomStringConvertibleP", ""]
+- !private ["s23CustomStringConvertibleP", "appendInterpolation"]
+- !private ["s23CustomStringConvertibleP", "appendLiteral"]
+- ["s23CustomStringConvertibleP", "description"]
+- !private ["s23CustomStringConvertibleP", "dfa"]
+- !private ["s23CustomStringConvertibleP", "edges"]
+- !private ["s23CustomStringConvertibleP", "enumerated"]
+- !private ["s23CustomStringConvertibleP", "getEdgeLabel"]
+- !private ["s23CustomStringConvertibleP", "getStateString"]
+- !private ["s23CustomStringConvertibleP", "getStates"]
+- !private ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "isAcceptState"]
+- !private ["s23CustomStringConvertibleP", "max"]
+- !private ["s23CustomStringConvertibleP", "predicates"]
+- !private ["s23CustomStringConvertibleP", "prediction"]
+- !private ["s23CustomStringConvertibleP", "requiresFullContext"]
+- !private ["s23CustomStringConvertibleP", "s0"]
+- !private ["s23CustomStringConvertibleP", "stateNumber"]
+- !private ["s23CustomStringConvertibleP", "vocabulary"]
+- !private ["6Antlr43DFAC", "getStates"]
+- !private ["6Antlr43DFAC", "s0"]
+- ["6Antlr413DFASerializerC", "DFA"]
+- ["6Antlr413DFASerializerC", "DFAState"]
+- ["6Antlr413DFASerializerC", "Int"]
+- ["6Antlr413DFASerializerC", "String"]
+- ["6Antlr413DFASerializerC", "Vocabulary"]
+- ["6Antlr413DFASerializerC", "deinit"]
+- ["6Antlr413DFASerializerC", "description"]
+- !private ["6Antlr413DFASerializerC", "dfa"]
+- ["6Antlr413DFASerializerC", "getEdgeLabel"]
+- ["6Antlr413DFASerializerC", "getStateString"]
+- ["6Antlr413DFASerializerC", "init"]
+- !private ["6Antlr413DFASerializerC", "vocabulary"]
+- !private ["6Antlr48DFAStateC", "deinit"]
+- !private ["6Antlr48DFAStateC", "edges"]
+- !private ["6Antlr48DFAStateC", "isAcceptState"]
+- !private ["6Antlr48DFAStateC", "predicates"]
+- !private ["6Antlr48DFAStateC", "prediction"]
+- !private ["6Antlr48DFAStateC", "requiresFullContext"]
+- !private ["6Antlr48DFAStateC", "stateNumber"]
+- !private ["10Foundation12DataProtocolP", "enumerated"]
+- !private ["Se", "enumerated"]
+- !private ["Se", "init"]
+- !private ["Se", "max"]
+- !private ["s26DefaultStringInterpolationV", "appendInterpolation"]
+- !private ["s26DefaultStringInterpolationV", "appendLiteral"]
+- !private ["SE", "enumerated"]
+- !private ["SE", "init"]
+- !private ["SE", "max"]
+- !private ["SQ", "edges"]
+- !private ["SQ", "enumerated"]
+- !private ["SQ", "getDisplayName"]
+- !private ["SQ", "init"]
+- !private ["SQ", "isAcceptState"]
+- !private ["SQ", "max"]
+- !private ["SQ", "predicates"]
+- !private ["SQ", "prediction"]
+- !private ["SQ", "requiresFullContext"]
+- !private ["SQ", "stateNumber"]
+- !private ["s25ExpressibleByArrayLiteralP", "enumerated"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s27ExpressibleByIntegerLiteralP", "max"]
+- !private ["s32ExpressibleByStringInterpolationP", "init"]
+- !private ["s26ExpressibleByStringLiteralP", "init"]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", "init"]
+- !private ["s17FixedWidthIntegerP", "max"]
+- !private ["SH", "edges"]
+- !private ["SH", "enumerated"]
+- !private ["SH", "getDisplayName"]
+- !private ["SH", "init"]
+- !private ["SH", "isAcceptState"]
+- !private ["SH", "max"]
+- !private ["SH", "predicates"]
+- !private ["SH", "prediction"]
+- !private ["SH", "requiresFullContext"]
+- !private ["SH", "stateNumber"]
+- !private ["Si", "max"]
+- !private ["s25LosslessStringConvertibleP", "init"]
+- !private ["s25LosslessStringConvertibleP", "max"]
+- !private ["s10MirrorPathP", "init"]
+- !private ["s10MirrorPathP", "max"]
+- !private ["SM", "enumerated"]
+- !private ["10Foundation19MutableDataProtocolP", "enumerated"]
+- !private ["Sj", "max"]
+- !private ["Sk", "enumerated"]
+- !private ["Sm", "enumerated"]
+- !private ["Sm", "init"]
+- !private ["s10SIMDScalarP", "max"]
+- !private ["ST", "enumerated"]
+- !private ["ST", "init"]
+- !private ["SZ", "max"]
+- !private ["s13SignedNumericP", "max"]
+- !private ["Sx", "max"]
+- !private ["SS", "init"]
+- !private ["s27StringInterpolationProtocolP", "appendInterpolation"]
+- !private ["s27StringInterpolationProtocolP", "appendLiteral"]
+- !private ["Sy", "init"]
+- !private ["s16TextOutputStreamP", "appendInterpolation"]
+- !private ["s16TextOutputStreamP", "appendLiteral"]
+- !private ["s16TextOutputStreamP", "init"]
+- !private ["s20TextOutputStreamableP", "init"]
+- !private ["6Antlr410VocabularyC", "getDisplayName"]
+- !private ["s14_ArrayProtocolP", "enumerated"]
+- !private ["s30_CustomPlaygroundQuickLookableP", "init"]
+- !private ["s30_CustomPlaygroundQuickLookableP", "max"]
+- !private ["s24_DestructorSafeContainerP", "enumerated"]
+- !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s35_ExpressibleByBuiltinIntegerLiteralP", "max"]
+- !private ["s34_ExpressibleByBuiltinStringLiteralP", "init"]
+- !private ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "init"]
+- !private ["s19_HasContiguousBytesP", "enumerated"]
+- !private ["s19_HasContiguousBytesP", "init"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "enumerated"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "max"]
+- !private ["s21_ObjectiveCBridgeableP", "enumerated"]
+- !private ["s21_ObjectiveCBridgeableP", "init"]
+- !private ["s21_ObjectiveCBridgeableP", "max"]
+depends-nominal:
+- !private "s18AdditiveArithmeticP"
+- !private "Sa"
+- !private "SK"
+- !private "Sz"
+- !private "s7CVarArgP"
+- !private "Sl"
+- !private "SL"
+- !private "10Foundation15ContiguousBytesP"
+- !private "s28CustomDebugStringConvertibleP"
+- !private "s17CustomReflectableP"
+- "s23CustomStringConvertibleP"
+- !private "6Antlr43DFAC"
+- "6Antlr413DFASerializerC"
+- !private "6Antlr48DFAStateC"
+- !private "10Foundation12DataProtocolP"
+- !private "Se"
+- !private "s26DefaultStringInterpolationV"
+- !private "SE"
+- !private "SQ"
+- !private "s25ExpressibleByArrayLiteralP"
+- !private "s43ExpressibleByExtendedGraphemeClusterLiteralP"
+- !private "s27ExpressibleByIntegerLiteralP"
+- !private "s32ExpressibleByStringInterpolationP"
+- !private "s26ExpressibleByStringLiteralP"
+- !private "s33ExpressibleByUnicodeScalarLiteralP"
+- !private "s17FixedWidthIntegerP"
+- !private "SH"
+- !private "Si"
+- !private "s25LosslessStringConvertibleP"
+- !private "s10MirrorPathP"
+- !private "SM"
+- !private "10Foundation19MutableDataProtocolP"
+- !private "Sj"
+- !private "Sk"
+- !private "Sm"
+- !private "s10SIMDScalarP"
+- !private "ST"
+- !private "SZ"
+- !private "s13SignedNumericP"
+- !private "Sx"
+- !private "SS"
+- !private "s27StringInterpolationProtocolP"
+- !private "Sy"
+- !private "s16TextOutputStreamP"
+- !private "s20TextOutputStreamableP"
+- !private "6Antlr410VocabularyC"
+- !private "s14_ArrayProtocolP"
+- !private "s30_CustomPlaygroundQuickLookableP"
+- !private "s24_DestructorSafeContainerP"
+- !private "s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP"
+- !private "s35_ExpressibleByBuiltinIntegerLiteralP"
+- !private "s34_ExpressibleByBuiltinStringLiteralP"
+- !private "s41_ExpressibleByBuiltinUnicodeScalarLiteralP"
+- !private "s19_HasContiguousBytesP"
+- !private "s35_HasCustomAnyHashableRepresentationP"
+- !private "s21_ObjectiveCBridgeableP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
+interface-hash: "17464c046710201bbbfa6b86793dfac9"

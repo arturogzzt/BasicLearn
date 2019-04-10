@@ -1,0 +1,47 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "IntSet"
+provides-nominal:
+- "6Antlr46IntSetP"
+provides-member:
+- ["6Antlr46IntSetP", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- "Bool"
+- "Int"
+- "IntSet"
+depends-member:
+- ["6Antlr46IntSetP", "Bool"]
+- ["6Antlr46IntSetP", "Int"]
+- ["6Antlr46IntSetP", "IntSet"]
+- ["6Antlr46IntSetP", "add"]
+- ["6Antlr46IntSetP", "addAll"]
+- ["6Antlr46IntSetP", "and"]
+- ["6Antlr46IntSetP", "complement"]
+- ["6Antlr46IntSetP", "contains"]
+- ["6Antlr46IntSetP", "getSingleElement"]
+- ["6Antlr46IntSetP", "isNil"]
+- ["6Antlr46IntSetP", "or"]
+- ["6Antlr46IntSetP", "remove"]
+- ["6Antlr46IntSetP", "size"]
+- ["6Antlr46IntSetP", "subtract"]
+- ["6Antlr46IntSetP", "toList"]
+depends-nominal:
+- "6Antlr46IntSetP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
+interface-hash: "bc19dce7b199553ffd49cabc151abe38"

@@ -1,0 +1,464 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "ListTokenSource"
+provides-nominal:
+- "6Antlr415ListTokenSourceC"
+provides-member:
+- ["6Antlr415ListTokenSourceC", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "!"
+- !private "!="
+- !private "&&"
+- !private "+"
+- !private "+="
+- !private "-"
+- !private "<"
+- !private "=="
+- !private ">"
+- !private ">="
+- "AssignmentPrecedence"
+- "CharStream"
+- !private "CommonToken"
+- "CommonTokenFactory"
+- "Int"
+- "ListTokenSource"
+- "String"
+- "Token"
+- "TokenFactory"
+- "TokenSource"
+- !private "TokenSourceAndStream"
+- !private "max"
+depends-member:
+- !private ["Sa", "count"]
+- !private ["Sa", "isEmpty"]
+- !private ["Sa", "last"]
+- !private ["Sa", "subscript"]
+- !private ["s10ArraySliceV", "getCharPositionInLine"]
+- !private ["s10ArraySliceV", "getInputStream"]
+- !private ["s10ArraySliceV", "getLine"]
+- !private ["s10ArraySliceV", "getStopIndex"]
+- !private ["SK", "count"]
+- !private ["SK", "distance"]
+- !private ["SK", "endIndex"]
+- !private ["SK", "getCharPositionInLine"]
+- !private ["SK", "getInputStream"]
+- !private ["SK", "getLine"]
+- !private ["SK", "getStopIndex"]
+- !private ["SK", "isEmpty"]
+- !private ["SK", "last"]
+- !private ["SK", "lastIndex"]
+- !private ["SK", "subscript"]
+- !private ["s7CVarArgP", "count"]
+- !private ["s7CVarArgP", "distance"]
+- !private ["s7CVarArgP", "endIndex"]
+- !private ["s7CVarArgP", "isEmpty"]
+- !private ["s7CVarArgP", "last"]
+- !private ["s7CVarArgP", "lastIndex"]
+- !private ["s7CVarArgP", "subscript"]
+- !private ["6Antlr410CharStreamP", "getSourceName"]
+- !private ["Sl", "count"]
+- !private ["Sl", "distance"]
+- !private ["Sl", "endIndex"]
+- !private ["Sl", "getCharPositionInLine"]
+- !private ["Sl", "getInputStream"]
+- !private ["Sl", "getLine"]
+- !private ["Sl", "getStopIndex"]
+- !private ["Sl", "isEmpty"]
+- !private ["Sl", "last"]
+- !private ["Sl", "lastIndex"]
+- !private ["Sl", "subscript"]
+- !private ["6Antlr411CommonTokenC", "DEFAULT_CHANNEL"]
+- !private ["6Antlr411CommonTokenC", "EOF"]
+- !private ["6Antlr411CommonTokenC", "deinit"]
+- ["6Antlr418CommonTokenFactoryC", "DEFAULT"]
+- !private ["SL", "distance"]
+- !private ["SL", "endIndex"]
+- !private ["SL", "lastIndex"]
+- !private ["10Foundation15ContiguousBytesP", "count"]
+- !private ["10Foundation15ContiguousBytesP", "getCharPositionInLine"]
+- !private ["10Foundation15ContiguousBytesP", "getInputStream"]
+- !private ["10Foundation15ContiguousBytesP", "getLine"]
+- !private ["10Foundation15ContiguousBytesP", "getStopIndex"]
+- !private ["10Foundation15ContiguousBytesP", "isEmpty"]
+- !private ["10Foundation15ContiguousBytesP", "last"]
+- !private ["10Foundation15ContiguousBytesP", "subscript"]
+- !private ["s28CustomDebugStringConvertibleP", "count"]
+- !private ["s28CustomDebugStringConvertibleP", "distance"]
+- !private ["s28CustomDebugStringConvertibleP", "endIndex"]
+- !private ["s28CustomDebugStringConvertibleP", "getCharPositionInLine"]
+- !private ["s28CustomDebugStringConvertibleP", "getInputStream"]
+- !private ["s28CustomDebugStringConvertibleP", "getLine"]
+- !private ["s28CustomDebugStringConvertibleP", "getStopIndex"]
+- !private ["s28CustomDebugStringConvertibleP", "isEmpty"]
+- !private ["s28CustomDebugStringConvertibleP", "last"]
+- !private ["s28CustomDebugStringConvertibleP", "lastIndex"]
+- !private ["s28CustomDebugStringConvertibleP", "subscript"]
+- !private ["s17CustomReflectableP", "count"]
+- !private ["s17CustomReflectableP", "distance"]
+- !private ["s17CustomReflectableP", "endIndex"]
+- !private ["s17CustomReflectableP", "getCharPositionInLine"]
+- !private ["s17CustomReflectableP", "getInputStream"]
+- !private ["s17CustomReflectableP", "getLine"]
+- !private ["s17CustomReflectableP", "getStopIndex"]
+- !private ["s17CustomReflectableP", "isEmpty"]
+- !private ["s17CustomReflectableP", "last"]
+- !private ["s17CustomReflectableP", "lastIndex"]
+- !private ["s17CustomReflectableP", "subscript"]
+- !private ["s23CustomStringConvertibleP", "DEFAULT_CHANNEL"]
+- !private ["s23CustomStringConvertibleP", "EOF"]
+- !private ["s23CustomStringConvertibleP", "count"]
+- !private ["s23CustomStringConvertibleP", "distance"]
+- !private ["s23CustomStringConvertibleP", "endIndex"]
+- !private ["s23CustomStringConvertibleP", "getCharPositionInLine"]
+- !private ["s23CustomStringConvertibleP", "getInputStream"]
+- !private ["s23CustomStringConvertibleP", "getLine"]
+- !private ["s23CustomStringConvertibleP", "getStartIndex"]
+- !private ["s23CustomStringConvertibleP", "getStopIndex"]
+- !private ["s23CustomStringConvertibleP", "getText"]
+- !private ["s23CustomStringConvertibleP", "getType"]
+- !private ["s23CustomStringConvertibleP", "isEmpty"]
+- !private ["s23CustomStringConvertibleP", "last"]
+- !private ["s23CustomStringConvertibleP", "lastIndex"]
+- !private ["s23CustomStringConvertibleP", "subscript"]
+- !private ["10Foundation12DataProtocolP", "count"]
+- !private ["10Foundation12DataProtocolP", "getCharPositionInLine"]
+- !private ["10Foundation12DataProtocolP", "getInputStream"]
+- !private ["10Foundation12DataProtocolP", "getLine"]
+- !private ["10Foundation12DataProtocolP", "getStopIndex"]
+- !private ["10Foundation12DataProtocolP", "isEmpty"]
+- !private ["10Foundation12DataProtocolP", "last"]
+- !private ["10Foundation12DataProtocolP", "subscript"]
+- !private ["Se", "count"]
+- !private ["Se", "distance"]
+- !private ["Se", "endIndex"]
+- !private ["Se", "isEmpty"]
+- !private ["Se", "last"]
+- !private ["Se", "lastIndex"]
+- !private ["Se", "subscript"]
+- !private ["SE", "count"]
+- !private ["SE", "distance"]
+- !private ["SE", "endIndex"]
+- !private ["SE", "isEmpty"]
+- !private ["SE", "last"]
+- !private ["SE", "lastIndex"]
+- !private ["SE", "subscript"]
+- !private ["SQ", "count"]
+- !private ["SQ", "distance"]
+- !private ["SQ", "endIndex"]
+- !private ["SQ", "getCharPositionInLine"]
+- !private ["SQ", "getInputStream"]
+- !private ["SQ", "getLine"]
+- !private ["SQ", "getStopIndex"]
+- !private ["SQ", "isEmpty"]
+- !private ["SQ", "last"]
+- !private ["SQ", "lastIndex"]
+- !private ["SQ", "subscript"]
+- !private ["s25ExpressibleByArrayLiteralP", "count"]
+- !private ["s25ExpressibleByArrayLiteralP", "getCharPositionInLine"]
+- !private ["s25ExpressibleByArrayLiteralP", "getInputStream"]
+- !private ["s25ExpressibleByArrayLiteralP", "getLine"]
+- !private ["s25ExpressibleByArrayLiteralP", "getStopIndex"]
+- !private ["s25ExpressibleByArrayLiteralP", "isEmpty"]
+- !private ["s25ExpressibleByArrayLiteralP", "last"]
+- !private ["s25ExpressibleByArrayLiteralP", "subscript"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "distance"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "endIndex"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "lastIndex"]
+- !private ["s32ExpressibleByStringInterpolationP", "distance"]
+- !private ["s32ExpressibleByStringInterpolationP", "endIndex"]
+- !private ["s32ExpressibleByStringInterpolationP", "lastIndex"]
+- !private ["s26ExpressibleByStringLiteralP", "distance"]
+- !private ["s26ExpressibleByStringLiteralP", "endIndex"]
+- !private ["s26ExpressibleByStringLiteralP", "lastIndex"]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", "distance"]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", "endIndex"]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", "lastIndex"]
+- !private ["SH", "count"]
+- !private ["SH", "distance"]
+- !private ["SH", "endIndex"]
+- !private ["SH", "getCharPositionInLine"]
+- !private ["SH", "getInputStream"]
+- !private ["SH", "getLine"]
+- !private ["SH", "getStopIndex"]
+- !private ["SH", "isEmpty"]
+- !private ["SH", "last"]
+- !private ["SH", "lastIndex"]
+- !private ["SH", "subscript"]
+- !private ["6Antlr49IntStreamP", "getSourceName"]
+- !private ["s20LazySequenceProtocolP", "getStopIndex"]
+- ["6Antlr415ListTokenSourceC", "CharStream"]
+- !private ["6Antlr415ListTokenSourceC", "CommonToken"]
+- ["6Antlr415ListTokenSourceC", "CommonTokenFactory"]
+- ["6Antlr415ListTokenSourceC", "Int"]
+- ["6Antlr415ListTokenSourceC", "String"]
+- ["6Antlr415ListTokenSourceC", "Token"]
+- ["6Antlr415ListTokenSourceC", "TokenFactory"]
+- !private ["6Antlr415ListTokenSourceC", "TokenSourceAndStream"]
+- !private ["6Antlr415ListTokenSourceC", "_factory"]
+- ["6Antlr415ListTokenSourceC", "deinit"]
+- ["6Antlr415ListTokenSourceC", "eofToken"]
+- ["6Antlr415ListTokenSourceC", "getCharPositionInLine"]
+- ["6Antlr415ListTokenSourceC", "getInputStream"]
+- ["6Antlr415ListTokenSourceC", "getLine"]
+- ["6Antlr415ListTokenSourceC", "getSourceName"]
+- ["6Antlr415ListTokenSourceC", "getTokenFactory"]
+- ["6Antlr415ListTokenSourceC", "i"]
+- ["6Antlr415ListTokenSourceC", "init"]
+- !private ["6Antlr415ListTokenSourceC", "max"]
+- ["6Antlr415ListTokenSourceC", "nextToken"]
+- ["6Antlr415ListTokenSourceC", "setTokenFactory"]
+- !private ["6Antlr415ListTokenSourceC", "sourceName"]
+- ["6Antlr415ListTokenSourceC", "tokens"]
+- !private ["s25LosslessStringConvertibleP", "distance"]
+- !private ["s25LosslessStringConvertibleP", "endIndex"]
+- !private ["s25LosslessStringConvertibleP", "lastIndex"]
+- !private ["s10MirrorPathP", "distance"]
+- !private ["s10MirrorPathP", "endIndex"]
+- !private ["s10MirrorPathP", "lastIndex"]
+- !private ["SM", "count"]
+- !private ["SM", "getCharPositionInLine"]
+- !private ["SM", "getInputStream"]
+- !private ["SM", "getLine"]
+- !private ["SM", "getStopIndex"]
+- !private ["SM", "isEmpty"]
+- !private ["SM", "last"]
+- !private ["SM", "subscript"]
+- !private ["10Foundation19MutableDataProtocolP", "count"]
+- !private ["10Foundation19MutableDataProtocolP", "isEmpty"]
+- !private ["10Foundation19MutableDataProtocolP", "last"]
+- !private ["10Foundation19MutableDataProtocolP", "subscript"]
+- !private ["So8NSCodingP", "distance"]
+- !private ["So8NSCodingP", "endIndex"]
+- !private ["So8NSCodingP", "lastIndex"]
+- !private ["So9NSCopyingP", "distance"]
+- !private ["So9NSCopyingP", "endIndex"]
+- !private ["So9NSCopyingP", "lastIndex"]
+- !private ["So21NSItemProviderReadingP", "distance"]
+- !private ["So21NSItemProviderReadingP", "endIndex"]
+- !private ["So21NSItemProviderReadingP", "lastIndex"]
+- !private ["So21NSItemProviderWritingP", "distance"]
+- !private ["So21NSItemProviderWritingP", "endIndex"]
+- !private ["So21NSItemProviderWritingP", "lastIndex"]
+- !private ["So16NSMutableCopyingP", "distance"]
+- !private ["So16NSMutableCopyingP", "endIndex"]
+- !private ["So16NSMutableCopyingP", "lastIndex"]
+- !private ["So8NSObjectC", "distance"]
+- !private ["So8NSObjectC", "endIndex"]
+- !private ["So8NSObjectC", "lastIndex"]
+- !private ["So8NSObjectP", "distance"]
+- !private ["So8NSObjectP", "endIndex"]
+- !private ["So8NSObjectP", "lastIndex"]
+- !private ["So14NSSecureCodingP", "distance"]
+- !private ["So14NSSecureCodingP", "endIndex"]
+- !private ["So14NSSecureCodingP", "lastIndex"]
+- !private ["So8NSStringC", "distance"]
+- !private ["So8NSStringC", "endIndex"]
+- !private ["So8NSStringC", "lastIndex"]
+- !private ["Sk", "count"]
+- !private ["Sk", "getCharPositionInLine"]
+- !private ["Sk", "getInputStream"]
+- !private ["Sk", "getLine"]
+- !private ["Sk", "getStopIndex"]
+- !private ["Sk", "isEmpty"]
+- !private ["Sk", "last"]
+- !private ["Sk", "subscript"]
+- !private ["Sm", "count"]
+- !private ["Sm", "distance"]
+- !private ["Sm", "endIndex"]
+- !private ["Sm", "getCharPositionInLine"]
+- !private ["Sm", "getInputStream"]
+- !private ["Sm", "getLine"]
+- !private ["Sm", "getStopIndex"]
+- !private ["Sm", "isEmpty"]
+- !private ["Sm", "last"]
+- !private ["Sm", "lastIndex"]
+- !private ["Sm", "subscript"]
+- !private ["ST", "count"]
+- !private ["ST", "distance"]
+- !private ["ST", "endIndex"]
+- !private ["ST", "getCharPositionInLine"]
+- !private ["ST", "getInputStream"]
+- !private ["ST", "getLine"]
+- !private ["ST", "getStopIndex"]
+- !private ["ST", "isEmpty"]
+- !private ["ST", "last"]
+- !private ["ST", "lastIndex"]
+- !private ["ST", "subscript"]
+- !private ["s5SliceV", "getStopIndex"]
+- !private ["SS", "distance"]
+- !private ["SS", "endIndex"]
+- !private ["SS", "lastIndex"]
+- !private ["Sy", "distance"]
+- !private ["Sy", "endIndex"]
+- !private ["Sy", "lastIndex"]
+- !private ["s16TextOutputStreamP", "distance"]
+- !private ["s16TextOutputStreamP", "endIndex"]
+- !private ["s16TextOutputStreamP", "lastIndex"]
+- !private ["s20TextOutputStreamableP", "distance"]
+- !private ["s20TextOutputStreamableP", "endIndex"]
+- !private ["s20TextOutputStreamableP", "lastIndex"]
+- !private ["6Antlr45TokenP", "DEFAULT_CHANNEL"]
+- !private ["6Antlr45TokenP", "EOF"]
+- !private ["6Antlr45TokenP", "getCharPositionInLine"]
+- !private ["6Antlr45TokenP", "getInputStream"]
+- !private ["6Antlr45TokenP", "getLine"]
+- !private ["6Antlr45TokenP", "getStartIndex"]
+- !private ["6Antlr45TokenP", "getStopIndex"]
+- !private ["6Antlr45TokenP", "getText"]
+- !private ["6Antlr45TokenP", "getType"]
+- ["6Antlr412TokenFactoryP", "DEFAULT"]
+- !private ["6Antlr412TokenFactoryP", "create"]
+- !private ["6Antlr411TokenSourceP", "CommonToken"]
+- ["6Antlr411TokenSourceP", "CommonTokenFactory"]
+- !private ["6Antlr411TokenSourceP", "TokenSourceAndStream"]
+- ["6Antlr411TokenSourceP", ""]
+- !private ["6Antlr411TokenSourceP", "_factory"]
+- !private ["6Antlr411TokenSourceP", "eofToken"]
+- ["6Antlr411TokenSourceP", "getCharPositionInLine"]
+- ["6Antlr411TokenSourceP", "getInputStream"]
+- ["6Antlr411TokenSourceP", "getLine"]
+- ["6Antlr411TokenSourceP", "getSourceName"]
+- ["6Antlr411TokenSourceP", "getTokenFactory"]
+- !private ["6Antlr411TokenSourceP", "i"]
+- !private ["6Antlr411TokenSourceP", "init"]
+- !private ["6Antlr411TokenSourceP", "max"]
+- ["6Antlr411TokenSourceP", "nextToken"]
+- ["6Antlr411TokenSourceP", "setTokenFactory"]
+- !private ["6Antlr411TokenSourceP", "sourceName"]
+- !private ["6Antlr411TokenSourceP", "tokens"]
+- !private ["6Antlr420TokenSourceAndStreamC", "init"]
+- !private ["6Antlr413WritableTokenP", "DEFAULT_CHANNEL"]
+- !private ["6Antlr413WritableTokenP", "EOF"]
+- !private ["s14_ArrayProtocolP", "count"]
+- !private ["s14_ArrayProtocolP", "getCharPositionInLine"]
+- !private ["s14_ArrayProtocolP", "getInputStream"]
+- !private ["s14_ArrayProtocolP", "getLine"]
+- !private ["s14_ArrayProtocolP", "getStopIndex"]
+- !private ["s14_ArrayProtocolP", "isEmpty"]
+- !private ["s14_ArrayProtocolP", "last"]
+- !private ["s14_ArrayProtocolP", "subscript"]
+- !private ["s30_CustomPlaygroundQuickLookableP", "distance"]
+- !private ["s30_CustomPlaygroundQuickLookableP", "endIndex"]
+- !private ["s30_CustomPlaygroundQuickLookableP", "lastIndex"]
+- !private ["s24_DestructorSafeContainerP", "count"]
+- !private ["s24_DestructorSafeContainerP", "getCharPositionInLine"]
+- !private ["s24_DestructorSafeContainerP", "getInputStream"]
+- !private ["s24_DestructorSafeContainerP", "getLine"]
+- !private ["s24_DestructorSafeContainerP", "getStopIndex"]
+- !private ["s24_DestructorSafeContainerP", "isEmpty"]
+- !private ["s24_DestructorSafeContainerP", "last"]
+- !private ["s24_DestructorSafeContainerP", "subscript"]
+- !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "distance"]
+- !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "endIndex"]
+- !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "lastIndex"]
+- !private ["s34_ExpressibleByBuiltinStringLiteralP", "distance"]
+- !private ["s34_ExpressibleByBuiltinStringLiteralP", "endIndex"]
+- !private ["s34_ExpressibleByBuiltinStringLiteralP", "lastIndex"]
+- !private ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "distance"]
+- !private ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "endIndex"]
+- !private ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "lastIndex"]
+- !private ["s19_HasContiguousBytesP", "count"]
+- !private ["s19_HasContiguousBytesP", "distance"]
+- !private ["s19_HasContiguousBytesP", "endIndex"]
+- !private ["s19_HasContiguousBytesP", "isEmpty"]
+- !private ["s19_HasContiguousBytesP", "last"]
+- !private ["s19_HasContiguousBytesP", "lastIndex"]
+- !private ["s19_HasContiguousBytesP", "subscript"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "count"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "distance"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "endIndex"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "isEmpty"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "last"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "lastIndex"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "subscript"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "distance"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "endIndex"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "lastIndex"]
+- !private ["s21_ObjectiveCBridgeableP", "count"]
+- !private ["s21_ObjectiveCBridgeableP", "distance"]
+- !private ["s21_ObjectiveCBridgeableP", "endIndex"]
+- !private ["s21_ObjectiveCBridgeableP", "isEmpty"]
+- !private ["s21_ObjectiveCBridgeableP", "last"]
+- !private ["s21_ObjectiveCBridgeableP", "lastIndex"]
+- !private ["s21_ObjectiveCBridgeableP", "subscript"]
+depends-nominal:
+- !private "Sa"
+- !private "s10ArraySliceV"
+- !private "SK"
+- !private "s7CVarArgP"
+- !private "6Antlr410CharStreamP"
+- !private "Sl"
+- !private "6Antlr411CommonTokenC"
+- "6Antlr418CommonTokenFactoryC"
+- !private "SL"
+- !private "10Foundation15ContiguousBytesP"
+- !private "s28CustomDebugStringConvertibleP"
+- !private "s17CustomReflectableP"
+- !private "s23CustomStringConvertibleP"
+- !private "10Foundation12DataProtocolP"
+- !private "Se"
+- !private "SE"
+- !private "SQ"
+- !private "s25ExpressibleByArrayLiteralP"
+- !private "s43ExpressibleByExtendedGraphemeClusterLiteralP"
+- !private "s32ExpressibleByStringInterpolationP"
+- !private "s26ExpressibleByStringLiteralP"
+- !private "s33ExpressibleByUnicodeScalarLiteralP"
+- !private "SH"
+- !private "6Antlr49IntStreamP"
+- !private "s20LazySequenceProtocolP"
+- "6Antlr415ListTokenSourceC"
+- !private "s25LosslessStringConvertibleP"
+- !private "s10MirrorPathP"
+- !private "SM"
+- !private "10Foundation19MutableDataProtocolP"
+- !private "So8NSCodingP"
+- !private "So9NSCopyingP"
+- !private "So21NSItemProviderReadingP"
+- !private "So21NSItemProviderWritingP"
+- !private "So16NSMutableCopyingP"
+- !private "So8NSObjectC"
+- !private "So8NSObjectP"
+- !private "So14NSSecureCodingP"
+- !private "So8NSStringC"
+- !private "Sk"
+- !private "Sm"
+- !private "ST"
+- !private "s5SliceV"
+- !private "SS"
+- !private "Sy"
+- !private "s16TextOutputStreamP"
+- !private "s20TextOutputStreamableP"
+- !private "6Antlr45TokenP"
+- "6Antlr412TokenFactoryP"
+- "6Antlr411TokenSourceP"
+- !private "6Antlr420TokenSourceAndStreamC"
+- !private "6Antlr413WritableTokenP"
+- !private "s14_ArrayProtocolP"
+- !private "s30_CustomPlaygroundQuickLookableP"
+- !private "s24_DestructorSafeContainerP"
+- !private "s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP"
+- !private "s34_ExpressibleByBuiltinStringLiteralP"
+- !private "s41_ExpressibleByBuiltinUnicodeScalarLiteralP"
+- !private "s19_HasContiguousBytesP"
+- !private "s35_HasCustomAnyHashableRepresentationP"
+- !private "10Foundation27_KeyValueCodingAndObservingP"
+- !private "s21_ObjectiveCBridgeableP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
+interface-hash: "c3e846c7f17efdf3453bf47b45fa9646"

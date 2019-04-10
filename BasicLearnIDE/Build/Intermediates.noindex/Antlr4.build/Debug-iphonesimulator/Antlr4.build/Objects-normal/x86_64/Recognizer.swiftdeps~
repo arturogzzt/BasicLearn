@@ -1,0 +1,315 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "RecognizerProtocol"
+- "Recognizer"
+provides-nominal:
+- "6Antlr418RecognizerProtocolP"
+- "6Antlr410RecognizerC"
+provides-member:
+- ["6Antlr418RecognizerProtocolP", ""]
+- ["6Antlr410RecognizerC", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "!=="
+- !private "+"
+- !private "..."
+- !private "??"
+- "ANTLRErrorListener"
+- "ATN"
+- "ATNSimulator"
+- "AssignmentPrecedence"
+- "Bool"
+- !private "CommonToken"
+- "ConsoleErrorListener"
+- "FloatLiteralType"
+- "Int"
+- "IntStream"
+- "IntegerLiteralType"
+- "ParseInfo"
+- !private "ProxyErrorListener"
+- "RecognitionException"
+- "Recognizer"
+- "RecognizerProtocol"
+- "RuleContext"
+- "String"
+- !private "StringLiteralType"
+- "TokenFactory"
+- !private "UnicodeScalarType"
+- !private "Utils"
+- "Vocabulary"
+- !private "fatalError"
+depends-member:
+- ["6Antlr418ANTLRErrorListenerP", "INSTANCE"]
+- !private ["6Antlr418ANTLRErrorListenerP", "init"]
+- !private ["6Antlr43ATNC", "maxTokenType"]
+- !private ["Sa", "append"]
+- !private ["Sa", "filter"]
+- !private ["Sa", "removeAll"]
+- ["6Antlr417BaseErrorListenerC", "INSTANCE"]
+- !private ["SK", "append"]
+- !private ["SK", "filter"]
+- !private ["SK", "removeAll"]
+- !private ["s7CVarArgP", "append"]
+- !private ["s7CVarArgP", "filter"]
+- !private ["s7CVarArgP", "init"]
+- !private ["s7CVarArgP", "removeAll"]
+- !private ["s7CVarArgP", "subscript"]
+- !private ["Sl", "append"]
+- !private ["Sl", "filter"]
+- !private ["Sl", "init"]
+- !private ["Sl", "removeAll"]
+- !private ["Sl", "subscript"]
+- !private ["6Antlr411CommonTokenC", "EOF"]
+- !private ["6Antlr411CommonTokenC", "INVALID_TYPE"]
+- !private ["6Antlr411CommonTokenC", "deinit"]
+- ["6Antlr420ConsoleErrorListenerC", "INSTANCE"]
+- ["6Antlr420ConsoleErrorListenerC", "deinit"]
+- !private ["10Foundation15ContiguousBytesP", "append"]
+- !private ["10Foundation15ContiguousBytesP", "filter"]
+- !private ["10Foundation15ContiguousBytesP", "removeAll"]
+- !private ["s28CustomDebugStringConvertibleP", "append"]
+- !private ["s28CustomDebugStringConvertibleP", "filter"]
+- !private ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "removeAll"]
+- !private ["s28CustomDebugStringConvertibleP", "subscript"]
+- !private ["s17CustomReflectableP", "append"]
+- !private ["s17CustomReflectableP", "filter"]
+- !private ["s17CustomReflectableP", "init"]
+- !private ["s17CustomReflectableP", "removeAll"]
+- !private ["s17CustomReflectableP", "subscript"]
+- !private ["s23CustomStringConvertibleP", "EOF"]
+- !private ["s23CustomStringConvertibleP", "INVALID_TYPE"]
+- !private ["s23CustomStringConvertibleP", "append"]
+- !private ["s23CustomStringConvertibleP", "appendInterpolation"]
+- !private ["s23CustomStringConvertibleP", "appendLiteral"]
+- !private ["s23CustomStringConvertibleP", "filter"]
+- !private ["s23CustomStringConvertibleP", "getCharPositionInLine"]
+- !private ["s23CustomStringConvertibleP", "getLine"]
+- !private ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "removeAll"]
+- !private ["s23CustomStringConvertibleP", "subscript"]
+- !private ["10Foundation12DataProtocolP", "append"]
+- !private ["10Foundation12DataProtocolP", "filter"]
+- !private ["10Foundation12DataProtocolP", "removeAll"]
+- !private ["Se", "append"]
+- !private ["Se", "filter"]
+- !private ["Se", "init"]
+- !private ["Se", "removeAll"]
+- !private ["Se", "subscript"]
+- !private ["s26DefaultStringInterpolationV", "appendInterpolation"]
+- !private ["s26DefaultStringInterpolationV", "appendLiteral"]
+- !private ["SD", "init"]
+- !private ["SD", "subscript"]
+- !private ["SE", "append"]
+- !private ["SE", "filter"]
+- !private ["SE", "init"]
+- !private ["SE", "removeAll"]
+- !private ["SE", "subscript"]
+- !private ["SQ", "append"]
+- !private ["SQ", "filter"]
+- !private ["SQ", "getLiteralName"]
+- !private ["SQ", "getSymbolicName"]
+- !private ["SQ", "init"]
+- !private ["SQ", "removeAll"]
+- !private ["SQ", "subscript"]
+- !private ["s25ExpressibleByArrayLiteralP", "append"]
+- !private ["s25ExpressibleByArrayLiteralP", "filter"]
+- !private ["s25ExpressibleByArrayLiteralP", "removeAll"]
+- !private ["s30ExpressibleByDictionaryLiteralP", "init"]
+- !private ["s30ExpressibleByDictionaryLiteralP", "subscript"]
+- !private ["SH", "append"]
+- !private ["SH", "filter"]
+- !private ["SH", "getLiteralName"]
+- !private ["SH", "getSymbolicName"]
+- !private ["SH", "init"]
+- !private ["SH", "removeAll"]
+- !private ["SH", "subscript"]
+- !private ["SM", "append"]
+- !private ["SM", "filter"]
+- !private ["SM", "removeAll"]
+- !private ["10Foundation19MutableDataProtocolP", "append"]
+- !private ["10Foundation19MutableDataProtocolP", "filter"]
+- !private ["10Foundation19MutableDataProtocolP", "removeAll"]
+- !private ["6Antlr418ProxyErrorListenerC", "deinit"]
+- !private ["6Antlr418ProxyErrorListenerC", "init"]
+- !private ["Sk", "append"]
+- !private ["Sk", "filter"]
+- !private ["Sk", "removeAll"]
+- !private ["Sm", "append"]
+- !private ["Sm", "filter"]
+- !private ["Sm", "removeAll"]
+- !private ["6Antlr420RecognitionExceptionC", "getOffendingToken"]
+- ["6Antlr410RecognizerC", "ANTLRErrorListener"]
+- ["6Antlr410RecognizerC", "ATN"]
+- ["6Antlr410RecognizerC", "Bool"]
+- !private ["6Antlr410RecognizerC", "CommonToken"]
+- ["6Antlr410RecognizerC", "ConsoleErrorListener"]
+- ["6Antlr410RecognizerC", "Int"]
+- ["6Antlr410RecognizerC", "IntStream"]
+- ["6Antlr410RecognizerC", "ParseInfo"]
+- !private ["6Antlr410RecognizerC", "ProxyErrorListener"]
+- ["6Antlr410RecognizerC", "RecognitionException"]
+- ["6Antlr410RecognizerC", "RuleContext"]
+- ["6Antlr410RecognizerC", "String"]
+- ["6Antlr410RecognizerC", "TokenFactory"]
+- !private ["6Antlr410RecognizerC", "Utils"]
+- ["6Antlr410RecognizerC", "Vocabulary"]
+- ["6Antlr410RecognizerC", "_interp"]
+- !private ["6Antlr410RecognizerC", "_listeners"]
+- !private ["6Antlr410RecognizerC", "_stateNumber"]
+- ["6Antlr410RecognizerC", "action"]
+- ["6Antlr410RecognizerC", "addErrorListener"]
+- ["6Antlr410RecognizerC", "deinit"]
+- !private ["6Antlr410RecognizerC", "fatalError"]
+- ["6Antlr410RecognizerC", "getATN"]
+- ["6Antlr410RecognizerC", "getErrorHeader"]
+- ["6Antlr410RecognizerC", "getErrorListenerDispatch"]
+- ["6Antlr410RecognizerC", "getErrorListeners"]
+- ["6Antlr410RecognizerC", "getGrammarFileName"]
+- ["6Antlr410RecognizerC", "getInputStream"]
+- ["6Antlr410RecognizerC", "getInterpreter"]
+- ["6Antlr410RecognizerC", "getParseInfo"]
+- ["6Antlr410RecognizerC", "getRuleIndexMap"]
+- ["6Antlr410RecognizerC", "getRuleNames"]
+- ["6Antlr410RecognizerC", "getSerializedATN"]
+- ["6Antlr410RecognizerC", "getState"]
+- ["6Antlr410RecognizerC", "getTokenFactory"]
+- ["6Antlr410RecognizerC", "getTokenType"]
+- ["6Antlr410RecognizerC", "getTokenTypeMap"]
+- ["6Antlr410RecognizerC", "getVocabulary"]
+- ["6Antlr410RecognizerC", "init"]
+- ["6Antlr410RecognizerC", "precpred"]
+- ["6Antlr410RecognizerC", "removeErrorListener"]
+- ["6Antlr410RecognizerC", "removeErrorListeners"]
+- ["6Antlr410RecognizerC", "ruleIndexMap"]
+- !private ["6Antlr410RecognizerC", "ruleIndexMap.storage"]
+- ["6Antlr410RecognizerC", "sempred"]
+- ["6Antlr410RecognizerC", "setInputStream"]
+- ["6Antlr410RecognizerC", "setInterpreter"]
+- ["6Antlr410RecognizerC", "setState"]
+- ["6Antlr410RecognizerC", "setTokenFactory"]
+- ["6Antlr410RecognizerC", "tokenTypeMap"]
+- !private ["6Antlr410RecognizerC", "tokenTypeMap.storage"]
+- ["6Antlr418RecognizerProtocolP", "ATN"]
+- !private ["6Antlr418RecognizerProtocolP", "CommonToken"]
+- ["6Antlr418RecognizerProtocolP", "ConsoleErrorListener"]
+- ["6Antlr418RecognizerProtocolP", "Int"]
+- ["6Antlr418RecognizerProtocolP", "ParseInfo"]
+- !private ["6Antlr418RecognizerProtocolP", "ProxyErrorListener"]
+- ["6Antlr418RecognizerProtocolP", "String"]
+- !private ["6Antlr418RecognizerProtocolP", "Utils"]
+- ["6Antlr418RecognizerProtocolP", "Vocabulary"]
+- ["6Antlr418RecognizerProtocolP", ""]
+- !private ["6Antlr418RecognizerProtocolP", "_interp"]
+- !private ["6Antlr418RecognizerProtocolP", "_listeners"]
+- !private ["6Antlr418RecognizerProtocolP", "_stateNumber"]
+- !private ["6Antlr418RecognizerProtocolP", "fatalError"]
+- ["6Antlr418RecognizerProtocolP", "getATN"]
+- !private ["6Antlr418RecognizerProtocolP", "getErrorListeners"]
+- ["6Antlr418RecognizerProtocolP", "getGrammarFileName"]
+- ["6Antlr418RecognizerProtocolP", "getParseInfo"]
+- ["6Antlr418RecognizerProtocolP", "getRuleNames"]
+- ["6Antlr418RecognizerProtocolP", "getSerializedATN"]
+- ["6Antlr418RecognizerProtocolP", "getState"]
+- ["6Antlr418RecognizerProtocolP", "getTokenType"]
+- !private ["6Antlr418RecognizerProtocolP", "getTokenTypeMap"]
+- ["6Antlr418RecognizerProtocolP", "getVocabulary"]
+- !private ["6Antlr418RecognizerProtocolP", "ruleIndexMap"]
+- !private ["6Antlr418RecognizerProtocolP", "tokenTypeMap"]
+- !private ["ST", "append"]
+- !private ["ST", "filter"]
+- !private ["ST", "init"]
+- !private ["ST", "removeAll"]
+- !private ["ST", "subscript"]
+- !private ["s27StringInterpolationProtocolP", "appendInterpolation"]
+- !private ["s27StringInterpolationProtocolP", "appendLiteral"]
+- !private ["s16TextOutputStreamP", "appendInterpolation"]
+- !private ["s16TextOutputStreamP", "appendLiteral"]
+- !private ["6Antlr45TokenP", "EOF"]
+- !private ["6Antlr45TokenP", "INVALID_TYPE"]
+- !private ["6Antlr45TokenP", "getCharPositionInLine"]
+- !private ["6Antlr45TokenP", "getLine"]
+- !private ["6Antlr45UtilsC", "toMap"]
+- !private ["6Antlr410VocabularyC", "getLiteralName"]
+- !private ["6Antlr410VocabularyC", "getSymbolicName"]
+- !private ["6Antlr413WritableTokenP", "EOF"]
+- !private ["6Antlr413WritableTokenP", "INVALID_TYPE"]
+- !private ["s14_ArrayProtocolP", "append"]
+- !private ["s14_ArrayProtocolP", "filter"]
+- !private ["s14_ArrayProtocolP", "removeAll"]
+- !private ["s24_DestructorSafeContainerP", "append"]
+- !private ["s24_DestructorSafeContainerP", "filter"]
+- !private ["s24_DestructorSafeContainerP", "removeAll"]
+- !private ["s19_HasContiguousBytesP", "append"]
+- !private ["s19_HasContiguousBytesP", "filter"]
+- !private ["s19_HasContiguousBytesP", "removeAll"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "append"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "filter"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "init"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "removeAll"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "subscript"]
+- !private ["s21_ObjectiveCBridgeableP", "append"]
+- !private ["s21_ObjectiveCBridgeableP", "filter"]
+- !private ["s21_ObjectiveCBridgeableP", "init"]
+- !private ["s21_ObjectiveCBridgeableP", "removeAll"]
+- !private ["s21_ObjectiveCBridgeableP", "subscript"]
+depends-nominal:
+- "6Antlr418ANTLRErrorListenerP"
+- !private "6Antlr43ATNC"
+- !private "Sa"
+- "6Antlr417BaseErrorListenerC"
+- !private "SK"
+- !private "s7CVarArgP"
+- !private "Sl"
+- !private "6Antlr411CommonTokenC"
+- "6Antlr420ConsoleErrorListenerC"
+- !private "10Foundation15ContiguousBytesP"
+- !private "s28CustomDebugStringConvertibleP"
+- !private "s17CustomReflectableP"
+- !private "s23CustomStringConvertibleP"
+- !private "10Foundation12DataProtocolP"
+- !private "Se"
+- !private "s26DefaultStringInterpolationV"
+- !private "SD"
+- !private "SE"
+- !private "SQ"
+- !private "s25ExpressibleByArrayLiteralP"
+- !private "s30ExpressibleByDictionaryLiteralP"
+- !private "SH"
+- !private "SM"
+- !private "10Foundation19MutableDataProtocolP"
+- !private "6Antlr418ProxyErrorListenerC"
+- !private "Sk"
+- !private "Sm"
+- !private "6Antlr420RecognitionExceptionC"
+- "6Antlr410RecognizerC"
+- "6Antlr418RecognizerProtocolP"
+- !private "ST"
+- !private "s27StringInterpolationProtocolP"
+- !private "s16TextOutputStreamP"
+- !private "6Antlr45TokenP"
+- !private "6Antlr45UtilsC"
+- !private "6Antlr410VocabularyC"
+- !private "6Antlr413WritableTokenP"
+- !private "s14_ArrayProtocolP"
+- !private "s24_DestructorSafeContainerP"
+- !private "s19_HasContiguousBytesP"
+- !private "s35_HasCustomAnyHashableRepresentationP"
+- !private "s21_ObjectiveCBridgeableP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
+interface-hash: "9388be638e3212d95e8643cd55ee9c9f"

@@ -1,0 +1,111 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "LexerCustomAction"
+- "=="
+provides-nominal:
+- "6Antlr417LexerCustomActionC"
+provides-member:
+- ["6Antlr417LexerCustomActionC", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "&&"
+- "=="
+- !private "==="
+- "AssignmentPrecedence"
+- "Bool"
+- "Int"
+- "Lexer"
+- "LexerAction"
+- "LexerActionType"
+- "LexerCustomAction"
+- !private "MurmurHash"
+depends-member:
+- !private ["SQ", "LexerActionType"]
+- !private ["SQ", "MurmurHash"]
+- ["SQ", ""]
+- !private ["SQ", "actionIndex"]
+- !private ["SQ", "custom"]
+- !private ["SQ", "getActionType"]
+- !private ["SQ", "init"]
+- !private ["SQ", "rawValue"]
+- !private ["SQ", "ruleIndex"]
+- !private ["SH", "LexerActionType"]
+- !private ["SH", "MurmurHash"]
+- ["SH", ""]
+- !private ["SH", "actionIndex"]
+- !private ["SH", "custom"]
+- !private ["SH", "getActionType"]
+- !private ["SH", "init"]
+- !private ["SH", "rawValue"]
+- !private ["SH", "ruleIndex"]
+- !private ["6Antlr45LexerC", "action"]
+- ["6Antlr411LexerActionC", "Bool"]
+- ["6Antlr411LexerActionC", "Int"]
+- ["6Antlr411LexerActionC", "Lexer"]
+- ["6Antlr411LexerActionC", "LexerActionType"]
+- !private ["6Antlr411LexerActionC", "MurmurHash"]
+- ["6Antlr411LexerActionC", ""]
+- ["6Antlr411LexerActionC", "actionIndex"]
+- ["6Antlr411LexerActionC", "execute"]
+- ["6Antlr411LexerActionC", "getActionIndex"]
+- ["6Antlr411LexerActionC", "getActionType"]
+- ["6Antlr411LexerActionC", "getRuleIndex"]
+- ["6Antlr411LexerActionC", "hashValue"]
+- ["6Antlr411LexerActionC", "init"]
+- ["6Antlr411LexerActionC", "isPositionDependent"]
+- ["6Antlr411LexerActionC", "ruleIndex"]
+- !private ["6Antlr415LexerActionTypeO", "custom"]
+- !private ["6Antlr415LexerActionTypeO", "deinit"]
+- !private ["6Antlr415LexerActionTypeO", "rawValue"]
+- ["6Antlr417LexerCustomActionC", "Bool"]
+- ["6Antlr417LexerCustomActionC", "Int"]
+- ["6Antlr417LexerCustomActionC", "Lexer"]
+- ["6Antlr417LexerCustomActionC", "LexerActionType"]
+- !private ["6Antlr417LexerCustomActionC", "MurmurHash"]
+- !private ["6Antlr417LexerCustomActionC", "actionIndex"]
+- ["6Antlr417LexerCustomActionC", "deinit"]
+- ["6Antlr417LexerCustomActionC", "execute"]
+- ["6Antlr417LexerCustomActionC", "getActionIndex"]
+- ["6Antlr417LexerCustomActionC", "getActionType"]
+- ["6Antlr417LexerCustomActionC", "getRuleIndex"]
+- ["6Antlr417LexerCustomActionC", "hashValue"]
+- ["6Antlr417LexerCustomActionC", "init"]
+- ["6Antlr417LexerCustomActionC", "isPositionDependent"]
+- !private ["6Antlr417LexerCustomActionC", "ruleIndex"]
+- !private ["6Antlr410MurmurHashC", "finish"]
+- !private ["6Antlr410MurmurHashC", "initialize"]
+- !private ["6Antlr410MurmurHashC", "update"]
+- !private ["SY", "custom"]
+- !private ["SY", "rawValue"]
+- !private ["6Antlr410RecognizerC", "action"]
+- !private ["6Antlr418RecognizerProtocolP", "action"]
+- !private ["6Antlr411TokenSourceP", "action"]
+depends-nominal:
+- "SQ"
+- "SH"
+- !private "6Antlr45LexerC"
+- "6Antlr411LexerActionC"
+- !private "6Antlr415LexerActionTypeO"
+- "6Antlr417LexerCustomActionC"
+- !private "6Antlr410MurmurHashC"
+- !private "SY"
+- !private "6Antlr410RecognizerC"
+- !private "6Antlr418RecognizerProtocolP"
+- !private "6Antlr411TokenSourceP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
+interface-hash: "d420f0fdd3bdefd6c2e6bcdef407fa98"

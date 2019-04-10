@@ -1,0 +1,207 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "Interval"
+- "=="
+provides-nominal:
+- "6Antlr48IntervalC"
+provides-member:
+- ["6Antlr48IntervalC", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "!="
+- !private "&&"
+- !private "*"
+- "+"
+- !private "-"
+- !private "<"
+- !private "<="
+- "=="
+- !private ">"
+- !private ">="
+- "Array"
+- "AssignmentPrecedence"
+- "Bool"
+- "Hashable"
+- "Int"
+- "Interval"
+- "String"
+- !private "max"
+- !private "min"
+- !private "||"
+depends-member:
+- ["Sa", "init"]
+- !private ["Sa", "subscript"]
+- ["SK", "init"]
+- !private ["SK", "subscript"]
+- ["s7CVarArgP", "init"]
+- !private ["s7CVarArgP", "subscript"]
+- ["Sl", "init"]
+- !private ["Sl", "subscript"]
+- ["10Foundation15ContiguousBytesP", "init"]
+- !private ["10Foundation15ContiguousBytesP", "subscript"]
+- ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "subscript"]
+- ["s17CustomReflectableP", "init"]
+- !private ["s17CustomReflectableP", "subscript"]
+- !private ["s23CustomStringConvertibleP", "appendInterpolation"]
+- !private ["s23CustomStringConvertibleP", "appendLiteral"]
+- ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "subscript"]
+- ["10Foundation12DataProtocolP", "init"]
+- !private ["10Foundation12DataProtocolP", "subscript"]
+- ["Se", "init"]
+- !private ["Se", "subscript"]
+- !private ["s26DefaultStringInterpolationV", "appendInterpolation"]
+- !private ["s26DefaultStringInterpolationV", "appendLiteral"]
+- ["SE", "init"]
+- !private ["SE", "subscript"]
+- ["SQ", "=="]
+- ["SQ", "Array"]
+- ["SQ", "INTERVAL_POOL_MAX_VALUE"]
+- ["SQ", "Interval"]
+- ["SQ", ""]
+- ["SQ", "_rawHashValue"]
+- !private ["SQ", "a"]
+- !private ["SQ", "b"]
+- !private ["SQ", "cache"]
+- ["SQ", "hash"]
+- ["SQ", "hashValue"]
+- ["SQ", "init"]
+- !private ["SQ", "max"]
+- !private ["SQ", "min"]
+- !private ["SQ", "of"]
+- !private ["SQ", "startsAfterDisjoint"]
+- !private ["SQ", "startsAfterNonDisjoint"]
+- !private ["SQ", "startsBeforeDisjoint"]
+- !private ["SQ", "startsBeforeNonDisjoint"]
+- !private ["SQ", "subscript"]
+- ["s25ExpressibleByArrayLiteralP", "init"]
+- !private ["s25ExpressibleByArrayLiteralP", "subscript"]
+- ["SH", "=="]
+- ["SH", "Array"]
+- ["SH", "INTERVAL_POOL_MAX_VALUE"]
+- ["SH", "Interval"]
+- ["SH", ""]
+- ["SH", "_rawHashValue"]
+- !private ["SH", "a"]
+- !private ["SH", "b"]
+- !private ["SH", "cache"]
+- ["SH", "hash"]
+- ["SH", "hashValue"]
+- ["SH", "init"]
+- !private ["SH", "max"]
+- !private ["SH", "min"]
+- !private ["SH", "of"]
+- !private ["SH", "startsAfterDisjoint"]
+- !private ["SH", "startsAfterNonDisjoint"]
+- !private ["SH", "startsBeforeDisjoint"]
+- !private ["SH", "startsBeforeNonDisjoint"]
+- !private ["SH", "subscript"]
+- !private ["s6HasherV", "combine"]
+- ["6Antlr48IntervalC", "=="]
+- ["6Antlr48IntervalC", "Array"]
+- ["6Antlr48IntervalC", "Bool"]
+- ["6Antlr48IntervalC", "INTERVAL_POOL_MAX_VALUE"]
+- ["6Antlr48IntervalC", "INVALID"]
+- ["6Antlr48IntervalC", "Int"]
+- ["6Antlr48IntervalC", "Interval"]
+- ["6Antlr48IntervalC", "String"]
+- ["6Antlr48IntervalC", "_rawHashValue"]
+- ["6Antlr48IntervalC", "a"]
+- ["6Antlr48IntervalC", "adjacent"]
+- ["6Antlr48IntervalC", "b"]
+- ["6Antlr48IntervalC", "cache"]
+- ["6Antlr48IntervalC", "creates"]
+- ["6Antlr48IntervalC", "deinit"]
+- ["6Antlr48IntervalC", "description"]
+- ["6Antlr48IntervalC", "differenceNotProperlyContained"]
+- ["6Antlr48IntervalC", "disjoint"]
+- ["6Antlr48IntervalC", "hash"]
+- ["6Antlr48IntervalC", "hashValue"]
+- ["6Antlr48IntervalC", "hits"]
+- ["6Antlr48IntervalC", "init"]
+- ["6Antlr48IntervalC", "intersection"]
+- ["6Antlr48IntervalC", "length"]
+- !private ["6Antlr48IntervalC", "max"]
+- !private ["6Antlr48IntervalC", "min"]
+- ["6Antlr48IntervalC", "misses"]
+- ["6Antlr48IntervalC", "of"]
+- ["6Antlr48IntervalC", "outOfRange"]
+- ["6Antlr48IntervalC", "properlyContains"]
+- ["6Antlr48IntervalC", "startsAfter"]
+- ["6Antlr48IntervalC", "startsAfterDisjoint"]
+- ["6Antlr48IntervalC", "startsAfterNonDisjoint"]
+- ["6Antlr48IntervalC", "startsBeforeDisjoint"]
+- ["6Antlr48IntervalC", "startsBeforeNonDisjoint"]
+- ["6Antlr48IntervalC", "union"]
+- ["SM", "init"]
+- !private ["SM", "subscript"]
+- ["10Foundation19MutableDataProtocolP", "init"]
+- !private ["10Foundation19MutableDataProtocolP", "subscript"]
+- ["Sk", "init"]
+- !private ["Sk", "subscript"]
+- ["Sm", "init"]
+- !private ["Sm", "subscript"]
+- ["ST", "init"]
+- !private ["ST", "subscript"]
+- !private ["s27StringInterpolationProtocolP", "appendInterpolation"]
+- !private ["s27StringInterpolationProtocolP", "appendLiteral"]
+- !private ["s16TextOutputStreamP", "appendInterpolation"]
+- !private ["s16TextOutputStreamP", "appendLiteral"]
+- ["s14_ArrayProtocolP", "init"]
+- !private ["s14_ArrayProtocolP", "subscript"]
+- ["s24_DestructorSafeContainerP", "init"]
+- !private ["s24_DestructorSafeContainerP", "subscript"]
+- ["s19_HasContiguousBytesP", "init"]
+- !private ["s19_HasContiguousBytesP", "subscript"]
+- ["s35_HasCustomAnyHashableRepresentationP", "init"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "subscript"]
+- ["s21_ObjectiveCBridgeableP", "init"]
+- !private ["s21_ObjectiveCBridgeableP", "subscript"]
+depends-nominal:
+- "Sa"
+- "SK"
+- "s7CVarArgP"
+- "Sl"
+- "10Foundation15ContiguousBytesP"
+- "s28CustomDebugStringConvertibleP"
+- "s17CustomReflectableP"
+- "s23CustomStringConvertibleP"
+- "10Foundation12DataProtocolP"
+- "Se"
+- !private "s26DefaultStringInterpolationV"
+- "SE"
+- "SQ"
+- "s25ExpressibleByArrayLiteralP"
+- "SH"
+- !private "s6HasherV"
+- "6Antlr48IntervalC"
+- "SM"
+- "10Foundation19MutableDataProtocolP"
+- "Sk"
+- "Sm"
+- "ST"
+- !private "s27StringInterpolationProtocolP"
+- !private "s16TextOutputStreamP"
+- "s14_ArrayProtocolP"
+- "s24_DestructorSafeContainerP"
+- "s19_HasContiguousBytesP"
+- "s35_HasCustomAnyHashableRepresentationP"
+- "s21_ObjectiveCBridgeableP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
+interface-hash: "6110c1dd1631d5e3ebc282f143f412b3"

@@ -1,0 +1,75 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "NoViableAltException"
+provides-nominal:
+- "6Antlr420NoViableAltExceptionC"
+provides-member:
+- ["6Antlr420NoViableAltExceptionC", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- "ATNConfigSet"
+- "AssignmentPrecedence"
+- "IntStream"
+- "NoViableAltException"
+- "Parser"
+- "ParserRuleContext"
+- "RecognitionException"
+- "Token"
+depends-member:
+- ["6Antlr420NoViableAltExceptionC", "ATNConfigSet"]
+- ["6Antlr420NoViableAltExceptionC", "IntStream"]
+- ["6Antlr420NoViableAltExceptionC", "Parser"]
+- ["6Antlr420NoViableAltExceptionC", "ParserRuleContext"]
+- ["6Antlr420NoViableAltExceptionC", "Token"]
+- !private ["6Antlr420NoViableAltExceptionC", "deadEndConfigs"]
+- ["6Antlr420NoViableAltExceptionC", "deinit"]
+- ["6Antlr420NoViableAltExceptionC", "getDeadEndConfigs"]
+- ["6Antlr420NoViableAltExceptionC", "getStartToken"]
+- ["6Antlr420NoViableAltExceptionC", "init"]
+- !private ["6Antlr420NoViableAltExceptionC", "setOffendingToken"]
+- !private ["6Antlr420NoViableAltExceptionC", "startToken"]
+- !private ["6Antlr46ParserC", "_ctx"]
+- !private ["6Antlr46ParserC", "deinit"]
+- !private ["6Antlr46ParserC", "getCurrentToken"]
+- !private ["6Antlr46ParserC", "getInputStream"]
+- ["6Antlr420RecognitionExceptionC", "ATNConfigSet"]
+- ["6Antlr420RecognitionExceptionC", "IntStream"]
+- ["6Antlr420RecognitionExceptionC", "Parser"]
+- ["6Antlr420RecognitionExceptionC", "ParserRuleContext"]
+- ["6Antlr420RecognitionExceptionC", "Token"]
+- ["6Antlr420RecognitionExceptionC", ""]
+- ["6Antlr420RecognitionExceptionC", "deadEndConfigs"]
+- ["6Antlr420RecognitionExceptionC", "getDeadEndConfigs"]
+- ["6Antlr420RecognitionExceptionC", "getStartToken"]
+- ["6Antlr420RecognitionExceptionC", "init"]
+- !private ["6Antlr420RecognitionExceptionC", "setOffendingToken"]
+- ["6Antlr420RecognitionExceptionC", "startToken"]
+- !private ["6Antlr410RecognizerC", "_ctx"]
+- !private ["6Antlr410RecognizerC", "getCurrentToken"]
+- !private ["6Antlr410RecognizerC", "getInputStream"]
+- !private ["6Antlr418RecognizerProtocolP", "_ctx"]
+- !private ["6Antlr418RecognizerProtocolP", "getCurrentToken"]
+- !private ["6Antlr418RecognizerProtocolP", "getInputStream"]
+depends-nominal:
+- "6Antlr420NoViableAltExceptionC"
+- !private "6Antlr46ParserC"
+- "6Antlr420RecognitionExceptionC"
+- !private "6Antlr410RecognizerC"
+- !private "6Antlr418RecognizerProtocolP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
+interface-hash: "5df6621328e2e386ce5a0be0d33f9058"

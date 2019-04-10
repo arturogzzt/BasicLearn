@@ -1,0 +1,53 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "AmbiguityInfo"
+provides-nominal:
+- "6Antlr413AmbiguityInfoC"
+provides-member:
+- ["6Antlr413AmbiguityInfoC", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- "ATNConfigSet"
+- "AmbiguityInfo"
+- "AssignmentPrecedence"
+- "BitSet"
+- "Bool"
+- "DecisionEventInfo"
+- "Int"
+- "TokenStream"
+depends-member:
+- ["6Antlr413AmbiguityInfoC", "ATNConfigSet"]
+- ["6Antlr413AmbiguityInfoC", "BitSet"]
+- ["6Antlr413AmbiguityInfoC", "Bool"]
+- ["6Antlr413AmbiguityInfoC", "Int"]
+- ["6Antlr413AmbiguityInfoC", "TokenStream"]
+- ["6Antlr413AmbiguityInfoC", "ambigAlts"]
+- ["6Antlr413AmbiguityInfoC", "init"]
+- ["6Antlr417DecisionEventInfoC", "ATNConfigSet"]
+- ["6Antlr417DecisionEventInfoC", "BitSet"]
+- ["6Antlr417DecisionEventInfoC", "Bool"]
+- ["6Antlr417DecisionEventInfoC", "Int"]
+- ["6Antlr417DecisionEventInfoC", "TokenStream"]
+- ["6Antlr417DecisionEventInfoC", ""]
+- ["6Antlr417DecisionEventInfoC", "ambigAlts"]
+- ["6Antlr417DecisionEventInfoC", "init"]
+depends-nominal:
+- "6Antlr413AmbiguityInfoC"
+- "6Antlr417DecisionEventInfoC"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
+interface-hash: "487b448e03332f599bb876ffa6ecf202"

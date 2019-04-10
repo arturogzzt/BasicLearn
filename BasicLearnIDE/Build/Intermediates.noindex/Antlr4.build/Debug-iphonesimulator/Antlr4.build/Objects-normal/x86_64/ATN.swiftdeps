@@ -1,0 +1,327 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "ATN"
+provides-nominal:
+- "6Antlr43ATNC"
+provides-member:
+- ["6Antlr43ATNC", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "!"
+- !private "&&"
+- !private "-"
+- !private "<"
+- !private ">="
+- !private "ANTLRError"
+- "ATN"
+- "ATNState"
+- "ATNType"
+- "AssignmentPrecedence"
+- "CastingPrecedence"
+- !private "CommonToken"
+- "DecisionState"
+- "Int"
+- "IntervalSet"
+- !private "LL1Analyzer"
+- "LexerAction"
+- "RuleContext"
+- "RuleStartState"
+- "RuleStopState"
+- !private "RuleTransition"
+- "TokensStartState"
+- !private "||"
+depends-member:
+- !private ["6Antlr410ANTLRErrorO", "deinit"]
+- !private ["6Antlr410ANTLRErrorO", "illegalArgument"]
+- !private ["6Antlr43ATNC", "ANTLRError"]
+- ["6Antlr43ATNC", "ATNState"]
+- ["6Antlr43ATNC", "ATNType"]
+- !private ["6Antlr43ATNC", "CommonToken"]
+- ["6Antlr43ATNC", "DecisionState"]
+- ["6Antlr43ATNC", "INVALID_ALT_NUMBER"]
+- ["6Antlr43ATNC", "Int"]
+- ["6Antlr43ATNC", "IntervalSet"]
+- !private ["6Antlr43ATNC", "LL1Analyzer"]
+- ["6Antlr43ATNC", "LexerAction"]
+- ["6Antlr43ATNC", "RuleContext"]
+- ["6Antlr43ATNC", "RuleStartState"]
+- ["6Antlr43ATNC", "RuleStopState"]
+- !private ["6Antlr43ATNC", "RuleTransition"]
+- ["6Antlr43ATNC", "TokensStartState"]
+- ["6Antlr43ATNC", "addState"]
+- ["6Antlr43ATNC", "appendDecisionToState"]
+- ["6Antlr43ATNC", "appendModeToStartState"]
+- ["6Antlr43ATNC", "decisionToState"]
+- ["6Antlr43ATNC", "defineDecisionState"]
+- ["6Antlr43ATNC", "deinit"]
+- ["6Antlr43ATNC", "getDecisionState"]
+- ["6Antlr43ATNC", "getExpectedTokens"]
+- ["6Antlr43ATNC", "getNumberOfDecisions"]
+- ["6Antlr43ATNC", "grammarType"]
+- ["6Antlr43ATNC", "init"]
+- ["6Antlr43ATNC", "lexerActions"]
+- ["6Antlr43ATNC", "maxTokenType"]
+- ["6Antlr43ATNC", "modeToStartState"]
+- ["6Antlr43ATNC", "nextTokens"]
+- ["6Antlr43ATNC", "removeState"]
+- ["6Antlr43ATNC", "ruleToStartState"]
+- ["6Antlr43ATNC", "ruleToStopState"]
+- ["6Antlr43ATNC", "ruleToTokenType"]
+- ["6Antlr43ATNC", "states"]
+- !private ["6Antlr48ATNStateC", "atn"]
+- !private ["6Antlr48ATNStateC", "decision"]
+- !private ["6Antlr48ATNStateC", "nextTokenWithinRule"]
+- !private ["6Antlr48ATNStateC", "stateNumber"]
+- !private ["6Antlr48ATNStateC", "transition"]
+- !private ["Sa", "append"]
+- !private ["Sa", "count"]
+- ["Sa", "init"]
+- !private ["Sa", "isEmpty"]
+- !private ["Sa", "subscript"]
+- !private ["SK", "append"]
+- !private ["SK", "count"]
+- ["SK", "init"]
+- !private ["SK", "isEmpty"]
+- !private ["SK", "subscript"]
+- !private ["s7CVarArgP", "append"]
+- !private ["s7CVarArgP", "count"]
+- ["s7CVarArgP", "init"]
+- !private ["s7CVarArgP", "isEmpty"]
+- !private ["s7CVarArgP", "subscript"]
+- !private ["Sl", "append"]
+- !private ["Sl", "count"]
+- ["Sl", "init"]
+- !private ["Sl", "isEmpty"]
+- !private ["Sl", "subscript"]
+- !private ["6Antlr411CommonTokenC", "EOF"]
+- !private ["6Antlr411CommonTokenC", "EPSILON"]
+- !private ["6Antlr411CommonTokenC", "deinit"]
+- !private ["10Foundation15ContiguousBytesP", "append"]
+- !private ["10Foundation15ContiguousBytesP", "count"]
+- ["10Foundation15ContiguousBytesP", "init"]
+- !private ["10Foundation15ContiguousBytesP", "isEmpty"]
+- !private ["10Foundation15ContiguousBytesP", "subscript"]
+- !private ["s28CustomDebugStringConvertibleP", "append"]
+- !private ["s28CustomDebugStringConvertibleP", "count"]
+- ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "invokingState"]
+- !private ["s28CustomDebugStringConvertibleP", "isEmpty"]
+- !private ["s28CustomDebugStringConvertibleP", "parent"]
+- !private ["s28CustomDebugStringConvertibleP", "subscript"]
+- !private ["s17CustomReflectableP", "append"]
+- !private ["s17CustomReflectableP", "count"]
+- ["s17CustomReflectableP", "init"]
+- !private ["s17CustomReflectableP", "isEmpty"]
+- !private ["s17CustomReflectableP", "subscript"]
+- !private ["s23CustomStringConvertibleP", "EOF"]
+- !private ["s23CustomStringConvertibleP", "EPSILON"]
+- !private ["s23CustomStringConvertibleP", "add"]
+- !private ["s23CustomStringConvertibleP", "addAll"]
+- !private ["s23CustomStringConvertibleP", "append"]
+- !private ["s23CustomStringConvertibleP", "atn"]
+- !private ["s23CustomStringConvertibleP", "contains"]
+- !private ["s23CustomStringConvertibleP", "count"]
+- !private ["s23CustomStringConvertibleP", "decision"]
+- ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "invokingState"]
+- !private ["s23CustomStringConvertibleP", "isEmpty"]
+- !private ["s23CustomStringConvertibleP", "makeReadonly"]
+- !private ["s23CustomStringConvertibleP", "nextTokenWithinRule"]
+- !private ["s23CustomStringConvertibleP", "parent"]
+- !private ["s23CustomStringConvertibleP", "remove"]
+- !private ["s23CustomStringConvertibleP", "stateNumber"]
+- !private ["s23CustomStringConvertibleP", "subscript"]
+- !private ["s23CustomStringConvertibleP", "transition"]
+- !private ["10Foundation12DataProtocolP", "append"]
+- !private ["10Foundation12DataProtocolP", "count"]
+- ["10Foundation12DataProtocolP", "init"]
+- !private ["10Foundation12DataProtocolP", "isEmpty"]
+- !private ["10Foundation12DataProtocolP", "subscript"]
+- !private ["6Antlr413DecisionStateC", "decision"]
+- !private ["Se", "append"]
+- !private ["Se", "count"]
+- ["Se", "init"]
+- !private ["Se", "isEmpty"]
+- !private ["Se", "subscript"]
+- !private ["SE", "append"]
+- !private ["SE", "count"]
+- ["SE", "init"]
+- !private ["SE", "isEmpty"]
+- !private ["SE", "subscript"]
+- !private ["SQ", "add"]
+- !private ["SQ", "addAll"]
+- !private ["SQ", "append"]
+- !private ["SQ", "atn"]
+- !private ["SQ", "contains"]
+- !private ["SQ", "count"]
+- !private ["SQ", "decision"]
+- ["SQ", "init"]
+- !private ["SQ", "isEmpty"]
+- !private ["SQ", "makeReadonly"]
+- !private ["SQ", "nextTokenWithinRule"]
+- !private ["SQ", "remove"]
+- !private ["SQ", "stateNumber"]
+- !private ["SQ", "subscript"]
+- !private ["SQ", "transition"]
+- !private ["s5ErrorP", "illegalArgument"]
+- !private ["s25ExpressibleByArrayLiteralP", "append"]
+- !private ["s25ExpressibleByArrayLiteralP", "count"]
+- ["s25ExpressibleByArrayLiteralP", "init"]
+- !private ["s25ExpressibleByArrayLiteralP", "isEmpty"]
+- !private ["s25ExpressibleByArrayLiteralP", "subscript"]
+- !private ["SH", "add"]
+- !private ["SH", "addAll"]
+- !private ["SH", "append"]
+- !private ["SH", "atn"]
+- !private ["SH", "contains"]
+- !private ["SH", "count"]
+- !private ["SH", "decision"]
+- ["SH", "init"]
+- !private ["SH", "isEmpty"]
+- !private ["SH", "makeReadonly"]
+- !private ["SH", "nextTokenWithinRule"]
+- !private ["SH", "remove"]
+- !private ["SH", "stateNumber"]
+- !private ["SH", "subscript"]
+- !private ["SH", "transition"]
+- !private ["6Antlr46IntSetP", "add"]
+- !private ["6Antlr46IntSetP", "addAll"]
+- !private ["6Antlr46IntSetP", "contains"]
+- !private ["6Antlr46IntSetP", "init"]
+- !private ["6Antlr46IntSetP", "makeReadonly"]
+- !private ["6Antlr46IntSetP", "remove"]
+- !private ["6Antlr411IntervalSetC", "add"]
+- !private ["6Antlr411IntervalSetC", "addAll"]
+- !private ["6Antlr411IntervalSetC", "contains"]
+- !private ["6Antlr411IntervalSetC", "deinit"]
+- !private ["6Antlr411IntervalSetC", "init"]
+- !private ["6Antlr411IntervalSetC", "makeReadonly"]
+- !private ["6Antlr411IntervalSetC", "remove"]
+- !private ["6Antlr411LL1AnalyzerC", "LOOK"]
+- !private ["6Antlr411LL1AnalyzerC", "init"]
+- !private ["SM", "append"]
+- !private ["SM", "count"]
+- ["SM", "init"]
+- !private ["SM", "isEmpty"]
+- !private ["SM", "subscript"]
+- !private ["10Foundation19MutableDataProtocolP", "append"]
+- !private ["10Foundation19MutableDataProtocolP", "count"]
+- ["10Foundation19MutableDataProtocolP", "init"]
+- !private ["10Foundation19MutableDataProtocolP", "isEmpty"]
+- !private ["10Foundation19MutableDataProtocolP", "subscript"]
+- !private ["6Antlr49ParseTreeP", "invokingState"]
+- !private ["6Antlr49ParseTreeP", "parent"]
+- !private ["Sk", "append"]
+- !private ["Sk", "count"]
+- ["Sk", "init"]
+- !private ["Sk", "isEmpty"]
+- !private ["Sk", "subscript"]
+- !private ["Sm", "append"]
+- !private ["Sm", "count"]
+- ["Sm", "init"]
+- !private ["Sm", "isEmpty"]
+- !private ["Sm", "subscript"]
+- !private ["6Antlr411RuleContextC", "invokingState"]
+- !private ["6Antlr411RuleContextC", "parent"]
+- !private ["6Antlr48RuleNodeP", "invokingState"]
+- !private ["6Antlr48RuleNodeP", "parent"]
+- !private ["6Antlr414RuleTransitionC", "followState"]
+- !private ["ST", "append"]
+- !private ["ST", "count"]
+- ["ST", "init"]
+- !private ["ST", "isEmpty"]
+- !private ["ST", "subscript"]
+- !private ["6Antlr410SyntaxTreeP", "invokingState"]
+- !private ["6Antlr410SyntaxTreeP", "parent"]
+- !private ["6Antlr45TokenP", "EOF"]
+- !private ["6Antlr45TokenP", "EPSILON"]
+- !private ["6Antlr410TransitionC", "followState"]
+- !private ["6Antlr44TreeP", "invokingState"]
+- !private ["6Antlr44TreeP", "parent"]
+- !private ["6Antlr413WritableTokenP", "EOF"]
+- !private ["6Antlr413WritableTokenP", "EPSILON"]
+- !private ["s14_ArrayProtocolP", "append"]
+- !private ["s14_ArrayProtocolP", "count"]
+- ["s14_ArrayProtocolP", "init"]
+- !private ["s14_ArrayProtocolP", "isEmpty"]
+- !private ["s14_ArrayProtocolP", "subscript"]
+- !private ["s24_DestructorSafeContainerP", "append"]
+- !private ["s24_DestructorSafeContainerP", "count"]
+- ["s24_DestructorSafeContainerP", "init"]
+- !private ["s24_DestructorSafeContainerP", "isEmpty"]
+- !private ["s24_DestructorSafeContainerP", "subscript"]
+- !private ["s19_HasContiguousBytesP", "append"]
+- !private ["s19_HasContiguousBytesP", "count"]
+- ["s19_HasContiguousBytesP", "init"]
+- !private ["s19_HasContiguousBytesP", "isEmpty"]
+- !private ["s19_HasContiguousBytesP", "subscript"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "append"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "count"]
+- ["s35_HasCustomAnyHashableRepresentationP", "init"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "isEmpty"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "subscript"]
+- !private ["s21_ObjectiveCBridgeableP", "append"]
+- !private ["s21_ObjectiveCBridgeableP", "count"]
+- ["s21_ObjectiveCBridgeableP", "init"]
+- !private ["s21_ObjectiveCBridgeableP", "isEmpty"]
+- !private ["s21_ObjectiveCBridgeableP", "subscript"]
+depends-nominal:
+- !private "6Antlr410ANTLRErrorO"
+- "6Antlr43ATNC"
+- !private "6Antlr48ATNStateC"
+- "Sa"
+- "SK"
+- "s7CVarArgP"
+- "Sl"
+- !private "6Antlr411CommonTokenC"
+- "10Foundation15ContiguousBytesP"
+- "s28CustomDebugStringConvertibleP"
+- "s17CustomReflectableP"
+- "s23CustomStringConvertibleP"
+- "10Foundation12DataProtocolP"
+- !private "6Antlr413DecisionStateC"
+- "Se"
+- "SE"
+- "SQ"
+- !private "s5ErrorP"
+- "s25ExpressibleByArrayLiteralP"
+- "SH"
+- !private "6Antlr46IntSetP"
+- !private "6Antlr411IntervalSetC"
+- !private "6Antlr411LL1AnalyzerC"
+- "SM"
+- "10Foundation19MutableDataProtocolP"
+- !private "6Antlr49ParseTreeP"
+- "Sk"
+- "Sm"
+- !private "6Antlr411RuleContextC"
+- !private "6Antlr48RuleNodeP"
+- !private "6Antlr414RuleTransitionC"
+- "ST"
+- !private "6Antlr410SyntaxTreeP"
+- !private "6Antlr45TokenP"
+- !private "6Antlr410TransitionC"
+- !private "6Antlr44TreeP"
+- !private "6Antlr413WritableTokenP"
+- "s14_ArrayProtocolP"
+- "s24_DestructorSafeContainerP"
+- "s19_HasContiguousBytesP"
+- "s35_HasCustomAnyHashableRepresentationP"
+- "s21_ObjectiveCBridgeableP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
+interface-hash: "b3e7d4b85b8b1449e83d4aa1bff44d47"

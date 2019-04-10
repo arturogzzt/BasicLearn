@@ -1,0 +1,513 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "TokenStreamRewriter"
+provides-nominal:
+- "6Antlr419TokenStreamRewriterC"
+- "6Antlr419TokenStreamRewriterC16RewriteOperationC"
+- "6Antlr419TokenStreamRewriterC14InsertBeforeOpC"
+- "6Antlr419TokenStreamRewriterC13InsertAfterOpC"
+- "6Antlr419TokenStreamRewriterC9ReplaceOpC"
+- "6Antlr419TokenStreamRewriterC21RewriteOperationArrayC"
+provides-member:
+- ["6Antlr419TokenStreamRewriterC", ""]
+- ["6Antlr419TokenStreamRewriterC16RewriteOperationC", ""]
+- ["6Antlr419TokenStreamRewriterC14InsertBeforeOpC", ""]
+- ["6Antlr419TokenStreamRewriterC13InsertAfterOpC", ""]
+- ["6Antlr419TokenStreamRewriterC9ReplaceOpC", ""]
+- ["6Antlr419TokenStreamRewriterC21RewriteOperationArrayC", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "!"
+- !private "!="
+- !private "&&"
+- !private "+"
+- !private "+="
+- !private "-"
+- !private "..<"
+- !private "<"
+- !private "<="
+- !private "=="
+- !private ">"
+- !private ">="
+- !private "??"
+- !private "ANTLRError"
+- !private "Array"
+- "AssignmentPrecedence"
+- "Bool"
+- "CastingPrecedence"
+- !private "CommonToken"
+- "CustomStringConvertible"
+- !private "Dictionary"
+- "Int"
+- "Interval"
+- "String"
+- "Token"
+- "TokenStream"
+- "TokenStreamRewriter"
+- !private "max"
+- !private "min"
+- !private "type"
+- !private "||"
+depends-member:
+- !private ["6Antlr410ANTLRErrorO", "deinit"]
+- !private ["6Antlr410ANTLRErrorO", "illegalArgument"]
+- !private ["Sa", "append"]
+- !private ["Sa", "count"]
+- ["Sa", "init"]
+- !private ["Sa", "isEmpty"]
+- !private ["Sa", "reserveCapacity"]
+- !private ["Sa", "subscript"]
+- !private ["SK", "append"]
+- !private ["SK", "count"]
+- ["SK", "init"]
+- !private ["SK", "isEmpty"]
+- !private ["SK", "reserveCapacity"]
+- !private ["SK", "subscript"]
+- !private ["s7CVarArgP", "append"]
+- !private ["s7CVarArgP", "count"]
+- ["s7CVarArgP", "init"]
+- !private ["s7CVarArgP", "isEmpty"]
+- !private ["s7CVarArgP", "removeValue"]
+- !private ["s7CVarArgP", "reserveCapacity"]
+- !private ["s7CVarArgP", "subscript"]
+- !private ["s7CVarArgP", "values"]
+- !private ["Sl", "append"]
+- !private ["Sl", "count"]
+- ["Sl", "init"]
+- !private ["Sl", "isEmpty"]
+- !private ["Sl", "removeValue"]
+- !private ["Sl", "reserveCapacity"]
+- !private ["Sl", "subscript"]
+- !private ["Sl", "values"]
+- !private ["6Antlr411CommonTokenC", "EOF"]
+- !private ["6Antlr411CommonTokenC", "deinit"]
+- !private ["SL", "append"]
+- !private ["SL", "init"]
+- !private ["10Foundation15ContiguousBytesP", "append"]
+- !private ["10Foundation15ContiguousBytesP", "count"]
+- ["10Foundation15ContiguousBytesP", "init"]
+- !private ["10Foundation15ContiguousBytesP", "isEmpty"]
+- !private ["10Foundation15ContiguousBytesP", "reserveCapacity"]
+- !private ["10Foundation15ContiguousBytesP", "subscript"]
+- !private ["s28CustomDebugStringConvertibleP", "append"]
+- !private ["s28CustomDebugStringConvertibleP", "count"]
+- !private ["s28CustomDebugStringConvertibleP", "get"]
+- ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "isEmpty"]
+- !private ["s28CustomDebugStringConvertibleP", "removeValue"]
+- !private ["s28CustomDebugStringConvertibleP", "reserveCapacity"]
+- !private ["s28CustomDebugStringConvertibleP", "subscript"]
+- !private ["s28CustomDebugStringConvertibleP", "values"]
+- !private ["s17CustomReflectableP", "append"]
+- !private ["s17CustomReflectableP", "count"]
+- !private ["s17CustomReflectableP", "get"]
+- ["s17CustomReflectableP", "init"]
+- !private ["s17CustomReflectableP", "isEmpty"]
+- !private ["s17CustomReflectableP", "removeValue"]
+- !private ["s17CustomReflectableP", "reserveCapacity"]
+- !private ["s17CustomReflectableP", "subscript"]
+- !private ["s17CustomReflectableP", "values"]
+- !private ["s23CustomStringConvertibleP", "CommonToken"]
+- !private ["s23CustomStringConvertibleP", "EOF"]
+- !private ["s23CustomStringConvertibleP", "String"]
+- ["s23CustomStringConvertibleP", ""]
+- !private ["s23CustomStringConvertibleP", "append"]
+- !private ["s23CustomStringConvertibleP", "appendInterpolation"]
+- !private ["s23CustomStringConvertibleP", "appendLiteral"]
+- !private ["s23CustomStringConvertibleP", "count"]
+- ["s23CustomStringConvertibleP", "description"]
+- !private ["s23CustomStringConvertibleP", "execute"]
+- !private ["s23CustomStringConvertibleP", "getText"]
+- !private ["s23CustomStringConvertibleP", "getTokenIndex"]
+- !private ["s23CustomStringConvertibleP", "getType"]
+- !private ["s23CustomStringConvertibleP", "index"]
+- ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "instructionIndex"]
+- !private ["s23CustomStringConvertibleP", "isEmpty"]
+- !private ["s23CustomStringConvertibleP", "lastIndex"]
+- !private ["s23CustomStringConvertibleP", "removeValue"]
+- !private ["s23CustomStringConvertibleP", "reserveCapacity"]
+- !private ["s23CustomStringConvertibleP", "subscript"]
+- !private ["s23CustomStringConvertibleP", "text"]
+- !private ["s23CustomStringConvertibleP", "tokens"]
+- !private ["s23CustomStringConvertibleP", "type"]
+- !private ["s23CustomStringConvertibleP", "values"]
+- !private ["10Foundation12DataProtocolP", "append"]
+- !private ["10Foundation12DataProtocolP", "count"]
+- ["10Foundation12DataProtocolP", "init"]
+- !private ["10Foundation12DataProtocolP", "isEmpty"]
+- !private ["10Foundation12DataProtocolP", "reserveCapacity"]
+- !private ["10Foundation12DataProtocolP", "subscript"]
+- !private ["Se", "append"]
+- !private ["Se", "count"]
+- !private ["Se", "get"]
+- ["Se", "init"]
+- !private ["Se", "isEmpty"]
+- !private ["Se", "removeValue"]
+- !private ["Se", "reserveCapacity"]
+- !private ["Se", "subscript"]
+- !private ["Se", "values"]
+- !private ["s26DefaultStringInterpolationV", "appendInterpolation"]
+- !private ["s26DefaultStringInterpolationV", "appendLiteral"]
+- ["SD", "init"]
+- !private ["SD", "removeValue"]
+- !private ["SD", "subscript"]
+- !private ["SD", "values"]
+- !private ["SE", "append"]
+- !private ["SE", "count"]
+- !private ["SE", "get"]
+- ["SE", "init"]
+- !private ["SE", "isEmpty"]
+- !private ["SE", "removeValue"]
+- !private ["SE", "reserveCapacity"]
+- !private ["SE", "subscript"]
+- !private ["SE", "values"]
+- !private ["SQ", "a"]
+- !private ["SQ", "append"]
+- !private ["SQ", "b"]
+- !private ["SQ", "count"]
+- !private ["SQ", "get"]
+- ["SQ", "init"]
+- !private ["SQ", "isEmpty"]
+- !private ["SQ", "of"]
+- !private ["SQ", "removeValue"]
+- !private ["SQ", "reserveCapacity"]
+- !private ["SQ", "subscript"]
+- !private ["SQ", "values"]
+- !private ["s5ErrorP", "illegalArgument"]
+- !private ["s25ExpressibleByArrayLiteralP", "append"]
+- !private ["s25ExpressibleByArrayLiteralP", "count"]
+- ["s25ExpressibleByArrayLiteralP", "init"]
+- !private ["s25ExpressibleByArrayLiteralP", "isEmpty"]
+- !private ["s25ExpressibleByArrayLiteralP", "reserveCapacity"]
+- !private ["s25ExpressibleByArrayLiteralP", "subscript"]
+- ["s30ExpressibleByDictionaryLiteralP", "init"]
+- !private ["s30ExpressibleByDictionaryLiteralP", "removeValue"]
+- !private ["s30ExpressibleByDictionaryLiteralP", "subscript"]
+- !private ["s30ExpressibleByDictionaryLiteralP", "values"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "append"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s23ExpressibleByNilLiteralP", "get"]
+- !private ["s32ExpressibleByStringInterpolationP", "append"]
+- !private ["s32ExpressibleByStringInterpolationP", "init"]
+- !private ["s26ExpressibleByStringLiteralP", "append"]
+- !private ["s26ExpressibleByStringLiteralP", "init"]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", "append"]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", "init"]
+- !private ["SH", "a"]
+- !private ["SH", "append"]
+- !private ["SH", "b"]
+- !private ["SH", "count"]
+- !private ["SH", "get"]
+- ["SH", "init"]
+- !private ["SH", "isEmpty"]
+- !private ["SH", "of"]
+- !private ["SH", "removeValue"]
+- !private ["SH", "reserveCapacity"]
+- !private ["SH", "subscript"]
+- !private ["SH", "values"]
+- ["6Antlr419TokenStreamRewriterC13InsertAfterOpC", "Int"]
+- ["6Antlr419TokenStreamRewriterC13InsertAfterOpC", "String"]
+- ["6Antlr419TokenStreamRewriterC13InsertAfterOpC", "TokenStream"]
+- ["6Antlr419TokenStreamRewriterC13InsertAfterOpC", "init"]
+- !private ["6Antlr419TokenStreamRewriterC14InsertBeforeOpC", "CommonToken"]
+- ["6Antlr419TokenStreamRewriterC14InsertBeforeOpC", "Int"]
+- ["6Antlr419TokenStreamRewriterC14InsertBeforeOpC", "String"]
+- ["6Antlr419TokenStreamRewriterC14InsertBeforeOpC", "TokenStream"]
+- ["6Antlr419TokenStreamRewriterC14InsertBeforeOpC", ""]
+- ["6Antlr419TokenStreamRewriterC14InsertBeforeOpC", "execute"]
+- !private ["6Antlr419TokenStreamRewriterC14InsertBeforeOpC", "index"]
+- ["6Antlr419TokenStreamRewriterC14InsertBeforeOpC", "init"]
+- !private ["6Antlr419TokenStreamRewriterC14InsertBeforeOpC", "text"]
+- !private ["6Antlr419TokenStreamRewriterC14InsertBeforeOpC", "tokens"]
+- !private ["6Antlr49IntStreamP", "get"]
+- !private ["6Antlr49IntStreamP", "getText"]
+- !private ["6Antlr49IntStreamP", "size"]
+- !private ["6Antlr48IntervalC", "a"]
+- !private ["6Antlr48IntervalC", "b"]
+- !private ["6Antlr48IntervalC", "of"]
+- !private ["s25LosslessStringConvertibleP", "append"]
+- !private ["s25LosslessStringConvertibleP", "init"]
+- !private ["s10MirrorPathP", "append"]
+- !private ["s10MirrorPathP", "init"]
+- !private ["SM", "append"]
+- !private ["SM", "count"]
+- ["SM", "init"]
+- !private ["SM", "isEmpty"]
+- !private ["SM", "reserveCapacity"]
+- !private ["SM", "subscript"]
+- !private ["10Foundation19MutableDataProtocolP", "append"]
+- !private ["10Foundation19MutableDataProtocolP", "count"]
+- ["10Foundation19MutableDataProtocolP", "init"]
+- !private ["10Foundation19MutableDataProtocolP", "isEmpty"]
+- !private ["10Foundation19MutableDataProtocolP", "reserveCapacity"]
+- !private ["10Foundation19MutableDataProtocolP", "subscript"]
+- !private ["So8NSCodingP", "append"]
+- !private ["So9NSCopyingP", "append"]
+- !private ["So21NSItemProviderReadingP", "append"]
+- !private ["So21NSItemProviderWritingP", "append"]
+- !private ["So16NSMutableCopyingP", "append"]
+- !private ["So8NSObjectC", "append"]
+- !private ["So8NSObjectP", "append"]
+- !private ["So14NSSecureCodingP", "append"]
+- !private ["So8NSStringC", "append"]
+- !private ["Sq", "get"]
+- !private ["Sk", "append"]
+- !private ["Sk", "count"]
+- ["Sk", "init"]
+- !private ["Sk", "isEmpty"]
+- !private ["Sk", "reserveCapacity"]
+- !private ["Sk", "subscript"]
+- !private ["Sm", "append"]
+- !private ["Sm", "count"]
+- ["Sm", "init"]
+- !private ["Sm", "isEmpty"]
+- !private ["Sm", "reserveCapacity"]
+- !private ["Sm", "subscript"]
+- ["6Antlr419TokenStreamRewriterC9ReplaceOpC", "Int"]
+- ["6Antlr419TokenStreamRewriterC9ReplaceOpC", "String"]
+- ["6Antlr419TokenStreamRewriterC9ReplaceOpC", "TokenStream"]
+- !private ["6Antlr419TokenStreamRewriterC9ReplaceOpC", "deinit"]
+- ["6Antlr419TokenStreamRewriterC9ReplaceOpC", "description"]
+- ["6Antlr419TokenStreamRewriterC9ReplaceOpC", "execute"]
+- !private ["6Antlr419TokenStreamRewriterC9ReplaceOpC", "index"]
+- ["6Antlr419TokenStreamRewriterC9ReplaceOpC", "init"]
+- !private ["6Antlr419TokenStreamRewriterC9ReplaceOpC", "lastIndex"]
+- !private ["6Antlr419TokenStreamRewriterC9ReplaceOpC", "text"]
+- !private ["6Antlr419TokenStreamRewriterC9ReplaceOpC", "tokens"]
+- !private ["6Antlr419TokenStreamRewriterC16RewriteOperationC", "CommonToken"]
+- ["6Antlr419TokenStreamRewriterC16RewriteOperationC", "Int"]
+- ["6Antlr419TokenStreamRewriterC16RewriteOperationC", "String"]
+- ["6Antlr419TokenStreamRewriterC16RewriteOperationC", "TokenStream"]
+- ["6Antlr419TokenStreamRewriterC16RewriteOperationC", ""]
+- ["6Antlr419TokenStreamRewriterC16RewriteOperationC", "deinit"]
+- ["6Antlr419TokenStreamRewriterC16RewriteOperationC", "description"]
+- ["6Antlr419TokenStreamRewriterC16RewriteOperationC", "execute"]
+- ["6Antlr419TokenStreamRewriterC16RewriteOperationC", "index"]
+- ["6Antlr419TokenStreamRewriterC16RewriteOperationC", "init"]
+- !private ["6Antlr419TokenStreamRewriterC16RewriteOperationC", "init"]
+- ["6Antlr419TokenStreamRewriterC16RewriteOperationC", "instructionIndex"]
+- ["6Antlr419TokenStreamRewriterC16RewriteOperationC", "lastIndex"]
+- ["6Antlr419TokenStreamRewriterC16RewriteOperationC", "text"]
+- ["6Antlr419TokenStreamRewriterC16RewriteOperationC", "tokens"]
+- !private ["6Antlr419TokenStreamRewriterC16RewriteOperationC", "type"]
+- !private ["6Antlr419TokenStreamRewriterC21RewriteOperationArrayC", "ANTLRError"]
+- !private ["6Antlr419TokenStreamRewriterC21RewriteOperationArrayC", "Array"]
+- ["6Antlr419TokenStreamRewriterC21RewriteOperationArrayC", "Bool"]
+- !private ["6Antlr419TokenStreamRewriterC21RewriteOperationArrayC", "InsertAfterOp"]
+- !private ["6Antlr419TokenStreamRewriterC21RewriteOperationArrayC", "InsertBeforeOp"]
+- ["6Antlr419TokenStreamRewriterC21RewriteOperationArrayC", "Int"]
+- !private ["6Antlr419TokenStreamRewriterC21RewriteOperationArrayC", "ReplaceOp"]
+- ["6Antlr419TokenStreamRewriterC21RewriteOperationArrayC", "RewriteOperation"]
+- ["6Antlr419TokenStreamRewriterC21RewriteOperationArrayC", "String"]
+- !private ["6Antlr419TokenStreamRewriterC21RewriteOperationArrayC", "TokenStreamRewriter"]
+- ["6Antlr419TokenStreamRewriterC21RewriteOperationArrayC", "append"]
+- ["6Antlr419TokenStreamRewriterC21RewriteOperationArrayC", "catOpText"]
+- ["6Antlr419TokenStreamRewriterC21RewriteOperationArrayC", "count"]
+- ["6Antlr419TokenStreamRewriterC21RewriteOperationArrayC", "getKindOfOps"]
+- ["6Antlr419TokenStreamRewriterC21RewriteOperationArrayC", "init"]
+- ["6Antlr419TokenStreamRewriterC21RewriteOperationArrayC", "isEmpty"]
+- !private ["6Antlr419TokenStreamRewriterC21RewriteOperationArrayC", "max"]
+- !private ["6Antlr419TokenStreamRewriterC21RewriteOperationArrayC", "min"]
+- ["6Antlr419TokenStreamRewriterC21RewriteOperationArrayC", "reduceToSingleOperationPerIndex"]
+- !private ["6Antlr419TokenStreamRewriterC21RewriteOperationArrayC", "rewrites"]
+- ["6Antlr419TokenStreamRewriterC21RewriteOperationArrayC", "rollback"]
+- !private ["ST", "append"]
+- !private ["ST", "count"]
+- ["ST", "init"]
+- !private ["ST", "isEmpty"]
+- !private ["ST", "removeValue"]
+- !private ["ST", "reserveCapacity"]
+- !private ["ST", "subscript"]
+- !private ["ST", "values"]
+- !private ["SS", "append"]
+- !private ["SS", "init"]
+- !private ["s27StringInterpolationProtocolP", "appendInterpolation"]
+- !private ["s27StringInterpolationProtocolP", "appendLiteral"]
+- !private ["Sy", "append"]
+- !private ["Sy", "init"]
+- !private ["s16TextOutputStreamP", "append"]
+- !private ["s16TextOutputStreamP", "appendInterpolation"]
+- !private ["s16TextOutputStreamP", "appendLiteral"]
+- !private ["s16TextOutputStreamP", "init"]
+- !private ["s20TextOutputStreamableP", "append"]
+- !private ["s20TextOutputStreamableP", "init"]
+- !private ["6Antlr45TokenP", "EOF"]
+- !private ["6Antlr45TokenP", "getText"]
+- !private ["6Antlr45TokenP", "getTokenIndex"]
+- !private ["6Antlr45TokenP", "getType"]
+- !private ["6Antlr411TokenStreamP", "get"]
+- !private ["6Antlr411TokenStreamP", "getText"]
+- !private ["6Antlr411TokenStreamP", "size"]
+- !private ["6Antlr419TokenStreamRewriterC", "ANTLRError"]
+- !private ["6Antlr419TokenStreamRewriterC", "Array"]
+- ["6Antlr419TokenStreamRewriterC", "Bool"]
+- !private ["6Antlr419TokenStreamRewriterC", "CommonToken"]
+- ["6Antlr419TokenStreamRewriterC", "CustomStringConvertible"]
+- ["6Antlr419TokenStreamRewriterC", "DEFAULT_PROGRAM_NAME"]
+- !private ["6Antlr419TokenStreamRewriterC", "Dictionary"]
+- ["6Antlr419TokenStreamRewriterC", "InsertAfterOp"]
+- ["6Antlr419TokenStreamRewriterC", "InsertBeforeOp"]
+- ["6Antlr419TokenStreamRewriterC", "Int"]
+- ["6Antlr419TokenStreamRewriterC", "Interval"]
+- ["6Antlr419TokenStreamRewriterC", "MIN_TOKEN_INDEX"]
+- ["6Antlr419TokenStreamRewriterC", "PROGRAM_INIT_SIZE"]
+- ["6Antlr419TokenStreamRewriterC", "ReplaceOp"]
+- ["6Antlr419TokenStreamRewriterC", "RewriteOperation"]
+- ["6Antlr419TokenStreamRewriterC", "RewriteOperationArray"]
+- ["6Antlr419TokenStreamRewriterC", "String"]
+- ["6Antlr419TokenStreamRewriterC", "Token"]
+- ["6Antlr419TokenStreamRewriterC", "TokenStream"]
+- !private ["6Antlr419TokenStreamRewriterC", "TokenStreamRewriter"]
+- ["6Antlr419TokenStreamRewriterC", "delete"]
+- ["6Antlr419TokenStreamRewriterC", "deleteProgram"]
+- ["6Antlr419TokenStreamRewriterC", "getLastRewriteTokenIndex"]
+- ["6Antlr419TokenStreamRewriterC", "getProgram"]
+- ["6Antlr419TokenStreamRewriterC", "getText"]
+- ["6Antlr419TokenStreamRewriterC", "getTokenStream"]
+- ["6Antlr419TokenStreamRewriterC", "init"]
+- !private ["6Antlr419TokenStreamRewriterC", "initializeProgram"]
+- ["6Antlr419TokenStreamRewriterC", "insertAfter"]
+- ["6Antlr419TokenStreamRewriterC", "insertBefore"]
+- ["6Antlr419TokenStreamRewriterC", "lastRewriteTokenIndexes"]
+- !private ["6Antlr419TokenStreamRewriterC", "max"]
+- !private ["6Antlr419TokenStreamRewriterC", "min"]
+- ["6Antlr419TokenStreamRewriterC", "programs"]
+- ["6Antlr419TokenStreamRewriterC", "replace"]
+- ["6Antlr419TokenStreamRewriterC", "rollback"]
+- ["6Antlr419TokenStreamRewriterC", "setLastRewriteTokenIndex"]
+- ["6Antlr419TokenStreamRewriterC", "tokens"]
+- !private ["6Antlr419TokenStreamRewriterC", "type"]
+- !private ["6Antlr413WritableTokenP", "EOF"]
+- !private ["s14_ArrayProtocolP", "append"]
+- !private ["s14_ArrayProtocolP", "count"]
+- ["s14_ArrayProtocolP", "init"]
+- !private ["s14_ArrayProtocolP", "isEmpty"]
+- !private ["s14_ArrayProtocolP", "reserveCapacity"]
+- !private ["s14_ArrayProtocolP", "subscript"]
+- !private ["s30_CustomPlaygroundQuickLookableP", "append"]
+- !private ["s30_CustomPlaygroundQuickLookableP", "init"]
+- !private ["s24_DestructorSafeContainerP", "append"]
+- !private ["s24_DestructorSafeContainerP", "count"]
+- ["s24_DestructorSafeContainerP", "init"]
+- !private ["s24_DestructorSafeContainerP", "isEmpty"]
+- !private ["s24_DestructorSafeContainerP", "reserveCapacity"]
+- !private ["s24_DestructorSafeContainerP", "subscript"]
+- !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "append"]
+- !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s34_ExpressibleByBuiltinStringLiteralP", "append"]
+- !private ["s34_ExpressibleByBuiltinStringLiteralP", "init"]
+- !private ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "append"]
+- !private ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "init"]
+- !private ["s19_HasContiguousBytesP", "append"]
+- !private ["s19_HasContiguousBytesP", "count"]
+- ["s19_HasContiguousBytesP", "init"]
+- !private ["s19_HasContiguousBytesP", "isEmpty"]
+- !private ["s19_HasContiguousBytesP", "reserveCapacity"]
+- !private ["s19_HasContiguousBytesP", "subscript"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "append"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "count"]
+- ["s35_HasCustomAnyHashableRepresentationP", "init"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "isEmpty"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "removeValue"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "reserveCapacity"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "subscript"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "values"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "append"]
+- !private ["s21_ObjectiveCBridgeableP", "append"]
+- !private ["s21_ObjectiveCBridgeableP", "count"]
+- !private ["s21_ObjectiveCBridgeableP", "get"]
+- ["s21_ObjectiveCBridgeableP", "init"]
+- !private ["s21_ObjectiveCBridgeableP", "isEmpty"]
+- !private ["s21_ObjectiveCBridgeableP", "removeValue"]
+- !private ["s21_ObjectiveCBridgeableP", "reserveCapacity"]
+- !private ["s21_ObjectiveCBridgeableP", "subscript"]
+- !private ["s21_ObjectiveCBridgeableP", "values"]
+depends-nominal:
+- !private "6Antlr410ANTLRErrorO"
+- "Sa"
+- "SK"
+- "s7CVarArgP"
+- "Sl"
+- !private "6Antlr411CommonTokenC"
+- !private "SL"
+- "10Foundation15ContiguousBytesP"
+- "s28CustomDebugStringConvertibleP"
+- "s17CustomReflectableP"
+- "s23CustomStringConvertibleP"
+- "10Foundation12DataProtocolP"
+- "Se"
+- !private "s26DefaultStringInterpolationV"
+- "SD"
+- "SE"
+- "SQ"
+- !private "s5ErrorP"
+- "s25ExpressibleByArrayLiteralP"
+- "s30ExpressibleByDictionaryLiteralP"
+- !private "s43ExpressibleByExtendedGraphemeClusterLiteralP"
+- !private "s23ExpressibleByNilLiteralP"
+- !private "s32ExpressibleByStringInterpolationP"
+- !private "s26ExpressibleByStringLiteralP"
+- !private "s33ExpressibleByUnicodeScalarLiteralP"
+- "SH"
+- "6Antlr419TokenStreamRewriterC13InsertAfterOpC"
+- "6Antlr419TokenStreamRewriterC14InsertBeforeOpC"
+- !private "6Antlr49IntStreamP"
+- !private "6Antlr48IntervalC"
+- !private "s25LosslessStringConvertibleP"
+- !private "s10MirrorPathP"
+- "SM"
+- "10Foundation19MutableDataProtocolP"
+- !private "So8NSCodingP"
+- !private "So9NSCopyingP"
+- !private "So21NSItemProviderReadingP"
+- !private "So21NSItemProviderWritingP"
+- !private "So16NSMutableCopyingP"
+- !private "So8NSObjectC"
+- !private "So8NSObjectP"
+- !private "So14NSSecureCodingP"
+- !private "So8NSStringC"
+- !private "Sq"
+- "Sk"
+- "Sm"
+- "6Antlr419TokenStreamRewriterC9ReplaceOpC"
+- "6Antlr419TokenStreamRewriterC16RewriteOperationC"
+- "6Antlr419TokenStreamRewriterC21RewriteOperationArrayC"
+- "ST"
+- !private "SS"
+- !private "s27StringInterpolationProtocolP"
+- !private "Sy"
+- !private "s16TextOutputStreamP"
+- !private "s20TextOutputStreamableP"
+- !private "6Antlr45TokenP"
+- !private "6Antlr411TokenStreamP"
+- "6Antlr419TokenStreamRewriterC"
+- !private "6Antlr413WritableTokenP"
+- "s14_ArrayProtocolP"
+- !private "s30_CustomPlaygroundQuickLookableP"
+- "s24_DestructorSafeContainerP"
+- !private "s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP"
+- !private "s34_ExpressibleByBuiltinStringLiteralP"
+- !private "s41_ExpressibleByBuiltinUnicodeScalarLiteralP"
+- "s19_HasContiguousBytesP"
+- "s35_HasCustomAnyHashableRepresentationP"
+- !private "10Foundation27_KeyValueCodingAndObservingP"
+- "s21_ObjectiveCBridgeableP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
+interface-hash: "2249b61f333ba7ff802e0b21d0a5f4da"

@@ -1,0 +1,65 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "PredicateEvalInfo"
+provides-nominal:
+- "6Antlr417PredicateEvalInfoC"
+provides-member:
+- ["6Antlr417PredicateEvalInfoC", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "ATNConfigSet"
+- "AssignmentPrecedence"
+- "Bool"
+- "DecisionEventInfo"
+- "Int"
+- "PredicateEvalInfo"
+- "SemanticContext"
+- "TokenStream"
+depends-member:
+- !private ["6Antlr412ATNConfigSetC", "init"]
+- !private ["s23CustomStringConvertibleP", "init"]
+- !private ["6Antlr417DecisionEventInfoC", "ATNConfigSet"]
+- ["6Antlr417DecisionEventInfoC", "Bool"]
+- ["6Antlr417DecisionEventInfoC", "Int"]
+- ["6Antlr417DecisionEventInfoC", "SemanticContext"]
+- ["6Antlr417DecisionEventInfoC", "TokenStream"]
+- ["6Antlr417DecisionEventInfoC", ""]
+- ["6Antlr417DecisionEventInfoC", "evalResult"]
+- ["6Antlr417DecisionEventInfoC", "init"]
+- ["6Antlr417DecisionEventInfoC", "predictedAlt"]
+- ["6Antlr417DecisionEventInfoC", "semctx"]
+- !private ["SQ", "init"]
+- !private ["SH", "init"]
+- !private ["6Antlr417PredicateEvalInfoC", "ATNConfigSet"]
+- ["6Antlr417PredicateEvalInfoC", "Bool"]
+- ["6Antlr417PredicateEvalInfoC", "Int"]
+- ["6Antlr417PredicateEvalInfoC", "SemanticContext"]
+- ["6Antlr417PredicateEvalInfoC", "TokenStream"]
+- ["6Antlr417PredicateEvalInfoC", "evalResult"]
+- ["6Antlr417PredicateEvalInfoC", "init"]
+- ["6Antlr417PredicateEvalInfoC", "predictedAlt"]
+- ["6Antlr417PredicateEvalInfoC", "semctx"]
+depends-nominal:
+- !private "6Antlr412ATNConfigSetC"
+- !private "s23CustomStringConvertibleP"
+- "6Antlr417DecisionEventInfoC"
+- !private "SQ"
+- !private "SH"
+- "6Antlr417PredicateEvalInfoC"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
+interface-hash: "6c69f1f45cff72c58270d6bf779e5985"

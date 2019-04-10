@@ -1,0 +1,232 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "LexerActionExecutor"
+- "=="
+provides-nominal:
+- "6Antlr419LexerActionExecutorC"
+provides-member:
+- ["6Antlr419LexerActionExecutorC", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "!"
+- !private "!="
+- !private "&&"
+- !private "+"
+- !private "..<"
+- "=="
+- !private "==="
+- "AssignmentPrecedence"
+- "Bool"
+- "CastingPrecedence"
+- "CharStream"
+- "Hashable"
+- "Int"
+- "Lexer"
+- "LexerAction"
+- "LexerActionExecutor"
+- !private "LexerIndexedCustomAction"
+- !private "MurmurHash"
+depends-member:
+- !private ["Sa", "append"]
+- !private ["Sa", "count"]
+- !private ["Sa", "subscript"]
+- !private ["s10ArraySliceV", "isPositionDependent"]
+- !private ["SK", "append"]
+- !private ["SK", "count"]
+- !private ["SK", "isPositionDependent"]
+- !private ["SK", "subscript"]
+- !private ["s7CVarArgP", "append"]
+- !private ["s7CVarArgP", "count"]
+- !private ["s7CVarArgP", "subscript"]
+- !private ["6Antlr410CharStreamP", "index"]
+- !private ["6Antlr410CharStreamP", "seek"]
+- !private ["Sl", "append"]
+- !private ["Sl", "count"]
+- !private ["Sl", "isPositionDependent"]
+- !private ["Sl", "subscript"]
+- !private ["10Foundation15ContiguousBytesP", "append"]
+- !private ["10Foundation15ContiguousBytesP", "count"]
+- !private ["10Foundation15ContiguousBytesP", "isPositionDependent"]
+- !private ["10Foundation15ContiguousBytesP", "subscript"]
+- !private ["s28CustomDebugStringConvertibleP", "append"]
+- !private ["s28CustomDebugStringConvertibleP", "count"]
+- !private ["s28CustomDebugStringConvertibleP", "isPositionDependent"]
+- !private ["s28CustomDebugStringConvertibleP", "subscript"]
+- !private ["s17CustomReflectableP", "append"]
+- !private ["s17CustomReflectableP", "count"]
+- !private ["s17CustomReflectableP", "isPositionDependent"]
+- !private ["s17CustomReflectableP", "subscript"]
+- !private ["s23CustomStringConvertibleP", "append"]
+- !private ["s23CustomStringConvertibleP", "count"]
+- !private ["s23CustomStringConvertibleP", "isPositionDependent"]
+- !private ["s23CustomStringConvertibleP", "subscript"]
+- !private ["10Foundation12DataProtocolP", "append"]
+- !private ["10Foundation12DataProtocolP", "count"]
+- !private ["10Foundation12DataProtocolP", "isPositionDependent"]
+- !private ["10Foundation12DataProtocolP", "subscript"]
+- !private ["Se", "append"]
+- !private ["Se", "count"]
+- !private ["Se", "subscript"]
+- !private ["SE", "append"]
+- !private ["SE", "count"]
+- !private ["SE", "subscript"]
+- ["SQ", "=="]
+- !private ["SQ", "LexerActionExecutor"]
+- !private ["SQ", "LexerIndexedCustomAction"]
+- !private ["SQ", "MurmurHash"]
+- ["SQ", ""]
+- ["SQ", "_rawHashValue"]
+- !private ["SQ", "append"]
+- !private ["SQ", "count"]
+- !private ["SQ", "execute"]
+- !private ["SQ", "getAction"]
+- !private ["SQ", "getOffset"]
+- ["SQ", "hash"]
+- !private ["SQ", "hashCode"]
+- ["SQ", "hashValue"]
+- !private ["SQ", "init"]
+- !private ["SQ", "isPositionDependent"]
+- !private ["SQ", "lexerActions"]
+- !private ["SQ", "subscript"]
+- !private ["s25ExpressibleByArrayLiteralP", "append"]
+- !private ["s25ExpressibleByArrayLiteralP", "count"]
+- !private ["s25ExpressibleByArrayLiteralP", "isPositionDependent"]
+- !private ["s25ExpressibleByArrayLiteralP", "subscript"]
+- ["SH", "=="]
+- !private ["SH", "LexerActionExecutor"]
+- !private ["SH", "LexerIndexedCustomAction"]
+- !private ["SH", "MurmurHash"]
+- ["SH", ""]
+- ["SH", "_rawHashValue"]
+- !private ["SH", "append"]
+- !private ["SH", "count"]
+- !private ["SH", "execute"]
+- !private ["SH", "getAction"]
+- !private ["SH", "getOffset"]
+- ["SH", "hash"]
+- !private ["SH", "hashCode"]
+- ["SH", "hashValue"]
+- !private ["SH", "init"]
+- !private ["SH", "isPositionDependent"]
+- !private ["SH", "lexerActions"]
+- !private ["SH", "subscript"]
+- !private ["s6HasherV", "combine"]
+- !private ["6Antlr49IntStreamP", "index"]
+- !private ["6Antlr49IntStreamP", "seek"]
+- !private ["6Antlr411LexerActionC", "deinit"]
+- !private ["6Antlr411LexerActionC", "execute"]
+- !private ["6Antlr411LexerActionC", "getAction"]
+- !private ["6Antlr411LexerActionC", "getOffset"]
+- !private ["6Antlr411LexerActionC", "isPositionDependent"]
+- ["6Antlr419LexerActionExecutorC", "=="]
+- !private ["6Antlr419LexerActionExecutorC", "Bool"]
+- ["6Antlr419LexerActionExecutorC", "CharStream"]
+- ["6Antlr419LexerActionExecutorC", "Int"]
+- ["6Antlr419LexerActionExecutorC", "Lexer"]
+- ["6Antlr419LexerActionExecutorC", "LexerAction"]
+- ["6Antlr419LexerActionExecutorC", "LexerActionExecutor"]
+- !private ["6Antlr419LexerActionExecutorC", "LexerIndexedCustomAction"]
+- !private ["6Antlr419LexerActionExecutorC", "MurmurHash"]
+- ["6Antlr419LexerActionExecutorC", "_rawHashValue"]
+- ["6Antlr419LexerActionExecutorC", "append"]
+- ["6Antlr419LexerActionExecutorC", "deinit"]
+- ["6Antlr419LexerActionExecutorC", "execute"]
+- ["6Antlr419LexerActionExecutorC", "fixOffsetBeforeMatch"]
+- ["6Antlr419LexerActionExecutorC", "getLexerActions"]
+- ["6Antlr419LexerActionExecutorC", "hash"]
+- !private ["6Antlr419LexerActionExecutorC", "hashCode"]
+- ["6Antlr419LexerActionExecutorC", "hashValue"]
+- ["6Antlr419LexerActionExecutorC", "init"]
+- !private ["6Antlr419LexerActionExecutorC", "lexerActions"]
+- !private ["6Antlr424LexerIndexedCustomActionC", "getAction"]
+- !private ["6Antlr424LexerIndexedCustomActionC", "getOffset"]
+- !private ["6Antlr424LexerIndexedCustomActionC", "init"]
+- !private ["6Antlr410MurmurHashC", "finish"]
+- !private ["6Antlr410MurmurHashC", "initialize"]
+- !private ["6Antlr410MurmurHashC", "update"]
+- !private ["SM", "append"]
+- !private ["SM", "count"]
+- !private ["SM", "isPositionDependent"]
+- !private ["SM", "subscript"]
+- !private ["10Foundation19MutableDataProtocolP", "append"]
+- !private ["10Foundation19MutableDataProtocolP", "count"]
+- !private ["10Foundation19MutableDataProtocolP", "subscript"]
+- !private ["Sk", "append"]
+- !private ["Sk", "count"]
+- !private ["Sk", "isPositionDependent"]
+- !private ["Sk", "subscript"]
+- !private ["Sm", "append"]
+- !private ["Sm", "count"]
+- !private ["Sm", "isPositionDependent"]
+- !private ["Sm", "subscript"]
+- !private ["ST", "append"]
+- !private ["ST", "count"]
+- !private ["ST", "isPositionDependent"]
+- !private ["ST", "subscript"]
+- !private ["s14_ArrayProtocolP", "append"]
+- !private ["s14_ArrayProtocolP", "count"]
+- !private ["s14_ArrayProtocolP", "isPositionDependent"]
+- !private ["s14_ArrayProtocolP", "subscript"]
+- !private ["s24_DestructorSafeContainerP", "append"]
+- !private ["s24_DestructorSafeContainerP", "count"]
+- !private ["s24_DestructorSafeContainerP", "isPositionDependent"]
+- !private ["s24_DestructorSafeContainerP", "subscript"]
+- !private ["s19_HasContiguousBytesP", "append"]
+- !private ["s19_HasContiguousBytesP", "count"]
+- !private ["s19_HasContiguousBytesP", "subscript"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "append"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "count"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "subscript"]
+- !private ["s21_ObjectiveCBridgeableP", "append"]
+- !private ["s21_ObjectiveCBridgeableP", "count"]
+- !private ["s21_ObjectiveCBridgeableP", "subscript"]
+depends-nominal:
+- !private "Sa"
+- !private "s10ArraySliceV"
+- !private "SK"
+- !private "s7CVarArgP"
+- !private "6Antlr410CharStreamP"
+- !private "Sl"
+- !private "10Foundation15ContiguousBytesP"
+- !private "s28CustomDebugStringConvertibleP"
+- !private "s17CustomReflectableP"
+- !private "s23CustomStringConvertibleP"
+- !private "10Foundation12DataProtocolP"
+- !private "Se"
+- !private "SE"
+- "SQ"
+- !private "s25ExpressibleByArrayLiteralP"
+- "SH"
+- !private "s6HasherV"
+- !private "6Antlr49IntStreamP"
+- !private "6Antlr411LexerActionC"
+- "6Antlr419LexerActionExecutorC"
+- !private "6Antlr424LexerIndexedCustomActionC"
+- !private "6Antlr410MurmurHashC"
+- !private "SM"
+- !private "10Foundation19MutableDataProtocolP"
+- !private "Sk"
+- !private "Sm"
+- !private "ST"
+- !private "s14_ArrayProtocolP"
+- !private "s24_DestructorSafeContainerP"
+- !private "s19_HasContiguousBytesP"
+- !private "s35_HasCustomAnyHashableRepresentationP"
+- !private "s21_ObjectiveCBridgeableP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
+interface-hash: "915a48c989eefa150a378dbd3031c1e0"

@@ -1,0 +1,169 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "ATNConfig"
+- "=="
+provides-nominal:
+- "6Antlr49ATNConfigC"
+provides-member:
+- ["6Antlr49ATNConfigC", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "!"
+- !private "!="
+- !private "&"
+- !private "&&"
+- !private "&="
+- !private "+="
+- "=="
+- !private "==="
+- !private ">"
+- "ATNConfig"
+- "ATNState"
+- "AssignmentPrecedence"
+- "Bool"
+- "CastingPrecedence"
+- "CustomStringConvertible"
+- "Hashable"
+- "Int"
+- !private "LexerATNConfig"
+- !private "MurmurHash"
+- "PredictionContext"
+- "Recognizer"
+- "SemanticContext"
+- "String"
+- !private "|="
+- !private "~"
+depends-member:
+- ["6Antlr49ATNConfigC", "=="]
+- ["6Antlr49ATNConfigC", "ATNConfig"]
+- ["6Antlr49ATNConfigC", "ATNState"]
+- ["6Antlr49ATNConfigC", "Bool"]
+- ["6Antlr49ATNConfigC", "Int"]
+- !private ["6Antlr49ATNConfigC", "MurmurHash"]
+- ["6Antlr49ATNConfigC", "PredictionContext"]
+- ["6Antlr49ATNConfigC", "Recognizer"]
+- !private ["6Antlr49ATNConfigC", "SUPPRESS_PRECEDENCE_FILTER"]
+- ["6Antlr49ATNConfigC", "SemanticContext"]
+- ["6Antlr49ATNConfigC", "String"]
+- ["6Antlr49ATNConfigC", "_rawHashValue"]
+- ["6Antlr49ATNConfigC", "alt"]
+- ["6Antlr49ATNConfigC", "context"]
+- ["6Antlr49ATNConfigC", "deinit"]
+- ["6Antlr49ATNConfigC", "description"]
+- ["6Antlr49ATNConfigC", "getOuterContextDepth"]
+- ["6Antlr49ATNConfigC", "hash"]
+- ["6Antlr49ATNConfigC", "hashValue"]
+- ["6Antlr49ATNConfigC", "init"]
+- ["6Antlr49ATNConfigC", "isPrecedenceFilterSuppressed"]
+- ["6Antlr49ATNConfigC", "reachesIntoOuterContext"]
+- ["6Antlr49ATNConfigC", "semanticContext"]
+- ["6Antlr49ATNConfigC", "setPrecedenceFilterSuppressed"]
+- ["6Antlr49ATNConfigC", "state"]
+- ["6Antlr49ATNConfigC", "toString"]
+- !private ["6Antlr48ATNStateC", "deinit"]
+- !private ["6Antlr48ATNStateC", "stateNumber"]
+- ["s23CustomStringConvertibleP", "=="]
+- !private ["s23CustomStringConvertibleP", "MurmurHash"]
+- !private ["s23CustomStringConvertibleP", "NONE"]
+- !private ["s23CustomStringConvertibleP", "SUPPRESS_PRECEDENCE_FILTER"]
+- !private ["s23CustomStringConvertibleP", "SemanticContext"]
+- ["s23CustomStringConvertibleP", ""]
+- ["s23CustomStringConvertibleP", "_rawHashValue"]
+- !private ["s23CustomStringConvertibleP", "alt"]
+- !private ["s23CustomStringConvertibleP", "appendInterpolation"]
+- !private ["s23CustomStringConvertibleP", "appendLiteral"]
+- !private ["s23CustomStringConvertibleP", "context"]
+- ["s23CustomStringConvertibleP", "description"]
+- !private ["s23CustomStringConvertibleP", "getOuterContextDepth"]
+- ["s23CustomStringConvertibleP", "hash"]
+- ["s23CustomStringConvertibleP", "hashValue"]
+- !private ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "isPrecedenceFilterSuppressed"]
+- !private ["s23CustomStringConvertibleP", "reachesIntoOuterContext"]
+- !private ["s23CustomStringConvertibleP", "semanticContext"]
+- !private ["s23CustomStringConvertibleP", "state"]
+- !private ["s23CustomStringConvertibleP", "stateNumber"]
+- !private ["s23CustomStringConvertibleP", "toString"]
+- !private ["s26DefaultStringInterpolationV", "appendInterpolation"]
+- !private ["s26DefaultStringInterpolationV", "appendLiteral"]
+- ["SQ", "=="]
+- !private ["SQ", "MurmurHash"]
+- !private ["SQ", "NONE"]
+- !private ["SQ", "SUPPRESS_PRECEDENCE_FILTER"]
+- !private ["SQ", "SemanticContext"]
+- ["SQ", ""]
+- ["SQ", "_rawHashValue"]
+- !private ["SQ", "alt"]
+- !private ["SQ", "context"]
+- ["SQ", "description"]
+- !private ["SQ", "getOuterContextDepth"]
+- ["SQ", "hash"]
+- ["SQ", "hashValue"]
+- !private ["SQ", "init"]
+- !private ["SQ", "isPrecedenceFilterSuppressed"]
+- !private ["SQ", "reachesIntoOuterContext"]
+- !private ["SQ", "semanticContext"]
+- !private ["SQ", "state"]
+- !private ["SQ", "stateNumber"]
+- !private ["SQ", "toString"]
+- ["SH", "=="]
+- !private ["SH", "MurmurHash"]
+- !private ["SH", "NONE"]
+- !private ["SH", "SUPPRESS_PRECEDENCE_FILTER"]
+- !private ["SH", "SemanticContext"]
+- ["SH", ""]
+- ["SH", "_rawHashValue"]
+- !private ["SH", "alt"]
+- !private ["SH", "context"]
+- ["SH", "description"]
+- !private ["SH", "getOuterContextDepth"]
+- ["SH", "hash"]
+- ["SH", "hashValue"]
+- !private ["SH", "init"]
+- !private ["SH", "isPrecedenceFilterSuppressed"]
+- !private ["SH", "reachesIntoOuterContext"]
+- !private ["SH", "semanticContext"]
+- !private ["SH", "state"]
+- !private ["SH", "stateNumber"]
+- !private ["SH", "toString"]
+- !private ["s6HasherV", "combine"]
+- !private ["6Antlr410MurmurHashC", "finish"]
+- !private ["6Antlr410MurmurHashC", "initialize"]
+- !private ["6Antlr410MurmurHashC", "update"]
+- !private ["6Antlr417PredictionContextC", "deinit"]
+- !private ["6Antlr415SemanticContextC", "NONE"]
+- !private ["6Antlr415SemanticContextC", "deinit"]
+- !private ["s27StringInterpolationProtocolP", "appendInterpolation"]
+- !private ["s27StringInterpolationProtocolP", "appendLiteral"]
+- !private ["s16TextOutputStreamP", "appendInterpolation"]
+- !private ["s16TextOutputStreamP", "appendLiteral"]
+depends-nominal:
+- "6Antlr49ATNConfigC"
+- !private "6Antlr48ATNStateC"
+- "s23CustomStringConvertibleP"
+- !private "s26DefaultStringInterpolationV"
+- "SQ"
+- "SH"
+- !private "s6HasherV"
+- !private "6Antlr410MurmurHashC"
+- !private "6Antlr417PredictionContextC"
+- !private "6Antlr415SemanticContextC"
+- !private "s27StringInterpolationProtocolP"
+- !private "s16TextOutputStreamP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
+interface-hash: "7277bb3e28d90b3bdd0cc9ef0b8d3f9f"

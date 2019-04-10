@@ -1,0 +1,155 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "ATNSimulator"
+provides-nominal:
+- "6Antlr412ATNSimulatorC"
+provides-member:
+- ["6Antlr412ATNSimulatorC", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "+"
+- !private "ANTLRError"
+- "ATN"
+- "ATNConfigSet"
+- !private "ATNDeserializer"
+- "ATNSimulator"
+- "Array"
+- "AssignmentPrecedence"
+- "DFAState"
+- "Int"
+- "IntervalSet"
+- "PredictionContext"
+- "PredictionContextCache"
+- "Transition"
+- !private "fatalError"
+depends-member:
+- !private ["6Antlr410ANTLRErrorO", "deinit"]
+- !private ["6Antlr410ANTLRErrorO", "unsupportedOperation"]
+- ["6Antlr412ATNConfigSetC", "init"]
+- !private ["6Antlr415ATNDeserializerC", "edgeFactory"]
+- !private ["6Antlr415ATNDeserializerC", "init"]
+- !private ["6Antlr412ATNSimulatorC", "ANTLRError"]
+- ["6Antlr412ATNSimulatorC", "ATN"]
+- ["6Antlr412ATNSimulatorC", "ATNConfigSet"]
+- !private ["6Antlr412ATNSimulatorC", "ATNDeserializer"]
+- ["6Antlr412ATNSimulatorC", "Array"]
+- ["6Antlr412ATNSimulatorC", "DFAState"]
+- ["6Antlr412ATNSimulatorC", "ERROR"]
+- ["6Antlr412ATNSimulatorC", "Int"]
+- ["6Antlr412ATNSimulatorC", "IntervalSet"]
+- ["6Antlr412ATNSimulatorC", "PredictionContext"]
+- ["6Antlr412ATNSimulatorC", "PredictionContextCache"]
+- ["6Antlr412ATNSimulatorC", "Transition"]
+- ["6Antlr412ATNSimulatorC", "atn"]
+- ["6Antlr412ATNSimulatorC", "clearDFA"]
+- ["6Antlr412ATNSimulatorC", "deinit"]
+- ["6Antlr412ATNSimulatorC", "edgeFactory"]
+- !private ["6Antlr412ATNSimulatorC", "fatalError"]
+- ["6Antlr412ATNSimulatorC", "getCachedContext"]
+- ["6Antlr412ATNSimulatorC", "getSharedContextCache"]
+- ["6Antlr412ATNSimulatorC", "init"]
+- ["6Antlr412ATNSimulatorC", "reset"]
+- ["6Antlr412ATNSimulatorC", "sharedContextCache"]
+- ["s18AdditiveArithmeticP", "max"]
+- ["Sz", "max"]
+- !private ["s7CVarArgP", "init"]
+- ["s7CVarArgP", "max"]
+- !private ["Sl", "init"]
+- ["SL", "max"]
+- !private ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s17CustomReflectableP", "init"]
+- ["s17CustomReflectableP", "max"]
+- !private ["s23CustomStringConvertibleP", "getCachedContext"]
+- ["s23CustomStringConvertibleP", "init"]
+- ["s23CustomStringConvertibleP", "max"]
+- ["s23CustomStringConvertibleP", "stateNumber"]
+- ["6Antlr48DFAStateC", "init"]
+- ["6Antlr48DFAStateC", "stateNumber"]
+- !private ["Se", "init"]
+- ["Se", "max"]
+- !private ["SD", "init"]
+- !private ["SE", "init"]
+- ["SE", "max"]
+- !private ["SQ", "getCachedContext"]
+- ["SQ", "init"]
+- ["SQ", "max"]
+- ["SQ", "stateNumber"]
+- !private ["s5ErrorP", "unsupportedOperation"]
+- !private ["s30ExpressibleByDictionaryLiteralP", "init"]
+- ["s27ExpressibleByIntegerLiteralP", "max"]
+- ["s17FixedWidthIntegerP", "max"]
+- !private ["SH", "getCachedContext"]
+- ["SH", "init"]
+- ["SH", "max"]
+- ["SH", "stateNumber"]
+- ["Si", "max"]
+- ["s25LosslessStringConvertibleP", "max"]
+- ["s10MirrorPathP", "max"]
+- ["Sj", "max"]
+- ["6Antlr417PredictionContextC", "deinit"]
+- !private ["6Antlr417PredictionContextC", "getCachedContext"]
+- ["s10SIMDScalarP", "max"]
+- !private ["ST", "init"]
+- ["SZ", "max"]
+- ["s13SignedNumericP", "max"]
+- ["Sx", "max"]
+- ["s30_CustomPlaygroundQuickLookableP", "max"]
+- ["s35_ExpressibleByBuiltinIntegerLiteralP", "max"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "init"]
+- ["s35_HasCustomAnyHashableRepresentationP", "max"]
+- !private ["s21_ObjectiveCBridgeableP", "init"]
+- ["s21_ObjectiveCBridgeableP", "max"]
+depends-nominal:
+- !private "6Antlr410ANTLRErrorO"
+- "6Antlr412ATNConfigSetC"
+- !private "6Antlr415ATNDeserializerC"
+- "6Antlr412ATNSimulatorC"
+- "s18AdditiveArithmeticP"
+- "Sz"
+- "s7CVarArgP"
+- !private "Sl"
+- "SL"
+- !private "s28CustomDebugStringConvertibleP"
+- "s17CustomReflectableP"
+- "s23CustomStringConvertibleP"
+- "6Antlr48DFAStateC"
+- "Se"
+- !private "SD"
+- "SE"
+- "SQ"
+- !private "s5ErrorP"
+- !private "s30ExpressibleByDictionaryLiteralP"
+- "s27ExpressibleByIntegerLiteralP"
+- "s17FixedWidthIntegerP"
+- "SH"
+- "Si"
+- "s25LosslessStringConvertibleP"
+- "s10MirrorPathP"
+- "Sj"
+- "6Antlr417PredictionContextC"
+- "s10SIMDScalarP"
+- !private "ST"
+- "SZ"
+- "s13SignedNumericP"
+- "Sx"
+- "s30_CustomPlaygroundQuickLookableP"
+- "s35_ExpressibleByBuiltinIntegerLiteralP"
+- "s35_HasCustomAnyHashableRepresentationP"
+- "s21_ObjectiveCBridgeableP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
+interface-hash: "f7ad8f9a69ba054eea0a6660c7b84496"

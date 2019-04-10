@@ -1,0 +1,46 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "Mutex"
+provides-nominal:
+- "6Antlr45MutexC"
+provides-member:
+- ["6Antlr45MutexC", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- "Mutex"
+- !private "pthread_mutex_destroy"
+- !private "pthread_mutex_init"
+- !private "pthread_mutex_lock"
+- "pthread_mutex_t"
+- !private "pthread_mutex_unlock"
+depends-member:
+- ["6Antlr45MutexC", "deinit"]
+- ["6Antlr45MutexC", "init"]
+- !private ["6Antlr45MutexC", "mutex"]
+- !private ["6Antlr45MutexC", "pthread_mutex_destroy"]
+- !private ["6Antlr45MutexC", "pthread_mutex_init"]
+- !private ["6Antlr45MutexC", "pthread_mutex_lock"]
+- ["6Antlr45MutexC", "pthread_mutex_t"]
+- !private ["6Antlr45MutexC", "pthread_mutex_unlock"]
+- ["6Antlr45MutexC", "synchronized"]
+- ["So23_opaque_pthread_mutex_tV", "init"]
+depends-nominal:
+- "6Antlr45MutexC"
+- "So23_opaque_pthread_mutex_tV"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
+interface-hash: "27d08a187d530aa9eabca47169875ae6"

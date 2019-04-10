@@ -1,0 +1,264 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "LexerInterpreter"
+provides-nominal:
+- "6Antlr416LexerInterpreterC"
+provides-member:
+- ["6Antlr416LexerInterpreterC", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "!="
+- !private "..<"
+- !private "ANTLRError"
+- "ATN"
+- !private "ATNType"
+- "Array"
+- "AssignmentPrecedence"
+- "CharStream"
+- "DFA"
+- "Lexer"
+- !private "LexerATNSimulator"
+- "LexerInterpreter"
+- "PredictionContextCache"
+- "String"
+- "Vocabulary"
+- !private "fatalError"
+depends-member:
+- !private ["6Antlr410ANTLRErrorO", "deinit"]
+- !private ["6Antlr410ANTLRErrorO", "illegalArgument"]
+- !private ["6Antlr43ATNC", "getDecisionState"]
+- !private ["6Antlr43ATNC", "getNumberOfDecisions"]
+- !private ["6Antlr43ATNC", "grammarType"]
+- !private ["6Antlr47ATNTypeO", "deinit"]
+- !private ["6Antlr47ATNTypeO", "lexer"]
+- !private ["Sa", "init"]
+- !private ["Sa", "subscript"]
+- !private ["SK", "init"]
+- !private ["SK", "subscript"]
+- !private ["s7CVarArgP", "init"]
+- !private ["s7CVarArgP", "subscript"]
+- !private ["Sl", "init"]
+- !private ["Sl", "subscript"]
+- !private ["10Foundation15ContiguousBytesP", "init"]
+- !private ["10Foundation15ContiguousBytesP", "subscript"]
+- !private ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "subscript"]
+- !private ["s17CustomReflectableP", "init"]
+- !private ["s17CustomReflectableP", "subscript"]
+- !private ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "subscript"]
+- !private ["6Antlr43DFAC", "init"]
+- !private ["10Foundation12DataProtocolP", "init"]
+- !private ["10Foundation12DataProtocolP", "subscript"]
+- !private ["Se", "init"]
+- !private ["Se", "subscript"]
+- !private ["SE", "init"]
+- !private ["SE", "subscript"]
+- !private ["SQ", "init"]
+- !private ["SQ", "lexer"]
+- !private ["SQ", "subscript"]
+- !private ["s5ErrorP", "illegalArgument"]
+- !private ["s25ExpressibleByArrayLiteralP", "init"]
+- !private ["s25ExpressibleByArrayLiteralP", "subscript"]
+- !private ["SH", "init"]
+- !private ["SH", "lexer"]
+- !private ["SH", "subscript"]
+- !private ["6Antlr45LexerC", "ANTLRError"]
+- ["6Antlr45LexerC", "ATN"]
+- !private ["6Antlr45LexerC", "ATNType"]
+- ["6Antlr45LexerC", "Array"]
+- ["6Antlr45LexerC", "CharStream"]
+- ["6Antlr45LexerC", "DFA"]
+- !private ["6Antlr45LexerC", "LexerATNSimulator"]
+- ["6Antlr45LexerC", "PredictionContextCache"]
+- ["6Antlr45LexerC", "String"]
+- ["6Antlr45LexerC", "Vocabulary"]
+- ["6Antlr45LexerC", ""]
+- ["6Antlr45LexerC", "_decisionToDFA"]
+- !private ["6Antlr45LexerC", "_interp"]
+- ["6Antlr45LexerC", "_sharedContextCache"]
+- ["6Antlr45LexerC", "atn"]
+- ["6Antlr45LexerC", "channelNames"]
+- !private ["6Antlr45LexerC", "deinit"]
+- !private ["6Antlr45LexerC", "fatalError"]
+- ["6Antlr45LexerC", "getATN"]
+- ["6Antlr45LexerC", "getChannelNames"]
+- ["6Antlr45LexerC", "getGrammarFileName"]
+- ["6Antlr45LexerC", "getModeNames"]
+- ["6Antlr45LexerC", "getRuleNames"]
+- ["6Antlr45LexerC", "getVocabulary"]
+- ["6Antlr45LexerC", "grammarFileName"]
+- ["6Antlr45LexerC", "init"]
+- ["6Antlr45LexerC", "modeNames"]
+- ["6Antlr45LexerC", "ruleNames"]
+- ["6Antlr45LexerC", "vocabulary"]
+- !private ["6Antlr417LexerATNSimulatorC", "init"]
+- !private ["6Antlr416LexerInterpreterC", "ANTLRError"]
+- ["6Antlr416LexerInterpreterC", "ATN"]
+- !private ["6Antlr416LexerInterpreterC", "ATNType"]
+- ["6Antlr416LexerInterpreterC", "Array"]
+- ["6Antlr416LexerInterpreterC", "CharStream"]
+- ["6Antlr416LexerInterpreterC", "DFA"]
+- !private ["6Antlr416LexerInterpreterC", "LexerATNSimulator"]
+- ["6Antlr416LexerInterpreterC", "PredictionContextCache"]
+- ["6Antlr416LexerInterpreterC", "String"]
+- ["6Antlr416LexerInterpreterC", "Vocabulary"]
+- ["6Antlr416LexerInterpreterC", "_decisionToDFA"]
+- !private ["6Antlr416LexerInterpreterC", "_interp"]
+- ["6Antlr416LexerInterpreterC", "_sharedContextCache"]
+- ["6Antlr416LexerInterpreterC", "atn"]
+- ["6Antlr416LexerInterpreterC", "channelNames"]
+- !private ["6Antlr416LexerInterpreterC", "fatalError"]
+- ["6Antlr416LexerInterpreterC", "getATN"]
+- ["6Antlr416LexerInterpreterC", "getChannelNames"]
+- ["6Antlr416LexerInterpreterC", "getGrammarFileName"]
+- ["6Antlr416LexerInterpreterC", "getModeNames"]
+- ["6Antlr416LexerInterpreterC", "getRuleNames"]
+- ["6Antlr416LexerInterpreterC", "getVocabulary"]
+- ["6Antlr416LexerInterpreterC", "grammarFileName"]
+- ["6Antlr416LexerInterpreterC", "init"]
+- ["6Antlr416LexerInterpreterC", "modeNames"]
+- ["6Antlr416LexerInterpreterC", "ruleNames"]
+- !private ["6Antlr416LexerInterpreterC", "vocabulary"]
+- !private ["SM", "init"]
+- !private ["SM", "subscript"]
+- !private ["10Foundation19MutableDataProtocolP", "init"]
+- !private ["10Foundation19MutableDataProtocolP", "subscript"]
+- ["6Antlr422PredictionContextCacheC", "init"]
+- !private ["Sk", "init"]
+- !private ["Sk", "subscript"]
+- !private ["Sm", "init"]
+- !private ["Sm", "subscript"]
+- !private ["SY", "lexer"]
+- !private ["6Antlr410RecognizerC", "ANTLRError"]
+- ["6Antlr410RecognizerC", "ATN"]
+- !private ["6Antlr410RecognizerC", "ATNType"]
+- ["6Antlr410RecognizerC", "Array"]
+- ["6Antlr410RecognizerC", "CharStream"]
+- ["6Antlr410RecognizerC", "DFA"]
+- !private ["6Antlr410RecognizerC", "LexerATNSimulator"]
+- ["6Antlr410RecognizerC", "PredictionContextCache"]
+- ["6Antlr410RecognizerC", "String"]
+- ["6Antlr410RecognizerC", "Vocabulary"]
+- ["6Antlr410RecognizerC", "_decisionToDFA"]
+- !private ["6Antlr410RecognizerC", "_interp"]
+- ["6Antlr410RecognizerC", "_sharedContextCache"]
+- ["6Antlr410RecognizerC", "atn"]
+- ["6Antlr410RecognizerC", "channelNames"]
+- !private ["6Antlr410RecognizerC", "fatalError"]
+- ["6Antlr410RecognizerC", "getATN"]
+- ["6Antlr410RecognizerC", "getChannelNames"]
+- ["6Antlr410RecognizerC", "getGrammarFileName"]
+- ["6Antlr410RecognizerC", "getModeNames"]
+- ["6Antlr410RecognizerC", "getRuleNames"]
+- ["6Antlr410RecognizerC", "getVocabulary"]
+- ["6Antlr410RecognizerC", "grammarFileName"]
+- ["6Antlr410RecognizerC", "init"]
+- ["6Antlr410RecognizerC", "modeNames"]
+- ["6Antlr410RecognizerC", "ruleNames"]
+- ["6Antlr410RecognizerC", "vocabulary"]
+- !private ["6Antlr418RecognizerProtocolP", "ANTLRError"]
+- !private ["6Antlr418RecognizerProtocolP", "ATNType"]
+- !private ["6Antlr418RecognizerProtocolP", "DFA"]
+- !private ["6Antlr418RecognizerProtocolP", "LexerATNSimulator"]
+- ["6Antlr418RecognizerProtocolP", "PredictionContextCache"]
+- ["6Antlr418RecognizerProtocolP", ""]
+- !private ["6Antlr418RecognizerProtocolP", "_decisionToDFA"]
+- !private ["6Antlr418RecognizerProtocolP", "_interp"]
+- !private ["6Antlr418RecognizerProtocolP", "_sharedContextCache"]
+- !private ["6Antlr418RecognizerProtocolP", "atn"]
+- !private ["6Antlr418RecognizerProtocolP", "channelNames"]
+- !private ["6Antlr418RecognizerProtocolP", "fatalError"]
+- !private ["6Antlr418RecognizerProtocolP", "getVocabulary"]
+- !private ["6Antlr418RecognizerProtocolP", "grammarFileName"]
+- !private ["6Antlr418RecognizerProtocolP", "init"]
+- !private ["6Antlr418RecognizerProtocolP", "modeNames"]
+- !private ["6Antlr418RecognizerProtocolP", "ruleNames"]
+- !private ["6Antlr418RecognizerProtocolP", "vocabulary"]
+- !private ["ST", "init"]
+- !private ["ST", "subscript"]
+- !private ["6Antlr411TokenSourceP", "ANTLRError"]
+- !private ["6Antlr411TokenSourceP", "ATNType"]
+- !private ["6Antlr411TokenSourceP", "DFA"]
+- !private ["6Antlr411TokenSourceP", "LexerATNSimulator"]
+- ["6Antlr411TokenSourceP", "PredictionContextCache"]
+- ["6Antlr411TokenSourceP", ""]
+- !private ["6Antlr411TokenSourceP", "_decisionToDFA"]
+- !private ["6Antlr411TokenSourceP", "_interp"]
+- !private ["6Antlr411TokenSourceP", "_sharedContextCache"]
+- !private ["6Antlr411TokenSourceP", "atn"]
+- !private ["6Antlr411TokenSourceP", "channelNames"]
+- !private ["6Antlr411TokenSourceP", "fatalError"]
+- !private ["6Antlr411TokenSourceP", "getVocabulary"]
+- !private ["6Antlr411TokenSourceP", "grammarFileName"]
+- !private ["6Antlr411TokenSourceP", "init"]
+- !private ["6Antlr411TokenSourceP", "modeNames"]
+- !private ["6Antlr411TokenSourceP", "ruleNames"]
+- !private ["6Antlr411TokenSourceP", "vocabulary"]
+- !private ["6Antlr410VocabularyC", "deinit"]
+- !private ["s14_ArrayProtocolP", "init"]
+- !private ["s14_ArrayProtocolP", "subscript"]
+- !private ["s24_DestructorSafeContainerP", "init"]
+- !private ["s24_DestructorSafeContainerP", "subscript"]
+- !private ["s19_HasContiguousBytesP", "init"]
+- !private ["s19_HasContiguousBytesP", "subscript"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "init"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "subscript"]
+- !private ["s21_ObjectiveCBridgeableP", "init"]
+- !private ["s21_ObjectiveCBridgeableP", "subscript"]
+depends-nominal:
+- !private "6Antlr410ANTLRErrorO"
+- !private "6Antlr43ATNC"
+- !private "6Antlr47ATNTypeO"
+- !private "Sa"
+- !private "SK"
+- !private "s7CVarArgP"
+- !private "Sl"
+- !private "10Foundation15ContiguousBytesP"
+- !private "s28CustomDebugStringConvertibleP"
+- !private "s17CustomReflectableP"
+- !private "s23CustomStringConvertibleP"
+- !private "6Antlr43DFAC"
+- !private "10Foundation12DataProtocolP"
+- !private "Se"
+- !private "SE"
+- !private "SQ"
+- !private "s5ErrorP"
+- !private "s25ExpressibleByArrayLiteralP"
+- !private "SH"
+- "6Antlr45LexerC"
+- !private "6Antlr417LexerATNSimulatorC"
+- "6Antlr416LexerInterpreterC"
+- !private "SM"
+- !private "10Foundation19MutableDataProtocolP"
+- "6Antlr422PredictionContextCacheC"
+- !private "Sk"
+- !private "Sm"
+- !private "SY"
+- "6Antlr410RecognizerC"
+- "6Antlr418RecognizerProtocolP"
+- !private "ST"
+- "6Antlr411TokenSourceP"
+- !private "6Antlr410VocabularyC"
+- !private "s14_ArrayProtocolP"
+- !private "s24_DestructorSafeContainerP"
+- !private "s19_HasContiguousBytesP"
+- !private "s35_HasCustomAnyHashableRepresentationP"
+- !private "s21_ObjectiveCBridgeableP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.2.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
+interface-hash: "b4dd433c43897569a07a6565bedd343f"
