@@ -41,19 +41,6 @@ open class BasicLearnBaseListener: BasicLearnListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	open func enterStatement(_ ctx: BasicLearnParser.StatementContext) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	open func exitStatement(_ ctx: BasicLearnParser.StatementContext) { }
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	open func enterExpression(_ ctx: BasicLearnParser.ExpressionContext) { }
 	/**
 	 * {@inheritDoc}
@@ -132,19 +119,6 @@ open class BasicLearnBaseListener: BasicLearnListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	open func enterDeclaration(_ ctx: BasicLearnParser.DeclarationContext) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	open func exitDeclaration(_ ctx: BasicLearnParser.DeclarationContext) { }
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	open func enterType(_ ctx: BasicLearnParser.TypeContext) { }
 	/**
 	 * {@inheritDoc}
@@ -158,6 +132,19 @@ open class BasicLearnBaseListener: BasicLearnListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	open func enterStatement(_ ctx: BasicLearnParser.StatementContext) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	open func exitStatement(_ ctx: BasicLearnParser.StatementContext) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	open func enterFunction(_ ctx: BasicLearnParser.FunctionContext) { }
 	/**
 	 * {@inheritDoc}
@@ -165,6 +152,19 @@ open class BasicLearnBaseListener: BasicLearnListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	open func exitFunction(_ ctx: BasicLearnParser.FunctionContext) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	open func enterDeclaration(_ ctx: BasicLearnParser.DeclarationContext) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	open func exitDeclaration(_ ctx: BasicLearnParser.DeclarationContext) { }
 
 	/**
 	 * {@inheritDoc}

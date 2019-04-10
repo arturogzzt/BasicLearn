@@ -31,18 +31,6 @@ public protocol BasicLearnListener: ParseTreeListener {
 	 */
 	func exitBody(_ ctx: BasicLearnParser.BodyContext)
 	/**
-	 * Enter a parse tree produced by {@link BasicLearnParser#statement}.
-	 - Parameters:
-	   - ctx: the parse tree
-	 */
-	func enterStatement(_ ctx: BasicLearnParser.StatementContext)
-	/**
-	 * Exit a parse tree produced by {@link BasicLearnParser#statement}.
-	 - Parameters:
-	   - ctx: the parse tree
-	 */
-	func exitStatement(_ ctx: BasicLearnParser.StatementContext)
-	/**
 	 * Enter a parse tree produced by {@link BasicLearnParser#expression}.
 	 - Parameters:
 	   - ctx: the parse tree
@@ -115,18 +103,6 @@ public protocol BasicLearnListener: ParseTreeListener {
 	 */
 	func exitBlock(_ ctx: BasicLearnParser.BlockContext)
 	/**
-	 * Enter a parse tree produced by {@link BasicLearnParser#declaration}.
-	 - Parameters:
-	   - ctx: the parse tree
-	 */
-	func enterDeclaration(_ ctx: BasicLearnParser.DeclarationContext)
-	/**
-	 * Exit a parse tree produced by {@link BasicLearnParser#declaration}.
-	 - Parameters:
-	   - ctx: the parse tree
-	 */
-	func exitDeclaration(_ ctx: BasicLearnParser.DeclarationContext)
-	/**
 	 * Enter a parse tree produced by {@link BasicLearnParser#type}.
 	 - Parameters:
 	   - ctx: the parse tree
@@ -139,6 +115,18 @@ public protocol BasicLearnListener: ParseTreeListener {
 	 */
 	func exitType(_ ctx: BasicLearnParser.TypeContext)
 	/**
+	 * Enter a parse tree produced by {@link BasicLearnParser#statement}.
+	 - Parameters:
+	   - ctx: the parse tree
+	 */
+	func enterStatement(_ ctx: BasicLearnParser.StatementContext)
+	/**
+	 * Exit a parse tree produced by {@link BasicLearnParser#statement}.
+	 - Parameters:
+	   - ctx: the parse tree
+	 */
+	func exitStatement(_ ctx: BasicLearnParser.StatementContext)
+	/**
 	 * Enter a parse tree produced by {@link BasicLearnParser#function}.
 	 - Parameters:
 	   - ctx: the parse tree
@@ -150,6 +138,18 @@ public protocol BasicLearnListener: ParseTreeListener {
 	   - ctx: the parse tree
 	 */
 	func exitFunction(_ ctx: BasicLearnParser.FunctionContext)
+	/**
+	 * Enter a parse tree produced by {@link BasicLearnParser#declaration}.
+	 - Parameters:
+	   - ctx: the parse tree
+	 */
+	func enterDeclaration(_ ctx: BasicLearnParser.DeclarationContext)
+	/**
+	 * Exit a parse tree produced by {@link BasicLearnParser#declaration}.
+	 - Parameters:
+	   - ctx: the parse tree
+	 */
+	func exitDeclaration(_ ctx: BasicLearnParser.DeclarationContext)
 	/**
 	 * Enter a parse tree produced by {@link BasicLearnParser#function_call}.
 	 - Parameters:

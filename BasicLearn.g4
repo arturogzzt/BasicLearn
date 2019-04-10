@@ -1,113 +1,110 @@
 grammar BasicLearn;
 
 program
-    : 'program' ID ';' 'declaration'* 'function'* 'body'
+    : 'program' ID ';' declaration* function* body
     ;
 
 body
-    : 'start' 'block'
-    ;
-
-statement
-    : ('function_call' ';' | 'assignment' ';' | 'if' | 'repeat' | 'while' | 'special_functions')
+    : 'start' block
     ;
 
 expression
-    :  'exp' (LESSTHAN | MORETHAN | LESSOREQUAL | MOREOREQUAL | EQUALS | NOTEQUALS | ASSIGN) 'exp' (('and' | 'or') 'expression')?
+    :  exp ((LESSTHAN | MORETHAN | LESSOREQUAL | MOREOREQUAL | EQUALS | NOTEQUALS) exp (('and' | 'or') expression)?)?
     ;
 
-exp 
-    : 'term' (ADD | SUBS 'exp')?
+exp
+    : term (ADD exp| SUBS exp)?
     ;
 
-term 
-    : 'factor' (MULT | DIV 'term')?
+term
+    : factor (MULT term| DIV term)?
     ;
 
-factor 
-    : LEFTPAREN 'expression' RIGHTPAREN | ID (LEFTBRACKET 'exp' RIGHTBRACKET | LEFTPAREN 'exp' RIGHTPAREN) | CTE_I | CTE_F | 'true' | 'false'
+factor
+    : LEFTPAREN expression RIGHTPAREN | ID (LEFTBRACKET exp RIGHTBRACKET | LEFTPAREN exp (',' exp)* RIGHTPAREN)? | CTE_I | CTE_F | 'true' | 'false'
     ;
 
-assignment 
-    : ID (LEFTBRACKET CTE_I RIGHTBRACKET)? ASSIGN 'expressiom' ';'
+assignment
+    : ID (LEFTBRACKET (CTE_I|ID) RIGHTBRACKET)? ASSIGN expression
     ;
 
 block
-    : LEFTCURL 'statement'+ RIGHTCURL
-    ;
-
-declaration
-    : 'type' ID (LEFTBRACKET CTE_I RIGHTBRACKET)? (',' ID (LEFTBRACKET CTE_I RIGHTBRACKET)?)* ';'
+    : LEFTCURL statement+ RIGHTCURL
     ;
 
 type
     : NUMBER | DECIMAL | BOOL | SENTENCE
     ;
 
+statement
+    : (function_call ';' | assignment ';' | 'return' exp ';' | if_statement | repeat_statement | while_statement | special_function ';')
+    ;
+
 function
-    : ('type' | 'void') 'function' ID LEFTPAREN 'parameters' RIGHTPAREN ('declaration')* 'block'
+    : (type | 'void') 'function' ID LEFTPAREN (parameters)? RIGHTPAREN LEFTCURL (declaration)* statement+ RIGHTCURL
+    ;
+
+declaration
+    : type ID (LEFTBRACKET CTE_I RIGHTBRACKET)? (',' ID (LEFTBRACKET CTE_I RIGHTBRACKET)?)* ';'
     ;
 
 function_call
-    : ID LEFTPAREN 'expression' (',' 'expression')* RIGHTPAREN
+    : ID LEFTPAREN (expression (',' expression)*)? RIGHTPAREN
     ;
 
 parameters
-    : 'type' ID (',' 'type' ID)*
+    : type ID (',' type ID)*
     ;
 
 if_statement
-    : 'if' LEFTPAREN 'expression' ('logical' 'expression')* RIGHTPAREN 'block' ('else' 'block')?
+    : 'if' LEFTPAREN expression RIGHTPAREN block ('else' block)?
     ;
 
 repeat_statement
-    : 'repeat' LEFTPAREN 'exp' RIGHTPAREN 'block'
+    : 'repeat' LEFTPAREN exp RIGHTPAREN block
     ;
 
 while_statement
-    : 'while' LEFTPAREN 'expression' RIGHTPAREN 'block'
+    : 'while' LEFTPAREN expression RIGHTPAREN block
     ;
 
 special_function
-    : 'area_tri' | 'perimeter_tri' | 'list_select' | 'show' | 'pythagoras' | 'listfunctions' | 'square_root_absolute' | 'square'
+    : (area_tri | perimeter_tri | list_select | show | pythagoras | list_functions | square_root_absolute | square)
     ;
 
 show
-    : 'show' LEFTPAREN ('expression' | 'cte_string') RIGHTPAREN ';'
+    : 'show' LEFTPAREN (expression | SENTENCE | special_function) RIGHTPAREN
     ;
 
 pythagoras
-    : ('pythagorasHyp' | 'pythagorasSide') LEFTPAREN 'exp' ',' 'exp' RIGHTPAREN ';'
+    : ('pythagorasHyp' | 'pythagorasSide') LEFTPAREN exp ',' exp RIGHTPAREN
     ;
 
 list_select
-    : 'select' LEFTPAREN CTE_I ',' ID RIGHTPAREN ';'
+    : 'select' LEFTPAREN exp ',' ID RIGHTPAREN
     ;
 
 list_functions
-    : ('first' | 'last' | 'order' | 'orderDesc' | 'size') LEFTPAREN ID RIGHTPAREN ';'
+    : ('first_l' | 'last_l' | 'order_l' | 'orderDesc_l' | 'size_l') LEFTPAREN ID RIGHTPAREN
     ;
 
 perimeter_tri
-    : 'perimeterTri' LEFTPAREN (ID | CTE_I | CTE_F) ',' (ID | CTE_I | CTE_F) ',' (ID | CTE_I | CTE_F) RIGHTPAREN ';'
+    : 'perimeterTri' LEFTPAREN exp ',' exp ',' exp RIGHTPAREN
     ;
 
 square_root_absolute
-    : ('square_root' | 'absolute') LEFTPAREN 'exp' RIGHTPAREN ';'
+    : ('square_root' | 'absolute') LEFTPAREN 'exp' RIGHTPAREN
     ;
 
 area_tri
-    : 'areaTri' LEFTPAREN 'exp' ',' 'exp' RIGHTPAREN ';'
+    : 'areaTri' LEFTPAREN 'exp' ',' 'exp' RIGHTPAREN
     ;
 
 square
-    : ('perimeterRec' | 'perimeterSq' | 'areaSq' | 'areaRec') LEFTPAREN 'exp' ',' 'exp' RIGHTPAREN ';'
+    : ('perimeterRec' | 'perimeterSq' | 'areaSq' | 'areaRec') LEFTPAREN 'exp' ',' 'exp' RIGHTPAREN
     ;
 
-ID : [A-Z|a-z]([A-Za-z0-9_])*;
-CTE_I : [0-9]+;
-CTE_F : [0-9]+.[0-9]+;
-BOOL : 'true' | 'false';
+BOOL : 'bool';
 LESSTHAN : '<';
 MORETHAN : '>';
 LESSOREQUAL : '<=';
@@ -127,7 +124,13 @@ LEFTCURL : '{';
 RIGHTCURL : '}';
 NUMBER : 'number';
 DECIMAL : 'decimal';
-SENTENCE : 'sentence';
+ID : [A-Z|a-z]([A-Za-z0-9_])*;
+CTE_I : [0-9]+;
+CTE_F : [0-9]+.[0-9]+;
+SENTENCE : '"' (ESC|.)*? '"' ;
 AND : 'and';
 OR : 'or';
+BSPACE  : [ \t\n\r]+ -> skip ;
 
+fragment
+ESC : '\\"' | '\\\\' ;
