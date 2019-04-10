@@ -1,0 +1,13 @@
+# General
+.DS_Store
+
+# Xcode files
+build/
+DerivedData/
+xcuserdata/
+.build/
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+!*.xcworkspace/contents.xcworkspacedata
+/*.gcno
