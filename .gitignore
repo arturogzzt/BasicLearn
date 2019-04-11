@@ -11,3 +11,4 @@ xcuserdata/
 !*.xcodeproj/xcshareddata/
 !*.xcworkspace/contents.xcworkspacedata
 /*.gcno
+Index/DataStore/

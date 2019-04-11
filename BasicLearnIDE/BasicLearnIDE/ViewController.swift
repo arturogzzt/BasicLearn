@@ -19,17 +19,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var codeView: UITextView!
     
     @IBAction func compile(_ sender: UIButton) {
-        do {
-            let lexer = BasicLearnLexer(ANTLRInputStream(codeView.text!))
-            let tokens = CommonTokenStream(lexer)
-            let parser = try BasicLearnParser(tokens)
-            let tree = try parser.program()
-            let walker = ParseTreeWalker()
-            print(tree)
-            print(walker)
-        } catch {
-            print("Parse error: \(error.localizedDescription)")
-        }
+        let compiler = MainCompiler()
+        compiler.execute(code: codeView.text!)
     }
     
 }

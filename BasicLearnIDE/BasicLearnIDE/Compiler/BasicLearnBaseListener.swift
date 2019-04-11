@@ -9,19 +9,26 @@ import Antlr4
  * of the available methods.
  */
 open class BasicLearnBaseListener: BasicLearnListener {
-     public init() { }
+    var scope = "ERROR"
+    var symbolTable = [DirFunc]()
+     public init() {
+        
+    }
+    
+	open func enterProgram(_ ctx: BasicLearnParser.ProgramContext) {
+        scope = "GLOBAL"
+        let programName = ctx.ID()?.getText() ?? "Error"
+        let programDirFunc = DirFunc.init(nom: programName, tipo: Type.program, scop: scope, mem: 0, link: 0)
+        symbolTable.append(programDirFunc)
+    }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	open func enterProgram(_ ctx: BasicLearnParser.ProgramContext) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	open func exitProgram(_ ctx: BasicLearnParser.ProgramContext) { }
+	open func exitProgram(_ ctx: BasicLearnParser.ProgramContext) {
+        print(symbolTable[0].name!, symbolTable[0].type!)
+    }
 
 	/**
 	 * {@inheritDoc}
