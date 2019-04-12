@@ -11,6 +11,11 @@ import Antlr4
 open class BasicLearnBaseListener: BasicLearnListener {
     var scope = "ERROR"
     var symbolTable = [DirFunc]()
+    var variableTable = [varTable]()
+    // Tiene que empezar en 1 porque si pones nil en la creacion de dirfunc no te deja porq es int
+    // 0 representaria que no tiene vartable asignado...
+    var currentFunction : DirFunc
+    var variableTableCount = 1
      public init() {
         
     }
@@ -18,7 +23,10 @@ open class BasicLearnBaseListener: BasicLearnListener {
 	open func enterProgram(_ ctx: BasicLearnParser.ProgramContext) {
         scope = "GLOBAL"
         let programName = ctx.ID()?.getText() ?? "Error"
+        // below comment used for debugging
+        // print(ctx.declaration()[0].type()?.getText())
         let programDirFunc = DirFunc.init(nom: programName, tipo: Type.program, scop: scope, mem: 0, link: 0)
+        currentFunction = programDirFunc
         symbolTable.append(programDirFunc)
     }
 	/**
@@ -152,7 +160,29 @@ open class BasicLearnBaseListener: BasicLearnListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	open func enterFunction(_ ctx: BasicLearnParser.FunctionContext) { }
+	open func enterFunction(_ ctx: BasicLearnParser.FunctionContext) { 
+        scope = "LOCAL"
+        let functionType = ctx.type()?.getText() ?? "Error"
+        let functionName = ctx.ID()?.getText() ?? "Error"
+        
+        for function in symbolTable {
+            if functionName == function.name {
+                // Todo handle error appropriately
+                print("Error, multiple declaration")
+            }
+        }
+
+        let function = DirFunc.init(nom: functionName, tipo: Type(type: functionType), scop: scope, mem: 0, link: 0)
+        symbolTable.append(function)
+        
+        currentFunction = function
+        
+        // create var table when you reach (
+        
+        // search for id name in current var table 
+
+        
+	}
 	/**
 	 * {@inheritDoc}
 	 *
@@ -165,7 +195,30 @@ open class BasicLearnBaseListener: BasicLearnListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	open func enterDeclaration(_ ctx: BasicLearnParser.DeclarationContext) { }
+	open func enterDeclaration(_ ctx: BasicLearnParser.DeclarationContext) {
+        // ¿Cómo saber la current function aqui?
+        // Use una variable global de current function... (hay que ver como mejorar esto)
+        
+        if currentFunction.link == 0 {
+            currentFunction.link = variableTableCount
+            variableTableCount = variableTableCount + 1
+        }
+        
+        for variable in variableTable {
+            // error comparing ctx id and variable.name
+//            if ctx.ID() == variable.name {
+//                print("Error, multiple declaration")
+//                // Handle error appropriately
+//            }
+        }
+        // error below
+        // variableTable.append(varTable.init(nom: ctx.ID(), tipo: ctx.type(), scop: scope, mem: 0, ident: 0))
+        
+        
+//        let variableTableName = ctx.getParent()
+//
+//        let variableTable = varTable.init(nom: <#T##String#>, tipo: <#T##Type#>, scop: scope, mem: 0, ident: 0)
+    }
 	/**
 	 * {@inheritDoc}
 	 *

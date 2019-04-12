@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		410F1707225EAC9900A4CD25 /* Antlr4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 410F16F9225EAA5100A4CD25 /* Antlr4.framework */; };
+		41C2EFBC225FED3000C90A1F /* MainCompiler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C2EFB6225FED3000C90A1F /* MainCompiler.swift */; };
+		41C2EFBD225FED3000C90A1F /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C2EFBA225FED3000C90A1F /* Types.swift */; };
+		41C2EFBE225FED3000C90A1F /* DirFunctionsVarTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C2EFBB225FED3000C90A1F /* DirFunctionsVarTable.swift */; };
 		EC1516FF225E87E40030D440 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1516FE225E87E40030D440 /* AppDelegate.swift */; };
 		EC151701225E87E40030D440 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC151700225E87E40030D440 /* ViewController.swift */; };
 		EC151704225E87E40030D440 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC151702225E87E40030D440 /* Main.storyboard */; };
@@ -54,6 +57,9 @@
 
 /* Begin PBXFileReference section */
 		410F16F1225EAA5100A4CD25 /* Antlr4.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Antlr4.xcodeproj; path = ../../../antlr4/runtime/Swift/Antlr4.xcodeproj; sourceTree = "<group>"; };
+		41C2EFB6225FED3000C90A1F /* MainCompiler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCompiler.swift; sourceTree = "<group>"; };
+		41C2EFBA225FED3000C90A1F /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
+		41C2EFBB225FED3000C90A1F /* DirFunctionsVarTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirFunctionsVarTable.swift; sourceTree = "<group>"; };
 		EC1516FB225E87E40030D440 /* BasicLearnIDE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BasicLearnIDE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC1516FE225E87E40030D440 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EC151700225E87E40030D440 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -152,6 +158,9 @@
 				EC151743225E93AC0030D440 /* BasicLearnListener.swift */,
 				EC151744225E93AC0030D440 /* BasicLearnLexer.swift */,
 				EC151745225E93AC0030D440 /* BasicLearnParser.swift */,
+				41C2EFBB225FED3000C90A1F /* DirFunctionsVarTable.swift */,
+				41C2EFB6225FED3000C90A1F /* MainCompiler.swift */,
+				41C2EFBA225FED3000C90A1F /* Types.swift */,
 			);
 			path = Compiler;
 			sourceTree = "<group>";
@@ -263,8 +272,11 @@
 				EC151748225E93AC0030D440 /* BasicLearnLexerATN.swift in Sources */,
 				EC151750225E93AC0030D440 /* BasicLearnLexer.swift in Sources */,
 				EC151751225E93AC0030D440 /* BasicLearnParser.swift in Sources */,
+				41C2EFBE225FED3000C90A1F /* DirFunctionsVarTable.swift in Sources */,
 				EC1516FF225E87E40030D440 /* AppDelegate.swift in Sources */,
+				41C2EFBC225FED3000C90A1F /* MainCompiler.swift in Sources */,
 				EC15174D225E93AC0030D440 /* BasicLearnBaseListener.swift in Sources */,
+				41C2EFBD225FED3000C90A1F /* Types.swift in Sources */,
 				EC15174F225E93AC0030D440 /* BasicLearnListener.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
