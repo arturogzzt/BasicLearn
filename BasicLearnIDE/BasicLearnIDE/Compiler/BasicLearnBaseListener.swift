@@ -11,10 +11,9 @@ import Antlr4
 open class BasicLearnBaseListener: BasicLearnListener {
     var scope = "ERROR"
     var symbolTable = [DirFunc]()
-    var variableTable = [varTable]()
+    var variableTable = [Int : [varTable]]()
     // Tiene que empezar en 1 porque si pones nil en la creacion de dirfunc no te deja porq es int
     // 0 representaria que no tiene vartable asignado...
-    var currentFunction : DirFunc
     var variableTableCount = 1
      public init() {
         
@@ -23,10 +22,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
 	open func enterProgram(_ ctx: BasicLearnParser.ProgramContext) {
         scope = "GLOBAL"
         let programName = ctx.ID()?.getText() ?? "Error"
-        // below comment used for debugging
-        // print(ctx.declaration()[0].type()?.getText())
         let programDirFunc = DirFunc.init(nom: programName, tipo: Type.program, scop: scope, mem: 0, link: 0)
-        currentFunction = programDirFunc
         symbolTable.append(programDirFunc)
     }
 	/**
@@ -36,6 +32,14 @@ open class BasicLearnBaseListener: BasicLearnListener {
 	 */
 	open func exitProgram(_ ctx: BasicLearnParser.ProgramContext) {
         print(symbolTable[0].name!, symbolTable[0].type!)
+        
+        for(function, variable) in variableTable {
+            print("FUNCTION: \(symbolTable[function-1].name!)")
+            for variab in variable {
+                print("TYPE: \(variab.type!) NAME: \(variab.name!) SCOPE: \(variab.scope!)")
+            }
+        }
+
     }
 
 	/**
@@ -167,7 +171,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
         
         for function in symbolTable {
             if functionName == function.name {
-                // Todo handle error appropriately
+                // TODO: handle error appropriately STOP COMPILATION && POP UP notif
                 print("Error, multiple declaration")
             }
         }
@@ -175,11 +179,12 @@ open class BasicLearnBaseListener: BasicLearnListener {
         let function = DirFunc.init(nom: functionName, tipo: Type(type: functionType), scop: scope, mem: 0, link: 0)
         symbolTable.append(function)
         
-        currentFunction = function
+        symbolTable.last?.link = variableTableCount
+//        variableTable[variableTableCount] = []
         
-        // create var table when you reach (
         
-        // search for id name in current var table 
+        
+        variableTableCount += 1
 
         
 	}
@@ -196,28 +201,22 @@ open class BasicLearnBaseListener: BasicLearnListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	open func enterDeclaration(_ ctx: BasicLearnParser.DeclarationContext) {
-        // ¿Cómo saber la current function aqui?
-        // Use una variable global de current function... (hay que ver como mejorar esto)
-        
-        if currentFunction.link == 0 {
-            currentFunction.link = variableTableCount
-            variableTableCount = variableTableCount + 1
+        if !variableTable.keys.contains(variableTableCount) {
+            variableTable[variableTableCount] = []
+            symbolTable.last?.link = variableTableCount
         }
         
-        for variable in variableTable {
-            // error comparing ctx id and variable.name
-//            if ctx.ID() == variable.name {
-//                print("Error, multiple declaration")
-//                // Handle error appropriately
-//            }
+        for newVariable in ctx.ID() {
+            let newVariableType = ctx.type()?.getText()
+            
+            for variable in variableTable[variableTableCount]! {
+                if variable.name == newVariable.description {
+                    print("Error, multiple declaration")
+                    // Handle error appropriately STOP COMPILATION && POP UP notif
+                }
+            }
+            variableTable[variableTableCount]?.append(varTable.init(nom: newVariable.description, tipo: Type(type: newVariableType!), scop: scope, mem: 0, ident: variableTableCount))
         }
-        // error below
-        // variableTable.append(varTable.init(nom: ctx.ID(), tipo: ctx.type(), scop: scope, mem: 0, ident: 0))
-        
-        
-//        let variableTableName = ctx.getParent()
-//
-//        let variableTable = varTable.init(nom: <#T##String#>, tipo: <#T##Type#>, scop: scope, mem: 0, ident: 0)
     }
 	/**
 	 * {@inheritDoc}
