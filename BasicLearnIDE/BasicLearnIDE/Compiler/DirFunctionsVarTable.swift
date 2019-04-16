@@ -25,7 +25,7 @@ class SymbolTable {
 class DirFunc : SymbolTable{
     var link: Int!
     
-     init(nom: String, tipo: Type, scop: String, mem: Int, link: Int) {
+    init(nom: String, tipo: Type, scop: String, mem: Int, link: Int) {
         self.link = link
         super.init(nom: nom, tipo: tipo, scop: scop, mem: mem)
     }

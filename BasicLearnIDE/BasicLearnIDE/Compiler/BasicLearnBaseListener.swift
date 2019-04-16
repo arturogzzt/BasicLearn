@@ -11,6 +11,10 @@ import Antlr4
 open class BasicLearnBaseListener: BasicLearnListener {
     var scope = "ERROR"
     var symbolTable = [DirFunc]()
+    var variableTable = [Int : [varTable]]()
+    // Tiene que empezar en 1 porque si pones nil en la creacion de dirfunc no te deja porq es int
+    // 0 representaria que no tiene vartable asignado...
+    var variableTableCount = 1
      public init() {
         
     }
@@ -28,6 +32,14 @@ open class BasicLearnBaseListener: BasicLearnListener {
 	 */
 	open func exitProgram(_ ctx: BasicLearnParser.ProgramContext) {
         print(symbolTable[0].name!, symbolTable[0].type!)
+        
+        for(function, variable) in variableTable {
+            print("FUNCTION: \(symbolTable[function-1].name!)")
+            for variab in variable {
+                print("TYPE: \(variab.type!) NAME: \(variab.name!) SCOPE: \(variab.scope!)")
+            }
+        }
+
     }
 
 	/**
@@ -152,7 +164,30 @@ open class BasicLearnBaseListener: BasicLearnListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	open func enterFunction(_ ctx: BasicLearnParser.FunctionContext) { }
+	open func enterFunction(_ ctx: BasicLearnParser.FunctionContext) { 
+        scope = "LOCAL"
+        let functionType = ctx.type()?.getText() ?? "Error"
+        let functionName = ctx.ID()?.getText() ?? "Error"
+        
+        for function in symbolTable {
+            if functionName == function.name {
+                // TODO: handle error appropriately STOP COMPILATION && POP UP notif
+                print("Error, multiple declaration")
+            }
+        }
+
+        let function = DirFunc.init(nom: functionName, tipo: Type(type: functionType), scop: scope, mem: 0, link: 0)
+        symbolTable.append(function)
+        
+        symbolTable.last?.link = variableTableCount
+//        variableTable[variableTableCount] = []
+        
+        
+        
+        variableTableCount += 1
+
+        
+	}
 	/**
 	 * {@inheritDoc}
 	 *
@@ -165,7 +200,24 @@ open class BasicLearnBaseListener: BasicLearnListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	open func enterDeclaration(_ ctx: BasicLearnParser.DeclarationContext) { }
+	open func enterDeclaration(_ ctx: BasicLearnParser.DeclarationContext) {
+        if !variableTable.keys.contains(variableTableCount) {
+            variableTable[variableTableCount] = []
+            symbolTable.last?.link = variableTableCount
+        }
+        
+        for newVariable in ctx.ID() {
+            let newVariableType = ctx.type()?.getText()
+            
+            for variable in variableTable[variableTableCount]! {
+                if variable.name == newVariable.description {
+                    print("Error, multiple declaration")
+                    // Handle error appropriately STOP COMPILATION && POP UP notif
+                }
+            }
+            variableTable[variableTableCount]?.append(varTable.init(nom: newVariable.description, tipo: Type(type: newVariableType!), scop: scope, mem: 0, ident: variableTableCount))
+        }
+    }
 	/**
 	 * {@inheritDoc}
 	 *
