@@ -15,6 +15,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
     // Tiene que empezar en 1 porque si pones nil en la creacion de dirfunc no te deja porq es int
     // 0 representaria que no tiene vartable asignado...
     var variableTableCount = 1
+    var parameterVerification = [String]()
      public init() {
         
     }
@@ -22,7 +23,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
 	open func enterProgram(_ ctx: BasicLearnParser.ProgramContext) {
         scope = "GLOBAL"
         let programName = ctx.ID()?.getText() ?? "Error"
-        let programDirFunc = DirFunc.init(nom: programName, tipo: Type.program, scop: scope, mem: 0, link: 0)
+        let programDirFunc = DirFunc.init(nom: programName, tipo: Type.program, scop: scope, mem: 0, link: 1)
         symbolTable.append(programDirFunc)
     }
 	/**
@@ -31,14 +32,18 @@ open class BasicLearnBaseListener: BasicLearnListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	open func exitProgram(_ ctx: BasicLearnParser.ProgramContext) {
-        print(symbolTable[0].name!, symbolTable[0].type!)
-        
-        for(function, variable) in variableTable {
-            print("FUNCTION: \(symbolTable[function-1].name!)")
-            for variab in variable {
-                print("TYPE: \(variab.type!) NAME: \(variab.name!) SCOPE: \(variab.scope!)")
-            }
-        }
+        variableTable.removeValue(forKey: 1)
+        variableTableCount = 1
+        symbolTable.removeAll()
+    
+//        print(symbolTable[0].name!, symbolTable[0].type!)
+//
+//        for(function, variable) in variableTable {
+//            print("FUNCTION: \(symbolTable[function-1].name!) LINK: \(symbolTable[function-1].link!)")
+//            for variab in variable {
+//                print("TYPE: \(variab.type!) NAME: \(variab.name!) SCOPE: \(variab.scope!)")
+//            }
+//        }
 
     }
 
@@ -164,7 +169,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	open func enterFunction(_ ctx: BasicLearnParser.FunctionContext) { 
+	open func enterFunction(_ ctx: BasicLearnParser.FunctionContext) {
         scope = "LOCAL"
         let functionType = ctx.type()?.getText() ?? "Error"
         let functionName = ctx.ID()?.getText() ?? "Error"
@@ -182,18 +187,25 @@ open class BasicLearnBaseListener: BasicLearnListener {
         symbolTable.last?.link = variableTableCount
 //        variableTable[variableTableCount] = []
         
-        
-        
         variableTableCount += 1
 
-        
 	}
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	open func exitFunction(_ ctx: BasicLearnParser.FunctionContext) { }
+	open func exitFunction(_ ctx: BasicLearnParser.FunctionContext) {
+//        for(function, variable) in variableTable {
+//            print("FUNCTION: \(symbolTable[function-1].name!) LINK: \(symbolTable[function-1].link!)")
+//            for variab in variable {
+//                print("TYPE: \(variab.type!) NAME: \(variab.name!) SCOPE: \(variab.scope!)")
+//            }
+//        }
+        
+        variableTable.removeValue(forKey: variableTableCount)
+        parameterVerification.removeAll()
+    }
 
 	/**
 	 * {@inheritDoc}
@@ -204,10 +216,18 @@ open class BasicLearnBaseListener: BasicLearnListener {
         if !variableTable.keys.contains(variableTableCount) {
             variableTable[variableTableCount] = []
             symbolTable.last?.link = variableTableCount
+//            variableTableCount += 1
         }
         
         for newVariable in ctx.ID() {
             let newVariableType = ctx.type()?.getText()
+            
+            for param in parameterVerification {
+                if newVariable.description == param {
+                    print("Error, multiple declaration")
+                    // Handle error appropriately STOP COMPILATION && POP UP notif
+                }
+            }
             
             for variable in variableTable[variableTableCount]! {
                 if variable.name == newVariable.description {
@@ -215,6 +235,8 @@ open class BasicLearnBaseListener: BasicLearnListener {
                     // Handle error appropriately STOP COMPILATION && POP UP notif
                 }
             }
+            
+            
             variableTable[variableTableCount]?.append(varTable.init(nom: newVariable.description, tipo: Type(type: newVariableType!), scop: scope, mem: 0, ident: variableTableCount))
         }
     }
@@ -223,7 +245,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	open func exitDeclaration(_ ctx: BasicLearnParser.DeclarationContext) { }
+    open func exitDeclaration(_ ctx: BasicLearnParser.DeclarationContext) { }
 
 	/**
 	 * {@inheritDoc}
@@ -243,13 +265,25 @@ open class BasicLearnBaseListener: BasicLearnListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	open func enterParameters(_ ctx: BasicLearnParser.ParametersContext) { }
+	open func enterParameters(_ ctx: BasicLearnParser.ParametersContext) {
+        for parameter in ctx.ID() {
+            for param in parameterVerification {
+                if parameter.getText() == param {
+                    print("Error, multiple declaration")
+                }
+            }
+            parameterVerification.append(parameter.getText())
+        }
+        
+    }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	open func exitParameters(_ ctx: BasicLearnParser.ParametersContext) { }
+	open func exitParameters(_ ctx: BasicLearnParser.ParametersContext) {
+//        print(parameterVerification)
+    }
 
 	/**
 	 * {@inheritDoc}
