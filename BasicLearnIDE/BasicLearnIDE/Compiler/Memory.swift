@@ -24,10 +24,10 @@ class Memory{
     private let sentenceBase : Int!
     
     //Guardar nuestras variables en la memoria en estos arreglos
-    private var numbers = [Int]()
-    private var decimals = [Double]()
-    private var sentences = [String]()
-    private var bools = [Bool]()
+    private var numbers = [Int?]()
+    private var decimals = [Double?]()
+    private var sentences = [String?]()
+    private var bools = [Bool?]()
     
     
     init (baseAddress: Int){
@@ -38,6 +38,18 @@ class Memory{
         self.sentenceBase = baseAddress + self.sentence
         self.boolBase = baseAddress + self.bool
         
+        prepareArrays()
+        
+    }
+    
+    func prepareArrays() {
+        // Buscar eficientizar esto...
+        for _ in 1...18700 {
+            numbers.append(nil)
+            decimals.append(nil)
+            sentences.append(nil)
+            bools.append(nil)
+        }
     }
     
     //Funciones para obtener pedazos de memoria disponibles
@@ -61,6 +73,14 @@ class Memory{
     func getBoolAddress(spaces:Int) -> Int{
         bool = bool + spaces
         return (bool + base - spaces)
+    }
+    
+    func saveNumber(address : Int, value : Int) {
+        numbers.insert(value, at: address)
+    }
+    
+    func saveDecimal(address : Int, value : Double) {
+        decimals.insert(value, at: address)
     }
     
 }

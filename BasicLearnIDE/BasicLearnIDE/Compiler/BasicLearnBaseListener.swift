@@ -15,12 +15,6 @@ open class BasicLearnBaseListener: BasicLearnListener {
     
     var dirFunc = [Function]()
     
-    
-    var symbolTable = [DirFunc]()
-    var variableTable = [Int : [varTable]]()
-    // Tiene que empezar en 1 porque si pones nil en la creacion de dirfunc no te deja porq es int
-    // 0 representaria que no tiene vartable asignado...
-    var variableTableCount = 1
     var parameterVerification = [String]()
     
     //Lista para saltos pendientes en los cuadruplos
@@ -168,6 +162,19 @@ open class BasicLearnBaseListener: BasicLearnListener {
 
 
 	open func enterFactor(_ ctx: BasicLearnParser.FactorContext) {
+        if let numberConstant = ctx.CTE_I()?.getText() {
+            var memoryAddressVariable : Int
+            memoryAddressVariable = constantMemory.getNumberAddress(spaces: 1)
+            constantMemory.saveNumber(address: memoryAddressVariable, value: Int(numberConstant)!)
+        }
+        
+        if let decimalConstant = ctx.CTE_F()?.getText() {
+            var memoryAddressVariable : Int
+            memoryAddressVariable = constantMemory.getDecimalAddress(spaces: 1)
+            constantMemory.saveDecimal(address: memoryAddressVariable, value: Double(decimalConstant)!)
+            
+        }
+        
         if let currentId = ctx.ID()?.getText() {
             guard let operand = getVariable(id: currentId) else { return }
             
