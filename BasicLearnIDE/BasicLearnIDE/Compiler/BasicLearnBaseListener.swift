@@ -40,6 +40,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
     var localMemory = Memory.init(baseAddress: 6000)
     var constantMemory = Memory.init(baseAddress: 12000)
     
+    
      public init() {
         
     }
@@ -146,7 +147,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
         for function in dirFunc {
             print("FUNCTION \(function.name)")
             for variables in function.variables {
-                print("TYPE: \(variables.type) NAME: \(variables.name)")
+                print("TYPE: \(variables.type) NAME: \(variables.name) ADDRESS: \(variables.address)")
             }
         }
 //        for(function, variable) in variableTable {
@@ -188,18 +189,46 @@ open class BasicLearnBaseListener: BasicLearnListener {
                 }
             }
             
-//            for variable in variableTable[variableTableCount]! {
-//                if variable.name == newVariable.description {
-//                    print("Error, multiple declaration")
-//                    return
-//                    // Handle error appropriately STOP COMPILATION && POP UP notif
-//                }
-//            }
+            var memoryAddressVariable: Int! //Aqui se graba donde quedara el valor de dicha variable
             
-            
-//            variableTable[variableTableCount]?.append(varTable.init(nom: newVariable.description, tipo: Type(type: newVariableType!), scop: scope, mem: 0, ident: variableTableCount))
-            
-            let auxVariable = Variable.init(name: newVariable.description, type: Type(type: newVariableType!), address: 0)
+            switch newVariableType {
+            case "number":
+                if(scope == "GLOBAL"){
+//                    print(globalMemory.getNumberAddress(spaces: 1))
+                    memoryAddressVariable = globalMemory.getNumberAddress(spaces: 1)
+                }else{
+//                    print(localMemory.getNumberAddress(spaces: 1))
+                    memoryAddressVariable = localMemory.getNumberAddress(spaces: 1)
+                }
+            case "sentence":
+                if(scope == "GLOBAL"){
+//                    print(globalMemory.getSentenceAddress(spaces: 1))
+                    memoryAddressVariable = globalMemory.getSentenceAddress(spaces: 1)
+                }else{
+//                    print(localMemory.getSentenceAddress(spaces: 1))
+                    memoryAddressVariable = localMemory.getSentenceAddress(spaces: 1)
+                }
+            case "bool":
+                if(scope == "GLOBAL"){
+//                    print(globalMemory.getBoolAddress(spaces: 1))
+                    memoryAddressVariable = globalMemory.getBoolAddress(spaces: 1)
+                }else{
+//                    print(localMemory.getBoolAddress(spaces: 1))
+                    memoryAddressVariable = localMemory.getBoolAddress(spaces: 1)
+                }
+            case "decimal":
+                if(scope == "GLOBAL"){
+//                    print(globalMemory.getDecimalAddress(spaces: 1))
+                    memoryAddressVariable = globalMemory.getDecimalAddress(spaces: 1)
+                }else{
+//                    print(localMemory.getDecimalAddress(spaces: 1))
+                    memoryAddressVariable = localMemory.getDecimalAddress(spaces: 1)
+                }
+             default:
+                break
+                
+            }
+            let auxVariable = Variable.init(name: newVariable.description, type: Type(type: newVariableType!), address: memoryAddressVariable)
             
             dirFunc.last?.variables.append(auxVariable)
         }

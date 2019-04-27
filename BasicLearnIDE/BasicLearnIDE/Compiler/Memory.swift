@@ -11,10 +11,10 @@ import Foundation
 //Esta clase será utilizada para las memoria global, local, constante
 class Memory{
     //Donde se pondran nuestra variables de acuerdo a cada tipo
-    private let number = 0
-    private let decimal = 1500
-    private let sentence = 3000
-    private let bool = 4500
+    private var number = 0
+    private var decimal = 1500
+    private var sentence = 3000
+    private var bool = 4500
     
     //Lugar para saber las verdaderas ubicaciones de las memorias
     private let base : Int!
@@ -24,19 +24,43 @@ class Memory{
     private let sentenceBase : Int!
     
     //Guardar nuestras variables en la memoria en estos arreglos
-    private let numbers = [Int]()
-    private let decimals = [Double]()
-    private let sentences = [String]()
-    private let bools = [Bool]()
+    private var numbers = [Int]()
+    private var decimals = [Double]()
+    private var sentences = [String]()
+    private var bools = [Bool]()
     
     
     init (baseAddress: Int){
         self.base = baseAddress
+        // Estos numeros son los de la memoria real, no dentro de la clase
         self.numberBase = baseAddress + self.number
         self.decimalBase = baseAddress + self.decimal
         self.sentenceBase = baseAddress + self.sentence
         self.boolBase = baseAddress + self.bool
         
+    }
+    
+    //Funciones para obtener pedazos de memoria disponibles
+    //ahorita no me preocupo por arreglos
+    //Spaces es cuanta memoria se va a ocupar (despues para arreglos)
+    func getNumberAddress(spaces:Int) -> Int{
+        number = number + spaces
+        return (number + base - spaces)
+    }
+    
+    func getDecimalAddress(spaces:Int) -> Int{
+        decimal = decimal + spaces
+        return (decimal + base - spaces)
+    }
+    
+    func getSentenceAddress(spaces:Int) -> Int{
+        sentence = sentence + spaces
+        return (sentenceBase + base - spaces)
+    }
+    
+    func getBoolAddress(spaces:Int) -> Int{
+        bool = bool + spaces
+        return (bool + base - spaces)
     }
     
 }
