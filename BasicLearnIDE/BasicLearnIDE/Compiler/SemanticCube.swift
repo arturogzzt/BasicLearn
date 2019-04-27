@@ -10,220 +10,215 @@ import Foundation
 
 class semanticCube {
     
-    let NUM = "number"
-    let DECIMAL = "decimal"
-    let SENTENCE = "sentence"
-    let BOOLEAN = "bool"
-    
-    func checkOperation(op: String, operand1: String, operand2: String) -> String{
+    func checkOperation(op: String, operand1: Type, operand2: Type) -> Type{
         if op == "+" {
-            if(operand1 == NUM){
-                if(operand2 == DECIMAL){
-                    return DECIMAL
-                }else if (operand2 == NUM){
-                    return NUM
+            if(operand1 == Type.number){
+                if(operand2 == Type.decimal){
+                    return Type.decimal
+                }else if (operand2 == Type.number){
+                    return Type.number
                 } else{
                     print("error")
-                    return ("error")
+                    return Type.error
                 }
-            } else if (operand2 == DECIMAL){
-                if(operand1 == NUM){
-                    return DECIMAL
-                } else if (operand1 == DECIMAL){
-                    return DECIMAL
+            } else if (operand2 == Type.decimal){
+                if(operand1 == Type.number){
+                    return Type.decimal
+                } else if (operand1 == Type.decimal){
+                    return Type.decimal
                 } else{
                     print("error")
-                    return ("error")
+                    return Type.error
                 }
             } else{
                 print ("error")
-                return ("error")
+                return Type.error
             }
         }
         else if op == "-"{
-            if(operand1 == NUM){
-                if(operand2 == DECIMAL){
-                    return DECIMAL
-                }else if (operand2 == NUM){
-                    return NUM
+            if(operand1 == Type.number){
+                if(operand2 == Type.decimal){
+                    return Type.decimal
+                }else if (operand2 == Type.number){
+                    return Type.number
                 } else{
                     print("error")
-                    return ("error")
+                    return Type.error
                 }
-            } else if (operand2 == DECIMAL){
-                if(operand1 == NUM){
-                    return DECIMAL
-                } else if (operand1 == DECIMAL){
-                    return DECIMAL
+            } else if (operand2 == Type.decimal){
+                if(operand1 == Type.number){
+                    return Type.decimal
+                } else if (operand1 == Type.decimal){
+                    return Type.decimal
                 } else{
                     print("error")
-                    return ("error")
+                    return Type.error
                 }
             } else{
                 print ("error")
-                return ("error")
+                return Type.error
             }
         } else if op == "*"{
-            if(operand1 == NUM){
-                if(operand2 == DECIMAL){
-                    return DECIMAL
-                }else if (operand2 == NUM){
-                    return NUM
+            if(operand1 == Type.number){
+                if(operand2 == Type.decimal){
+                    return Type.decimal
+                }else if (operand2 == Type.number){
+                    return Type.number
                 } else{
                     print("error")
-                    return ("error")
+                    return Type.error
                 }
-            } else if (operand2 == DECIMAL){
-                if(operand1 == NUM){
-                    return DECIMAL
-                } else if (operand1 == DECIMAL){
-                    return DECIMAL
+            } else if (operand2 == Type.decimal){
+                if(operand1 == Type.number){
+                    return Type.decimal
+                } else if (operand1 == Type.decimal){
+                    return Type.decimal
                 } else{
                     print("error")
-                    return ("error")
+                    return Type.error
                 }
             } else{
                 print ("error")
-                return ("error")
+                return Type.error
             }
         } else if op == "/"{
-            if(operand1 == NUM){
-                if(operand2 == DECIMAL){
-                    return DECIMAL
-                }else if (operand2 == NUM){
-                    return NUM
+            if(operand1 == Type.number){
+                if(operand2 == Type.decimal){
+                    return Type.decimal
+                }else if (operand2 == Type.number){
+                    return Type.number
                 } else{
                     print("error")
-                    return ("error")
+                    return Type.error
                 }
-            } else if (operand2 == DECIMAL){
-                if(operand1 == NUM){
-                    return DECIMAL
-                } else if (operand1 == DECIMAL){
-                    return DECIMAL
+            } else if (operand2 == Type.decimal){
+                if(operand1 == Type.number){
+                    return Type.decimal
+                } else if (operand1 == Type.decimal){
+                    return Type.decimal
                 } else{
                     print("error")
-                    return ("error")
+                    return Type.error
                 }
             } else{
                 print ("error")
-                return ("error")
+                return Type.error
             }
         } else if op == "<"{
-            if ((operand1 == NUM) || (operand1 == DECIMAL)){
-                if((operand2 == NUM) || (operand2 == DECIMAL)){
-                    return BOOLEAN
+            if ((operand1 == Type.number) || (operand1 == Type.decimal)){
+                if((operand2 == Type.number) || (operand2 == Type.decimal)){
+                    return Type.bool
                 } else{
                     print ("error")
-                    return ("error")
+                    return Type.error
                 }
-            } else if ((operand2 == NUM) || (operand2 == DECIMAL)){
-                if((operand1 == NUM) || (operand1 == DECIMAL)){
-                    return BOOLEAN
+            } else if ((operand2 == Type.number) || (operand2 == Type.decimal)){
+                if((operand1 == Type.number) || (operand1 == Type.decimal)){
+                    return Type.bool
                 } else {
                     print ("error")
-                    return ("error")
+                    return Type.error
                 }
             } else {
                 print( "error")
-                return ("error")
+                return Type.error
             }
         } else if op == ">"{
-            if ((operand1 == NUM) || (operand1 == DECIMAL)){
-                if((operand2 == NUM) || (operand2 == DECIMAL)){
-                    return BOOLEAN
+            if ((operand1 == Type.number) || (operand1 == Type.decimal)){
+                if((operand2 == Type.number) || (operand2 == Type.decimal)){
+                    return Type.bool
                 } else{
                     print ("error")
-                    return ("error")
+                    return Type.error
                 }
-            } else if ((operand2 == NUM) || (operand2 == DECIMAL)){
-                if((operand1 == NUM) || (operand1 == DECIMAL)){
-                    return BOOLEAN
+            } else if ((operand2 == Type.number) || (operand2 == Type.decimal)){
+                if((operand1 == Type.number) || (operand1 == Type.decimal)){
+                    return Type.bool
                 } else {
                     print ("error")
-                    return ("error")
+                    return Type.error
                 }
             } else {
                 print( "error")
-                return ("error")
+                return Type.error
             }
         } else if op == "<="{
-            if ((operand1 == NUM) || (operand1 == DECIMAL)){
-                if((operand2 == NUM) || (operand2 == DECIMAL)){
-                    return BOOLEAN
+            if ((operand1 == Type.number) || (operand1 == Type.decimal)){
+                if((operand2 == Type.number) || (operand2 == Type.decimal)){
+                    return Type.bool
                 } else{
                     print ("error")
-                    return ("error")
+                    return Type.error
                 }
-            } else if ((operand2 == NUM) || (operand2 == DECIMAL)){
-                if((operand1 == NUM) || (operand1 == DECIMAL)){
-                    return BOOLEAN
+            } else if ((operand2 == Type.number) || (operand2 == Type.decimal)){
+                if((operand1 == Type.number) || (operand1 == Type.decimal)){
+                    return Type.bool
                 } else {
                     print ("error")
-                    return ("error")
+                    return Type.error
                 }
             } else {
                 print( "error")
-                return ("error")
+                return Type.error
             }
         } else if op == ">="{
-            if ((operand1 == NUM) || (operand1 == DECIMAL)){
-                if((operand2 == NUM) || (operand2 == DECIMAL)){
-                    return BOOLEAN
+            if ((operand1 == Type.number) || (operand1 == Type.decimal)){
+                if((operand2 == Type.number) || (operand2 == Type.decimal)){
+                    return Type.bool
                 } else{
                     print ("error")
-                    return ("error")
+                    return Type.error
                 }
-            } else if ((operand2 == NUM) || (operand2 == DECIMAL)){
-                if((operand1 == NUM) || (operand1 == DECIMAL)){
-                    return BOOLEAN
+            } else if ((operand2 == Type.number) || (operand2 == Type.decimal)){
+                if((operand1 == Type.number) || (operand1 == Type.decimal)){
+                    return Type.bool
                 } else {
                     print ("error")
-                    return ("error")
+                    return Type.error
                 }
             } else {
                 print( "error")
-                return ("error")
+                return Type.error
             }
         } else if op == "equal"{
-            if ((operand1 == NUM) || (operand1 == DECIMAL)){
-                if((operand2 == NUM) || (operand2 == DECIMAL)){
-                    return BOOLEAN
+            if ((operand1 == Type.number) || (operand1 == Type.decimal)){
+                if((operand2 == Type.number) || (operand2 == Type.decimal)){
+                    return Type.bool
                 } else{
                     print ("error")
-                    return ("error")
+                    return Type.error
                 }
-            } else if ((operand2 == NUM) || (operand2 == DECIMAL)){
-                if((operand1 == NUM) || (operand1 == DECIMAL)){
-                    return BOOLEAN
+            } else if ((operand2 == Type.number) || (operand2 == Type.decimal)){
+                if((operand1 == Type.number) || (operand1 == Type.decimal)){
+                    return Type.bool
                 } else {
                     print ("error")
-                    return ("error")
+                    return Type.error
                 }
             } else {
                 print( "error")
-                return ("error")
+                return Type.error
             }
         } else if op == "notEqual"{
-            if ((operand1 == NUM) || (operand1 == DECIMAL)){
-                if((operand2 == NUM) || (operand2 == DECIMAL)){
-                    return BOOLEAN
+            if ((operand1 == Type.number) || (operand1 == Type.decimal)){
+                if((operand2 == Type.number) || (operand2 == Type.decimal)){
+                    return Type.bool
                 } else{
                     print ("error")
-                    return ("error")
+                    return Type.error
                 }
-            } else if ((operand2 == NUM) || (operand2 == DECIMAL)){
-                if((operand1 == NUM) || (operand1 == DECIMAL)){
-                    return BOOLEAN
+            } else if ((operand2 == Type.number) || (operand2 == Type.decimal)){
+                if((operand1 == Type.number) || (operand1 == Type.decimal)){
+                    return Type.bool
                 } else {
                     print ("error")
-                    return ("error")
+                    return Type.error
                 }
             } else {
                 print( "error")
-                return ("error")
+                return Type.error
             }
         }
-        return "error"
+        return Type.error
     }
 }

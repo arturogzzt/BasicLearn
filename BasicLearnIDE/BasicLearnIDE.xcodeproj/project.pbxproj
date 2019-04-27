@@ -32,7 +32,6 @@
 		EC151751225E93AC0030D440 /* BasicLearnParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC151745225E93AC0030D440 /* BasicLearnParser.swift */; };
 		EC1B75452273658E007068DC /* Antlr4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC1B753D22736580007068DC /* Antlr4.framework */; };
 		EC1B754B22737464007068DC /* Quadruple.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1B754A22737464007068DC /* Quadruple.swift */; };
-		EC1B754D22747FE4007068DC /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1B754C22747FE4007068DC /* Operators.swift */; };
 		EC1B7551227494D8007068DC /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1B7550227494D8007068DC /* Memory.swift */; };
 		EC6EAF86227340B600D767DD /* SemanticCube.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6EAF85227340B600D767DD /* SemanticCube.swift */; };
 /* End PBXBuildFile section */
@@ -89,7 +88,6 @@
 		EC151745225E93AC0030D440 /* BasicLearnParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicLearnParser.swift; sourceTree = "<group>"; };
 		EC1B753522736580007068DC /* Antlr4.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Antlr4.xcodeproj; path = ../../antlr4/runtime/Swift/Antlr4.xcodeproj; sourceTree = "<group>"; };
 		EC1B754A22737464007068DC /* Quadruple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quadruple.swift; sourceTree = "<group>"; };
-		EC1B754C22747FE4007068DC /* Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
 		EC1B7550227494D8007068DC /* Memory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memory.swift; sourceTree = "<group>"; };
 		EC6EAF85227340B600D767DD /* SemanticCube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SemanticCube.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -160,7 +158,6 @@
 				41EAEBCB2274A66D00897C19 /* Variable.swift */,
 				41C2EFB6225FED3000C90A1F /* MainCompiler.swift */,
 				41C2EFBA225FED3000C90A1F /* Types.swift */,
-				EC1B754C22747FE4007068DC /* Operators.swift */,
 				EC6EAF85227340B600D767DD /* SemanticCube.swift */,
 				EC1B754A22737464007068DC /* Quadruple.swift */,
 			);
@@ -298,7 +295,6 @@
 				41C2EFBC225FED3000C90A1F /* MainCompiler.swift in Sources */,
 				41EAEBCA2274A66600897C19 /* Function.swift in Sources */,
 				EC15174D225E93AC0030D440 /* BasicLearnBaseListener.swift in Sources */,
-				EC1B754D22747FE4007068DC /* Operators.swift in Sources */,
 				41C2EFBD225FED3000C90A1F /* Types.swift in Sources */,
 				EC15174F225E93AC0030D440 /* BasicLearnListener.swift in Sources */,
 				EC1B754B22737464007068DC /* Quadruple.swift in Sources */,

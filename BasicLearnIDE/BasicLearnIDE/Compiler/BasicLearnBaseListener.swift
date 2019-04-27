@@ -24,12 +24,12 @@ open class BasicLearnBaseListener: BasicLearnListener {
     var parameterVerification = [String]()
     
     //Lista para saltos pendientes en los cuadruplos
-    var saltos = [Operator]()
+    var saltos = [String]()
     
     //Pila de operadores pendientes
-    var POper = [Operator]()
+    var POper = [String]()
     //Pila de operadondos
-    var PilaO = [String]()
+    var PilaO = [Int]()
     //Pila de Tipos
     var pTypes = [Type]()
     //Fila para output de cuadruplos
@@ -39,10 +39,26 @@ open class BasicLearnBaseListener: BasicLearnListener {
     var globalMemory = Memory.init(baseAddress: 0)
     var localMemory = Memory.init(baseAddress: 6000)
     var constantMemory = Memory.init(baseAddress: 12000)
-    
+    var temporalMemory = Memory.init(baseAddress: 18000)
     
      public init() {
         
+    }
+    
+    func getVariable(id : String) -> Variable? {
+        for variable in dirFunc.last!.variables {
+            if variable.name == id {
+                return variable
+            }
+        }
+        
+        for variable in dirFunc.first!.variables {
+            if variable.name == id {
+                return variable
+            }
+        }
+        return nil
+        // RETURN ERROR
     }
     
 	open func enterProgram(_ ctx: BasicLearnParser.ProgramContext) {
@@ -54,20 +70,13 @@ open class BasicLearnBaseListener: BasicLearnListener {
     }
 
 	open func exitProgram(_ ctx: BasicLearnParser.ProgramContext) {
-//        variableTable.removeValue(forKey: 1)
-//        variableTableCount = 1
-//        symbolTable.removeAll()
-//
         dirFunc.removeAll()
-    
-//        print(symbolTable[0].name!, symbolTable[0].type!)
-//
-//        for(function, variable) in variableTable {
-//            print("FUNCTION: \(symbolTable[function-1].name!) LINK: \(symbolTable[function-1].link!)")
-//            for variab in variable {
-//                print("TYPE: \(variab.type!) NAME: \(variab.name!) SCOPE: \(variab.scope!)")
-//            }
-//        }
+        
+        var i = 1;
+        for quad in qCuad {
+            print("\(i): \(quad.operand) \(quad.leftOp) \(quad.rightOp) \(quad.result)")
+            i += 1
+        }
 
     }
 
@@ -84,15 +93,90 @@ open class BasicLearnBaseListener: BasicLearnListener {
 
 	open func enterExp(_ ctx: BasicLearnParser.ExpContext) { }
 
-	open func exitExp(_ ctx: BasicLearnParser.ExpContext) { }
+	open func exitExp(_ ctx: BasicLearnParser.ExpContext) {
+        if let add = ctx.ADD()?.getText() {
+            POper.insert(add, at: 0)
+        }
+        
+        if let sub = ctx.SUBS()?.getText() {
+            POper.insert(sub, at: 0)
+        }
+    }
 
 
 	open func enterTerm(_ ctx: BasicLearnParser.TermContext) { }
 
-	open func exitTerm(_ ctx: BasicLearnParser.TermContext) { }
+	open func exitTerm(_ ctx: BasicLearnParser.TermContext) {
+        
+        if POper.first == "+" || POper.first == "-" {
+            let rightOperand = PilaO.first
+            let rightOperandType = pTypes.first
+            pTypes.removeFirst()
+            PilaO.removeFirst()
+            let leftOperand = PilaO.first
+            let leftOperandType = pTypes.first
+            pTypes.removeFirst()
+            PilaO.removeFirst()
+            let op = POper.first
+            POper.removeFirst()
+            
+            let resultType = semanticTypeCheck.checkOperation(op: op!, operand1: leftOperandType!, operand2: rightOperandType!)
+            
+            if resultType != Type.error {
+                
+                var result: Int!
+                
+                switch resultType {
+                case Type.number:
+                    result = temporalMemory.getNumberAddress(spaces: 1)
+                    
+                case Type.sentence:
+                    result = temporalMemory.getSentenceAddress(spaces: 1)
+                    
+                case Type.bool:
+                    result = temporalMemory.getBoolAddress(spaces: 1)
+                    
+                case Type.decimal:
+                    result = temporalMemory.getDecimalAddress(spaces: 1)
+                    
+                default:
+                    break
+                }
+                
+                qCuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: rightOperand!, result: result))
+                
+                PilaO.insert(result, at: 0)
+                pTypes.insert(resultType, at: 0)
+                
+                
+            } else {
+                print("ERROR TYPE MISMATCH")
+                // HANDLE ERROR CORRECTLY
+            }
+        }
+        
+        
+        if let mult = ctx.MULT()?.getText() {
+            POper.insert(mult, at: 0)
+        }
+        
+        if let div = ctx.DIV()?.getText() {
+            POper.insert(div, at: 0)
+        }
+        
+    }
 
 
-	open func enterFactor(_ ctx: BasicLearnParser.FactorContext) { }
+	open func enterFactor(_ ctx: BasicLearnParser.FactorContext) {
+        if let currentId = ctx.ID()?.getText() {
+            guard let operand = getVariable(id: currentId) else { return }
+            
+            PilaO.insert(Int(operand.address), at: 0)
+            pTypes.insert(operand.type, at: 0)
+        
+        }
+        
+    }
 
 	open func exitFactor(_ ctx: BasicLearnParser.FactorContext) {
         //Checar que si exista la variable en la tabla de variables
@@ -150,26 +234,14 @@ open class BasicLearnBaseListener: BasicLearnListener {
                 print("TYPE: \(variables.type) NAME: \(variables.name) ADDRESS: \(variables.address)")
             }
         }
-//        for(function, variable) in variableTable {
-//            print("FUNCTION: \(symbolTable[function-1].name!) LINK: \(symbolTable[function-1].link!)")
-//            for variab in variable {
-//                print("TYPE: \(variab.type!) NAME: \(variab.name!) SCOPE: \(variab.scope!)")
-//            }
-//        }
+
         dirFunc.removeLast()
-//        variableTable.removeValue(forKey: variableTableCount)
         parameterVerification.removeAll()
     }
 
 
 	open func enterDeclaration(_ ctx: BasicLearnParser.DeclarationContext) {
-//
-//        if !variableTable.keys.contains(variableTableCount) {
-//            variableTable[variableTableCount] = []
-//            symbolTable.last?.link = variableTableCount
-////            variableTableCount += 1
-//        }
-//
+
         for newVariable in ctx.ID() {
             let newVariableType = ctx.type()?.getText()
             
@@ -194,34 +266,26 @@ open class BasicLearnBaseListener: BasicLearnListener {
             switch newVariableType {
             case "number":
                 if(scope == "GLOBAL"){
-//                    print(globalMemory.getNumberAddress(spaces: 1))
                     memoryAddressVariable = globalMemory.getNumberAddress(spaces: 1)
                 }else{
-//                    print(localMemory.getNumberAddress(spaces: 1))
                     memoryAddressVariable = localMemory.getNumberAddress(spaces: 1)
                 }
             case "sentence":
                 if(scope == "GLOBAL"){
-//                    print(globalMemory.getSentenceAddress(spaces: 1))
                     memoryAddressVariable = globalMemory.getSentenceAddress(spaces: 1)
                 }else{
-//                    print(localMemory.getSentenceAddress(spaces: 1))
                     memoryAddressVariable = localMemory.getSentenceAddress(spaces: 1)
                 }
             case "bool":
                 if(scope == "GLOBAL"){
-//                    print(globalMemory.getBoolAddress(spaces: 1))
                     memoryAddressVariable = globalMemory.getBoolAddress(spaces: 1)
                 }else{
-//                    print(localMemory.getBoolAddress(spaces: 1))
                     memoryAddressVariable = localMemory.getBoolAddress(spaces: 1)
                 }
             case "decimal":
                 if(scope == "GLOBAL"){
-//                    print(globalMemory.getDecimalAddress(spaces: 1))
                     memoryAddressVariable = globalMemory.getDecimalAddress(spaces: 1)
                 }else{
-//                    print(localMemory.getDecimalAddress(spaces: 1))
                     memoryAddressVariable = localMemory.getDecimalAddress(spaces: 1)
                 }
              default:
