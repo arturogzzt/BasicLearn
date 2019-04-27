@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		410F1707225EAC9900A4CD25 /* Antlr4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 410F16F9225EAA5100A4CD25 /* Antlr4.framework */; };
 		41C2EFBC225FED3000C90A1F /* MainCompiler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C2EFB6225FED3000C90A1F /* MainCompiler.swift */; };
 		41C2EFBD225FED3000C90A1F /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C2EFBA225FED3000C90A1F /* Types.swift */; };
 		41C2EFBE225FED3000C90A1F /* DirFunctionsVarTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C2EFBB225FED3000C90A1F /* DirFunctionsVarTable.swift */; };
@@ -29,26 +28,31 @@
 		EC15174F225E93AC0030D440 /* BasicLearnListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC151743225E93AC0030D440 /* BasicLearnListener.swift */; };
 		EC151750225E93AC0030D440 /* BasicLearnLexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC151744225E93AC0030D440 /* BasicLearnLexer.swift */; };
 		EC151751225E93AC0030D440 /* BasicLearnParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC151745225E93AC0030D440 /* BasicLearnParser.swift */; };
+		EC1B75452273658E007068DC /* Antlr4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC1B753D22736580007068DC /* Antlr4.framework */; };
+		EC1B754B22737464007068DC /* Quadruple.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1B754A22737464007068DC /* Quadruple.swift */; };
+		EC1B754D22747FE4007068DC /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1B754C22747FE4007068DC /* Operators.swift */; };
+		EC1B7551227494D8007068DC /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1B7550227494D8007068DC /* Memory.swift */; };
+		EC6EAF86227340B600D767DD /* SemanticCube.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6EAF85227340B600D767DD /* SemanticCube.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		410F16F8225EAA5100A4CD25 /* PBXContainerItemProxy */ = {
+		EC1B753C22736580007068DC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 410F16F1225EAA5100A4CD25 /* Antlr4.xcodeproj */;
+			containerPortal = EC1B753522736580007068DC /* Antlr4.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = "Antlr4::Antlr4::Product";
 			remoteInfo = Antlr4;
 		};
-		410F16FA225EAA5100A4CD25 /* PBXContainerItemProxy */ = {
+		EC1B753E22736580007068DC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 410F16F1225EAA5100A4CD25 /* Antlr4.xcodeproj */;
+			containerPortal = EC1B753522736580007068DC /* Antlr4.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = "Antlr4::Antlr4Tests::Product";
 			remoteInfo = Antlr4Tests;
 		};
-		410F1701225EAC9400A4CD25 /* PBXContainerItemProxy */ = {
+		EC1B754222736589007068DC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 410F16F1225EAA5100A4CD25 /* Antlr4.xcodeproj */;
+			containerPortal = EC1B753522736580007068DC /* Antlr4.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = "Antlr4::Antlr4";
 			remoteInfo = Antlr4;
@@ -56,7 +60,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		410F16F1225EAA5100A4CD25 /* Antlr4.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Antlr4.xcodeproj; path = ../../../antlr4/runtime/Swift/Antlr4.xcodeproj; sourceTree = "<group>"; };
 		41C2EFB6225FED3000C90A1F /* MainCompiler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCompiler.swift; sourceTree = "<group>"; };
 		41C2EFBA225FED3000C90A1F /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		41C2EFBB225FED3000C90A1F /* DirFunctionsVarTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirFunctionsVarTable.swift; sourceTree = "<group>"; };
@@ -80,6 +83,11 @@
 		EC151743225E93AC0030D440 /* BasicLearnListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicLearnListener.swift; sourceTree = "<group>"; };
 		EC151744225E93AC0030D440 /* BasicLearnLexer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicLearnLexer.swift; sourceTree = "<group>"; };
 		EC151745225E93AC0030D440 /* BasicLearnParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicLearnParser.swift; sourceTree = "<group>"; };
+		EC1B753522736580007068DC /* Antlr4.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Antlr4.xcodeproj; path = ../../antlr4/runtime/Swift/Antlr4.xcodeproj; sourceTree = "<group>"; };
+		EC1B754A22737464007068DC /* Quadruple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quadruple.swift; sourceTree = "<group>"; };
+		EC1B754C22747FE4007068DC /* Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
+		EC1B7550227494D8007068DC /* Memory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memory.swift; sourceTree = "<group>"; };
+		EC6EAF85227340B600D767DD /* SemanticCube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SemanticCube.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,29 +95,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				410F1707225EAC9900A4CD25 /* Antlr4.framework in Frameworks */,
+				EC1B75452273658E007068DC /* Antlr4.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		410F16F2225EAA5100A4CD25 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				410F16F9225EAA5100A4CD25 /* Antlr4.framework */,
-				410F16FB225EAA5100A4CD25 /* Antlr4Tests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		EC1516F2225E87E30030D440 = {
 			isa = PBXGroup;
 			children = (
-				410F16F1225EAA5100A4CD25 /* Antlr4.xcodeproj */,
+				EC1B753522736580007068DC /* Antlr4.xcodeproj */,
 				EC1516FD225E87E40030D440 /* BasicLearnIDE */,
 				EC1516FC225E87E40030D440 /* Products */,
-				EC151737225E8B000030D440 /* Frameworks */,
+				EC1B75442273658E007068DC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -136,13 +135,6 @@
 			path = BasicLearnIDE;
 			sourceTree = "<group>";
 		};
-		EC151737225E8B000030D440 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		EC151739225E93AC0030D440 /* Compiler */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +146,7 @@
 				EC15173F225E93AC0030D440 /* BasicLearn.interp */,
 				EC151740225E93AC0030D440 /* BasicLearnLexer.interp */,
 				EC151741225E93AC0030D440 /* BasicLearnBaseListener.swift */,
+				EC1B7550227494D8007068DC /* Memory.swift */,
 				EC151742225E93AC0030D440 /* BasicLearnParserATN.swift */,
 				EC151743225E93AC0030D440 /* BasicLearnListener.swift */,
 				EC151744225E93AC0030D440 /* BasicLearnLexer.swift */,
@@ -161,8 +154,27 @@
 				41C2EFBB225FED3000C90A1F /* DirFunctionsVarTable.swift */,
 				41C2EFB6225FED3000C90A1F /* MainCompiler.swift */,
 				41C2EFBA225FED3000C90A1F /* Types.swift */,
+				EC1B754C22747FE4007068DC /* Operators.swift */,
+				EC6EAF85227340B600D767DD /* SemanticCube.swift */,
+				EC1B754A22737464007068DC /* Quadruple.swift */,
 			);
 			path = Compiler;
+			sourceTree = "<group>";
+		};
+		EC1B753622736580007068DC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EC1B753D22736580007068DC /* Antlr4.framework */,
+				EC1B753F22736580007068DC /* Antlr4Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EC1B75442273658E007068DC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,7 +191,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				410F1702225EAC9400A4CD25 /* PBXTargetDependency */,
+				EC1B754322736589007068DC /* PBXTargetDependency */,
 			);
 			name = BasicLearnIDE;
 			productName = BasicLearnIDE;
@@ -214,8 +226,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 410F16F2225EAA5100A4CD25 /* Products */;
-					ProjectRef = 410F16F1225EAA5100A4CD25 /* Antlr4.xcodeproj */;
+					ProductGroup = EC1B753622736580007068DC /* Products */;
+					ProjectRef = EC1B753522736580007068DC /* Antlr4.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -226,18 +238,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		410F16F9225EAA5100A4CD25 /* Antlr4.framework */ = {
+		EC1B753D22736580007068DC /* Antlr4.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = Antlr4.framework;
-			remoteRef = 410F16F8225EAA5100A4CD25 /* PBXContainerItemProxy */;
+			remoteRef = EC1B753C22736580007068DC /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		410F16FB225EAA5100A4CD25 /* Antlr4Tests.xctest */ = {
+		EC1B753F22736580007068DC /* Antlr4Tests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = file;
 			path = Antlr4Tests.xctest;
-			remoteRef = 410F16FA225EAA5100A4CD25 /* PBXContainerItemProxy */;
+			remoteRef = EC1B753E22736580007068DC /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -266,28 +278,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC1B7551227494D8007068DC /* Memory.swift in Sources */,
 				EC15174E225E93AC0030D440 /* BasicLearnParserATN.swift in Sources */,
 				EC151701225E87E40030D440 /* ViewController.swift in Sources */,
 				EC151707225E87E40030D440 /* BasicLearnIDE.xcdatamodeld in Sources */,
 				EC151748225E93AC0030D440 /* BasicLearnLexerATN.swift in Sources */,
+				EC6EAF86227340B600D767DD /* SemanticCube.swift in Sources */,
 				EC151750225E93AC0030D440 /* BasicLearnLexer.swift in Sources */,
 				EC151751225E93AC0030D440 /* BasicLearnParser.swift in Sources */,
 				41C2EFBE225FED3000C90A1F /* DirFunctionsVarTable.swift in Sources */,
 				EC1516FF225E87E40030D440 /* AppDelegate.swift in Sources */,
 				41C2EFBC225FED3000C90A1F /* MainCompiler.swift in Sources */,
 				EC15174D225E93AC0030D440 /* BasicLearnBaseListener.swift in Sources */,
+				EC1B754D22747FE4007068DC /* Operators.swift in Sources */,
 				41C2EFBD225FED3000C90A1F /* Types.swift in Sources */,
 				EC15174F225E93AC0030D440 /* BasicLearnListener.swift in Sources */,
+				EC1B754B22737464007068DC /* Quadruple.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		410F1702225EAC9400A4CD25 /* PBXTargetDependency */ = {
+		EC1B754322736589007068DC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Antlr4;
-			targetProxy = 410F1701225EAC9400A4CD25 /* PBXContainerItemProxy */;
+			targetProxy = EC1B754222736589007068DC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
