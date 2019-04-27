@@ -10,6 +10,8 @@
 		41C2EFBC225FED3000C90A1F /* MainCompiler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C2EFB6225FED3000C90A1F /* MainCompiler.swift */; };
 		41C2EFBD225FED3000C90A1F /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C2EFBA225FED3000C90A1F /* Types.swift */; };
 		41C2EFBE225FED3000C90A1F /* DirFunctionsVarTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C2EFBB225FED3000C90A1F /* DirFunctionsVarTable.swift */; };
+		41EAEBCA2274A66600897C19 /* Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EAEBC92274A66600897C19 /* Function.swift */; };
+		41EAEBCC2274A66D00897C19 /* Variable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EAEBCB2274A66D00897C19 /* Variable.swift */; };
 		EC1516FF225E87E40030D440 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1516FE225E87E40030D440 /* AppDelegate.swift */; };
 		EC151701225E87E40030D440 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC151700225E87E40030D440 /* ViewController.swift */; };
 		EC151704225E87E40030D440 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC151702225E87E40030D440 /* Main.storyboard */; };
@@ -63,6 +65,8 @@
 		41C2EFB6225FED3000C90A1F /* MainCompiler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCompiler.swift; sourceTree = "<group>"; };
 		41C2EFBA225FED3000C90A1F /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		41C2EFBB225FED3000C90A1F /* DirFunctionsVarTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirFunctionsVarTable.swift; sourceTree = "<group>"; };
+		41EAEBC92274A66600897C19 /* Function.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Function.swift; sourceTree = "<group>"; };
+		41EAEBCB2274A66D00897C19 /* Variable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Variable.swift; sourceTree = "<group>"; };
 		EC1516FB225E87E40030D440 /* BasicLearnIDE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BasicLearnIDE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC1516FE225E87E40030D440 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EC151700225E87E40030D440 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -152,6 +156,8 @@
 				EC151744225E93AC0030D440 /* BasicLearnLexer.swift */,
 				EC151745225E93AC0030D440 /* BasicLearnParser.swift */,
 				41C2EFBB225FED3000C90A1F /* DirFunctionsVarTable.swift */,
+				41EAEBC92274A66600897C19 /* Function.swift */,
+				41EAEBCB2274A66D00897C19 /* Variable.swift */,
 				41C2EFB6225FED3000C90A1F /* MainCompiler.swift */,
 				41C2EFBA225FED3000C90A1F /* Types.swift */,
 				EC1B754C22747FE4007068DC /* Operators.swift */,
@@ -279,6 +285,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC1B7551227494D8007068DC /* Memory.swift in Sources */,
+				41EAEBCC2274A66D00897C19 /* Variable.swift in Sources */,
 				EC15174E225E93AC0030D440 /* BasicLearnParserATN.swift in Sources */,
 				EC151701225E87E40030D440 /* ViewController.swift in Sources */,
 				EC151707225E87E40030D440 /* BasicLearnIDE.xcdatamodeld in Sources */,
@@ -289,6 +296,7 @@
 				41C2EFBE225FED3000C90A1F /* DirFunctionsVarTable.swift in Sources */,
 				EC1516FF225E87E40030D440 /* AppDelegate.swift in Sources */,
 				41C2EFBC225FED3000C90A1F /* MainCompiler.swift in Sources */,
+				41EAEBCA2274A66600897C19 /* Function.swift in Sources */,
 				EC15174D225E93AC0030D440 /* BasicLearnBaseListener.swift in Sources */,
 				EC1B754D22747FE4007068DC /* Operators.swift in Sources */,
 				41C2EFBD225FED3000C90A1F /* Types.swift in Sources */,
