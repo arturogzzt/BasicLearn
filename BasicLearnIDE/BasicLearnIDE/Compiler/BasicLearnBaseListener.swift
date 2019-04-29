@@ -34,6 +34,8 @@ open class BasicLearnBaseListener: BasicLearnListener {
     var pTypes = [Type]()
     //Fila para output de cuadruplos
     var qCuad = [Quadruple]()
+    //Diccionario para guardar donde se encuentran las expresiones y sus resultados
+    var dicTemp : [String:Int] = [:]
     
     // Memory
     var globalMemory = Memory.init(baseAddress: 0)
@@ -74,7 +76,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
         
         var i = 1;
         for quad in qCuad {
-            print("\(i): \(quad.operand) \(quad.leftOp) \(quad.rightOp) \(quad.result)")
+            print("\(i):\t \(quad.operand) \t \(quad.leftOp) \t \(quad.rightOp) \t \(quad.result)")
             i += 1
         }
 
@@ -107,6 +109,8 @@ open class BasicLearnBaseListener: BasicLearnListener {
 	open func enterTerm(_ ctx: BasicLearnParser.TermContext) { }
 
 	open func exitTerm(_ ctx: BasicLearnParser.TermContext) {
+        
+//        print("PilaO : \(PilaO.first)")
         
         if POper.first == "+" || POper.first == "-" {
             let rightOperand = PilaO.first
@@ -169,27 +173,101 @@ open class BasicLearnBaseListener: BasicLearnListener {
 
 	open func enterFactor(_ ctx: BasicLearnParser.FactorContext) {
         if let currentId = ctx.ID()?.getText() {
-            guard let operand = getVariable(id: currentId) else { return }
+            
+            //Checa que la variable si exista
+            guard let operand = getVariable(id: currentId) else {
+                print("Error: Esta variable no se encontro \(currentId)")
+                return }
             
             PilaO.insert(Int(operand.address), at: 0)
             pTypes.insert(operand.type, at: 0)
         
         }
         
+        //Bloque donde se guardan las constanstes en memoria
+        var constantMemAddress = 0
+        if let currConstant = ctx.CTE_F(){
+            constantMemAddress = constantMemory.saveDecimalConstant(value: Float(currConstant.getText())!)
+            
+            //Se meten las constantes a la pila de operandos
+            PilaO.insert(Int(constantMemAddress), at: 0)
+            pTypes.insert(Type.decimal, at: 0)
+            
+//            print("Constant: \(ctx.CTE_F()?.getText()) \(constantMemAddress)")
+        }
+        if let currConstant = ctx.CTE_I(){
+            constantMemAddress = constantMemory.saveNumberConstant(value: Int(currConstant.getText())!)
+            
+            //Se meten las constantes a la pila de operandos
+            PilaO.insert(Int(constantMemAddress), at: 0)
+            pTypes.insert(Type.number, at: 0)
+            
+//            print("Constant: \(ctx.CTE_I()?.getText()) \(constantMemAddress)")
+        }
     }
 
 	open func exitFactor(_ ctx: BasicLearnParser.FactorContext) {
         //Checar que si exista la variable en la tabla de variables
-        
+        if POper.first == "*" || POper.first == "/" {
+            let rightOperand = PilaO.first
+            let rightOperandType = pTypes.first
+            pTypes.removeFirst()
+            PilaO.removeFirst()
+            let leftOperand = PilaO.first
+            let leftOperandType = pTypes.first
+            pTypes.removeFirst()
+            PilaO.removeFirst()
+            let op = POper.first
+            POper.removeFirst()
+            
+            let resultType = semanticTypeCheck.checkOperation(op: op!, operand1: leftOperandType!, operand2: rightOperandType!)
+            
+            if resultType != Type.error {
+                
+                var result: Int!
+                
+                switch resultType {
+                case Type.number:
+                    result = temporalMemory.getNumberAddress(spaces: 1)
+                    
+                case Type.sentence:
+                    result = temporalMemory.getSentenceAddress(spaces: 1)
+                    
+                case Type.bool:
+                    result = temporalMemory.getBoolAddress(spaces: 1)
+                    
+                case Type.decimal:
+                    result = temporalMemory.getDecimalAddress(spaces: 1)
+                    
+                default:
+                    break
+                }
+                
+                qCuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: rightOperand!, result: result))
+                
+                PilaO.insert(result, at: 0)
+                pTypes.insert(resultType, at: 0)
+                
+                
+            } else {
+                print("ERROR TYPE MISMATCH")
+                // HANDLE ERROR CORRECTLY
+            }
+        }
         
     }
 
 
-	open func enterAssignment(_ ctx: BasicLearnParser.AssignmentContext) { }
+	open func enterAssignment(_ ctx: BasicLearnParser.AssignmentContext) {
+        
+    }
 
 	open func exitAssignment(_ ctx: BasicLearnParser.AssignmentContext) {
+        //Generación de cuadruplo de asignacion
+        if let currentId = ctx.ASSIGN()?.getText(){
+//            print("Assignment: \(ctx.ID().description) \(currentId)")
+        }
         
-        //let assign = semanticTypeCheck...
     }
 
 

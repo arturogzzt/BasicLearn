@@ -25,7 +25,7 @@ class Memory{
     
     //Guardar nuestras variables en la memoria en estos arreglos
     private var numbers = [Int]()
-    private var decimals = [Double]()
+    private var decimals = [Float]()
     private var sentences = [String]()
     private var bools = [Bool]()
     
@@ -62,5 +62,27 @@ class Memory{
         bool = bool + spaces
         return (bool + base - spaces)
     }
+    
+    //Grabar a memoria, usado para las constantes inicialmente
+    //Regresa la memoria donde se grabo la constante
+    func saveNumberConstant(value: Int) -> Int{
+        numbers.append(value)
+        number = number + 1
+        return (number + base - 1)
+    }
+    
+    func saveDecimalConstant(value: Float) -> Int{
+        decimals.append(value)
+        decimal = decimal + 1
+        return (decimal + base - 1)
+    }
+    
+//    func saveBoolConstant(value: Bool) -> Int{
+//
+//    }
+//
+//    func saveSentenceConstant(value: String) -> Int{
+//
+//    }
     
 }
