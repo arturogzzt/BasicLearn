@@ -241,7 +241,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
 
 
 	open func enterDeclaration(_ ctx: BasicLearnParser.DeclarationContext) {
-
+        
         for newVariable in ctx.ID() {
             let newVariableType = ctx.type()?.getText()
             
@@ -307,7 +307,10 @@ open class BasicLearnBaseListener: BasicLearnListener {
 
 
 	open func enterParameters(_ ctx: BasicLearnParser.ParametersContext) {
-        for parameter in ctx.ID() {
+//        var paramAddress : Int!
+        var parameterNames = [String]() // Arreglo auxiliar para guardar los nombres de los parametros
+        
+        for (parameter) in ctx.ID() {
             for param in parameterVerification {
                 if parameter.getText() == param {
                     print("Error, multiple declaration")
@@ -315,7 +318,35 @@ open class BasicLearnBaseListener: BasicLearnListener {
                 }
             }
             parameterVerification.append(parameter.getText())
+            parameterNames.append(parameter.getText())
         }
+        
+        var memoryAddressVariable: Int! //Variable que se utilizara para poner donde se guarda la variable
+        var parameterCounter = 0
+        
+        for type in ctx.type() {
+            switch type.getText() {
+            case "number":
+                    memoryAddressVariable = localMemory.getNumberAddress(spaces: 1)
+            case "sentence":
+                    memoryAddressVariable = localMemory.getSentenceAddress(spaces: 1)
+            case "bool":
+                    memoryAddressVariable = localMemory.getBoolAddress(spaces: 1)
+            case "decimal":
+                    memoryAddressVariable = localMemory.getDecimalAddress(spaces: 1)
+            default:
+                break
+            }
+            print(parameterNames)
+            print(parameterCounter)
+            let auxVariable = Variable.init(name: parameterNames[parameterCounter], type: Type(type: type.getText()), address: memoryAddressVariable)
+            
+            dirFunc.last?.variables.append(auxVariable) // Checar si es en dirFunc Last
+            
+            parameterCounter = parameterCounter + 1
+        }
+        
+        
         
     }
 
