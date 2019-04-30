@@ -11,11 +11,11 @@ import Foundation
 
 class Quadruple {
     let operand : String
-    let leftOp : Int
-    let rightOp : Int
-    let result : Int
+    let leftOp : String
+    let rightOp : String
+    let result : String
     
-    init(operand: String, leftOp: Int, rightOp: Int, result: Int) {
+    init(operand: String, leftOp: String, rightOp: String, result: String) {
         self.operand = operand
         self.leftOp = leftOp
         self.rightOp = rightOp

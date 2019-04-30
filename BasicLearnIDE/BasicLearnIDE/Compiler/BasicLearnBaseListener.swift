@@ -29,13 +29,15 @@ open class BasicLearnBaseListener: BasicLearnListener {
     //Pila de operadores pendientes
     var POper = [String]()
     //Pila de operadondos
-    var PilaO = [Int]()
+    var PilaO = [String]()
     //Pila de Tipos
     var pTypes = [Type]()
     //Fila para output de cuadruplos
     var qCuad = [Quadruple]()
     //Diccionario para guardar donde se encuentran las expresiones y sus resultados
     var dicTemp : [String:Int] = [:]
+    //Contador para saber en que temporal se encuentra (por mientras)
+    var contTemp = 0
     
     // Memory
     var globalMemory = Memory.init(baseAddress: 0)
@@ -63,6 +65,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
         // RETURN ERROR
     }
     
+    
 	open func enterProgram(_ ctx: BasicLearnParser.ProgramContext) {
         scope = "GLOBAL"
         let programName = ctx.ID()?.getText() ?? "Error"
@@ -74,9 +77,9 @@ open class BasicLearnBaseListener: BasicLearnListener {
 	open func exitProgram(_ ctx: BasicLearnParser.ProgramContext) {
         dirFunc.removeAll()
         
-        var i = 1;
+        var i = 0;
         for quad in qCuad {
-            print("\(i):\t \(quad.operand) \t \(quad.leftOp) \t \(quad.rightOp) \t \(quad.result)")
+            print("\(i):\t\t \(quad.operand) \t\t \(quad.leftOp) \t\t \(quad.rightOp) \t\t \(quad.result)")
             i += 1
         }
 
@@ -88,31 +91,37 @@ open class BasicLearnBaseListener: BasicLearnListener {
 	open func exitBody(_ ctx: BasicLearnParser.BodyContext) { }
 
 
-	open func enterExpression(_ ctx: BasicLearnParser.ExpressionContext) { }
+	open func enterExpression(_ ctx: BasicLearnParser.ExpressionContext) {
 
-	open func exitExpression(_ ctx: BasicLearnParser.ExpressionContext) { }
+    }
+
+	open func exitExpression(_ ctx: BasicLearnParser.ExpressionContext) {
+        
+        if let lessThan = ctx.LESSTHAN()?.getText(){
+            POper.insert(lessThan, at: 0)
+        }
+        if let greaterThan = ctx.MORETHAN()?.getText(){
+            POper.insert(greaterThan, at: 0)
+        }
+        if let lessThanOrEqual = ctx.LESSOREQUAL()?.getText(){
+            POper.insert(lessThanOrEqual, at: 0)
+        }
+        if let greaterThanOrEqual = ctx.MOREOREQUAL()?.getText(){
+            POper.insert(greaterThanOrEqual, at: 0)
+        }
+        if let equal = ctx.EQUALS()?.getText(){
+            POper.insert(equal, at: 0)
+        }
+        if let notEqual = ctx.NOTEQUALS()?.getText(){
+            POper.insert(notEqual, at: 0)
+        }
+    }
 
 
 	open func enterExp(_ ctx: BasicLearnParser.ExpContext) { }
 
 	open func exitExp(_ ctx: BasicLearnParser.ExpContext) {
-        if let add = ctx.ADD()?.getText() {
-            POper.insert(add, at: 0)
-        }
-        
-        if let sub = ctx.SUBS()?.getText() {
-            POper.insert(sub, at: 0)
-        }
-    }
-
-
-	open func enterTerm(_ ctx: BasicLearnParser.TermContext) { }
-
-	open func exitTerm(_ ctx: BasicLearnParser.TermContext) {
-        
-//        print("PilaO : \(PilaO.first)")
-        
-        if POper.first == "+" || POper.first == "-" {
+        if (POper.first == "<" || POper.first == ">" || POper.first == "<=" || POper.first == ">=" || POper.first == "equal" || POper.first == "notEqual") {
             let rightOperand = PilaO.first
             let rightOperandType = pTypes.first
             pTypes.removeFirst()
@@ -147,10 +156,11 @@ open class BasicLearnBaseListener: BasicLearnListener {
                     break
                 }
                 
-                qCuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: rightOperand!, result: result))
+                qCuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: rightOperand!, result: String(contTemp)))
                 
-                PilaO.insert(result, at: 0)
+                PilaO.insert(String(contTemp), at: 0) //Por mientras
                 pTypes.insert(resultType, at: 0)
+                contTemp = contTemp + 1
                 
                 
             } else {
@@ -158,6 +168,69 @@ open class BasicLearnBaseListener: BasicLearnListener {
                 // HANDLE ERROR CORRECTLY
             }
         }
+        
+        if let add = ctx.ADD()?.getText() {
+            POper.insert(add, at: 0)
+        }
+        
+        if let sub = ctx.SUBS()?.getText() {
+            POper.insert(sub, at: 0)
+        }
+    }
+
+
+	open func enterTerm(_ ctx: BasicLearnParser.TermContext) {
+        if POper.first == "+" || POper.first == "-" {
+            //            print("PilaO : \(PilaO.first ?? "error")")
+            let rightOperand = PilaO.first
+            let rightOperandType = pTypes.first
+            pTypes.removeFirst()
+            PilaO.removeFirst()
+            let leftOperand = PilaO.first
+            let leftOperandType = pTypes.first
+            pTypes.removeFirst()
+            PilaO.removeFirst()
+            let op = POper.first
+            POper.removeFirst()
+            
+            let resultType = semanticTypeCheck.checkOperation(op: op!, operand1: leftOperandType!, operand2: rightOperandType!)
+            
+            if resultType != Type.error {
+                
+                var result: Int!
+                
+                switch resultType {
+                case Type.number:
+                    result = temporalMemory.getNumberAddress(spaces: 1)
+                    
+                case Type.sentence:
+                    result = temporalMemory.getSentenceAddress(spaces: 1)
+                    
+                case Type.bool:
+                    result = temporalMemory.getBoolAddress(spaces: 1)
+                    
+                case Type.decimal:
+                    result = temporalMemory.getDecimalAddress(spaces: 1)
+                    
+                default:
+                    break
+                }
+                
+                qCuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: rightOperand!, result: String(contTemp)))
+                
+                PilaO.insert(String(contTemp), at: 0) //Por mientras
+                pTypes.insert(resultType, at: 0)
+                contTemp = contTemp + 1
+                
+                
+            } else {
+                print("ERROR TYPE MISMATCH")
+                // HANDLE ERROR CORRECTLY
+            }
+        }
+    }
+
+	open func exitTerm(_ ctx: BasicLearnParser.TermContext) {
         
         
         if let mult = ctx.MULT()?.getText() {
@@ -172,43 +245,13 @@ open class BasicLearnBaseListener: BasicLearnListener {
 
 
 	open func enterFactor(_ ctx: BasicLearnParser.FactorContext) {
-        if let currentId = ctx.ID()?.getText() {
-            
-            //Checa que la variable si exista
-            guard let operand = getVariable(id: currentId) else {
-                print("Error: Esta variable no se encontro \(currentId)")
-                return }
-            
-            PilaO.insert(Int(operand.address), at: 0)
-            pTypes.insert(operand.type, at: 0)
-        
-        }
-        
-        //Bloque donde se guardan las constanstes en memoria
-        var constantMemAddress = 0
-        if let currConstant = ctx.CTE_F(){
-            constantMemAddress = constantMemory.saveDecimalConstant(value: Float(currConstant.getText())!)
-            
-            //Se meten las constantes a la pila de operandos
-            PilaO.insert(Int(constantMemAddress), at: 0)
-            pTypes.insert(Type.decimal, at: 0)
-            
-//            print("Constant: \(ctx.CTE_F()?.getText()) \(constantMemAddress)")
-        }
-        if let currConstant = ctx.CTE_I(){
-            constantMemAddress = constantMemory.saveNumberConstant(value: Int(currConstant.getText())!)
-            
-            //Se meten las constantes a la pila de operandos
-            PilaO.insert(Int(constantMemAddress), at: 0)
-            pTypes.insert(Type.number, at: 0)
-            
-//            print("Constant: \(ctx.CTE_I()?.getText()) \(constantMemAddress)")
-        }
+
     }
 
 	open func exitFactor(_ ctx: BasicLearnParser.FactorContext) {
-        //Checar que si exista la variable en la tabla de variables
+        
         if POper.first == "*" || POper.first == "/" {
+
             let rightOperand = PilaO.first
             let rightOperandType = pTypes.first
             pTypes.removeFirst()
@@ -243,10 +286,12 @@ open class BasicLearnBaseListener: BasicLearnListener {
                     break
                 }
                 
-                qCuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: rightOperand!, result: result))
+                qCuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: rightOperand!, result: String(contTemp)))
                 
-                PilaO.insert(result, at: 0)
+                //Por mientras se utiliza el contTemp en vez de la address del resultado
+                PilaO.insert(String(contTemp), at: 0)
                 pTypes.insert(resultType, at: 0)
+                contTemp = contTemp + 1
                 
                 
             } else {
@@ -255,19 +300,53 @@ open class BasicLearnBaseListener: BasicLearnListener {
             }
         }
         
+        
+        if let currentId = ctx.ID()?.getText() {
+            
+            //Checa que la variable si exista
+            guard let operand = getVariable(id: currentId) else {
+                print("Error: Esta variable no se encontro \(currentId)")
+                return }
+            
+            PilaO.insert((operand.name), at: 0)
+            pTypes.insert(operand.type, at: 0)
+            
+        }
+        
+        //Bloque donde se guardan las constanstes en memoria
+        var constantMemAddress = 0
+        if let currConstant = ctx.CTE_F(){
+            constantMemAddress = constantMemory.saveDecimalConstant(value: Float(currConstant.getText())!)
+            
+            //Se meten las constantes a la pila de operandos
+            //            PilaO.insert(Int(constantMemAddress), at: 0)
+            PilaO.insert(currConstant.getText(), at: 0)
+            pTypes.insert(Type.decimal, at: 0)
+            
+            //            print("Constant: \(ctx.CTE_F()?.getText()) \(constantMemAddress)")
+        }
+        if let currConstant = ctx.CTE_I(){
+            constantMemAddress = constantMemory.saveNumberConstant(value: Int(currConstant.getText())!)
+            
+            //Se meten las constantes a la pila de operandos
+            //            PilaO.insert(Int(constantMemAddress), at: 0)
+            PilaO.insert(currConstant.getText(), at: 0)
+            pTypes.insert(Type.number, at: 0)
+            
+            //            print("Constant: \(ctx.CTE_I()?.getText()) \(constantMemAddress)")
+        }
+        
+
+        
     }
 
 
 	open func enterAssignment(_ ctx: BasicLearnParser.AssignmentContext) {
-        
+
     }
 
 	open func exitAssignment(_ ctx: BasicLearnParser.AssignmentContext) {
-        //Generación de cuadruplo de asignacion
-        if let currentId = ctx.ASSIGN()?.getText(){
-//            print("Assignment: \(ctx.ID().description) \(currentId)")
-        }
-        
+
     }
 
 
@@ -306,12 +385,12 @@ open class BasicLearnBaseListener: BasicLearnListener {
 	}
 
 	open func exitFunction(_ ctx: BasicLearnParser.FunctionContext) {
-        for function in dirFunc {
-            print("FUNCTION \(function.name)")
-            for variables in function.variables {
-                print("TYPE: \(variables.type) NAME: \(variables.name) ADDRESS: \(variables.address)")
-            }
-        }
+//        for function in dirFunc {
+//            print("FUNCTION \(function.name)")
+//            for variables in function.variables {
+//                print("TYPE: \(variables.type) NAME: \(variables.name) ADDRESS: \(variables.address)")
+//            }
+//        }
 
         dirFunc.removeLast()
         parameterVerification.removeAll()
@@ -415,8 +494,8 @@ open class BasicLearnBaseListener: BasicLearnListener {
             default:
                 break
             }
-            print(parameterNames)
-            print(parameterCounter)
+//            print(parameterNames)
+//            print(parameterCounter)
             let auxVariable = Variable.init(name: parameterNames[parameterCounter], type: Type(type: type.getText()), address: memoryAddressVariable)
             
             dirFunc.last?.variables.append(auxVariable) // Checar si es en dirFunc Last
