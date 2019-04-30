@@ -96,7 +96,6 @@ open class BasicLearnBaseListener: BasicLearnListener {
     }
 
 	open func exitExpression(_ ctx: BasicLearnParser.ExpressionContext) {
-        
         if let lessThan = ctx.LESSTHAN()?.getText(){
             POper.insert(lessThan, at: 0)
         }
@@ -115,12 +114,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
         if let notEqual = ctx.NOTEQUALS()?.getText(){
             POper.insert(notEqual, at: 0)
         }
-    }
 
-
-	open func enterExp(_ ctx: BasicLearnParser.ExpContext) { }
-
-	open func exitExp(_ ctx: BasicLearnParser.ExpContext) {
         if (POper.first == "<" || POper.first == ">" || POper.first == "<=" || POper.first == ">=" || POper.first == "equal" || POper.first == "notEqual") {
             let rightOperand = PilaO.first
             let rightOperandType = pTypes.first
@@ -168,6 +162,14 @@ open class BasicLearnBaseListener: BasicLearnListener {
                 // HANDLE ERROR CORRECTLY
             }
         }
+    }
+
+
+	open func enterExp(_ ctx: BasicLearnParser.ExpContext) {
+
+    }
+
+	open func exitExp(_ ctx: BasicLearnParser.ExpContext) {
         
         if let add = ctx.ADD()?.getText() {
             POper.insert(add, at: 0)
@@ -176,10 +178,6 @@ open class BasicLearnBaseListener: BasicLearnListener {
         if let sub = ctx.SUBS()?.getText() {
             POper.insert(sub, at: 0)
         }
-    }
-
-
-	open func enterTerm(_ ctx: BasicLearnParser.TermContext) {
         if POper.first == "+" || POper.first == "-" {
             //            print("PilaO : \(PilaO.first ?? "error")")
             let rightOperand = PilaO.first
@@ -228,11 +226,15 @@ open class BasicLearnBaseListener: BasicLearnListener {
                 // HANDLE ERROR CORRECTLY
             }
         }
+        
+    }
+
+
+	open func enterTerm(_ ctx: BasicLearnParser.TermContext) {
+
     }
 
 	open func exitTerm(_ ctx: BasicLearnParser.TermContext) {
-        
-        
         if let mult = ctx.MULT()?.getText() {
             POper.insert(mult, at: 0)
         }
@@ -240,18 +242,9 @@ open class BasicLearnBaseListener: BasicLearnListener {
         if let div = ctx.DIV()?.getText() {
             POper.insert(div, at: 0)
         }
-        
-    }
 
-
-	open func enterFactor(_ ctx: BasicLearnParser.FactorContext) {
-
-    }
-
-	open func exitFactor(_ ctx: BasicLearnParser.FactorContext) {
-        
         if POper.first == "*" || POper.first == "/" {
-
+            
             let rightOperand = PilaO.first
             let rightOperandType = pTypes.first
             pTypes.removeFirst()
@@ -299,10 +292,13 @@ open class BasicLearnBaseListener: BasicLearnListener {
                 // HANDLE ERROR CORRECTLY
             }
         }
-        
-        
+
+    }
+
+
+	open func enterFactor(_ ctx: BasicLearnParser.FactorContext) {
         if let currentId = ctx.ID()?.getText() {
-            
+
             //Checa que la variable si exista
             guard let operand = getVariable(id: currentId) else {
                 print("Error: Esta variable no se encontro \(currentId)")
@@ -335,6 +331,12 @@ open class BasicLearnBaseListener: BasicLearnListener {
             
             //            print("Constant: \(ctx.CTE_I()?.getText()) \(constantMemAddress)")
         }
+        if ctx.getText() == "true"{
+            print ("true")
+        }
+    }
+
+	open func exitFactor(_ ctx: BasicLearnParser.FactorContext) {
         
 
         
@@ -342,10 +344,35 @@ open class BasicLearnBaseListener: BasicLearnListener {
 
 
 	open func enterAssignment(_ ctx: BasicLearnParser.AssignmentContext) {
-
+        if let assign = ctx.ASSIGN()?.getText(){
+            POper.insert(assign, at: 0)
+        }
+        if let currentId = ctx.ID(0)?.getText(){
+            if let assignment = getVariable(id: currentId){
+                PilaO.insert(assignment.name, at: 0)
+                pTypes.insert(assignment.type, at: 0)
+            } else {
+                print("Error: Esta variable no se encontro \(currentId)")
+                return }
+        }
     }
 
 	open func exitAssignment(_ ctx: BasicLearnParser.AssignmentContext) {
+        
+        if let result = ctx.ID(0)?.getText(){
+            if POper.first == "=" {
+                let leftOperand = PilaO.first
+                let leftOperandType = pTypes.first
+                pTypes.removeFirst()
+                PilaO.removeFirst()
+                let op = POper.first
+                POper.removeFirst()
+                
+                qCuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: "---", result: result))
+//                PilaO.insert(String(contTemp), at: 0)
+            }
+        }
+
 
     }
 
