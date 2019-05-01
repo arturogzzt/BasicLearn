@@ -23,7 +23,7 @@ class Memory{
     private let boolBase : Int!
     private let sentenceBase : Int!
     
-    //Guardar nuestras variables en la memoria en estos arreglos
+    //Guardar nuestras variables en la memoria en estos diccionarios
     private var numbers = [Int : Int]()
     private var decimals = [Int : Float]()
     private var sentences = [Int : String]()
@@ -88,5 +88,37 @@ class Memory{
         sentence = sentence + 1
         return (sentence + base - 1)
     }
+    
+    // Funciones para obtener los valores de las llaves.
+    func getNumberValue(address: Int) -> Int {
+        return numbers[address]!
+    }
+    
+    func getDecimalValue(address: Int) -> Float {
+        return decimals[address]!
+    }
+    
+    func getBoolValue(address: Int) -> Bool {
+        return bools[address]!
+    }
+    
+    func getSentenceValue(address: Int) -> String {
+        return sentences[address]!
+    }
+    
+    // Función para obtener el valor dependiendo el tipo de dato
+    func getValue(address: Int) -> (Any, type: Type) {
+        switch address {
+        case _ where address < decimalBase:
+            return (getNumberValue(address: address), Type.number)
+        case _ where address < boolBase:
+            return (getDecimalValue(address: address), Type.decimal)
+        case _ where address < sentenceBase:
+            return (getBoolValue(address: address), Type.bool)
+        default:
+            return (getSentenceValue(address: address), Type.sentence)
+        }
+    }
+
     
 }

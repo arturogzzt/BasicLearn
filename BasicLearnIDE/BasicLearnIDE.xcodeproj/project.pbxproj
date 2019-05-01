@@ -148,7 +148,6 @@
 				EC15173F225E93AC0030D440 /* BasicLearn.interp */,
 				EC151740225E93AC0030D440 /* BasicLearnLexer.interp */,
 				EC151741225E93AC0030D440 /* BasicLearnBaseListener.swift */,
-				EC1B7550227494D8007068DC /* Memory.swift */,
 				EC151742225E93AC0030D440 /* BasicLearnParserATN.swift */,
 				EC151743225E93AC0030D440 /* BasicLearnListener.swift */,
 				EC151744225E93AC0030D440 /* BasicLearnLexer.swift */,
@@ -159,6 +158,7 @@
 				41C2EFBA225FED3000C90A1F /* Types.swift */,
 				EC6EAF85227340B600D767DD /* SemanticCube.swift */,
 				EC1B754A22737464007068DC /* Quadruple.swift */,
+				EC1B7550227494D8007068DC /* Memory.swift */,
 				417E89F222795CF9004648D6 /* VirtualMachine.swift */,
 			);
 			path = Compiler;

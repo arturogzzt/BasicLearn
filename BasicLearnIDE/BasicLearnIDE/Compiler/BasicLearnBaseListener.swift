@@ -73,6 +73,10 @@ open class BasicLearnBaseListener: BasicLearnListener {
             print("\(i):\t\t \(quad.operand) \t\t \(quad.leftOp) \t\t \(quad.rightOp) \t\t \(quad.result)")
             i += 1
         }
+        
+        let virtualMachine = VirtualMachine.init(quadruples: qCuad, globalMemory: globalMemory, localMemory: localMemory, constantMemory: constantMemory, temporalMemory: temporalMemory)
+        
+        virtualMachine.executeProgram()
 
     }
 
