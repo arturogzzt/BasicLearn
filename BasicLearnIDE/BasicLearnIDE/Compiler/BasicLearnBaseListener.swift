@@ -277,7 +277,6 @@ open class BasicLearnBaseListener: BasicLearnListener {
                 pTypes.insert(resultType, at: 0)
                 contTemp = contTemp + 1
                 
-                
             } else {
                 print("ERROR TYPE MISMATCH")
                 // HANDLE ERROR CORRECTLY
@@ -360,6 +359,11 @@ open class BasicLearnBaseListener: BasicLearnListener {
                 PilaO.removeFirst()
                 let op = POper.first
                 POper.removeFirst()
+                
+                let resultVariableType = getVariable(id: result)?.type
+                
+                let resultType = semanticTypeCheck.checkOperation(op: op!, operand1: leftOperandType!, operand2: resultVariableType!)
+                
                 
                 qCuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: "---", result: result))
 //                PilaO.insert(String(contTemp), at: 0)

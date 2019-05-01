@@ -24,10 +24,10 @@ class Memory{
     private let sentenceBase : Int!
     
     //Guardar nuestras variables en la memoria en estos arreglos
-    private var numbers = [Int]()
-    private var decimals = [Float]()
-    private var sentences = [String]()
-    private var bools = [Bool]()
+    private var numbers = [Int : Int]()
+    private var decimals = [Int : Float]()
+    private var sentences = [Int : String]()
+    private var bools = [Int : Bool]()
     
     
     init (baseAddress: Int){
@@ -66,25 +66,27 @@ class Memory{
     //Grabar a memoria, usado para las constantes inicialmente
     //Regresa la memoria donde se grabo la constante
     func saveNumberConstant(value: Int) -> Int{
-        numbers.append(value)
+        numbers.updateValue(value, forKey: number + base)
         number = number + 1
         return (number + base - 1)
     }
     
     func saveDecimalConstant(value: Float) -> Int{
-        decimals.append(value)
+        decimals.updateValue(value, forKey: number + base)
         decimal = decimal + 1
         return (decimal + base - 1)
     }
     
     func saveBoolConstant(value: Bool) -> Int{
-        bools.append(value)
+        bools.updateValue(value, forKey: number + base)
         bool = bool + 1
         return (bool + base - 1)
     }
 
-//    func saveSentenceConstant(value: String) -> Int{
-//
-//    }
+    func saveSentenceConstant(value: String) -> Int{
+        sentences.updateValue(value, forKey: sentence + base)
+        sentence = sentence + 1
+        return (sentence + base - 1)
+    }
     
 }
