@@ -29,8 +29,6 @@ open class BasicLearnBaseListener: BasicLearnListener {
     var qCuad = [Quadruple]()
     //Diccionario para guardar donde se encuentran las expresiones y sus resultados
     var dicTemp : [String:Int] = [:]
-    //Contador para saber en que temporal se encuentra (por mientras)
-    var contTemp = 0
     
     // Memory
     var globalMemory = Memory.init(baseAddress: 0)
@@ -143,11 +141,10 @@ open class BasicLearnBaseListener: BasicLearnListener {
                     break
                 }
                 
-                qCuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: rightOperand!, result: String(contTemp)))
+                qCuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: rightOperand!, result: String(result)))
                 
-                PilaO.insert(String(contTemp), at: 0) //Por mientras
+                PilaO.insert(String(result), at: 0) //Por mientras
                 pTypes.insert(resultType, at: 0)
-                contTemp = contTemp + 1
                 
             } else {
                 print("ERROR TYPE MISMATCH")
@@ -205,12 +202,10 @@ open class BasicLearnBaseListener: BasicLearnListener {
                     break
                 }
                 
-                qCuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: rightOperand!, result: String(contTemp)))
+                qCuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: rightOperand!, result: String(result)))
                 
-                PilaO.insert(String(contTemp), at: 0) //Por mientras
+                PilaO.insert(String(result), at: 0) //Por mientras
                 pTypes.insert(resultType, at: 0)
-                contTemp = contTemp + 1
-                
                 
             } else {
                 print("ERROR TYPE MISMATCH")
@@ -270,12 +265,11 @@ open class BasicLearnBaseListener: BasicLearnListener {
                     break
                 }
                 
-                qCuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: rightOperand!, result: String(contTemp)))
+                qCuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: rightOperand!, result: String(result)))
                 
-                //Por mientras se utiliza el contTemp en vez de la address del resultado
-                PilaO.insert(String(contTemp), at: 0)
+                PilaO.insert(String(result), at: 0)
                 pTypes.insert(resultType, at: 0)
-                contTemp = contTemp + 1
+                
                 
             } else {
                 print("ERROR TYPE MISMATCH")
@@ -294,7 +288,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
                 print("Error: Esta variable no se encontro \(currentId)")
                 return }
             
-            PilaO.insert((operand.name), at: 0)
+            PilaO.insert((String(operand.address)), at: 0)
             pTypes.insert(operand.type, at: 0)
             
         }
@@ -305,8 +299,8 @@ open class BasicLearnBaseListener: BasicLearnListener {
             constantMemAddress = constantMemory.saveDecimalConstant(value: Float(currConstant.getText())!)
             
             //Se meten las constantes a la pila de operandos
-            //            PilaO.insert(Int(constantMemAddress), at: 0)
-            PilaO.insert(currConstant.getText(), at: 0)
+            PilaO.insert(String(constantMemAddress), at: 0)
+//            PilaO.insert(currConstant.getText(), at: 0)
             pTypes.insert(Type.decimal, at: 0)
             
             //            print("Constant: \(ctx.CTE_F()?.getText()) \(constantMemAddress)")
@@ -315,15 +309,16 @@ open class BasicLearnBaseListener: BasicLearnListener {
             constantMemAddress = constantMemory.saveNumberConstant(value: Int(currConstant.getText())!)
             
             //Se meten las constantes a la pila de operandos
-            //            PilaO.insert(Int(constantMemAddress), at: 0)
-            PilaO.insert(currConstant.getText(), at: 0)
+            PilaO.insert(String(constantMemAddress), at: 0)
+//            PilaO.insert(currConstant.getText(), at: 0)
             pTypes.insert(Type.number, at: 0)
             
             //            print("Constant: \(ctx.CTE_I()?.getText()) \(constantMemAddress)")
         }
         if ctx.getText() == "true" || ctx.getText() == "false" {
             constantMemAddress = constantMemory.saveBoolConstant(value: Bool(ctx.getText())!)
-            PilaO.insert(ctx.getText(), at: 0)
+            PilaO.insert(String(constantMemAddress), at: 0)
+//            PilaO.insert(ctx.getText(), at: 0)
             pTypes.insert(Type.bool, at: 0)
         }
     }
@@ -341,7 +336,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
         }
         if let currentId = ctx.ID(0)?.getText(){
             if let assignment = getVariable(id: currentId){
-                PilaO.insert(assignment.name, at: 0)
+                PilaO.insert(String(assignment.address), at: 0)
                 pTypes.insert(assignment.type, at: 0)
             } else {
                 print("Error: Esta variable no se encontro \(currentId)")
@@ -360,13 +355,13 @@ open class BasicLearnBaseListener: BasicLearnListener {
                 let op = POper.first
                 POper.removeFirst()
                 
-                let resultVariableType = getVariable(id: result)?.type
+                let resultVariableType = getVariable(id: result)!.type
+                let resultVariableAddress = getVariable(id: result)!.address
                 
-                let resultType = semanticTypeCheck.checkOperation(op: op!, operand1: leftOperandType!, operand2: resultVariableType!)
+                let resultType = semanticTypeCheck.checkOperation(op: op!, operand1: leftOperandType!, operand2: resultVariableType)
                 
-                
-                qCuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: "---", result: result))
-//                PilaO.insert(String(contTemp), at: 0)
+//                qCuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: "---", result: result))
+                qCuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: "---", result: String(resultVariableAddress)))
             }
         }
 
