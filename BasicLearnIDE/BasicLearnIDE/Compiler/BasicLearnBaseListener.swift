@@ -17,7 +17,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
     var parameterVerification = [String]()
     
     //Lista para saltos pendientes en los cuadruplos
-    var saltos = [String]()
+    var saltos = [Int]()
     
     //Pila de operadores pendientes
     var POper = [String]()
@@ -31,6 +31,8 @@ open class BasicLearnBaseListener: BasicLearnListener {
     var dicTemp : [String:Int] = [:]
     //Contador para saber en que temporal se encuentra (por mientras)
     var contTemp = 0
+    //Contador Repeat Statement por si hay nested repeats
+    var repeatStatementCont = 0
     
     // Memory
     var globalMemory = Memory.init(baseAddress: 0)
@@ -89,25 +91,50 @@ open class BasicLearnBaseListener: BasicLearnListener {
     }
 
 	open func exitExpression(_ ctx: BasicLearnParser.ExpressionContext) {
-        if let lessThan = ctx.LESSTHAN()?.getText(){
-            POper.insert(lessThan, at: 0)
-        }
-        if let greaterThan = ctx.MORETHAN()?.getText(){
-            POper.insert(greaterThan, at: 0)
-        }
-        if let lessThanOrEqual = ctx.LESSOREQUAL()?.getText(){
-            POper.insert(lessThanOrEqual, at: 0)
-        }
-        if let greaterThanOrEqual = ctx.MOREOREQUAL()?.getText(){
-            POper.insert(greaterThanOrEqual, at: 0)
-        }
-        if let equal = ctx.EQUALS()?.getText(){
-            POper.insert(equal, at: 0)
-        }
-        if let notEqual = ctx.NOTEQUALS()?.getText(){
-            POper.insert(notEqual, at: 0)
-        }
 
+        //Para checar si viene de un If_Statement
+        if ((ctx.parent as? BasicLearnParser.If_statementContext) != nil){
+            
+//            let exp_type = pTypes.first //Arreglar este chequeo
+            let exp_type = Type.bool
+            pTypes.removeFirst()
+            if exp_type != Type.bool {
+                print("Error Type Mismatch en IF")
+            } else {
+                let result = PilaO.first
+                PilaO.removeFirst()
+                let quadAux = Quadruple.init(operand: "GOTOF", leftOp: result!, rightOp: "---", result: "PENDING")
+                qCuad.append(quadAux)
+                saltos.insert(qCuad.count - 1, at: 0)
+                
+            }
+            
+        }
+        
+        //Para checar si viene de un While_Statement
+        if((ctx.parent as? BasicLearnParser.While_statementContext) != nil){
+//            let exp_type = pTypes.first //Checar Types porfavvaaaarrr
+            let exp_type = Type.bool
+            pTypes.removeFirst()
+            if (exp_type != Type.bool){
+                print("ERROR Type Mismatch en While_Statement")
+            } else {
+                let result = PilaO.first
+                let auxQuad = Quadruple.init(operand: "GOTOF", leftOp: result!, rightOp: "---", result: "PENDING")
+                qCuad.append(auxQuad)
+                saltos.insert(qCuad.count - 1, at: 0)
+            }
+        }
+        
+    }
+
+
+	open func enterExp(_ ctx: BasicLearnParser.ExpContext) {
+
+    }
+
+	open func exitExp(_ ctx: BasicLearnParser.ExpContext) {
+        
         if (POper.first == "<" || POper.first == ">" || POper.first == "<=" || POper.first == ">=" || POper.first == "equal" || POper.first == "notEqual") {
             let rightOperand = PilaO.first
             let rightOperandType = pTypes.first
@@ -154,22 +181,65 @@ open class BasicLearnBaseListener: BasicLearnListener {
                 // HANDLE ERROR CORRECTLY
             }
         }
+
+        
+        if let parent = ctx.parent as? BasicLearnParser.ExpressionContext{
+            if let lessThan = parent.LESSTHAN()?.getText(){
+                POper.insert(lessThan, at: 0)
+            }
+            if let greaterThan = parent.MORETHAN()?.getText(){
+                POper.insert(greaterThan, at: 0)
+            }
+            if let lessThanOrEqual = parent.LESSOREQUAL()?.getText(){
+                POper.insert(lessThanOrEqual, at: 0)
+            }
+            if let greaterThanOrEqual = parent.MOREOREQUAL()?.getText(){
+                POper.insert(greaterThanOrEqual, at: 0)
+            }
+            if let equal = parent.EQUALS()?.getText(){
+                POper.insert(equal, at: 0)
+            }
+            if let notEqual = parent.NOTEQUALS()?.getText(){
+                POper.insert(notEqual, at: 0)
+            }
+        }
+        
+        //Para checar si viene de un repeat statement
+        //REPEAT STATEMENT AQUI, NO EN EXPRESSION
+        if ((ctx.parent as? BasicLearnParser.Repeat_statementContext) != nil) {
+//            let exp_type = pTypes.first //Corregir estos pTipos
+            let exp_type = Type.number
+            pTypes.removeFirst()
+            
+            //Repeat necesita un number (INT) no un bool como los otros
+            if(exp_type != Type.number){
+                print("Error Type Mismatch en Repeat Statement")
+            }else{
+                let result = PilaO.first
+                let memComparison = Quadruple.init(operand: "=", leftOp: "0", rightOp: "---", result: "REP"+String(repeatStatementCont)) //Se guarda la variable de contador para repeat aquí
+                qCuad.append(memComparison)
+                
+                let auxComparison = Quadruple.init(operand: "<", leftOp: "REP"+String(repeatStatementCont), rightOp: result!, result: String(contTemp))//Crea un cuadruplo para hacer la comparación del GOTOF con un contador desde zero
+                
+                qCuad.append(auxComparison)
+                let auxQuad = Quadruple.init(operand: "GOTOF", leftOp: String(contTemp), rightOp: "---", result: "PENDING")
+                qCuad.append(auxQuad)
+                saltos.insert(qCuad.count - 1, at: 0)
+                
+                contTemp = contTemp + 1
+                repeatStatementCont+=1
+            }
+        }
     }
 
 
-	open func enterExp(_ ctx: BasicLearnParser.ExpContext) {
+	open func enterTerm(_ ctx: BasicLearnParser.TermContext) {
+
 
     }
 
-	open func exitExp(_ ctx: BasicLearnParser.ExpContext) {
+	open func exitTerm(_ ctx: BasicLearnParser.TermContext) {
         
-        if let add = ctx.ADD()?.getText() {
-            POper.insert(add, at: 0)
-        }
-        
-        if let sub = ctx.SUBS()?.getText() {
-            POper.insert(sub, at: 0)
-        }
         if POper.first == "+" || POper.first == "-" {
             let rightOperand = PilaO.first
             let rightOperandType = pTypes.first
@@ -217,23 +287,60 @@ open class BasicLearnBaseListener: BasicLearnListener {
                 // HANDLE ERROR CORRECTLY
             }
         }
-        
+
+        if let parent = ctx.parent as? BasicLearnParser.ExpContext {
+            if let add = parent.ADD()?.getText() {
+                POper.insert(add, at: 0)
+            }
+            
+            if let sub = parent.SUBS()?.getText() {
+                POper.insert(sub, at: 0)
+            }
+        }
     }
 
 
-	open func enterTerm(_ ctx: BasicLearnParser.TermContext) {
+	open func enterFactor(_ ctx: BasicLearnParser.FactorContext) {
+        if let currentId = ctx.ID()?.getText() {
 
-    }
-
-	open func exitTerm(_ ctx: BasicLearnParser.TermContext) {
-        if let mult = ctx.MULT()?.getText() {
-            POper.insert(mult, at: 0)
+            //Checa que la variable si exista
+            guard let operand = getVariable(id: currentId) else {
+                print("Error: Esta variable no se encontro \(currentId)")
+                return }
+            
+            PilaO.insert((operand.name), at: 0)
+            pTypes.insert(operand.type, at: 0)
+            
         }
         
-        if let div = ctx.DIV()?.getText() {
-            POper.insert(div, at: 0)
+        //Bloque donde se guardan las constanstes en memoria
+        var constantMemAddress = 0
+        if let currConstant = ctx.CTE_F(){
+            constantMemAddress = constantMemory.saveDecimalConstant(value: Float(currConstant.getText())!)
+            
+            //Se meten las constantes a la pila de operandos
+            //            PilaO.insert(Int(constantMemAddress), at: 0)
+            PilaO.insert(currConstant.getText(), at: 0)
+            pTypes.insert(Type.decimal, at: 0)
+            
+            //            print("Constant: \(ctx.CTE_F()?.getText()) \(constantMemAddress)")
         }
+        if let currConstant = ctx.CTE_I(){
+            constantMemAddress = constantMemory.saveNumberConstant(value: Int(currConstant.getText())!)
+            
+            //Se meten las constantes a la pila de operandos
+            //            PilaO.insert(Int(constantMemAddress), at: 0)
+            PilaO.insert(currConstant.getText(), at: 0)
+            pTypes.insert(Type.number, at: 0)
+            
+            //            print("Constant: \(ctx.CTE_I()?.getText()) \(constantMemAddress)")
+        }
+        if ctx.getText() == "true"{
+            print ("true")
+        }
+    }
 
+	open func exitFactor(_ ctx: BasicLearnParser.FactorContext) {
         if POper.first == "*" || POper.first == "/" {
             
             let rightOperand = PilaO.first
@@ -283,56 +390,18 @@ open class BasicLearnBaseListener: BasicLearnListener {
                 // HANDLE ERROR CORRECTLY
             }
         }
-
-    }
-
-
-	open func enterFactor(_ ctx: BasicLearnParser.FactorContext) {
-        if let currentId = ctx.ID()?.getText() {
-
-            //Checa que la variable si exista
-            guard let operand = getVariable(id: currentId) else {
-                print("Error: Esta variable no se encontro \(currentId)")
-                return }
-            
-            PilaO.insert((operand.name), at: 0)
-            pTypes.insert(operand.type, at: 0)
-            
-        }
         
-        //Bloque donde se guardan las constanstes en memoria
-        var constantMemAddress = 0
-        if let currConstant = ctx.CTE_F(){
-            constantMemAddress = constantMemory.saveDecimalConstant(value: Float(currConstant.getText())!)
+        if let parent = ctx.parent as? BasicLearnParser.TermContext{
             
-            //Se meten las constantes a la pila de operandos
-            //            PilaO.insert(Int(constantMemAddress), at: 0)
-            PilaO.insert(currConstant.getText(), at: 0)
-            pTypes.insert(Type.decimal, at: 0)
-            
-            //            print("Constant: \(ctx.CTE_F()?.getText()) \(constantMemAddress)")
-        }
-        if let currConstant = ctx.CTE_I(){
-            constantMemAddress = constantMemory.saveNumberConstant(value: Int(currConstant.getText())!)
-            
-            //Se meten las constantes a la pila de operandos
-            //            PilaO.insert(Int(constantMemAddress), at: 0)
-            PilaO.insert(currConstant.getText(), at: 0)
-            pTypes.insert(Type.number, at: 0)
-            
-            //            print("Constant: \(ctx.CTE_I()?.getText()) \(constantMemAddress)")
-        }
-        if ctx.getText() == "true" || ctx.getText() == "false" {
-            constantMemAddress = constantMemory.saveBoolConstant(value: Bool(ctx.getText())!)
-            PilaO.insert(ctx.getText(), at: 0)
-            pTypes.insert(Type.bool, at: 0)
-        }
-    }
 
-	open func exitFactor(_ ctx: BasicLearnParser.FactorContext) {
-        
+            if let mult = parent.MULT()?.getText() {
+                POper.insert(mult, at: 0)
+            }
 
-        
+            if let div = parent.DIV()?.getText() {
+                POper.insert(div, at: 0)
+            }
+        }
     }
 
 
@@ -370,7 +439,18 @@ open class BasicLearnBaseListener: BasicLearnListener {
     }
 
 
-	open func enterBlock(_ ctx: BasicLearnParser.BlockContext) { }
+	open func enterBlock(_ ctx: BasicLearnParser.BlockContext) {
+        if let parent = ctx.parent as? BasicLearnParser.If_statementContext{
+            if parent.getText().contains("else") && parent.block(1)! == ctx.self{ //Else que se asegura que entre al segundo bloque del else
+                let AuxQuad = Quadruple.init(operand: "GOTO", leftOp: "---", rightOp: "---", result: "PENDING")
+                qCuad.append(AuxQuad)
+                let ifFalse = saltos.first
+                saltos.removeFirst()
+                saltos.insert(qCuad.count - 1, at: 0)
+                qCuad[ifFalse!].fillJump(jump: String(qCuad.count))
+            }
+        }
+    }
 
 	open func exitBlock(_ ctx: BasicLearnParser.BlockContext) { }
 
@@ -380,7 +460,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
 	open func exitType(_ ctx: BasicLearnParser.TypeContext) { }
 
 
-	open func enterStatement(_ ctx: BasicLearnParser.StatementContext) { }
+	open func enterStatement(_ ctx: BasicLearnParser.StatementContext) {}
 
 	open func exitStatement(_ ctx: BasicLearnParser.StatementContext) { }
 
@@ -532,19 +612,52 @@ open class BasicLearnBaseListener: BasicLearnListener {
     }
 
 
-	open func enterIf_statement(_ ctx: BasicLearnParser.If_statementContext) { }
+	open func enterIf_statement(_ ctx: BasicLearnParser.If_statementContext) {
 
-	open func exitIf_statement(_ ctx: BasicLearnParser.If_statementContext) { }
+    }
+
+	open func exitIf_statement(_ ctx: BasicLearnParser.If_statementContext) {
+
+        let end = saltos.first
+        saltos.removeFirst()
+        qCuad[end!].fillJump(jump: String(qCuad.count))
+    }
 
 
-	open func enterRepeat_statement(_ ctx: BasicLearnParser.Repeat_statementContext) { }
+	open func enterRepeat_statement(_ ctx: BasicLearnParser.Repeat_statementContext) {
+        //Se le pone el + 1 debido al cuadruplo de asignación de contador que se crea en exitExp
+        saltos.insert(qCuad.count + 1, at: 0)
+    }
 
-	open func exitRepeat_statement(_ ctx: BasicLearnParser.Repeat_statementContext) { }
+	open func exitRepeat_statement(_ ctx: BasicLearnParser.Repeat_statementContext) {
+        let end = saltos.first
+        saltos.removeFirst()
+        let falseJump = saltos.first
+        saltos.removeFirst()
+        let auxCounterQuad = Quadruple.init(operand: "+", leftOp: "REP"+String(repeatStatementCont - 1), rightOp: "1", result: "REP"+String(repeatStatementCont - 1)) //Cuadruplo para sumar uno al final del repeat statement
+        qCuad.append(auxCounterQuad)
+        repeatStatementCont -= 1
+        
+        let auxQuad = Quadruple.init(operand: "GOTO", leftOp: "---", rightOp: "---", result: String(falseJump!))
+        qCuad.append(auxQuad)
+        qCuad[end!].fillJump(jump: String(qCuad.count))
+    }
 
 
-	open func enterWhile_statement(_ ctx: BasicLearnParser.While_statementContext) { }
+	open func enterWhile_statement(_ ctx: BasicLearnParser.While_statementContext) {
+        saltos.insert(qCuad.count, at: 0)
+    }
 
-	open func exitWhile_statement(_ ctx: BasicLearnParser.While_statementContext) { }
+	open func exitWhile_statement(_ ctx: BasicLearnParser.While_statementContext) {
+        let end = saltos.first
+        saltos.removeFirst()
+        let returnJump = saltos.first
+        saltos.removeFirst()
+        
+        let auxQuad = Quadruple.init(operand: "GOTO", leftOp: "---", rightOp: "---", result: String(returnJump!))
+        qCuad.append(auxQuad)
+        qCuad[end!].fillJump(jump: String(qCuad.count))
+    }
 
 
 	open func enterSpecial_function(_ ctx: BasicLearnParser.Special_functionContext) { }
