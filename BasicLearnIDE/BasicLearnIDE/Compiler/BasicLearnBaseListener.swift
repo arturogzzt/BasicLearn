@@ -10,10 +10,16 @@ import Antlr4
 open class BasicLearnBaseListener: BasicLearnListener {
     var scope = "ERROR"
     
+    // Cubo semántico
     var semanticTypeCheck = semanticCube()
     
+    // Directorio de funciones
     var dirFunc = [Function]()
     
+    // Tabla de variables constantes
+    var constTable = [Variable]()
+    
+    // Arreglo para verificar que los parámetros cumplan con semántica
     var parameterVerification = [String]()
     
     //Lista para saltos pendientes en los cuadruplos
@@ -56,6 +62,18 @@ open class BasicLearnBaseListener: BasicLearnListener {
         // RETURN ERROR
     }
     
+    // Función para verificar si una constante ya existe en la tabla de constantes
+    // Si la encuentra te regresa la dirección de la variable, si no la encuentra regresa 0
+    func constantExists(currentConstant : String) -> Int {
+        for constant in constTable {
+            if currentConstant == constant.name {
+                return constant.address
+            }
+        }
+        return 0
+    }
+    
+    
     
 	open func enterProgram(_ ctx: BasicLearnParser.ProgramContext) {
         scope = "GLOBAL"
@@ -74,10 +92,10 @@ open class BasicLearnBaseListener: BasicLearnListener {
             i += 1
         }
         
-        let virtualMachine = VirtualMachine.init(quadruples: qCuad, globalMemory: globalMemory, localMemory: localMemory, constantMemory: constantMemory, temporalMemory: temporalMemory)
+        for constant in constTable {
+            print("NAME: \(constant.name) TYPE: \(constant.type) ADDRESS: \(constant.address)")
+        }
         
-        virtualMachine.executeProgram()
-
     }
 
 
@@ -297,32 +315,39 @@ open class BasicLearnBaseListener: BasicLearnListener {
             
         }
         
-        //Bloque donde se guardan las constanstes en memoria
-        var constantMemAddress = 0
-        if let currConstant = ctx.CTE_F(){
-            constantMemAddress = constantMemory.saveDecimalConstant(value: Float(currConstant.getText())!)
-            
-            //Se meten las constantes a la pila de operandos
-            PilaO.insert(String(constantMemAddress), at: 0)
-//            PilaO.insert(currConstant.getText(), at: 0)
-            pTypes.insert(Type.decimal, at: 0)
-            
-            //            print("Constant: \(ctx.CTE_F()?.getText()) \(constantMemAddress)")
-        }
-        if let currConstant = ctx.CTE_I(){
-            constantMemAddress = constantMemory.saveNumberConstant(value: Int(currConstant.getText())!)
-            
-            //Se meten las constantes a la pila de operandos
-            PilaO.insert(String(constantMemAddress), at: 0)
-//            PilaO.insert(currConstant.getText(), at: 0)
+        // Guardar las constantes en la tabla de constantes
+        if let currConstant = ctx.CTE_I()?.getText() {
+            if constantExists(currentConstant: currConstant) == 0 {
+                let constantAddress = constantMemory.getNumberAddress(spaces: 1)
+                constTable.append(Variable.init(name: currConstant, type: Type.number, address: constantAddress))
+                PilaO.insert(String(constantAddress), at: 0)
+            } else {
+                PilaO.insert(String(constantExists(currentConstant: currConstant)), at: 0)
+            }
             pTypes.insert(Type.number, at: 0)
-            
-            //            print("Constant: \(ctx.CTE_I()?.getText()) \(constantMemAddress)")
         }
+        
+        if let currConstant = ctx.CTE_F()?.getText() {
+            if constantExists(currentConstant: currConstant) == 0 {
+                let constantAddress = constantMemory.getDecimalAddress(spaces: 1)
+                constTable.append(Variable.init(name: currConstant, type: Type.decimal, address: constantAddress))
+                PilaO.insert(String(constantAddress), at: 0)
+            } else {
+                PilaO.insert(String(constantExists(currentConstant: currConstant)), at: 0)
+            }
+            pTypes.insert(Type.decimal, at: 0)
+        }
+        
         if ctx.getText() == "true" || ctx.getText() == "false" {
-            constantMemAddress = constantMemory.saveBoolConstant(value: Bool(ctx.getText())!)
-            PilaO.insert(String(constantMemAddress), at: 0)
-//            PilaO.insert(ctx.getText(), at: 0)
+            let currConstant = ctx.getText()
+            
+            if constantExists(currentConstant: currConstant) == 0 {
+                let constantAddress = constantMemory.getBoolAddress(spaces: 1)
+                constTable.append(Variable.init(name: currConstant, type: Type.bool, address: constantAddress))
+                PilaO.insert(String(constantAddress), at: 0)
+            } else {
+                PilaO.insert(String(constantExists(currentConstant: currConstant)), at: 0)
+            }
             pTypes.insert(Type.bool, at: 0)
         }
     }
@@ -408,12 +433,12 @@ open class BasicLearnBaseListener: BasicLearnListener {
 	}
 
 	open func exitFunction(_ ctx: BasicLearnParser.FunctionContext) {
-//        for function in dirFunc {
-//            print("FUNCTION \(function.name)")
-//            for variables in function.variables {
-//                print("TYPE: \(variables.type) NAME: \(variables.name) ADDRESS: \(variables.address)")
-//            }
-//        }
+        for function in dirFunc {
+            print("FUNCTION \(function.name)")
+            for variables in function.variables {
+                print("TYPE: \(variables.type) NAME: \(variables.name) ADDRESS: \(variables.address)")
+            }
+        }
 
         dirFunc.removeLast()
         parameterVerification.removeAll()
