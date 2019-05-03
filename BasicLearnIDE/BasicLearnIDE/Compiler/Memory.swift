@@ -77,10 +77,12 @@ class Memory{
         return (decimal + base - 1)
     }
     
-//    func saveBoolConstant(value: Bool) -> Int{
-//
-//    }
-//
+    func saveBoolConstant(value: Bool) -> Int{
+        bools.append(value)
+        bool = bool + 1
+        return (bool + base - 1)
+    }
+
 //    func saveSentenceConstant(value: String) -> Int{
 //
 //    }

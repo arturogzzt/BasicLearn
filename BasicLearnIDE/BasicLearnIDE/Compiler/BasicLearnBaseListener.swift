@@ -2,7 +2,6 @@
 
 import Antlr4
 
-
 /**
  * This class provides an empty implementation of {@link BasicLearnListener},
  * which can be extended to create a listener which only needs to handle a subset
@@ -15,12 +14,6 @@ open class BasicLearnBaseListener: BasicLearnListener {
     
     var dirFunc = [Function]()
     
-    
-    var symbolTable = [DirFunc]()
-    var variableTable = [Int : [varTable]]()
-    // Tiene que empezar en 1 porque si pones nil en la creacion de dirfunc no te deja porq es int
-    // 0 representaria que no tiene vartable asignado...
-    var variableTableCount = 1
     var parameterVerification = [String]()
     
     //Lista para saltos pendientes en los cuadruplos
@@ -183,7 +176,6 @@ open class BasicLearnBaseListener: BasicLearnListener {
                 pTypes.insert(resultType, at: 0)
                 contTemp = contTemp + 1
                 
-                
             } else {
                 print("ERROR TYPE MISMATCH")
                 // HANDLE ERROR CORRECTLY
@@ -249,7 +241,6 @@ open class BasicLearnBaseListener: BasicLearnListener {
 	open func exitTerm(_ ctx: BasicLearnParser.TermContext) {
         
         if POper.first == "+" || POper.first == "-" {
-            //            print("PilaO : \(PilaO.first ?? "error")")
             let rightOperand = PilaO.first
             let rightOperandType = pTypes.first
             pTypes.removeFirst()
@@ -402,6 +393,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
         
         if let parent = ctx.parent as? BasicLearnParser.TermContext{
             
+
             if let mult = parent.MULT()?.getText() {
                 POper.insert(mult, at: 0)
             }
