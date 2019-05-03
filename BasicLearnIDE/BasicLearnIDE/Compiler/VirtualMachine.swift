@@ -59,6 +59,18 @@ class VirtualMachine {
                 divide(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
             case "=":
                 asign(leftOperandAddress: Int(currentQuadruple.leftOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
+            case "<":
+                lessThan(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
+            case ">":
+                greaterThan(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
+            case "<=":
+                lessOrEqualThan(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
+            case ">=":
+                greaterOrEqualThan(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
+            case "equal":
+                equal(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
+            case "notEqual":
+                notEqual(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
             default:
                 break
             }
@@ -80,8 +92,15 @@ class VirtualMachine {
             let resultAddress = resultOperandMemory.getNumberAddress(spaces: 1)
             resultOperandMemory.saveNumber(address: resultAddress, value: addedValue)
         } else if resultType == Type.decimal {
-            let addedValue = (leftOperandValue as! Float) + (rightOperandValue as! Float)
-            let resultAddress = resultOperandMemory.getNumberAddress(spaces: 1)
+            let addedValue : Float
+            if leftOperandType == Type.number {
+                addedValue = (Float(leftOperandValue as! Int)) + (rightOperandValue as! Float)
+            } else if rightOperandType == Type.number {
+                addedValue = (leftOperandValue as! Float) + (Float(rightOperandValue as! Int))
+            } else {
+                addedValue = (leftOperandValue as! Float) + (rightOperandValue as! Float)
+            }
+            let resultAddress = resultOperandMemory.getDecimalAddress(spaces: 1)
             resultOperandMemory.saveDecimal(address: resultAddress, value: addedValue)
         } else {
             // HANDLE ERROR
@@ -102,8 +121,15 @@ class VirtualMachine {
             let resultAddress = resultOperandMemory.getNumberAddress(spaces: 1)
             resultOperandMemory.saveNumber(address: resultAddress, value: addedValue)
         } else if resultType == Type.decimal {
-            let addedValue = (leftOperandValue as! Float) - (rightOperandValue as! Float)
-            let resultAddress = resultOperandMemory.getNumberAddress(spaces: 1)
+            let addedValue : Float
+            if leftOperandType == Type.number {
+                addedValue = (Float(leftOperandValue as! Int)) - (rightOperandValue as! Float)
+            } else if rightOperandType == Type.number {
+                addedValue = (leftOperandValue as! Float) - (Float(rightOperandValue as! Int))
+            } else {
+                addedValue = (leftOperandValue as! Float) - (rightOperandValue as! Float)
+            }
+            let resultAddress = resultOperandMemory.getDecimalAddress(spaces: 1)
             resultOperandMemory.saveDecimal(address: resultAddress, value: addedValue)
         } else {
             // HANDLE ERROR
@@ -124,8 +150,15 @@ class VirtualMachine {
             let resultAddress = resultOperandMemory.getNumberAddress(spaces: 1)
             resultOperandMemory.saveNumber(address: resultAddress, value: addedValue)
         } else if resultType == Type.decimal {
-            let addedValue = (leftOperandValue as! Float) * (rightOperandValue as! Float)
-            let resultAddress = resultOperandMemory.getNumberAddress(spaces: 1)
+            let addedValue : Float
+            if leftOperandType == Type.number {
+                addedValue = (Float(leftOperandValue as! Int)) * (rightOperandValue as! Float)
+            } else if rightOperandType == Type.number {
+                addedValue = (leftOperandValue as! Float) * (Float(rightOperandValue as! Int))
+            } else {
+                addedValue = (leftOperandValue as! Float) * (rightOperandValue as! Float)
+            }
+            let resultAddress = resultOperandMemory.getDecimalAddress(spaces: 1)
             resultOperandMemory.saveDecimal(address: resultAddress, value: addedValue)
         } else {
             // HANDLE ERROR
@@ -146,8 +179,15 @@ class VirtualMachine {
             let resultAddress = resultOperandMemory.getNumberAddress(spaces: 1)
             resultOperandMemory.saveNumber(address: resultAddress, value: addedValue)
         } else if resultType == Type.decimal {
-            let addedValue = (leftOperandValue as! Float) / (rightOperandValue as! Float)
-            let resultAddress = resultOperandMemory.getNumberAddress(spaces: 1)
+            let addedValue : Float
+            if leftOperandType == Type.number {
+                addedValue = (Float(leftOperandValue as! Int)) / (rightOperandValue as! Float)
+            } else if rightOperandType == Type.number {
+                addedValue = (leftOperandValue as! Float) / (Float(rightOperandValue as! Int))
+            } else {
+                addedValue = (leftOperandValue as! Float) / (rightOperandValue as! Float)
+            }
+            let resultAddress = resultOperandMemory.getDecimalAddress(spaces: 1)
             resultOperandMemory.saveDecimal(address: resultAddress, value: addedValue)
         } else {
             // HANDLE ERROR
@@ -173,6 +213,149 @@ class VirtualMachine {
         default:
             break
         }
+    }
+    
+    func lessThan(leftOperandAddress : Int, rightOperandAddress : Int, resultOperandAddress : Int) {
+        let (leftOperandValue, leftOperandType) = getMemory(address: leftOperandAddress).getValue(address: leftOperandAddress)
+        let (rightOperandValue, rightOperandType) = getMemory(address: rightOperandAddress).getValue(address: rightOperandAddress)
+        
+        let resultOperandMemory = getMemory(address: resultOperandAddress)
+        
+        _ = semanticTypeCheck.checkOperation(op: "<", operand1: leftOperandType, operand2: rightOperandType)
+        
+        let addedValue : Bool
+        
+        if leftOperandType == Type.number && rightOperandType == Type.number {
+            addedValue = (leftOperandValue as! Int) < (rightOperandValue as! Int)
+        } else if leftOperandType == Type.number && rightOperandType == Type.decimal {
+            addedValue = (Float(leftOperandValue as! Int)) < (rightOperandValue as! Float)
+        } else if leftOperandType == Type.decimal && rightOperandType == Type.number {
+            addedValue = (leftOperandValue as! Float) < (Float(rightOperandValue as! Int))
+        } else {
+            addedValue = (leftOperandValue as! Float) < (rightOperandValue as! Float)
+        }
+        let resultAddress = resultOperandMemory.getBoolAddress(spaces: 1)
+        resultOperandMemory.saveBool(address: resultAddress, value: addedValue)
+    }
+    
+    func greaterThan(leftOperandAddress : Int, rightOperandAddress : Int, resultOperandAddress : Int) {
+        let (leftOperandValue, leftOperandType) = getMemory(address: leftOperandAddress).getValue(address: leftOperandAddress)
+        let (rightOperandValue, rightOperandType) = getMemory(address: rightOperandAddress).getValue(address: rightOperandAddress)
+        
+        let resultOperandMemory = getMemory(address: resultOperandAddress)
+        
+        _ = semanticTypeCheck.checkOperation(op: ">", operand1: leftOperandType, operand2: rightOperandType)
+        
+        let addedValue : Bool
+        
+        if leftOperandType == Type.number && rightOperandType == Type.number {
+            addedValue = (leftOperandValue as! Int) > (rightOperandValue as! Int)
+        } else if leftOperandType == Type.number && rightOperandType == Type.decimal {
+            addedValue = (Float(leftOperandValue as! Int)) > (rightOperandValue as! Float)
+        } else if leftOperandType == Type.decimal && rightOperandType == Type.number {
+            addedValue = (leftOperandValue as! Float) > (Float(rightOperandValue as! Int))
+        } else {
+            addedValue = (leftOperandValue as! Float) > (rightOperandValue as! Float)
+        }
+        
+        let resultAddress = resultOperandMemory.getBoolAddress(spaces: 1)
+        resultOperandMemory.saveBool(address: resultAddress, value: addedValue)
+    }
+    
+    func lessOrEqualThan(leftOperandAddress : Int, rightOperandAddress : Int, resultOperandAddress : Int) {
+        let (leftOperandValue, leftOperandType) = getMemory(address: leftOperandAddress).getValue(address: leftOperandAddress)
+        let (rightOperandValue, rightOperandType) = getMemory(address: rightOperandAddress).getValue(address: rightOperandAddress)
+        
+        let resultOperandMemory = getMemory(address: resultOperandAddress)
+        
+        _ = semanticTypeCheck.checkOperation(op: "<=", operand1: leftOperandType, operand2: rightOperandType)
+        
+        let addedValue : Bool
+        
+        if leftOperandType == Type.number && rightOperandType == Type.number {
+            addedValue = (leftOperandValue as! Int) <= (rightOperandValue as! Int)
+        } else if leftOperandType == Type.number && rightOperandType == Type.decimal {
+            addedValue = (Float(leftOperandValue as! Int)) <= (rightOperandValue as! Float)
+        } else if leftOperandType == Type.decimal && rightOperandType == Type.number {
+            addedValue = (leftOperandValue as! Float) <= (Float(rightOperandValue as! Int))
+        } else {
+            addedValue = (leftOperandValue as! Float) <= (rightOperandValue as! Float)
+        }
+        
+        let resultAddress = resultOperandMemory.getBoolAddress(spaces: 1)
+        resultOperandMemory.saveBool(address: resultAddress, value: addedValue)
+    }
+    
+    func greaterOrEqualThan(leftOperandAddress : Int, rightOperandAddress : Int, resultOperandAddress : Int) {
+        let (leftOperandValue, leftOperandType) = getMemory(address: leftOperandAddress).getValue(address: leftOperandAddress)
+        let (rightOperandValue, rightOperandType) = getMemory(address: rightOperandAddress).getValue(address: rightOperandAddress)
+        
+        let resultOperandMemory = getMemory(address: resultOperandAddress)
+        
+        _ = semanticTypeCheck.checkOperation(op: ">=", operand1: leftOperandType, operand2: rightOperandType)
+        
+        let addedValue : Bool
+        
+        if leftOperandType == Type.number && rightOperandType == Type.number {
+            addedValue = (leftOperandValue as! Int) >= (rightOperandValue as! Int)
+        } else if leftOperandType == Type.number && rightOperandType == Type.decimal {
+            addedValue = (Float(leftOperandValue as! Int)) >= (rightOperandValue as! Float)
+        } else if leftOperandType == Type.decimal && rightOperandType == Type.number {
+            addedValue = (leftOperandValue as! Float) >= (Float(rightOperandValue as! Int))
+        } else {
+            addedValue = (leftOperandValue as! Float) >= (rightOperandValue as! Float)
+        }
+        
+        let resultAddress = resultOperandMemory.getBoolAddress(spaces: 1)
+        resultOperandMemory.saveBool(address: resultAddress, value: addedValue)
+    }
+    
+    func equal(leftOperandAddress : Int, rightOperandAddress : Int, resultOperandAddress : Int) {
+        let (leftOperandValue, leftOperandType) = getMemory(address: leftOperandAddress).getValue(address: leftOperandAddress)
+        let (rightOperandValue, rightOperandType) = getMemory(address: rightOperandAddress).getValue(address: rightOperandAddress)
+        
+        let resultOperandMemory = getMemory(address: resultOperandAddress)
+        
+        _ = semanticTypeCheck.checkOperation(op: "equal", operand1: leftOperandType, operand2: rightOperandType)
+        
+        let addedValue : Bool
+        
+        if leftOperandType == Type.number && rightOperandType == Type.number {
+            addedValue = (leftOperandValue as! Int) == (rightOperandValue as! Int)
+        } else if leftOperandType == Type.number && rightOperandType == Type.decimal {
+            addedValue = (Float(leftOperandValue as! Int)) == (rightOperandValue as! Float)
+        } else if leftOperandType == Type.decimal && rightOperandType == Type.number {
+            addedValue = (leftOperandValue as! Float) == (Float(rightOperandValue as! Int))
+        } else {
+            addedValue = (leftOperandValue as! Float) == (rightOperandValue as! Float)
+        }
+        
+        let resultAddress = resultOperandMemory.getBoolAddress(spaces: 1)
+        resultOperandMemory.saveBool(address: resultAddress, value: addedValue)
+    }
+    
+    func notEqual(leftOperandAddress : Int, rightOperandAddress : Int, resultOperandAddress : Int) {
+        let (leftOperandValue, leftOperandType) = getMemory(address: leftOperandAddress).getValue(address: leftOperandAddress)
+        let (rightOperandValue, rightOperandType) = getMemory(address: rightOperandAddress).getValue(address: rightOperandAddress)
+        
+        let resultOperandMemory = getMemory(address: resultOperandAddress)
+        
+        _ = semanticTypeCheck.checkOperation(op: "notEqual", operand1: leftOperandType, operand2: rightOperandType)
+        
+        let addedValue : Bool
+        
+        if leftOperandType == Type.number && rightOperandType == Type.number {
+            addedValue = (leftOperandValue as! Int) != (rightOperandValue as! Int)
+        } else if leftOperandType == Type.number && rightOperandType == Type.decimal {
+            addedValue = (Float(leftOperandValue as! Int)) != (rightOperandValue as! Float)
+        } else if leftOperandType == Type.decimal && rightOperandType == Type.number {
+            addedValue = (leftOperandValue as! Float) != (Float(rightOperandValue as! Int))
+        } else {
+            addedValue = (leftOperandValue as! Float) != (rightOperandValue as! Float)
+        }
+        
+        let resultAddress = resultOperandMemory.getBoolAddress(spaces: 1)
+        resultOperandMemory.saveBool(address: resultAddress, value: addedValue)
     }
     
     // Función para obtener la memoria dependiendo del scope

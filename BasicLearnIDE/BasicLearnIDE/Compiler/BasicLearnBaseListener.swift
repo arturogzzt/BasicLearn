@@ -398,7 +398,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
                 let resultVariableType = getVariable(id: result)!.type
                 let resultVariableAddress = getVariable(id: result)!.address
                 
-                let resultType = semanticTypeCheck.checkOperation(op: op!, operand1: leftOperandType!, operand2: resultVariableType)
+                _ = semanticTypeCheck.checkOperation(op: op!, operand1: leftOperandType!, operand2: resultVariableType)
                 
 //                qCuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: "---", result: result))
                 qCuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: "---", result: String(resultVariableAddress)))

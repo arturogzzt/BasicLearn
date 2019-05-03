@@ -68,9 +68,9 @@ class Memory{
     func cleanMemory() {
         self.number = 0
         self.decimal = 1500
-        self.bool = 3000
-        self.sentence = 4500
-        
+        self.sentence = 3000
+        self.bool = 4500
+
         numbers.removeAll()
         decimals.removeAll()
         bools.removeAll()
