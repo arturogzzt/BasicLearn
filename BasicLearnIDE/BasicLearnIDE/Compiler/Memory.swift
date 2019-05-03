@@ -23,11 +23,11 @@ class Memory{
     private let boolBase : Int!
     private let sentenceBase : Int!
     
-    //Guardar nuestras variables en la memoria en estos arreglos
-    private var numbers = [Int]()
-    private var decimals = [Float]()
-    private var sentences = [String]()
-    private var bools = [Bool]()
+    //Guardar nuestras variables en la memoria en estos diccionarios
+    private var numbers = [Int : Int]()
+    private var decimals = [Int : Float]()
+    private var sentences = [Int : String]()
+    private var bools = [Int : Bool]()
     
     
     init (baseAddress: Int){
@@ -63,28 +63,83 @@ class Memory{
         return (bool + base - spaces)
     }
     
+    // Funciones para limpiar memoria
+    // Esto eliminó un error que tenía que los valores de number ya estaban aumentados por quads
+    func cleanMemory() {
+        self.number = 0
+        self.decimal = 1500
+        self.sentence = 3000
+        self.bool = 4500
+
+        numbers.removeAll()
+        decimals.removeAll()
+        bools.removeAll()
+        sentences.removeAll()
+    }
+    
     //Grabar a memoria, usado para las constantes inicialmente
     //Regresa la memoria donde se grabo la constante
-    func saveNumberConstant(value: Int) -> Int{
-        numbers.append(value)
-        number = number + 1
-        return (number + base - 1)
+    func saveNumberConstant(value: Int, address: Int){
+        numbers.updateValue(value, forKey: address)
     }
     
-    func saveDecimalConstant(value: Float) -> Int{
-        decimals.append(value)
-        decimal = decimal + 1
-        return (decimal + base - 1)
+    func saveDecimalConstant(value: Float, address: Int){
+        decimals.updateValue(value, forKey: address)
     }
     
-    func saveBoolConstant(value: Bool) -> Int{
-        bools.append(value)
-        bool = bool + 1
-        return (bool + base - 1)
+    func saveBoolConstant(value: Bool, address: Int){
+        bools.updateValue(value, forKey: address)
     }
 
-//    func saveSentenceConstant(value: String) -> Int{
-//
-//    }
+    func saveSentenceConstant(value: String, address: Int){
+        sentences.updateValue(value, forKey: address)
+    }
     
+    // Funciones para obtener los valores de las llaves.
+    func getNumberValue(address: Int) -> Int {
+        return self.numbers[address]!
+    }
+    
+    func getDecimalValue(address: Int) -> Float {
+        return self.decimals[address]!
+    }
+    
+    func getBoolValue(address: Int) -> Bool {
+        return self.bools[address]!
+    }
+    
+    func getSentenceValue(address: Int) -> String {
+        return self.sentences[address]!
+    }
+    
+    // Función para obtener el valor dependiendo el tipo de dato
+    func getValue(address: Int) -> (Any, type: Type) {
+        switch address {
+        case _ where address < decimalBase:
+            return (getNumberValue(address: address), Type.number)
+        case _ where address < sentenceBase:
+            return (getDecimalValue(address: address), Type.decimal)
+        case _ where address < boolBase:
+            return (getSentenceValue(address: address), Type.sentence)
+        default:
+            return (getBoolValue(address: address), Type.bool)
+        }
+    }
+    
+    // Función para guardar un valor en memoria
+    func saveNumber(address : Int, value : Int) {
+        self.numbers[address] = value
+    }
+    
+    func saveDecimal(address : Int, value : Float) {
+        self.decimals[address] = value
+    }
+    
+    func saveBool(address : Int, value : Bool) {
+        self.bools[address] = value
+    }
+    
+    func saveSentence(address : Int, value : String) {
+        self.sentences[address] = value
+    }
 }

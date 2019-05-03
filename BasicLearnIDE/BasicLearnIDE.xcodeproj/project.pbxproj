@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		417E89F322795CF9004648D6 /* VirtualMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417E89F222795CF9004648D6 /* VirtualMachine.swift */; };
 		41C2EFBC225FED3000C90A1F /* MainCompiler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C2EFB6225FED3000C90A1F /* MainCompiler.swift */; };
 		41C2EFBD225FED3000C90A1F /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C2EFBA225FED3000C90A1F /* Types.swift */; };
-		41C2EFBE225FED3000C90A1F /* DirFunctionsVarTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C2EFBB225FED3000C90A1F /* DirFunctionsVarTable.swift */; };
 		41EAEBCA2274A66600897C19 /* Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EAEBC92274A66600897C19 /* Function.swift */; };
 		41EAEBCC2274A66D00897C19 /* Variable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EAEBCB2274A66D00897C19 /* Variable.swift */; };
 		EC1516FF225E87E40030D440 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1516FE225E87E40030D440 /* AppDelegate.swift */; };
@@ -61,9 +61,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		417E89F222795CF9004648D6 /* VirtualMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualMachine.swift; sourceTree = "<group>"; };
 		41C2EFB6225FED3000C90A1F /* MainCompiler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCompiler.swift; sourceTree = "<group>"; };
 		41C2EFBA225FED3000C90A1F /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
-		41C2EFBB225FED3000C90A1F /* DirFunctionsVarTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirFunctionsVarTable.swift; sourceTree = "<group>"; };
 		41EAEBC92274A66600897C19 /* Function.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Function.swift; sourceTree = "<group>"; };
 		41EAEBCB2274A66D00897C19 /* Variable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Variable.swift; sourceTree = "<group>"; };
 		EC1516FB225E87E40030D440 /* BasicLearnIDE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BasicLearnIDE.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -148,18 +148,18 @@
 				EC15173F225E93AC0030D440 /* BasicLearn.interp */,
 				EC151740225E93AC0030D440 /* BasicLearnLexer.interp */,
 				EC151741225E93AC0030D440 /* BasicLearnBaseListener.swift */,
-				EC1B7550227494D8007068DC /* Memory.swift */,
 				EC151742225E93AC0030D440 /* BasicLearnParserATN.swift */,
 				EC151743225E93AC0030D440 /* BasicLearnListener.swift */,
 				EC151744225E93AC0030D440 /* BasicLearnLexer.swift */,
 				EC151745225E93AC0030D440 /* BasicLearnParser.swift */,
-				41C2EFBB225FED3000C90A1F /* DirFunctionsVarTable.swift */,
 				41EAEBC92274A66600897C19 /* Function.swift */,
 				41EAEBCB2274A66D00897C19 /* Variable.swift */,
 				41C2EFB6225FED3000C90A1F /* MainCompiler.swift */,
 				41C2EFBA225FED3000C90A1F /* Types.swift */,
 				EC6EAF85227340B600D767DD /* SemanticCube.swift */,
 				EC1B754A22737464007068DC /* Quadruple.swift */,
+				EC1B7550227494D8007068DC /* Memory.swift */,
+				417E89F222795CF9004648D6 /* VirtualMachine.swift */,
 			);
 			path = Compiler;
 			sourceTree = "<group>";
@@ -282,6 +282,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC1B7551227494D8007068DC /* Memory.swift in Sources */,
+				417E89F322795CF9004648D6 /* VirtualMachine.swift in Sources */,
 				41EAEBCC2274A66D00897C19 /* Variable.swift in Sources */,
 				EC15174E225E93AC0030D440 /* BasicLearnParserATN.swift in Sources */,
 				EC151701225E87E40030D440 /* ViewController.swift in Sources */,
@@ -290,7 +291,6 @@
 				EC6EAF86227340B600D767DD /* SemanticCube.swift in Sources */,
 				EC151750225E93AC0030D440 /* BasicLearnLexer.swift in Sources */,
 				EC151751225E93AC0030D440 /* BasicLearnParser.swift in Sources */,
-				41C2EFBE225FED3000C90A1F /* DirFunctionsVarTable.swift in Sources */,
 				EC1516FF225E87E40030D440 /* AppDelegate.swift in Sources */,
 				41C2EFBC225FED3000C90A1F /* MainCompiler.swift in Sources */,
 				41EAEBCA2274A66600897C19 /* Function.swift in Sources */,

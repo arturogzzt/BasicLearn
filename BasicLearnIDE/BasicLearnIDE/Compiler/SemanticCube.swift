@@ -11,7 +11,7 @@ import Foundation
 class semanticCube {
     
     func checkOperation(op: String, operand1: Type, operand2: Type) -> Type{
-        if op == "+" {
+        if op == "+" || op == "-" || op == "*" || op == "/" {
             if(operand1 == Type.number){
                 if(operand2 == Type.decimal){
                     return Type.decimal
@@ -21,10 +21,10 @@ class semanticCube {
                     print("error")
                     return Type.error
                 }
-            } else if (operand2 == Type.decimal){
-                if(operand1 == Type.number){
+            } else if (operand1 == Type.decimal){
+                if(operand2 == Type.number){
                     return Type.decimal
-                } else if (operand1 == Type.decimal){
+                } else if (operand2 == Type.decimal){
                     return Type.decimal
                 } else{
                     print("error")
@@ -34,8 +34,7 @@ class semanticCube {
                 print ("error")
                 return Type.error
             }
-        }
-        else if op == "-"{
+        } else if op == "=" {
             if(operand1 == Type.number){
                 if(operand2 == Type.decimal){
                     return Type.decimal
@@ -45,161 +44,49 @@ class semanticCube {
                     print("error")
                     return Type.error
                 }
-            } else if (operand2 == Type.decimal){
-                if(operand1 == Type.number){
+            } else if (operand1 == Type.decimal){
+                if(operand2 == Type.number){
                     return Type.decimal
-                } else if (operand1 == Type.decimal){
+                } else if (operand2 == Type.decimal){
                     return Type.decimal
                 } else{
                     print("error")
                     return Type.error
                 }
-            } else{
+            } else if (operand1 == Type.bool){
+                if(operand2 == Type.bool) {
+                    return Type.bool
+                } else {
+                    print("error")
+                    return Type.error
+                }
+            } else if (operand2 == Type.bool){
+                if(operand1 == Type.bool) {
+                    return Type.bool
+                } else {
+                    print("error")
+                    return Type.error
+                }
+            } else if (operand1 == Type.sentence) {
+                if(operand2 == Type.sentence) {
+                    return Type.sentence
+                } else {
+                    print("error")
+                    return Type.error
+                }
+            } else if (operand2 == Type.sentence) {
+                if (operand1 == Type.sentence) {
+                    return Type.sentence
+                } else {
+                    print("error")
+                    return Type.error
+                }
+            } else {
                 print ("error")
                 return Type.error
             }
-        } else if op == "*"{
-            if(operand1 == Type.number){
-                if(operand2 == Type.decimal){
-                    return Type.decimal
-                }else if (operand2 == Type.number){
-                    return Type.number
-                } else{
-                    print("error")
-                    return Type.error
-                }
-            } else if (operand2 == Type.decimal){
-                if(operand1 == Type.number){
-                    return Type.decimal
-                } else if (operand1 == Type.decimal){
-                    return Type.decimal
-                } else{
-                    print("error")
-                    return Type.error
-                }
-            } else{
-                print ("error")
-                return Type.error
-            }
-        } else if op == "/"{
-            if(operand1 == Type.number){
-                if(operand2 == Type.decimal){
-                    return Type.decimal
-                }else if (operand2 == Type.number){
-                    return Type.number
-                } else{
-                    print("error")
-                    return Type.error
-                }
-            } else if (operand2 == Type.decimal){
-                if(operand1 == Type.number){
-                    return Type.decimal
-                } else if (operand1 == Type.decimal){
-                    return Type.decimal
-                } else{
-                    print("error")
-                    return Type.error
-                }
-            } else{
-                print ("error")
-                return Type.error
-            }
-        } else if op == "<"{
-            if ((operand1 == Type.number) || (operand1 == Type.decimal)){
-                if((operand2 == Type.number) || (operand2 == Type.decimal)){
-                    return Type.bool
-                } else{
-                    print ("error")
-                    return Type.error
-                }
-            } else if ((operand2 == Type.number) || (operand2 == Type.decimal)){
-                if((operand1 == Type.number) || (operand1 == Type.decimal)){
-                    return Type.bool
-                } else {
-                    print ("error")
-                    return Type.error
-                }
-            } else {
-                print( "error")
-                return Type.error
-            }
-        } else if op == ">"{
-            if ((operand1 == Type.number) || (operand1 == Type.decimal)){
-                if((operand2 == Type.number) || (operand2 == Type.decimal)){
-                    return Type.bool
-                } else{
-                    print ("error")
-                    return Type.error
-                }
-            } else if ((operand2 == Type.number) || (operand2 == Type.decimal)){
-                if((operand1 == Type.number) || (operand1 == Type.decimal)){
-                    return Type.bool
-                } else {
-                    print ("error")
-                    return Type.error
-                }
-            } else {
-                print( "error")
-                return Type.error
-            }
-        } else if op == "<="{
-            if ((operand1 == Type.number) || (operand1 == Type.decimal)){
-                if((operand2 == Type.number) || (operand2 == Type.decimal)){
-                    return Type.bool
-                } else{
-                    print ("error")
-                    return Type.error
-                }
-            } else if ((operand2 == Type.number) || (operand2 == Type.decimal)){
-                if((operand1 == Type.number) || (operand1 == Type.decimal)){
-                    return Type.bool
-                } else {
-                    print ("error")
-                    return Type.error
-                }
-            } else {
-                print( "error")
-                return Type.error
-            }
-        } else if op == ">="{
-            if ((operand1 == Type.number) || (operand1 == Type.decimal)){
-                if((operand2 == Type.number) || (operand2 == Type.decimal)){
-                    return Type.bool
-                } else{
-                    print ("error")
-                    return Type.error
-                }
-            } else if ((operand2 == Type.number) || (operand2 == Type.decimal)){
-                if((operand1 == Type.number) || (operand1 == Type.decimal)){
-                    return Type.bool
-                } else {
-                    print ("error")
-                    return Type.error
-                }
-            } else {
-                print( "error")
-                return Type.error
-            }
-        } else if op == "equal"{
-            if ((operand1 == Type.number) || (operand1 == Type.decimal)){
-                if((operand2 == Type.number) || (operand2 == Type.decimal)){
-                    return Type.bool
-                } else{
-                    print ("error")
-                    return Type.error
-                }
-            } else if ((operand2 == Type.number) || (operand2 == Type.decimal)){
-                if((operand1 == Type.number) || (operand1 == Type.decimal)){
-                    return Type.bool
-                } else {
-                    print ("error")
-                    return Type.error
-                }
-            } else {
-                print( "error")
-                return Type.error
-            }
-        } else if op == "notEqual"{
+            
+        }else if op == "<" || op == ">" || op == "<=" || op == ">=" || op == "equal" || op == "notEqual"{
             if ((operand1 == Type.number) || (operand1 == Type.decimal)){
                 if((operand2 == Type.number) || (operand2 == Type.decimal)){
                     return Type.bool

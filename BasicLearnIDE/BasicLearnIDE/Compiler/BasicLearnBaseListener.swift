@@ -10,10 +10,16 @@ import Antlr4
 open class BasicLearnBaseListener: BasicLearnListener {
     var scope = "ERROR"
     
+    // Cubo semántico
     var semanticTypeCheck = semanticCube()
     
+    // Directorio de funciones
     var dirFunc = [Function]()
     
+    // Tabla de variables constantes
+    var constTable = [Variable]()
+    
+    // Arreglo para verificar que los parámetros cumplan con semántica
     var parameterVerification = [String]()
     
     //Lista para saltos pendientes en los cuadruplos
@@ -60,6 +66,18 @@ open class BasicLearnBaseListener: BasicLearnListener {
         // RETURN ERROR
     }
     
+    // Función para verificar si una constante ya existe en la tabla de constantes
+    // Si la encuentra te regresa la dirección de la variable, si no la encuentra regresa 0
+    func constantExists(currentConstant : String) -> Int {
+        for constant in constTable {
+            if currentConstant == constant.name {
+                return constant.address
+            }
+        }
+        return 0
+    }
+    
+    
     
 	open func enterProgram(_ ctx: BasicLearnParser.ProgramContext) {
         scope = "GLOBAL"
@@ -77,7 +95,19 @@ open class BasicLearnBaseListener: BasicLearnListener {
             print("\(i):\t\t \(quad.operand) \t\t \(quad.leftOp) \t\t \(quad.rightOp) \t\t \(quad.result)")
             i += 1
         }
-
+        
+        for constant in constTable {
+            print("NAME: \(constant.name) TYPE: \(constant.type) ADDRESS: \(constant.address)")
+        }
+        
+        
+        // Testing vm
+        let virtualMachine = VirtualMachine.init(quadruples: qCuad, globalMemory: globalMemory, localMemory: localMemory, constantMemory: constantMemory, temporalMemory: temporalMemory)
+        
+        virtualMachine.executeProgram()
+        
+        
+        
     }
 
 
@@ -170,11 +200,10 @@ open class BasicLearnBaseListener: BasicLearnListener {
                     break
                 }
                 
-                qCuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: rightOperand!, result: String(contTemp)))
+                qCuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: rightOperand!, result: String(result)))
                 
-                PilaO.insert(String(contTemp), at: 0) //Por mientras
+                PilaO.insert(String(result), at: 0) //Por mientras
                 pTypes.insert(resultType, at: 0)
-                contTemp = contTemp + 1
                 
             } else {
                 print("ERROR TYPE MISMATCH")
@@ -275,12 +304,10 @@ open class BasicLearnBaseListener: BasicLearnListener {
                     break
                 }
                 
-                qCuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: rightOperand!, result: String(contTemp)))
+                qCuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: rightOperand!, result: String(result)))
                 
-                PilaO.insert(String(contTemp), at: 0) //Por mientras
+                PilaO.insert(String(result), at: 0) //Por mientras
                 pTypes.insert(resultType, at: 0)
-                contTemp = contTemp + 1
-                
                 
             } else {
                 print("ERROR TYPE MISMATCH")
@@ -377,12 +404,10 @@ open class BasicLearnBaseListener: BasicLearnListener {
                     break
                 }
                 
-                qCuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: rightOperand!, result: String(contTemp)))
+                qCuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: rightOperand!, result: String(result)))
                 
-                //Por mientras se utiliza el contTemp en vez de la address del resultado
-                PilaO.insert(String(contTemp), at: 0)
+                PilaO.insert(String(result), at: 0)
                 pTypes.insert(resultType, at: 0)
-                contTemp = contTemp + 1
                 
                 
             } else {
@@ -393,7 +418,6 @@ open class BasicLearnBaseListener: BasicLearnListener {
         
         if let parent = ctx.parent as? BasicLearnParser.TermContext{
             
-
             if let mult = parent.MULT()?.getText() {
                 POper.insert(mult, at: 0)
             }
@@ -411,7 +435,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
         }
         if let currentId = ctx.ID(0)?.getText(){
             if let assignment = getVariable(id: currentId){
-                PilaO.insert(assignment.name, at: 0)
+                PilaO.insert(String(assignment.address), at: 0)
                 pTypes.insert(assignment.type, at: 0)
             } else {
                 print("Error: Esta variable no se encontro \(currentId)")
@@ -430,8 +454,13 @@ open class BasicLearnBaseListener: BasicLearnListener {
                 let op = POper.first
                 POper.removeFirst()
                 
-                qCuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: "---", result: result))
-//                PilaO.insert(String(contTemp), at: 0)
+                let resultVariableType = getVariable(id: result)!.type
+                let resultVariableAddress = getVariable(id: result)!.address
+                
+                _ = semanticTypeCheck.checkOperation(op: op!, operand1: leftOperandType!, operand2: resultVariableType)
+                
+//                qCuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: "---", result: result))
+                qCuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: "---", result: String(resultVariableAddress)))
             }
         }
 
@@ -485,12 +514,12 @@ open class BasicLearnBaseListener: BasicLearnListener {
 	}
 
 	open func exitFunction(_ ctx: BasicLearnParser.FunctionContext) {
-//        for function in dirFunc {
-//            print("FUNCTION \(function.name)")
-//            for variables in function.variables {
-//                print("TYPE: \(variables.type) NAME: \(variables.name) ADDRESS: \(variables.address)")
-//            }
-//        }
+        for function in dirFunc {
+            print("FUNCTION \(function.name)")
+            for variables in function.variables {
+                print("TYPE: \(variables.type) NAME: \(variables.name) ADDRESS: \(variables.address)")
+            }
+        }
 
         dirFunc.removeLast()
         parameterVerification.removeAll()
