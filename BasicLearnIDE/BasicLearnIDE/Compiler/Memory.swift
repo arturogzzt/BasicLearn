@@ -65,28 +65,20 @@ class Memory{
     
     //Grabar a memoria, usado para las constantes inicialmente
     //Regresa la memoria donde se grabo la constante
-    func saveNumberConstant(value: Int) -> Int{
-        numbers.updateValue(value, forKey: number + base)
-        number = number + 1
-        return (number + base - 1)
+    func saveNumberConstant(value: Int, address: Int){
+        numbers.updateValue(value, forKey: address)
     }
     
-    func saveDecimalConstant(value: Float) -> Int{
-        decimals.updateValue(value, forKey: number + base)
-        decimal = decimal + 1
-        return (decimal + base - 1)
+    func saveDecimalConstant(value: Float, address: Int){
+        decimals.updateValue(value, forKey: address)
     }
     
-    func saveBoolConstant(value: Bool) -> Int{
-        bools.updateValue(value, forKey: number + base)
-        bool = bool + 1
-        return (bool + base - 1)
+    func saveBoolConstant(value: Bool, address: Int){
+        bools.updateValue(value, forKey: address)
     }
 
-    func saveSentenceConstant(value: String) -> Int{
-        sentences.updateValue(value, forKey: sentence + base)
-        sentence = sentence + 1
-        return (sentence + base - 1)
+    func saveSentenceConstant(value: String, address: Int){
+        sentences.updateValue(value, forKey: address)
     }
     
     // Funciones para obtener los valores de las llaves.

@@ -321,6 +321,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
                 let constantAddress = constantMemory.getNumberAddress(spaces: 1)
                 constTable.append(Variable.init(name: currConstant, type: Type.number, address: constantAddress))
                 PilaO.insert(String(constantAddress), at: 0)
+                constantMemory.saveNumberConstant(value: Int(currConstant)!, address: constantAddress)
             } else {
                 PilaO.insert(String(constantExists(currentConstant: currConstant)), at: 0)
             }
@@ -332,6 +333,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
                 let constantAddress = constantMemory.getDecimalAddress(spaces: 1)
                 constTable.append(Variable.init(name: currConstant, type: Type.decimal, address: constantAddress))
                 PilaO.insert(String(constantAddress), at: 0)
+                constantMemory.saveDecimalConstant(value: Float(currConstant)!, address: constantAddress)
             } else {
                 PilaO.insert(String(constantExists(currentConstant: currConstant)), at: 0)
             }
@@ -345,6 +347,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
                 let constantAddress = constantMemory.getBoolAddress(spaces: 1)
                 constTable.append(Variable.init(name: currConstant, type: Type.bool, address: constantAddress))
                 PilaO.insert(String(constantAddress), at: 0)
+                constantMemory.saveBoolConstant(value: Bool(currConstant)!, address: constantAddress)
             } else {
                 PilaO.insert(String(constantExists(currentConstant: currConstant)), at: 0)
             }

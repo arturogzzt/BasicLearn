@@ -56,7 +56,7 @@ class VirtualMachine {
         
         if resultType == Type.number {
             let addedValue = (leftOperandValue as! Int) + (rightOperandValue as! Int)
-            resultOperandMemory.saveNumberConstant(value: addedValue)
+//            resultOperandMemory.saveNumberConstant(value: addedValue)
         }
     }
     
