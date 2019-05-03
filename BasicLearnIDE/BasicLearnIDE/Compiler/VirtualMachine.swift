@@ -53,6 +53,10 @@ class VirtualMachine {
                 add(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
             case "-":
                 substract(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
+            case "*":
+                multiply(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
+            case "/":
+                divide(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
             default:
                 break
             }
@@ -73,6 +77,13 @@ class VirtualMachine {
             let addedValue = (leftOperandValue as! Int) + (rightOperandValue as! Int)
             let resultAddress = resultOperandMemory.getNumberAddress(spaces: 1)
             resultOperandMemory.saveNumber(address: resultAddress, value: addedValue)
+        } else if resultType == Type.decimal {
+            let addedValue = (leftOperandValue as! Float) + (rightOperandValue as! Float)
+            let resultAddress = resultOperandMemory.getNumberAddress(spaces: 1)
+            resultOperandMemory.saveDecimal(address: resultAddress, value: addedValue)
+        } else {
+            // HANDLE ERROR
+            print("ERROR TYPE MISMATCH")
         }
     }
     
@@ -88,15 +99,58 @@ class VirtualMachine {
             let addedValue = (leftOperandValue as! Int) - (rightOperandValue as! Int)
             let resultAddress = resultOperandMemory.getNumberAddress(spaces: 1)
             resultOperandMemory.saveNumber(address: resultAddress, value: addedValue)
+        } else if resultType == Type.decimal {
+            let addedValue = (leftOperandValue as! Float) - (rightOperandValue as! Float)
+            let resultAddress = resultOperandMemory.getNumberAddress(spaces: 1)
+            resultOperandMemory.saveDecimal(address: resultAddress, value: addedValue)
+        } else {
+            // HANDLE ERROR
+            print("ERROR TYPE MISMATCH")
         }
     }
     
-    func multiply() {
+    func multiply(leftOperandAddress : Int, rightOperandAddress: Int, resultOperandAddress: Int) {
+        let (leftOperandValue, leftOperandType) = getMemory(address: leftOperandAddress).getValue(address: leftOperandAddress)
+        let (rightOperandValue, rightOperandType) = getMemory(address: rightOperandAddress).getValue(address: rightOperandAddress)
         
+        let resultOperandMemory = getMemory(address: resultOperandAddress)
+        
+        let resultType = semanticTypeCheck.checkOperation(op: "*", operand1: leftOperandType, operand2: rightOperandType)
+        
+        if resultType == Type.number {
+            let addedValue = (leftOperandValue as! Int) * (rightOperandValue as! Int)
+            let resultAddress = resultOperandMemory.getNumberAddress(spaces: 1)
+            resultOperandMemory.saveNumber(address: resultAddress, value: addedValue)
+        } else if resultType == Type.decimal {
+            let addedValue = (leftOperandValue as! Float) * (rightOperandValue as! Float)
+            let resultAddress = resultOperandMemory.getNumberAddress(spaces: 1)
+            resultOperandMemory.saveDecimal(address: resultAddress, value: addedValue)
+        } else {
+            // HANDLE ERROR
+            print("ERROR TYPE MISMATCH")
+        }
     }
     
-    func divide() {
+    func divide(leftOperandAddress : Int, rightOperandAddress: Int, resultOperandAddress: Int) {
+        let (leftOperandValue, leftOperandType) = getMemory(address: leftOperandAddress).getValue(address: leftOperandAddress)
+        let (rightOperandValue, rightOperandType) = getMemory(address: rightOperandAddress).getValue(address: rightOperandAddress)
         
+        let resultOperandMemory = getMemory(address: resultOperandAddress)
+        
+        let resultType = semanticTypeCheck.checkOperation(op: "/", operand1: leftOperandType, operand2: rightOperandType)
+        
+        if resultType == Type.number {
+            let addedValue = (leftOperandValue as! Int) / (rightOperandValue as! Int)
+            let resultAddress = resultOperandMemory.getNumberAddress(spaces: 1)
+            resultOperandMemory.saveNumber(address: resultAddress, value: addedValue)
+        } else if resultType == Type.decimal {
+            let addedValue = (leftOperandValue as! Float) / (rightOperandValue as! Float)
+            let resultAddress = resultOperandMemory.getNumberAddress(spaces: 1)
+            resultOperandMemory.saveDecimal(address: resultAddress, value: addedValue)
+        } else {
+            // HANDLE ERROR
+            print("ERROR TYPE MISMATCH")
+        }
     }
     
     // Función para obtener la memoria dependiendo del scope
