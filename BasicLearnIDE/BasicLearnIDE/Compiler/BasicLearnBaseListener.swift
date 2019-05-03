@@ -96,6 +96,14 @@ open class BasicLearnBaseListener: BasicLearnListener {
             print("NAME: \(constant.name) TYPE: \(constant.type) ADDRESS: \(constant.address)")
         }
         
+        
+        // Testing vm
+        let virtualMachine = VirtualMachine.init(quadruples: qCuad, globalMemory: globalMemory, localMemory: localMemory, constantMemory: constantMemory, temporalMemory: temporalMemory)
+        
+        virtualMachine.executeProgram()
+        
+        
+        
     }
 
 

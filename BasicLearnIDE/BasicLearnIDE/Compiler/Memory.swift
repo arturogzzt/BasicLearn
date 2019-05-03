@@ -63,6 +63,20 @@ class Memory{
         return (bool + base - spaces)
     }
     
+    // Funciones para limpiar memoria
+    // Esto eliminó un error que tenía que los valores de number ya estaban aumentados por quads
+    func cleanMemory() {
+        self.number = 0
+        self.decimal = 1500
+        self.bool = 3000
+        self.sentence = 4500
+        
+        numbers.removeAll()
+        decimals.removeAll()
+        bools.removeAll()
+        sentences.removeAll()
+    }
+    
     //Grabar a memoria, usado para las constantes inicialmente
     //Regresa la memoria donde se grabo la constante
     func saveNumberConstant(value: Int, address: Int){
@@ -83,19 +97,19 @@ class Memory{
     
     // Funciones para obtener los valores de las llaves.
     func getNumberValue(address: Int) -> Int {
-        return numbers[address]!
+        return self.numbers[address]!
     }
     
     func getDecimalValue(address: Int) -> Float {
-        return decimals[address]!
+        return self.decimals[address]!
     }
     
     func getBoolValue(address: Int) -> Bool {
-        return bools[address]!
+        return self.bools[address]!
     }
     
     func getSentenceValue(address: Int) -> String {
-        return sentences[address]!
+        return self.sentences[address]!
     }
     
     // Función para obtener el valor dependiendo el tipo de dato
@@ -111,6 +125,21 @@ class Memory{
             return (getSentenceValue(address: address), Type.sentence)
         }
     }
-
     
+    // Función para guardar un valor en memoria
+    func saveNumber(address : Int, value : Int) {
+        self.numbers[address] = value
+    }
+    
+    func saveDecimal(address : Int, value : Float) {
+        self.decimals[address] = value
+    }
+    
+    func saveBool(address : Int, value : Bool) {
+        self.bools[address] = value
+    }
+    
+    func saveSentence(address : Int, value : String) {
+        self.sentences[address] = value
+    }
 }

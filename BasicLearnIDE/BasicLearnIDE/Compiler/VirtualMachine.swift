@@ -26,7 +26,21 @@ class VirtualMachine {
         self.temporalMemory = temporalMemory
     }
     
+    // Function to clean all memories but constant
+    func cleanAllMemory() {
+        self.temporalMemory.cleanMemory()
+        self.globalMemory.cleanMemory()
+        self.localMemory.cleanMemory()
+    }
+    
+    // Function to clean temporalMemory
+    func cleanTempMemory() {
+        self.temporalMemory.cleanMemory()
+    }
+    
     func executeProgram() {
+        cleanAllMemory()
+        
         var quadIndex : Int = 0
         
         while quadIndex < quadruples.count {
@@ -37,6 +51,8 @@ class VirtualMachine {
             switch op {
             case "+":
                 add(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
+            case "-":
+                substract(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
             default:
                 break
             }
@@ -51,17 +67,28 @@ class VirtualMachine {
         
         let resultOperandMemory = getMemory(address: resultOperandAddress)
         
-        
         let resultType = semanticTypeCheck.checkOperation(op: "+", operand1: leftOperandType, operand2: rightOperandType)
         
         if resultType == Type.number {
             let addedValue = (leftOperandValue as! Int) + (rightOperandValue as! Int)
-//            resultOperandMemory.saveNumberConstant(value: addedValue)
+            let resultAddress = resultOperandMemory.getNumberAddress(spaces: 1)
+            resultOperandMemory.saveNumber(address: resultAddress, value: addedValue)
         }
     }
     
-    func substract() {
+    func substract(leftOperandAddress : Int, rightOperandAddress: Int, resultOperandAddress: Int) {
+        let (leftOperandValue, leftOperandType) = getMemory(address: leftOperandAddress).getValue(address: leftOperandAddress)
+        let (rightOperandValue, rightOperandType) = getMemory(address: rightOperandAddress).getValue(address: rightOperandAddress)
         
+        let resultOperandMemory = getMemory(address: resultOperandAddress)
+        
+        let resultType = semanticTypeCheck.checkOperation(op: "-", operand1: leftOperandType, operand2: rightOperandType)
+        
+        if resultType == Type.number {
+            let addedValue = (leftOperandValue as! Int) - (rightOperandValue as! Int)
+            let resultAddress = resultOperandMemory.getNumberAddress(spaces: 1)
+            resultOperandMemory.saveNumber(address: resultAddress, value: addedValue)
+        }
     }
     
     func multiply() {
@@ -76,13 +103,13 @@ class VirtualMachine {
     func getMemory(address: Int) -> Memory {
         switch address {
         case _ where address < 6000:
-            return globalMemory
+            return self.globalMemory
         case _ where address < 12000:
-            return localMemory
+            return self.localMemory
         case _ where address < 18000:
-            return constantMemory
+            return self.constantMemory
         default:
-            return temporalMemory
+            return self.temporalMemory
         }
     }
 }
