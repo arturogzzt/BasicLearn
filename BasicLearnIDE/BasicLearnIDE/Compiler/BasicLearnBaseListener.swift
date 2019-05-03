@@ -329,41 +329,54 @@ open class BasicLearnBaseListener: BasicLearnListener {
 
 	open func enterFactor(_ ctx: BasicLearnParser.FactorContext) {
         if let currentId = ctx.ID()?.getText() {
-
+            
             //Checa que la variable si exista
             guard let operand = getVariable(id: currentId) else {
                 print("Error: Esta variable no se encontro \(currentId)")
                 return }
             
-            PilaO.insert((operand.name), at: 0)
+            PilaO.insert((String(operand.address)), at: 0)
             pTypes.insert(operand.type, at: 0)
             
         }
         
-        //Bloque donde se guardan las constanstes en memoria
-        var constantMemAddress = 0
-        if let currConstant = ctx.CTE_F(){
-            constantMemAddress = constantMemory.saveDecimalConstant(value: Float(currConstant.getText())!)
-            
-            //Se meten las constantes a la pila de operandos
-            //            PilaO.insert(Int(constantMemAddress), at: 0)
-            PilaO.insert(currConstant.getText(), at: 0)
-            pTypes.insert(Type.decimal, at: 0)
-            
-            //            print("Constant: \(ctx.CTE_F()?.getText()) \(constantMemAddress)")
-        }
-        if let currConstant = ctx.CTE_I(){
-            constantMemAddress = constantMemory.saveNumberConstant(value: Int(currConstant.getText())!)
-            
-            //Se meten las constantes a la pila de operandos
-            //            PilaO.insert(Int(constantMemAddress), at: 0)
-            PilaO.insert(currConstant.getText(), at: 0)
+        // Guardar las constantes en la tabla de constantes
+        if let currConstant = ctx.CTE_I()?.getText() {
+            if constantExists(currentConstant: currConstant) == 0 {
+                let constantAddress = constantMemory.getNumberAddress(spaces: 1)
+                constTable.append(Variable.init(name: currConstant, type: Type.number, address: constantAddress))
+                PilaO.insert(String(constantAddress), at: 0)
+                constantMemory.saveNumberConstant(value: Int(currConstant)!, address: constantAddress)
+            } else {
+                PilaO.insert(String(constantExists(currentConstant: currConstant)), at: 0)
+            }
             pTypes.insert(Type.number, at: 0)
-            
-            //            print("Constant: \(ctx.CTE_I()?.getText()) \(constantMemAddress)")
         }
-        if ctx.getText() == "true"{
-            print ("true")
+        
+        if let currConstant = ctx.CTE_F()?.getText() {
+            if constantExists(currentConstant: currConstant) == 0 {
+                let constantAddress = constantMemory.getDecimalAddress(spaces: 1)
+                constTable.append(Variable.init(name: currConstant, type: Type.decimal, address: constantAddress))
+                PilaO.insert(String(constantAddress), at: 0)
+                constantMemory.saveDecimalConstant(value: Float(currConstant)!, address: constantAddress)
+            } else {
+                PilaO.insert(String(constantExists(currentConstant: currConstant)), at: 0)
+            }
+            pTypes.insert(Type.decimal, at: 0)
+        }
+        
+        if ctx.getText() == "true" || ctx.getText() == "false" {
+            let currConstant = ctx.getText()
+            
+            if constantExists(currentConstant: currConstant) == 0 {
+                let constantAddress = constantMemory.getBoolAddress(spaces: 1)
+                constTable.append(Variable.init(name: currConstant, type: Type.bool, address: constantAddress))
+                PilaO.insert(String(constantAddress), at: 0)
+                constantMemory.saveBoolConstant(value: Bool(currConstant)!, address: constantAddress)
+            } else {
+                PilaO.insert(String(constantExists(currentConstant: currConstant)), at: 0)
+            }
+            pTypes.insert(Type.bool, at: 0)
         }
     }
 
