@@ -117,12 +117,12 @@ class Memory{
         switch address {
         case _ where address < decimalBase:
             return (getNumberValue(address: address), Type.number)
-        case _ where address < boolBase:
-            return (getDecimalValue(address: address), Type.decimal)
         case _ where address < sentenceBase:
-            return (getBoolValue(address: address), Type.bool)
-        default:
+            return (getDecimalValue(address: address), Type.decimal)
+        case _ where address < boolBase:
             return (getSentenceValue(address: address), Type.sentence)
+        default:
+            return (getBoolValue(address: address), Type.bool)
         }
     }
     

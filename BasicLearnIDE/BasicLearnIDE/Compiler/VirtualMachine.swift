@@ -57,6 +57,8 @@ class VirtualMachine {
                 multiply(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
             case "/":
                 divide(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
+            case "=":
+                asign(leftOperandAddress: Int(currentQuadruple.leftOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
             default:
                 break
             }
@@ -150,6 +152,26 @@ class VirtualMachine {
         } else {
             // HANDLE ERROR
             print("ERROR TYPE MISMATCH")
+        }
+    }
+    
+    func asign(leftOperandAddress : Int, resultOperandAddress : Int) {
+        let (leftOperandValue, leftOperandType) = getMemory(address: leftOperandAddress).getValue(address: leftOperandAddress)
+        let resultOperandMemory = getMemory(address: resultOperandAddress)
+        
+        let resultType = leftOperandType
+        
+        switch resultType {
+        case Type.number:
+            resultOperandMemory.saveNumber(address: resultOperandAddress, value: leftOperandValue as! Int)
+        case Type.decimal:
+            resultOperandMemory.saveDecimal(address: resultOperandAddress, value: leftOperandValue as! Float)
+        case Type.bool:
+            resultOperandMemory.saveBool(address: resultOperandAddress, value: leftOperandValue as! Bool)
+        case Type.sentence:
+            resultOperandMemory.saveSentence(address: resultOperandAddress, value: leftOperandValue as! String)
+        default:
+            break
         }
     }
     
