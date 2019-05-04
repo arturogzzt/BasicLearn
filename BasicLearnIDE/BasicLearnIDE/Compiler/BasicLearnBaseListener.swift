@@ -43,6 +43,8 @@ open class BasicLearnBaseListener: BasicLearnListener {
     var paramCounter = 0
     //Parameter Total
     var paramTotal = 0
+    //Variable para saber que memoria temporal utilizar
+    var currentMemory : Memory = Memory.init(baseAddress: 0)
 
     
     // Memory
@@ -50,6 +52,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
     var localMemory = Memory.init(baseAddress: 6000)
     var constantMemory = Memory.init(baseAddress: 12000)
     var temporalMemory = Memory.init(baseAddress: 18000)
+    var localTemporalMemory = Memory.init(baseAddress: 24000)
     
      public init() {
         
@@ -95,10 +98,12 @@ open class BasicLearnBaseListener: BasicLearnListener {
     
 	open func enterProgram(_ ctx: BasicLearnParser.ProgramContext) {
         scope = "GLOBAL"
+        currentMemory = temporalMemory
         let programName = ctx.ID()?.getText() ?? "Error"
         let programFunction = Function.init(name: programName, type: Type.program, address: 0, quadrupleNumber: 0)
         
         dirFunc.append(programFunction)
+        qCuad.append(Quadruple.init(operand: "GOTO", leftOp: "___", rightOp: "___", result: "PENDING"))
     }
 
 	open func exitProgram(_ ctx: BasicLearnParser.ProgramContext) {
@@ -116,16 +121,18 @@ open class BasicLearnBaseListener: BasicLearnListener {
         
         
         // Testing vm
-        let virtualMachine = VirtualMachine.init(quadruples: qCuad, globalMemory: globalMemory, localMemory: localMemory, constantMemory: constantMemory, temporalMemory: temporalMemory)
+        let virtualMachine = VirtualMachine.init(quadruples: qCuad, globalMemory: globalMemory, localMemory: localMemory, constantMemory: constantMemory, temporalMemory: temporalMemory, localTemporalMemory : localTemporalMemory, dirFunc: dirFunc)
         
-//        virtualMachine.executeProgram()
+        virtualMachine.executeProgram()
         
         
         
     }
 
 
-	open func enterBody(_ ctx: BasicLearnParser.BodyContext) { }
+	open func enterBody(_ ctx: BasicLearnParser.BodyContext) {
+        qCuad[0].fillJump(jump: String(qCuad.count))
+    }
 
 	open func exitBody(_ ctx: BasicLearnParser.BodyContext) { }
 
@@ -224,18 +231,22 @@ open class BasicLearnBaseListener: BasicLearnListener {
                 
                 var result: Int!
                 
+                if scope == "LOCAL" {
+                    currentMemory = localTemporalMemory
+                }
+                
                 switch resultType {
                 case Type.number:
-                    result = temporalMemory.getNumberAddress(spaces: 1)
+                    result = currentMemory.getNumberAddress(spaces: 1)
                     
                 case Type.sentence:
-                    result = temporalMemory.getSentenceAddress(spaces: 1)
+                    result = currentMemory.getSentenceAddress(spaces: 1)
                     
                 case Type.bool:
-                    result = temporalMemory.getBoolAddress(spaces: 1)
+                    result = currentMemory.getBoolAddress(spaces: 1)
                     
                 case Type.decimal:
-                    result = temporalMemory.getDecimalAddress(spaces: 1)
+                    result = currentMemory.getDecimalAddress(spaces: 1)
                     
                 default:
                     break
@@ -345,18 +356,22 @@ open class BasicLearnBaseListener: BasicLearnListener {
                 
                 var result: Int!
                 
+                if scope == "LOCAL" {
+                    currentMemory = localTemporalMemory
+                }
+                
                 switch resultType {
                 case Type.number:
-                    result = temporalMemory.getNumberAddress(spaces: 1)
+                    result = currentMemory.getNumberAddress(spaces: 1)
                     
                 case Type.sentence:
-                    result = temporalMemory.getSentenceAddress(spaces: 1)
+                    result = currentMemory.getSentenceAddress(spaces: 1)
                     
                 case Type.bool:
-                    result = temporalMemory.getBoolAddress(spaces: 1)
+                    result = currentMemory.getBoolAddress(spaces: 1)
                     
                 case Type.decimal:
-                    result = temporalMemory.getDecimalAddress(spaces: 1)
+                    result = currentMemory.getDecimalAddress(spaces: 1)
                     
                 default:
                     break
@@ -458,18 +473,22 @@ open class BasicLearnBaseListener: BasicLearnListener {
                 
                 var result: Int!
                 
+                if scope == "LOCAL" {
+                    currentMemory = localTemporalMemory
+                }
+                
                 switch resultType {
                 case Type.number:
-                    result = temporalMemory.getNumberAddress(spaces: 1)
+                    result = currentMemory.getNumberAddress(spaces: 1)
                     
                 case Type.sentence:
-                    result = temporalMemory.getSentenceAddress(spaces: 1)
+                    result = currentMemory.getSentenceAddress(spaces: 1)
                     
                 case Type.bool:
-                    result = temporalMemory.getBoolAddress(spaces: 1)
+                    result = currentMemory.getBoolAddress(spaces: 1)
                     
                 case Type.decimal:
-                    result = temporalMemory.getDecimalAddress(spaces: 1)
+                    result = currentMemory.getDecimalAddress(spaces: 1)
                     
                 default:
                     break
@@ -528,7 +547,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
                 let resultVariableType = getVariable(id: result)!.type
                 let resultVariableAddress = getVariable(id: result)!.address
                 
-                let check = semanticTypeCheck.checkOperation(op: op!, operand1: leftOperandType!, operand2: resultVariableType)
+                _ = semanticTypeCheck.checkOperation(op: op!, operand1: leftOperandType!, operand2: resultVariableType)
                 
 //                qCuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: "---", result: result))
                 qCuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: "---", result: String(resultVariableAddress)))
@@ -596,6 +615,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
         parameterVerification.removeAll()
         let auxQuad = Quadruple.init(operand: "ENDPROC", leftOp: "---", rightOp: "---", result: "---")
         qCuad.append(auxQuad)
+        localTemporalMemory.cleanMemory()
     }
 
 

@@ -15,17 +15,25 @@ class VirtualMachine {
     var localMemory : Memory
     var constantMemory : Memory
     var temporalMemory : Memory
+    var localTemporalMemory : Memory
+    // Revisar si si necesito dirFunc
+    var dirFunc = [Function]()
+    var params = [Int]()
     
     var quadIndex : Int = 0
     
+    var subQuadIndex : Int = 0
+    
     var semanticTypeCheck = semanticCube()
     
-   init(quadruples : [Quadruple], globalMemory : Memory, localMemory : Memory, constantMemory : Memory, temporalMemory : Memory) {
+    init(quadruples : [Quadruple], globalMemory : Memory, localMemory : Memory, constantMemory : Memory, temporalMemory : Memory, localTemporalMemory : Memory, dirFunc : [Function]) {
         self.quadruples = quadruples
         self.globalMemory = globalMemory
         self.localMemory = localMemory
         self.constantMemory = constantMemory
         self.temporalMemory = temporalMemory
+        self.localTemporalMemory = localTemporalMemory
+        self.dirFunc = dirFunc
     }
     
     // Function to clean all memories but constant
@@ -33,11 +41,13 @@ class VirtualMachine {
         self.temporalMemory.cleanMemory()
         self.globalMemory.cleanMemory()
         self.localMemory.cleanMemory()
+        self.localTemporalMemory.cleanMemory()
     }
     
     // Function to clean temporalMemory
-    func cleanTempMemory() {
-        self.temporalMemory.cleanMemory()
+    func cleanLocalMemory() {
+        self.localMemory.cleanMemory()
+        self.localTemporalMemory.cleanMemory()
     }
     
     func executeProgram() {
@@ -75,6 +85,14 @@ class VirtualMachine {
                 gotoF(resultAddress: Int(currentQuadruple.leftOp)!, newQuadIndex: Int(currentQuadruple.result)!)
             case "GOTO":
                 goto(newQuadIndex: Int(currentQuadruple.result)!)
+            case "ERA":
+                era(function: currentQuadruple.result)
+            case "PARAM":
+                param(paramAddress: Int(currentQuadruple.leftOp)!, paramPosition: currentQuadruple.result)
+            case "GOSUB":
+                gosub(functionIndex: Int(currentQuadruple.result)!)
+            case "ENDPROC":
+                endproc()
             default:
                 break
             }
@@ -378,6 +396,53 @@ class VirtualMachine {
         quadIndex = newQuadIndex - 1
     }
     
+    func era(function : String) {
+//        var currentFunction : Function
+//        
+//        for funct in dirFunc {
+//            if function == funct.name {
+//                currentFunction = funct
+//            }
+//        }
+    }
+    
+    func param(paramAddress : Int, paramPosition : String) {
+//        let param = Int(String(paramPosition.last!))
+        
+        let(paramValue, paramType) = getMemory(address: paramAddress).getValue(address: paramAddress)
+        
+//        params[param!] = paramAddress
+        
+        switch paramType {
+        case Type.number:
+         localMemory.saveNumber(address: localMemory.getNumberAddress(spaces: 1), value: paramValue as! Int)
+        case Type.decimal:
+            localMemory.saveDecimal(address: localMemory.getDecimalAddress(spaces: 1), value: paramValue as! Float)
+        case Type.bool:
+            localMemory.saveBool(address: localMemory.getBoolAddress(spaces: 1), value: paramValue as! Bool)
+        case Type.sentence:
+            localMemory.saveSentence(address: localMemory.getSentenceAddress(spaces: 1), value: paramValue as! String)
+        default:
+            break
+        }
+    }
+    
+    func gosub(functionIndex : Int) {
+        // Save current IP
+        subQuadIndex = quadIndex
+        
+        // Update IP with the start of the function
+        quadIndex = functionIndex - 1
+    }
+    
+    func endproc() {
+        // Clean local memory
+        cleanLocalMemory()
+        
+        // Update IP with next line of sub
+        quadIndex = subQuadIndex + 1
+    }
+    
     
     // Función para obtener la memoria dependiendo del scope
     func getMemory(address: Int) -> Memory {
@@ -388,8 +453,10 @@ class VirtualMachine {
             return self.localMemory
         case _ where address < 18000:
             return self.constantMemory
-        default:
+        case _ where address < 24000:
             return self.temporalMemory
+        default:
+            return self.localTemporalMemory
         }
     }
 }
