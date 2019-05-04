@@ -18,7 +18,7 @@ class VirtualMachine {
     var localTemporalMemory : Memory
     // Revisar si si necesito dirFunc
     var dirFunc = [Function]()
-    var params = [Int]()
+//    var params = [Int]()
     
     var quadIndex : Int = 0
     
@@ -93,6 +93,8 @@ class VirtualMachine {
                 gosub(functionIndex: Int(currentQuadruple.result)!)
             case "ENDPROC":
                 endproc()
+            case "RET":
+                ret(returnValueAddress: Int(currentQuadruple.result)!)
             default:
                 break
             }
@@ -424,6 +426,23 @@ class VirtualMachine {
         
         // Update IP with next line of sub
         quadIndex = subQuadIndex + 1
+    }
+    
+    func ret(returnValueAddress : Int) {
+        let (returnValueVal, returnValueType) = getMemory(address: returnValueAddress).getValue(address: returnValueAddress)
+        
+        switch returnValueType {
+        case Type.number:
+            globalMemory.saveNumber(address: globalMemory.getNumberAddress(spaces: 1), value: returnValueVal as! Int)
+        case Type.decimal:
+            globalMemory.saveDecimal(address: globalMemory.getDecimalAddress(spaces: 1), value: returnValueVal as! Float)
+        case Type.bool:
+            globalMemory.saveBool(address: globalMemory.getBoolAddress(spaces: 1), value: returnValueVal as! Bool)
+        case Type.sentence:
+            globalMemory.saveSentence(address: globalMemory.getSentenceAddress(spaces: 1), value: returnValueVal as! String)
+        default:
+            break
+        }
     }
     
     
