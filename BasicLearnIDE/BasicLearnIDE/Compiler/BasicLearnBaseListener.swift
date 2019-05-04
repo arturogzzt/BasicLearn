@@ -39,6 +39,11 @@ open class BasicLearnBaseListener: BasicLearnListener {
     var contTemp = 0
     //Contador Repeat Statement por si hay nested repeats
     var repeatStatementCont = 0
+    //Parameter Counter
+    var paramCounter = 0
+    //Parameter Total
+    var paramTotal = 0
+
     
     // Memory
     var globalMemory = Memory.init(baseAddress: 0)
@@ -64,6 +69,15 @@ open class BasicLearnBaseListener: BasicLearnListener {
         }
         return nil
         // RETURN ERROR
+    }
+    
+    func getFunction(id: String) -> Function?{
+        for function in dirFunc{
+            if function.name == id {
+                return function
+            }
+        }
+        return nil
     }
     
     // Función para verificar si una constante ya existe en la tabla de constantes
@@ -104,7 +118,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
         // Testing vm
         let virtualMachine = VirtualMachine.init(quadruples: qCuad, globalMemory: globalMemory, localMemory: localMemory, constantMemory: constantMemory, temporalMemory: temporalMemory)
         
-        virtualMachine.executeProgram()
+//        virtualMachine.executeProgram()
         
         
         
@@ -150,10 +164,37 @@ open class BasicLearnBaseListener: BasicLearnListener {
                 print("ERROR Type Mismatch en While_Statement")
             } else {
                 let result = PilaO.first
+                PilaO.removeFirst()
                 let auxQuad = Quadruple.init(operand: "GOTOF", leftOp: result!, rightOp: "---", result: "PENDING")
                 qCuad.append(auxQuad)
                 saltos.insert(qCuad.count - 1, at: 0)
             }
+        }
+        
+        //Para checar si viene de un function call
+        if let parent = ctx.parent as? BasicLearnParser.Function_callContext {
+            let argument = PilaO.first
+            PilaO.removeFirst()
+            let argumentType = pTypes.first
+            pTypes.removeFirst()
+            let auxFunction = getFunction(id: (parent.ID()?.getText())!)
+            
+            //Checar que se esten enviando los parametros correctos
+//            print("Function verification \(argumentType)  \(auxFunction?.ParamTable[paramCounter].type)")
+            if argumentType == auxFunction?.ParamTable[paramCounter].type{
+                let auxQuad = Quadruple.init(operand: "PARAM", leftOp: String(argument!), rightOp: "---", result: "Param"+String(paramCounter))
+                qCuad.append(auxQuad)
+                
+                paramCounter += 1
+                if paramCounter > paramTotal{
+                    print("ERROR: Hay mas parametros que los declarados en funcion")
+                }
+            } else {
+                print("TYPE MISMATCH IN FUNCTION CALL")
+            }
+            
+
+            
         }
         
     }
@@ -213,24 +254,27 @@ open class BasicLearnBaseListener: BasicLearnListener {
 
         
         if let parent = ctx.parent as? BasicLearnParser.ExpressionContext{
-            if let lessThan = parent.LESSTHAN()?.getText(){
-                POper.insert(lessThan, at: 0)
+            if parent.exp(0)! == ctx.self{
+                if let lessThan = parent.LESSTHAN()?.getText(){
+                    POper.insert(lessThan, at: 0)
+                }
+                if let greaterThan = parent.MORETHAN()?.getText(){
+                    POper.insert(greaterThan, at: 0)
+                }
+                if let lessThanOrEqual = parent.LESSOREQUAL()?.getText(){
+                    POper.insert(lessThanOrEqual, at: 0)
+                }
+                if let greaterThanOrEqual = parent.MOREOREQUAL()?.getText(){
+                    POper.insert(greaterThanOrEqual, at: 0)
+                }
+                if let equal = parent.EQUALS()?.getText(){
+                    POper.insert(equal, at: 0)
+                }
+                if let notEqual = parent.NOTEQUALS()?.getText(){
+                    POper.insert(notEqual, at: 0)
+                }
             }
-            if let greaterThan = parent.MORETHAN()?.getText(){
-                POper.insert(greaterThan, at: 0)
-            }
-            if let lessThanOrEqual = parent.LESSOREQUAL()?.getText(){
-                POper.insert(lessThanOrEqual, at: 0)
-            }
-            if let greaterThanOrEqual = parent.MOREOREQUAL()?.getText(){
-                POper.insert(greaterThanOrEqual, at: 0)
-            }
-            if let equal = parent.EQUALS()?.getText(){
-                POper.insert(equal, at: 0)
-            }
-            if let notEqual = parent.NOTEQUALS()?.getText(){
-                POper.insert(notEqual, at: 0)
-            }
+
         }
         
         //Para checar si viene de un repeat statement
@@ -245,6 +289,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
                 print("Error Type Mismatch en Repeat Statement")
             }else{
                 let result = PilaO.first
+                PilaO.removeFirst()
                 let memComparison = Quadruple.init(operand: "=", leftOp: "0", rightOp: "---", result: "REP"+String(repeatStatementCont)) //Se guarda la variable de contador para repeat aquí
                 qCuad.append(memComparison)
                 
@@ -257,6 +302,19 @@ open class BasicLearnBaseListener: BasicLearnListener {
                 
                 contTemp = contTemp + 1
                 repeatStatementCont+=1
+            }
+        }
+        
+        if let parent = ctx.parent as? BasicLearnParser.StatementContext {
+            if (parent.getText().contains("return")) {
+                let result = PilaO.first
+                PilaO.removeFirst()
+                let type = pTypes.first
+                pTypes.removeFirst()
+                //TYPE CHECK ON RETURN FALTA
+                
+                let auxQuad = Quadruple.init(operand: "RET", leftOp: "---", rightOp: "---", result: String(result!))
+                qCuad.append(auxQuad)
             }
         }
     }
@@ -470,7 +528,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
                 let resultVariableType = getVariable(id: result)!.type
                 let resultVariableAddress = getVariable(id: result)!.address
                 
-                _ = semanticTypeCheck.checkOperation(op: op!, operand1: leftOperandType!, operand2: resultVariableType)
+                let check = semanticTypeCheck.checkOperation(op: op!, operand1: leftOperandType!, operand2: resultVariableType)
                 
 //                qCuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: "---", result: result))
                 qCuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: "---", result: String(resultVariableAddress)))
@@ -521,7 +579,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
             }
         }
 
-        let function = Function.init(name: functionName, type: Type(type: functionType), address: 0, quadrupleNumber: 0)
+        let function = Function.init(name: functionName, type: Type(type: functionType), address: 0, quadrupleNumber: qCuad.count)
         dirFunc.append(function)
 
 	}
@@ -530,12 +588,14 @@ open class BasicLearnBaseListener: BasicLearnListener {
         for function in dirFunc {
             print("FUNCTION \(function.name)")
             for variables in function.variables {
-                print("TYPE: \(variables.type) NAME: \(variables.name) ADDRESS: \(variables.address)")
+                print("TYPE: \(variables.type) NAME: \(variables.name) ADDRESS: \(variables.address) PARAM:\(function.numParam) VARIABLES: \(function.numVariable)" )
             }
         }
 
-        dirFunc.removeLast()
+        dirFunc.last?.variables.removeAll()
         parameterVerification.removeAll()
+        let auxQuad = Quadruple.init(operand: "ENDPROC", leftOp: "---", rightOp: "---", result: "---")
+        qCuad.append(auxQuad)
     }
 
 
@@ -595,14 +655,49 @@ open class BasicLearnBaseListener: BasicLearnListener {
             
             dirFunc.last?.variables.append(auxVariable)
         }
+        let auxCountVariables = dirFunc.last?.variables.count
+        let auxNumParam = dirFunc.last?.numParam
+        dirFunc.last?.inserNumVariable(num: auxCountVariables! - auxNumParam!)
     }
 
     open func exitDeclaration(_ ctx: BasicLearnParser.DeclarationContext) { }
 
 
-	open func enterFunction_call(_ ctx: BasicLearnParser.Function_callContext) { }
+	open func enterFunction_call(_ ctx: BasicLearnParser.Function_callContext) {
+        var bFunctionFound = false
+        for function in dirFunc {
+            if function.name == ctx.ID()!.getText(){
+                paramTotal = function.numParam
+                bFunctionFound = true
+            }
+        }
+        
+        if bFunctionFound{
+            let auxQuad = Quadruple.init(operand: "ERA", leftOp: "---", rightOp: "---", result: ctx.ID()!.getText())
+            qCuad.append(auxQuad)
+            
+        }else{
+             print("No se encontro la función \(ctx.ID()!.getText())")
+        }
+    }
 
-	open func exitFunction_call(_ ctx: BasicLearnParser.Function_callContext) { }
+	open func exitFunction_call(_ ctx: BasicLearnParser.Function_callContext) {
+        var auxFunc : Function
+        
+        for function in dirFunc {
+            if function.name == ctx.ID()!.getText(){
+                auxFunc = function
+                
+                let auxQuad = Quadruple.init(operand: "GOSUB", leftOp: ctx.ID()!.getText(), rightOp: "---", result: String(auxFunc.quadrupleNumber))
+                
+                qCuad.append(auxQuad)
+            }
+        }
+
+        
+        paramCounter = 0
+        paramTotal = 0
+    }
 
 
 	open func enterParameters(_ ctx: BasicLearnParser.ParametersContext) {
@@ -641,11 +736,12 @@ open class BasicLearnBaseListener: BasicLearnListener {
             let auxVariable = Variable.init(name: parameterNames[parameterCounter], type: Type(type: type.getText()), address: memoryAddressVariable)
             
             dirFunc.last?.variables.append(auxVariable) // Checar si es en dirFunc Last
+            dirFunc.last?.ParamTable.append(auxVariable)
             
             parameterCounter = parameterCounter + 1
         }
         
-        
+        dirFunc.last?.insertNumParam(num: parameterCounter)
         
     }
 
