@@ -433,7 +433,7 @@ class VirtualMachine {
         
         switch returnValueType {
         case Type.number:
-            globalMemory.saveNumber(address: globalMemory.getNumberAddress(spaces: 1), value: returnValueVal as! Int)
+            globalMemory.saveNumber(address: globalMemory.getLastNumberAddress(spaces: 1), value: returnValueVal as! Int)
         case Type.decimal:
             globalMemory.saveDecimal(address: globalMemory.getDecimalAddress(spaces: 1), value: returnValueVal as! Float)
         case Type.bool:
