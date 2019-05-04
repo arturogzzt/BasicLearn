@@ -46,7 +46,8 @@ class semanticCube {
                 }
             } else if (operand1 == Type.decimal){
                 if(operand2 == Type.number){
-                    return Type.decimal
+                    print("error decimal")
+                    return Type.error
                 } else if (operand2 == Type.decimal){
                     return Type.decimal
                 } else{
