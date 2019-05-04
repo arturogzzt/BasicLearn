@@ -35,10 +35,8 @@ open class BasicLearnBaseListener: BasicLearnListener {
     var qCuad = [Quadruple]()
     //Diccionario para guardar donde se encuentran las expresiones y sus resultados
     var dicTemp : [String:Int] = [:]
-    //Contador para saber en que temporal se encuentra (por mientras)
-    var contTemp = 0
-    //Contador Repeat Statement por si hay nested repeats
-    var repeatStatementCont = 0
+    // repeatStatementAddrs
+    var repeatStatementAddresses = [Int]()
     //Parameter Counter
     var paramCounter = 0
     //Parameter Total
@@ -231,9 +229,9 @@ open class BasicLearnBaseListener: BasicLearnListener {
                 
                 var result: Int!
                 
-                if scope == "LOCAL" {
-                    currentMemory = localTemporalMemory
-                }
+//                if scope == "LOCAL" {
+//                    currentMemory = localTemporalMemory
+//                }
                 
                 switch resultType {
                 case Type.number:
@@ -301,18 +299,41 @@ open class BasicLearnBaseListener: BasicLearnListener {
             }else{
                 let result = PilaO.first
                 PilaO.removeFirst()
-                let memComparison = Quadruple.init(operand: "=", leftOp: "0", rightOp: "---", result: "REP"+String(repeatStatementCont)) //Se guarda la variable de contador para repeat aquí
+                
+//                var tempMem = temporalMemory
+                
+//                if scope == "LOCAL" {
+//                    tempMem = localTemporalMemory
+//                }
+                
+                let tempAddressRepeat = currentMemory.getNumberAddress(spaces: 1)
+                repeatStatementAddresses.insert(tempAddressRepeat, at: 0)
+                
+                let resultAddress = String(currentMemory.getBoolAddress(spaces: 1))
+                
+                var zeroAddress : Int
+                
+                if constantExists(currentConstant: "0") == 0 {
+                    zeroAddress = constantMemory.getNumberAddress(spaces: 1)
+                    constTable.append(Variable.init(name: "0", type: Type.number, address: zeroAddress))
+//                    PilaO.insert(String(constantAddress), at: 0)
+                    constantMemory.saveNumberConstant(value: 0, address: zeroAddress)
+                } else {
+//                    PilaO.insert(String(constantExists(currentConstant: currConstant)), at: 0)
+                    zeroAddress = constantExists(currentConstant: "0")
+                }
+
+                
+                let memComparison = Quadruple.init(operand: "=", leftOp: String(zeroAddress), rightOp: "---", result: String(tempAddressRepeat)) //Se guarda la dirección del contador para repeat aquí
                 qCuad.append(memComparison)
                 
-                let auxComparison = Quadruple.init(operand: "<", leftOp: "REP"+String(repeatStatementCont), rightOp: result!, result: String(contTemp))//Crea un cuadruplo para hacer la comparación del GOTOF con un contador desde zero
+                let auxComparison = Quadruple.init(operand: "<", leftOp: String(tempAddressRepeat), rightOp: result!, result: resultAddress)//Crea un cuadruplo para hacer la comparación del GOTOF con un contador desde zero
                 
                 qCuad.append(auxComparison)
-                let auxQuad = Quadruple.init(operand: "GOTOF", leftOp: String(contTemp), rightOp: "---", result: "PENDING")
+                let auxQuad = Quadruple.init(operand: "GOTOF", leftOp: resultAddress, rightOp: "---", result: "PENDING")
                 qCuad.append(auxQuad)
                 saltos.insert(qCuad.count - 1, at: 0)
-                
-                contTemp = contTemp + 1
-                repeatStatementCont+=1
+    
             }
         }
         
@@ -356,10 +377,9 @@ open class BasicLearnBaseListener: BasicLearnListener {
                 
                 var result: Int!
                 
-                if scope == "LOCAL" {
-                    currentMemory = localTemporalMemory
-                }
-                
+//                if scope == "LOCAL" {
+//                    currentMemory = localTemporalMemory
+//                }
                 switch resultType {
                 case Type.number:
                     result = currentMemory.getNumberAddress(spaces: 1)
@@ -473,9 +493,9 @@ open class BasicLearnBaseListener: BasicLearnListener {
                 
                 var result: Int!
                 
-                if scope == "LOCAL" {
-                    currentMemory = localTemporalMemory
-                }
+//                if scope == "LOCAL" {
+//                    currentMemory = localTemporalMemory
+//                }
                 
                 switch resultType {
                 case Type.number:
@@ -586,6 +606,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
 
 	open func enterFunction(_ ctx: BasicLearnParser.FunctionContext) {
         scope = "LOCAL"
+        currentMemory = localTemporalMemory
         
         let functionType = ctx.type()?.getText() ?? "Error"
         let functionName = ctx.ID()?.getText() ?? "Error"
@@ -605,7 +626,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
 
 	open func exitFunction(_ ctx: BasicLearnParser.FunctionContext) {
         for function in dirFunc {
-            print("FUNCTION \(function.name)")
+            print("FUNCTION \(function.name) SCOPE: \(scope)")
             for variables in function.variables {
                 print("TYPE: \(variables.type) NAME: \(variables.name) ADDRESS: \(variables.address) PARAM:\(function.numParam) VARIABLES: \(function.numVariable)" )
             }
@@ -616,6 +637,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
         let auxQuad = Quadruple.init(operand: "ENDPROC", leftOp: "---", rightOp: "---", result: "---")
         qCuad.append(auxQuad)
         localTemporalMemory.cleanMemory()
+        localMemory.cleanMemory()
     }
 
 
@@ -788,15 +810,29 @@ open class BasicLearnBaseListener: BasicLearnListener {
     }
 
 	open func exitRepeat_statement(_ ctx: BasicLearnParser.Repeat_statementContext) {
+        print(repeatStatementAddresses)
         let end = saltos.first
         saltos.removeFirst()
         let falseJump = saltos.first
         saltos.removeFirst()
-        let auxCounterQuad = Quadruple.init(operand: "+", leftOp: "REP"+String(repeatStatementCont - 1), rightOp: "1", result: "REP"+String(repeatStatementCont - 1)) //Cuadruplo para sumar uno al final del repeat statement
+        var zeroAddress : Int
+        
+        if constantExists(currentConstant: "1") == 0 {
+            zeroAddress = constantMemory.getNumberAddress(spaces: 1)
+            constTable.append(Variable.init(name: "1", type: Type.number, address: zeroAddress))
+            //                    PilaO.insert(String(constantAddress), at: 0)
+            constantMemory.saveNumberConstant(value: 0, address: zeroAddress)
+        } else {
+            //                    PilaO.insert(String(constantExists(currentConstant: currConstant)), at: 0)
+            zeroAddress = constantExists(currentConstant: "1")
+        }
+        
+        let auxCounterQuad = Quadruple.init(operand: "+", leftOp: String(repeatStatementAddresses.first!), rightOp: String(zeroAddress), result: String(repeatStatementAddresses.first!)) //Cuadruplo para sumar uno al final del repeat statement
         qCuad.append(auxCounterQuad)
-        repeatStatementCont -= 1
         
         let auxQuad = Quadruple.init(operand: "GOTO", leftOp: "---", rightOp: "---", result: String(falseJump!))
+        repeatStatementAddresses.removeFirst()
+
         qCuad.append(auxQuad)
         qCuad[end!].fillJump(jump: String(qCuad.count))
     }
