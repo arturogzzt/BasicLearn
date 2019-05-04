@@ -638,6 +638,8 @@ open class BasicLearnBaseListener: BasicLearnListener {
         qCuad.append(auxQuad)
         localTemporalMemory.cleanMemory()
         localMemory.cleanMemory()
+        currentMemory = temporalMemory
+        scope = "GLOBAL"
     }
 
 
