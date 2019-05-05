@@ -24,6 +24,8 @@ class VirtualMachine {
     
     var subQuadIndex : Int = 0
     
+    var outputs = [String]()
+    
     var semanticTypeCheck = semanticCube()
     
     init(quadruples : [Quadruple], globalMemory : Memory, localMemory : Memory, constantMemory : Memory, temporalMemory : Memory, localTemporalMemory : Memory, dirFunc : [Function]) {
@@ -95,6 +97,8 @@ class VirtualMachine {
                 endproc()
             case "RET":
                 ret(returnValueAddress: Int(currentQuadruple.result)!)
+            case "SHOW":
+                show(resultAddress: Int(currentQuadruple.result)!)
             default:
                 break
             }
@@ -445,6 +449,24 @@ class VirtualMachine {
         }
     }
     
+    func show(resultAddress : Int) {
+        let (resultValue, resultType) = getMemory(address: resultAddress).getValue(address: resultAddress)
+        
+        let resultString : String
+        
+        switch resultType {
+        case Type.number:
+            resultString = String(resultValue as! Int)
+        case Type.decimal:
+            resultString = String(resultValue as! Float)
+        case Type.bool:
+            resultString = String(resultValue as! Bool)
+        default:
+            resultString = String(resultValue as! String)
+        }
+        
+        outputs.append(resultString)
+    }
     
     // Función para obtener la memoria dependiendo del scope
     func getMemory(address: Int) -> Memory {

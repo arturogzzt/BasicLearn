@@ -43,6 +43,8 @@ open class BasicLearnBaseListener: BasicLearnListener {
     var paramTotal = 0
     //Variable para saber que memoria temporal utilizar
     var currentMemory : Memory = Memory.init(baseAddress: 0)
+    
+    var outputs = [String]()
 
     
     // Memory
@@ -122,9 +124,9 @@ open class BasicLearnBaseListener: BasicLearnListener {
         let virtualMachine = VirtualMachine.init(quadruples: qCuad, globalMemory: globalMemory, localMemory: localMemory, constantMemory: constantMemory, temporalMemory: temporalMemory, localTemporalMemory : localTemporalMemory, dirFunc: dirFunc)
         
         virtualMachine.executeProgram()
-        
-        
-        
+
+        outputs = virtualMachine.outputs
+       
     }
 
 
@@ -197,11 +199,15 @@ open class BasicLearnBaseListener: BasicLearnListener {
             } else {
                 print("TYPE MISMATCH IN FUNCTION CALL")
             }
-            
-
-            
         }
         
+        // Para revisar si viene de un show
+        if let parent = ctx.parent as? BasicLearnParser.ShowContext {
+            if let show = getVariable(id: parent.expression()!.getText())?.address {
+                let auxQuad = Quadruple.init(operand: "SHOW", leftOp: "___", rightOp: "___", result: String(show))
+                qCuad.append(auxQuad)
+            }
+        }
     }
 
 

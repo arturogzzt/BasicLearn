@@ -11,7 +11,7 @@ import Antlr4
 
 class MainCompiler{
     
-    func execute(code: String) {
+    func execute(code: String, viewController: ViewController) {
         do {
             let lexer = BasicLearnLexer(ANTLRInputStream(code))
             let tokens = CommonTokenStream(lexer)
@@ -20,6 +20,7 @@ class MainCompiler{
             let walker = ParseTreeWalker()
             let basicLearn = BasicLearnBaseListener.init()
             try walker.walk(basicLearn, tree)
+            viewController.updateOutput(outputs: basicLearn.outputs)
         } catch {
             print("Parse error: \(error.localizedDescription)")
         }
