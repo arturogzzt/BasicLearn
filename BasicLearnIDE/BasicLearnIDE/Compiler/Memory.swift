@@ -63,48 +63,89 @@ class Memory{
         return (bool + base - spaces)
     }
     
+    // Funciones para obtener la siguiente dirección disponible en memoria
+    func getLastNumberAddress(spaces : Int) -> Int {
+        var addresses = [Int]()
+        
+        for address in numbers {
+            addresses.append(address.key)
+        }
+        
+        return addresses.last! + 1
+    }
+    
+    func getLastDecimalAddress(spaces : Int) -> Int {
+        var addresses = [Int]()
+        
+        for address in decimals {
+            addresses.append(address.key)
+        }
+        
+        return addresses.last! + 1
+    }
+    
+    func getLastBoolAddress(spaces : Int) -> Int {
+        var addresses = [Int]()
+        
+        for address in bools {
+            addresses.append(address.key)
+        }
+        
+        return addresses.last! + 1
+    }
+    
+    func getLastSentenceAddress(spaces : Int) -> Int {
+        var addresses = [Int]()
+        
+        for address in sentences {
+            addresses.append(address.key)
+        }
+        
+        return addresses.last! + 1
+    }
+    
     // Funciones para obtener memoria en Máquina Virtual
     // Revisa si las direcciones ya están siendo utilizadas
     // Si ya están utilizadas regresa esa dirección, de otra manera regresa una nueva.
-    func getNumberAddr(address : Int, spaces : Int) -> Int {
-        for addr in numbers {
-            if addr.key == address {
-                return address
-            }
-        }
-        number = number + spaces
-        return (number + base - spaces)
-    }
-    
-    func getDecimalAddr(address : Int, spaces : Int) -> Int {
-        for addr in decimals {
-            if addr.key == address {
-                return address
-            }
-        }
-        decimal = decimal + spaces
-        return (decimal + base - spaces)
-    }
-    
-    func getBoolAddr(address : Int, spaces : Int) -> Int {
-        for addr in bools {
-            if addr.key == address {
-                return address
-            }
-        }
-        bool = bool + spaces
-        return (bool + base - spaces)
-    }
-    
-    func getSentenceAddr(address : Int, spaces : Int) -> Int {
-        for addr in sentences {
-            if addr.key == address {
-                return address
-            }
-        }
-        sentence = sentence + spaces
-        return (sentence + base - spaces)
-    }
+//    func getNumberAddr(address : Int, spaces : Int) -> Int {
+//        for addr in numbers {
+//            if addr.key == address {
+//                return address
+//            }
+//        }
+//        number = number + spaces
+//        return (number + base - spaces)
+//    }
+//
+//    func getDecimalAddr(address : Int, spaces : Int) -> Int {
+//        for addr in decimals {
+//            if addr.key == address {
+//                return address
+//            }
+//        }
+//        decimal = decimal + spaces
+//        return (decimal + base - spaces)
+//    }
+//
+//    func getBoolAddr(address : Int, spaces : Int) -> Int {
+//        for addr in bools {
+//            if addr.key == address {
+//                return address
+//            }
+//        }
+//        bool = bool + spaces
+//        return (bool + base - spaces)
+//    }
+//
+//    func getSentenceAddr(address : Int, spaces : Int) -> Int {
+//        for addr in sentences {
+//            if addr.key == address {
+//                return address
+//            }
+//        }
+//        sentence = sentence + spaces
+//        return (sentence + base - spaces)
+//    }
     
     // Funciones para limpiar memoria
     // Esto eliminó un error que tenía que los valores de number ya estaban aumentados por quads
@@ -185,4 +226,5 @@ class Memory{
     func saveSentence(address : Int, value : String) {
         self.sentences[address] = value
     }
+    
 }

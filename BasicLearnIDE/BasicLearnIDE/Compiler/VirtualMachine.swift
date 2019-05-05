@@ -15,17 +15,25 @@ class VirtualMachine {
     var localMemory : Memory
     var constantMemory : Memory
     var temporalMemory : Memory
+    var localTemporalMemory : Memory
+    // Revisar si si necesito dirFunc
+    var dirFunc = [Function]()
+//    var params = [Int]()
     
     var quadIndex : Int = 0
     
+    var subQuadIndex : Int = 0
+    
     var semanticTypeCheck = semanticCube()
     
-   init(quadruples : [Quadruple], globalMemory : Memory, localMemory : Memory, constantMemory : Memory, temporalMemory : Memory) {
+    init(quadruples : [Quadruple], globalMemory : Memory, localMemory : Memory, constantMemory : Memory, temporalMemory : Memory, localTemporalMemory : Memory, dirFunc : [Function]) {
         self.quadruples = quadruples
         self.globalMemory = globalMemory
         self.localMemory = localMemory
         self.constantMemory = constantMemory
         self.temporalMemory = temporalMemory
+        self.localTemporalMemory = localTemporalMemory
+        self.dirFunc = dirFunc
     }
     
     // Function to clean all memories but constant
@@ -33,11 +41,13 @@ class VirtualMachine {
         self.temporalMemory.cleanMemory()
         self.globalMemory.cleanMemory()
         self.localMemory.cleanMemory()
+        self.localTemporalMemory.cleanMemory()
     }
     
     // Function to clean temporalMemory
-    func cleanTempMemory() {
-        self.temporalMemory.cleanMemory()
+    func cleanLocalMemory() {
+        self.localMemory.cleanMemory()
+        self.localTemporalMemory.cleanMemory()
     }
     
     func executeProgram() {
@@ -45,7 +55,7 @@ class VirtualMachine {
         
         while quadIndex < quadruples.count {
             let currentQuadruple = quadruples[quadIndex]
-            
+            print("CURRENT QUAD: \(quadIndex)")
             let op = currentQuadruple.operand
             
             switch op {
@@ -75,6 +85,16 @@ class VirtualMachine {
                 gotoF(resultAddress: Int(currentQuadruple.leftOp)!, newQuadIndex: Int(currentQuadruple.result)!)
             case "GOTO":
                 goto(newQuadIndex: Int(currentQuadruple.result)!)
+            case "ERA":
+                era(function: currentQuadruple.result)
+            case "PARAM":
+                param(paramAddress: Int(currentQuadruple.leftOp)!, paramPosition: currentQuadruple.result)
+            case "GOSUB":
+                gosub(functionIndex: Int(currentQuadruple.result)!)
+            case "ENDPROC":
+                endproc()
+            case "RET":
+                ret(returnValueAddress: Int(currentQuadruple.result)!)
             default:
                 break
             }
@@ -93,8 +113,7 @@ class VirtualMachine {
         
         if resultType == Type.number {
             let addedValue = (leftOperandValue as! Int) + (rightOperandValue as! Int)
-            let resultAddress = resultOperandMemory.getNumberAddr(address: resultOperandAddress, spaces: 1)
-            resultOperandMemory.saveNumber(address: resultAddress, value: addedValue)
+            resultOperandMemory.saveNumber(address: resultOperandAddress, value: addedValue)
         } else if resultType == Type.decimal {
             let addedValue : Float
             if leftOperandType == Type.number {
@@ -104,8 +123,7 @@ class VirtualMachine {
             } else {
                 addedValue = (leftOperandValue as! Float) + (rightOperandValue as! Float)
             }
-            let resultAddress = resultOperandMemory.getDecimalAddr(address: resultOperandAddress, spaces: 1)
-            resultOperandMemory.saveDecimal(address: resultAddress, value: addedValue)
+            resultOperandMemory.saveDecimal(address: resultOperandAddress, value: addedValue)
         } else {
             // HANDLE ERROR
             print("ERROR TYPE MISMATCH")
@@ -122,8 +140,7 @@ class VirtualMachine {
         
         if resultType == Type.number {
             let addedValue = (leftOperandValue as! Int) - (rightOperandValue as! Int)
-            let resultAddress = resultOperandMemory.getNumberAddr(address: resultOperandAddress, spaces: 1)
-            resultOperandMemory.saveNumber(address: resultAddress, value: addedValue)
+            resultOperandMemory.saveNumber(address: resultOperandAddress, value: addedValue)
         } else if resultType == Type.decimal {
             let addedValue : Float
             if leftOperandType == Type.number {
@@ -133,8 +150,7 @@ class VirtualMachine {
             } else {
                 addedValue = (leftOperandValue as! Float) - (rightOperandValue as! Float)
             }
-            let resultAddress = resultOperandMemory.getDecimalAddr(address: resultOperandAddress, spaces: 1)
-            resultOperandMemory.saveDecimal(address: resultAddress, value: addedValue)
+            resultOperandMemory.saveDecimal(address: resultOperandAddress, value: addedValue)
         } else {
             // HANDLE ERROR
             print("ERROR TYPE MISMATCH")
@@ -151,8 +167,7 @@ class VirtualMachine {
         
         if resultType == Type.number {
             let addedValue = (leftOperandValue as! Int) * (rightOperandValue as! Int)
-            let resultAddress = resultOperandMemory.getNumberAddr(address: resultOperandAddress, spaces: 1)
-            resultOperandMemory.saveNumber(address: resultAddress, value: addedValue)
+            resultOperandMemory.saveNumber(address: resultOperandAddress, value: addedValue)
         } else if resultType == Type.decimal {
             let addedValue : Float
             if leftOperandType == Type.number {
@@ -162,8 +177,7 @@ class VirtualMachine {
             } else {
                 addedValue = (leftOperandValue as! Float) * (rightOperandValue as! Float)
             }
-            let resultAddress = resultOperandMemory.getDecimalAddr(address: resultOperandAddress, spaces: 1)
-            resultOperandMemory.saveDecimal(address: resultAddress, value: addedValue)
+            resultOperandMemory.saveDecimal(address: resultOperandAddress, value: addedValue)
         } else {
             // HANDLE ERROR
             print("ERROR TYPE MISMATCH")
@@ -180,8 +194,7 @@ class VirtualMachine {
         
         if resultType == Type.number {
             let addedValue = (leftOperandValue as! Int) / (rightOperandValue as! Int)
-            let resultAddress = resultOperandMemory.getNumberAddr(address: resultOperandAddress, spaces: 1)
-            resultOperandMemory.saveNumber(address: resultAddress, value: addedValue)
+            resultOperandMemory.saveNumber(address: resultOperandAddress, value: addedValue)
         } else if resultType == Type.decimal {
             let addedValue : Float
             if leftOperandType == Type.number {
@@ -191,8 +204,7 @@ class VirtualMachine {
             } else {
                 addedValue = (leftOperandValue as! Float) / (rightOperandValue as! Float)
             }
-            let resultAddress = resultOperandMemory.getDecimalAddr(address: resultOperandAddress, spaces: 1)
-            resultOperandMemory.saveDecimal(address: resultAddress, value: addedValue)
+            resultOperandMemory.saveDecimal(address: resultOperandAddress, value: addedValue)
         } else {
             // HANDLE ERROR
             print("ERROR TYPE MISMATCH")
@@ -220,7 +232,6 @@ class VirtualMachine {
     }
     
     func lessThan(leftOperandAddress : Int, rightOperandAddress : Int, resultOperandAddress : Int) {
-        print("ENTERED LESSTHAN")
         let (leftOperandValue, leftOperandType) = getMemory(address: leftOperandAddress).getValue(address: leftOperandAddress)
         let (rightOperandValue, rightOperandType) = getMemory(address: rightOperandAddress).getValue(address: rightOperandAddress)
         
@@ -240,10 +251,7 @@ class VirtualMachine {
             addedValue = (leftOperandValue as! Float) < (rightOperandValue as! Float)
         }
         
-        print("LEFT VAL: \(leftOperandValue) > RIGHT VAL: \(rightOperandValue)")
-        print("RESULT: \(addedValue)")
-        let resultAddress = resultOperandMemory.getBoolAddr(address: resultOperandAddress, spaces: 1)
-        resultOperandMemory.saveBool(address: resultAddress, value: addedValue)
+        resultOperandMemory.saveBool(address: resultOperandAddress, value: addedValue)
     }
     
     func greaterThan(leftOperandAddress : Int, rightOperandAddress : Int, resultOperandAddress : Int) {
@@ -266,8 +274,7 @@ class VirtualMachine {
             addedValue = (leftOperandValue as! Float) > (rightOperandValue as! Float)
         }
         
-        let resultAddress = resultOperandMemory.getBoolAddr(address: resultOperandAddress, spaces: 1)
-        resultOperandMemory.saveBool(address: resultAddress, value: addedValue)
+        resultOperandMemory.saveBool(address: resultOperandAddress, value: addedValue)
     }
     
     func lessOrEqualThan(leftOperandAddress : Int, rightOperandAddress : Int, resultOperandAddress : Int) {
@@ -290,8 +297,7 @@ class VirtualMachine {
             addedValue = (leftOperandValue as! Float) <= (rightOperandValue as! Float)
         }
         
-        let resultAddress = resultOperandMemory.getBoolAddr(address: resultOperandAddress, spaces: 1)
-        resultOperandMemory.saveBool(address: resultAddress, value: addedValue)
+        resultOperandMemory.saveBool(address: resultOperandAddress, value: addedValue)
     }
     
     func greaterOrEqualThan(leftOperandAddress : Int, rightOperandAddress : Int, resultOperandAddress : Int) {
@@ -314,8 +320,7 @@ class VirtualMachine {
             addedValue = (leftOperandValue as! Float) >= (rightOperandValue as! Float)
         }
         
-        let resultAddress = resultOperandMemory.getBoolAddr(address: resultOperandAddress, spaces: 1)
-        resultOperandMemory.saveBool(address: resultAddress, value: addedValue)
+        resultOperandMemory.saveBool(address: resultOperandAddress, value: addedValue)
     }
     
     func equal(leftOperandAddress : Int, rightOperandAddress : Int, resultOperandAddress : Int) {
@@ -338,8 +343,7 @@ class VirtualMachine {
             addedValue = (leftOperandValue as! Float) == (rightOperandValue as! Float)
         }
         
-        let resultAddress = resultOperandMemory.getBoolAddr(address: resultOperandAddress, spaces: 1)
-        resultOperandMemory.saveBool(address: resultAddress, value: addedValue)
+        resultOperandMemory.saveBool(address: resultOperandAddress, value: addedValue)
     }
     
     func notEqual(leftOperandAddress : Int, rightOperandAddress : Int, resultOperandAddress : Int) {
@@ -362,8 +366,7 @@ class VirtualMachine {
             addedValue = (leftOperandValue as! Float) != (rightOperandValue as! Float)
         }
         
-        let resultAddress = resultOperandMemory.getBoolAddr(address: resultOperandAddress, spaces: 1)
-        resultOperandMemory.saveBool(address: resultAddress, value: addedValue)
+        resultOperandMemory.saveBool(address: resultOperandAddress, value: addedValue)
     }
     
     func gotoF(resultAddress : Int, newQuadIndex : Int) {
@@ -378,6 +381,70 @@ class VirtualMachine {
         quadIndex = newQuadIndex - 1
     }
     
+    func era(function : String) {
+//        var currentFunction : Function
+//        
+//        for funct in dirFunc {
+//            if function == funct.name {
+//                currentFunction = funct
+//            }
+//        }
+    }
+    
+    func param(paramAddress : Int, paramPosition : String) {
+//        let param = Int(String(paramPosition.last!))
+        
+        let(paramValue, paramType) = getMemory(address: paramAddress).getValue(address: paramAddress)
+        
+//        params[param!] = paramAddress
+        
+        switch paramType {
+        case Type.number:
+         localMemory.saveNumber(address: localMemory.getNumberAddress(spaces: 1), value: paramValue as! Int)
+        case Type.decimal:
+            localMemory.saveDecimal(address: localMemory.getDecimalAddress(spaces: 1), value: paramValue as! Float)
+        case Type.bool:
+            localMemory.saveBool(address: localMemory.getBoolAddress(spaces: 1), value: paramValue as! Bool)
+        case Type.sentence:
+            localMemory.saveSentence(address: localMemory.getSentenceAddress(spaces: 1), value: paramValue as! String)
+        default:
+            break
+        }
+    }
+    
+    func gosub(functionIndex : Int) {
+        // Save current IP
+        subQuadIndex = quadIndex
+        
+        // Update IP with the start of the function
+        quadIndex = functionIndex - 1
+    }
+    
+    func endproc() {
+        // Clean local memory
+        cleanLocalMemory()
+        
+        // Update IP with next line of sub
+        quadIndex = subQuadIndex + 1
+    }
+    
+    func ret(returnValueAddress : Int) {
+        let (returnValueVal, returnValueType) = getMemory(address: returnValueAddress).getValue(address: returnValueAddress)
+        
+        switch returnValueType {
+        case Type.number:
+            globalMemory.saveNumber(address: globalMemory.getLastNumberAddress(spaces: 1), value: returnValueVal as! Int)
+        case Type.decimal:
+            globalMemory.saveDecimal(address: globalMemory.getDecimalAddress(spaces: 1), value: returnValueVal as! Float)
+        case Type.bool:
+            globalMemory.saveBool(address: globalMemory.getBoolAddress(spaces: 1), value: returnValueVal as! Bool)
+        case Type.sentence:
+            globalMemory.saveSentence(address: globalMemory.getSentenceAddress(spaces: 1), value: returnValueVal as! String)
+        default:
+            break
+        }
+    }
+    
     
     // Función para obtener la memoria dependiendo del scope
     func getMemory(address: Int) -> Memory {
@@ -388,8 +455,10 @@ class VirtualMachine {
             return self.localMemory
         case _ where address < 18000:
             return self.constantMemory
-        default:
+        case _ where address < 24000:
             return self.temporalMemory
+        default:
+            return self.localTemporalMemory
         }
     }
 }
