@@ -878,7 +878,39 @@ open class BasicLearnBaseListener: BasicLearnListener {
 
 	open func enterPythagoras(_ ctx: BasicLearnParser.PythagorasContext) { }
 
-	open func exitPythagoras(_ ctx: BasicLearnParser.PythagorasContext) { }
+	open func exitPythagoras(_ ctx: BasicLearnParser.PythagorasContext) {
+        let operation = ctx.getChild(0)?.toStringTree()
+        let operatorVm = operation!.uppercased()
+        
+        let rightOperand = PilaO.first!
+        pTypes.removeFirst()
+        PilaO.removeFirst()
+        let leftOperand = PilaO.first!
+        pTypes.removeFirst()
+        PilaO.removeFirst()
+        
+        let resultType = Type.decimal
+        
+        
+        if resultType != Type.error {
+            
+            var result : Int!
+            
+            result = currentMemory.getDecimalAddress(spaces: 1)
+            
+            let auxQuad = Quadruple.init(operand: operatorVm, leftOp: leftOperand, rightOp: rightOperand, result: String(result))
+            
+            qQuad.append(auxQuad)
+            
+            
+            PilaO.insert(String(result), at: 0)
+            pTypes.insert(resultType, at: 0)
+            
+        } else {
+            print("ERROR TYPE MISMATCH")
+            // HANDLE ERROR CORRECTLY
+        }
+    }
 
 
 	open func enterList_select(_ ctx: BasicLearnParser.List_selectContext) { }

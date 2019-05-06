@@ -113,6 +113,10 @@ class VirtualMachine {
                 squareRoot(leftOperandAddress: Int(currentQuadruple.leftOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
             case "ABSOLUTE":
                 absolute(leftOperandAddress: Int(currentQuadruple.leftOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
+            case "PYTHAGORASHYP":
+                pythagorasHyp(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
+            case "PYTHAGORASSIDE":
+                pythagorasSide(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
             default:
                 break
             }
@@ -543,6 +547,64 @@ class VirtualMachine {
             // Handle error
             print("ERROR TYPE MISMATCH")
         }
+    }
+    
+    func pythagorasHyp(leftOperandAddress : Int, rightOperandAddress : Int, resultOperandAddress : Int) {
+        let (leftOperandValue, leftOperandType) = getMemory(address: leftOperandAddress).getValue(address: leftOperandAddress)
+        let (rightOperandValue, rightOperandType) = getMemory(address: rightOperandAddress).getValue(address: rightOperandAddress)
+        
+        let resultOperandMemory = getMemory(address: resultOperandAddress)
+        
+        var addedValue : Float
+        if leftOperandType == Type.number {
+            if rightOperandType == Type.number {
+                let leftVal = Float(leftOperandValue as! Int)
+                let rightVal = Float(rightOperandValue as! Int)
+                addedValue = sqrt(pow(leftVal, 2) + pow(rightVal, 2))
+            } else {
+                let leftVal = Float(leftOperandValue as! Int)
+                let rightVal = rightOperandValue as! Float
+                addedValue = sqrt(pow(leftVal, 2) + pow(rightVal, 2))
+            }
+        } else if rightOperandType == Type.number {
+            let leftVal = leftOperandValue as! Float
+            let rightVal = Float(rightOperandValue as! Int)
+            addedValue = sqrt(pow(leftVal, 2) + pow(rightVal, 2))
+        } else {
+            let leftVal = leftOperandValue as! Float
+            let rightVal = rightOperandValue as! Float
+            addedValue = sqrt(pow(leftVal, 2) + pow(rightVal, 2))
+        }
+        resultOperandMemory.saveDecimal(address: resultOperandAddress, value: Float(addedValue))
+    }
+    
+    func pythagorasSide(leftOperandAddress : Int, rightOperandAddress : Int, resultOperandAddress : Int) {
+        let (leftOperandValue, leftOperandType) = getMemory(address: leftOperandAddress).getValue(address: leftOperandAddress)
+        let (rightOperandValue, rightOperandType) = getMemory(address: rightOperandAddress).getValue(address: rightOperandAddress)
+        
+        let resultOperandMemory = getMemory(address: resultOperandAddress)
+        
+        var addedValue : Float
+        if leftOperandType == Type.number {
+            if rightOperandType == Type.number {
+                let leftVal = Float(leftOperandValue as! Int)
+                let rightVal = Float(rightOperandValue as! Int)
+                addedValue = sqrt(pow(leftVal, 2) - pow(rightVal, 2))
+            } else {
+                let leftVal = Float(leftOperandValue as! Int)
+                let rightVal = rightOperandValue as! Float
+                addedValue = sqrt(pow(leftVal, 2) - pow(rightVal, 2))
+            }
+        } else if rightOperandType == Type.number {
+            let leftVal = leftOperandValue as! Float
+            let rightVal = Float(rightOperandValue as! Int)
+            addedValue = sqrt(pow(leftVal, 2) - pow(rightVal, 2))
+        } else {
+            let leftVal = leftOperandValue as! Float
+            let rightVal = rightOperandValue as! Float
+            addedValue = sqrt(pow(leftVal, 2) - pow(rightVal, 2))
+        }
+        resultOperandMemory.saveDecimal(address: resultOperandAddress, value: Float(addedValue))
     }
     
     // Función para obtener la memoria dependiendo del scope
