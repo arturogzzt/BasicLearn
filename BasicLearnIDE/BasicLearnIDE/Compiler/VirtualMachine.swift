@@ -99,6 +99,20 @@ class VirtualMachine {
                 ret(returnValueAddress: Int(currentQuadruple.result)!)
             case "SHOW":
                 show(resultAddress: Int(currentQuadruple.result)!)
+            case "AREATRI":
+                multiply(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
+            case "AREASQ":
+                multiply(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
+            case "AREAREC":
+                multiply(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
+            case "PERIMETERSQ":
+                perim(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
+            case "PERIMETERREC":
+                perim(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
+            case "SQUARE_ROOT":
+                squareRoot(leftOperandAddress: Int(currentQuadruple.leftOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
+            case "ABSOLUTE":
+                absolute(leftOperandAddress: Int(currentQuadruple.leftOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
             default:
                 break
             }
@@ -466,6 +480,69 @@ class VirtualMachine {
         }
         
         outputs.append(resultString)
+    }
+    
+    func perim(leftOperandAddress : Int, rightOperandAddress: Int, resultOperandAddress: Int) {
+        let (leftOperandValue, leftOperandType) = getMemory(address: leftOperandAddress).getValue(address: leftOperandAddress)
+        let (rightOperandValue, rightOperandType) = getMemory(address: rightOperandAddress).getValue(address: rightOperandAddress)
+        
+        let resultOperandMemory = getMemory(address: resultOperandAddress)
+        
+        let resultType = semanticTypeCheck.checkOperation(op: "*", operand1: leftOperandType, operand2: rightOperandType)
+        
+        if resultType == Type.number {
+            let addedValue = ((leftOperandValue as! Int) * 2) + ((rightOperandValue as! Int) * 2)
+            resultOperandMemory.saveNumber(address: resultOperandAddress, value: addedValue)
+        } else if resultType == Type.decimal {
+            let addedValue : Float
+            if leftOperandType == Type.number {
+                addedValue = ((Float(leftOperandValue as! Int)) * 2) + ((rightOperandValue as! Float) * 2)
+            } else if rightOperandType == Type.number {
+                addedValue = ((leftOperandValue as! Float) * 2) + ((Float(rightOperandValue as! Int)) * 2)
+            } else {
+                addedValue = ((leftOperandValue as! Float) * 2) + ((rightOperandValue as! Float) * 2)
+            }
+            resultOperandMemory.saveDecimal(address: resultOperandAddress, value: addedValue)
+        } else {
+            // HANDLE ERROR
+            print("ERROR TYPE MISMATCH")
+        }
+    }
+    
+    func squareRoot(leftOperandAddress : Int, resultOperandAddress : Int) {
+        let (leftOperandValue, leftOperandType) = getMemory(address: leftOperandAddress).getValue(address: leftOperandAddress)
+        
+        let resultOperandMemory = getMemory(address: resultOperandAddress)
+        
+        if leftOperandType == Type.number {
+            let addedValue = sqrt(Float((leftOperandValue as! Int)))
+            resultOperandMemory.saveDecimal(address: resultOperandAddress, value: addedValue)
+        } else if leftOperandType == Type.decimal {
+            let addedValue = sqrt(leftOperandValue as! Float)
+            resultOperandMemory.saveDecimal(address: resultOperandAddress, value: addedValue)
+        } else {
+            // handle error
+            print("ERROR TYPE MISMATCH")
+        }
+        
+    }
+    
+    func absolute(leftOperandAddress : Int, resultOperandAddress : Int) {
+        let (leftOperandValue, leftOperandType) = getMemory(address: leftOperandAddress).getValue(address: leftOperandAddress)
+        
+        let resultOperandMemory = getMemory(address: resultOperandAddress)
+        
+        
+        if leftOperandType == Type.number {
+            let addedValue = abs(leftOperandValue as! Int)
+            resultOperandMemory.saveDecimal(address: resultOperandAddress, value: Float(addedValue))
+        } else if leftOperandType == Type.decimal {
+            let addedValue = abs(leftOperandValue as! Float)
+            resultOperandMemory.saveDecimal(address: resultOperandAddress, value: addedValue)
+        } else {
+            // Handle error
+            print("ERROR TYPE MISMATCH")
+        }
     }
     
     // Función para obtener la memoria dependiendo del scope

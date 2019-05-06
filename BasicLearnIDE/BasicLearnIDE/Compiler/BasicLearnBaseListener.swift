@@ -32,7 +32,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
     //Pila de Tipos
     var pTypes = [Type]()
     //Fila para output de cuadruplos
-    var qCuad = [Quadruple]()
+    var qQuad = [Quadruple]()
     //Diccionario para guardar donde se encuentran las expresiones y sus resultados
     var dicTemp : [String:Int] = [:]
     // repeatStatementAddrs
@@ -104,14 +104,14 @@ open class BasicLearnBaseListener: BasicLearnListener {
         let programFunction = Function.init(name: programName, type: Type.program, address: 0, quadrupleNumber: 0)
         
         dirFunc.append(programFunction)
-        qCuad.append(Quadruple.init(operand: "GOTO", leftOp: "___", rightOp: "___", result: "PENDING"))
+        qQuad.append(Quadruple.init(operand: "GOTO", leftOp: "___", rightOp: "___", result: "PENDING"))
     }
 
 	open func exitProgram(_ ctx: BasicLearnParser.ProgramContext) {
         dirFunc.removeAll()
         
         var i = 0;
-        for quad in qCuad {
+        for quad in qQuad {
             print("\(i):\t\t \(quad.operand) \t\t \(quad.leftOp) \t\t \(quad.rightOp) \t\t \(quad.result)")
             i += 1
         }
@@ -122,7 +122,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
         
         
         // Testing vm
-        let virtualMachine = VirtualMachine.init(quadruples: qCuad, globalMemory: globalMemory, localMemory: localMemory, constantMemory: constantMemory, temporalMemory: temporalMemory, localTemporalMemory : localTemporalMemory, dirFunc: dirFunc)
+        let virtualMachine = VirtualMachine.init(quadruples: qQuad, globalMemory: globalMemory, localMemory: localMemory, constantMemory: constantMemory, temporalMemory: temporalMemory, localTemporalMemory : localTemporalMemory, dirFunc: dirFunc)
         
         virtualMachine.executeProgram()
 
@@ -132,7 +132,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
 
 
 	open func enterBody(_ ctx: BasicLearnParser.BodyContext) {
-        qCuad[0].fillJump(jump: String(qCuad.count))
+        qQuad[0].fillJump(jump: String(qQuad.count))
     }
 
 	open func exitBody(_ ctx: BasicLearnParser.BodyContext) { }
@@ -156,8 +156,8 @@ open class BasicLearnBaseListener: BasicLearnListener {
                 let result = PilaO.first
                 PilaO.removeFirst()
                 let quadAux = Quadruple.init(operand: "GOTOF", leftOp: result!, rightOp: "---", result: "PENDING")
-                qCuad.append(quadAux)
-                saltos.insert(qCuad.count - 1, at: 0)
+                qQuad.append(quadAux)
+                saltos.insert(qQuad.count - 1, at: 0)
                 
             }
             
@@ -174,8 +174,8 @@ open class BasicLearnBaseListener: BasicLearnListener {
                 let result = PilaO.first
                 PilaO.removeFirst()
                 let auxQuad = Quadruple.init(operand: "GOTOF", leftOp: result!, rightOp: "---", result: "PENDING")
-                qCuad.append(auxQuad)
-                saltos.insert(qCuad.count - 1, at: 0)
+                qQuad.append(auxQuad)
+                saltos.insert(qQuad.count - 1, at: 0)
             }
         }
         
@@ -191,7 +191,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
 //            print("Function verification \(argumentType)  \(auxFunction?.ParamTable[paramCounter].type)")
             if argumentType == auxFunction?.ParamTable[paramCounter].type{
                 let auxQuad = Quadruple.init(operand: "PARAM", leftOp: String(argument!), rightOp: "---", result: "Param"+String(paramCounter))
-                qCuad.append(auxQuad)
+                qQuad.append(auxQuad)
                 
                 paramCounter += 1
                 if paramCounter > paramTotal{
@@ -206,8 +206,9 @@ open class BasicLearnBaseListener: BasicLearnListener {
         if (ctx.parent as? BasicLearnParser.ShowContext) != nil {
             let result = PilaO.first
             PilaO.removeFirst()
+            pTypes.removeFirst()
             let auxQuad = Quadruple.init(operand: "SHOW", leftOp: "___", rightOp: "___", result: result!)
-            qCuad.append(auxQuad)
+            qQuad.append(auxQuad)
         }
     }
 
@@ -236,10 +237,6 @@ open class BasicLearnBaseListener: BasicLearnListener {
                 
                 var result: Int!
                 
-//                if scope == "LOCAL" {
-//                    currentMemory = localTemporalMemory
-//                }
-                
                 switch resultType {
                 case Type.number:
                     result = currentMemory.getNumberAddress(spaces: 1)
@@ -257,7 +254,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
                     break
                 }
                 
-                qCuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: rightOperand!, result: String(result)))
+                qQuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: rightOperand!, result: String(result)))
                 
                 PilaO.insert(String(result), at: 0) //Por mientras
                 pTypes.insert(resultType, at: 0)
@@ -307,12 +304,6 @@ open class BasicLearnBaseListener: BasicLearnListener {
                 let result = PilaO.first
                 PilaO.removeFirst()
                 
-//                var tempMem = temporalMemory
-                
-//                if scope == "LOCAL" {
-//                    tempMem = localTemporalMemory
-//                }
-                
                 let tempAddressRepeat = currentMemory.getNumberAddress(spaces: 1)
                 repeatStatementAddresses.insert(tempAddressRepeat, at: 0)
                 
@@ -332,14 +323,14 @@ open class BasicLearnBaseListener: BasicLearnListener {
 
                 
                 let memComparison = Quadruple.init(operand: "=", leftOp: String(zeroAddress), rightOp: "---", result: String(tempAddressRepeat)) //Se guarda la dirección del contador para repeat aquí
-                qCuad.append(memComparison)
+                qQuad.append(memComparison)
                 
                 let auxComparison = Quadruple.init(operand: "<", leftOp: String(tempAddressRepeat), rightOp: result!, result: resultAddress)//Crea un cuadruplo para hacer la comparación del GOTOF con un contador desde zero
                 
-                qCuad.append(auxComparison)
+                qQuad.append(auxComparison)
                 let auxQuad = Quadruple.init(operand: "GOTOF", leftOp: resultAddress, rightOp: "---", result: "PENDING")
-                qCuad.append(auxQuad)
-                saltos.insert(qCuad.count - 1, at: 0)
+                qQuad.append(auxQuad)
+                saltos.insert(qQuad.count - 1, at: 0)
     
             }
         }
@@ -353,7 +344,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
                 //TYPE CHECK ON RETURN FALTA
                 
                 let auxQuad = Quadruple.init(operand: "RET", leftOp: "---", rightOp: "---", result: String(result!))
-                qCuad.append(auxQuad)
+                qQuad.append(auxQuad)
             }
         }
     }
@@ -404,7 +395,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
                     break
                 }
                 
-                qCuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: rightOperand!, result: String(result)))
+                qQuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: rightOperand!, result: String(result)))
                 
                 PilaO.insert(String(result), at: 0) //Por mientras
                 pTypes.insert(resultType, at: 0)
@@ -533,7 +524,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
                     break
                 }
                 
-                qCuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: rightOperand!, result: String(result)))
+                qQuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: rightOperand!, result: String(result)))
                 
                 PilaO.insert(String(result), at: 0)
                 pTypes.insert(resultType, at: 0)
@@ -588,8 +579,8 @@ open class BasicLearnBaseListener: BasicLearnListener {
                 
                 _ = semanticTypeCheck.checkOperation(op: op!, operand1: leftOperandType!, operand2: resultVariableType)
                 
-//                qCuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: "---", result: result))
-                qCuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: "---", result: String(resultVariableAddress)))
+//                qQuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: "---", result: result))
+                qQuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: "---", result: String(resultVariableAddress)))
             }
         }
 
@@ -601,11 +592,11 @@ open class BasicLearnBaseListener: BasicLearnListener {
         if let parent = ctx.parent as? BasicLearnParser.If_statementContext{
             if parent.getText().contains("else") && parent.block(1)! == ctx.self{ //Else que se asegura que entre al segundo bloque del else
                 let AuxQuad = Quadruple.init(operand: "GOTO", leftOp: "---", rightOp: "---", result: "PENDING")
-                qCuad.append(AuxQuad)
+                qQuad.append(AuxQuad)
                 let ifFalse = saltos.first
                 saltos.removeFirst()
-                saltos.insert(qCuad.count - 1, at: 0)
-                qCuad[ifFalse!].fillJump(jump: String(qCuad.count))
+                saltos.insert(qQuad.count - 1, at: 0)
+                qQuad[ifFalse!].fillJump(jump: String(qQuad.count))
             }
         }
     }
@@ -638,7 +629,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
             }
         }
 
-        let function = Function.init(name: functionName, type: Type(type: functionType), address: 0, quadrupleNumber: qCuad.count)
+        let function = Function.init(name: functionName, type: Type(type: functionType), address: 0, quadrupleNumber: qQuad.count)
         dirFunc.append(function)
 
 	}
@@ -654,7 +645,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
         dirFunc.last?.variables.removeAll()
         parameterVerification.removeAll()
         let auxQuad = Quadruple.init(operand: "ENDPROC", leftOp: "---", rightOp: "---", result: "---")
-        qCuad.append(auxQuad)
+        qQuad.append(auxQuad)
         localTemporalMemory.cleanMemory()
         localMemory.cleanMemory()
         currentMemory = temporalMemory
@@ -737,7 +728,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
         
         if bFunctionFound{
             let auxQuad = Quadruple.init(operand: "ERA", leftOp: "---", rightOp: "---", result: ctx.ID()!.getText())
-            qCuad.append(auxQuad)
+            qQuad.append(auxQuad)
             
         }else{
              print("No se encontro la función \(ctx.ID()!.getText())")
@@ -753,7 +744,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
                 
                 let auxQuad = Quadruple.init(operand: "GOSUB", leftOp: ctx.ID()!.getText(), rightOp: "---", result: String(auxFunc.quadrupleNumber))
                 
-                qCuad.append(auxQuad)
+                qQuad.append(auxQuad)
             }
         }
 
@@ -821,13 +812,13 @@ open class BasicLearnBaseListener: BasicLearnListener {
 
         let end = saltos.first
         saltos.removeFirst()
-        qCuad[end!].fillJump(jump: String(qCuad.count))
+        qQuad[end!].fillJump(jump: String(qQuad.count))
     }
 
 
 	open func enterRepeat_statement(_ ctx: BasicLearnParser.Repeat_statementContext) {
         //Se le pone el + 1 debido al cuadruplo de asignación de contador que se crea en exitExp
-        saltos.insert(qCuad.count + 1, at: 0)
+        saltos.insert(qQuad.count + 1, at: 0)
     }
 
 	open func exitRepeat_statement(_ ctx: BasicLearnParser.Repeat_statementContext) {
@@ -849,18 +840,18 @@ open class BasicLearnBaseListener: BasicLearnListener {
         }
         
         let auxCounterQuad = Quadruple.init(operand: "+", leftOp: String(repeatStatementAddresses.first!), rightOp: String(zeroAddress), result: String(repeatStatementAddresses.first!)) //Cuadruplo para sumar uno al final del repeat statement
-        qCuad.append(auxCounterQuad)
+        qQuad.append(auxCounterQuad)
         
         let auxQuad = Quadruple.init(operand: "GOTO", leftOp: "---", rightOp: "---", result: String(falseJump!))
         repeatStatementAddresses.removeFirst()
 
-        qCuad.append(auxQuad)
-        qCuad[end!].fillJump(jump: String(qCuad.count))
+        qQuad.append(auxQuad)
+        qQuad[end!].fillJump(jump: String(qQuad.count))
     }
 
 
 	open func enterWhile_statement(_ ctx: BasicLearnParser.While_statementContext) {
-        saltos.insert(qCuad.count, at: 0)
+        saltos.insert(qQuad.count, at: 0)
     }
 
 	open func exitWhile_statement(_ ctx: BasicLearnParser.While_statementContext) {
@@ -870,8 +861,8 @@ open class BasicLearnBaseListener: BasicLearnListener {
         saltos.removeFirst()
         
         let auxQuad = Quadruple.init(operand: "GOTO", leftOp: "---", rightOp: "---", result: String(returnJump!))
-        qCuad.append(auxQuad)
-        qCuad[end!].fillJump(jump: String(qCuad.count))
+        qQuad.append(auxQuad)
+        qQuad[end!].fillJump(jump: String(qQuad.count))
     }
 
 
@@ -907,17 +898,131 @@ open class BasicLearnBaseListener: BasicLearnListener {
 
 	open func enterSquare_root_absolute(_ ctx: BasicLearnParser.Square_root_absoluteContext) { }
 
-	open func exitSquare_root_absolute(_ ctx: BasicLearnParser.Square_root_absoluteContext) { }
+	open func exitSquare_root_absolute(_ ctx: BasicLearnParser.Square_root_absoluteContext) {
+        let operation = ctx.getChild(0)?.toStringTree()
+        
+        let operatorVm = operation!.uppercased()
+        
+        let operand = PilaO.first!
+        PilaO.removeFirst()
+        
+        let resultType = Type.decimal
+        pTypes.removeFirst()
+        
+        if resultType != Type.error {
+            var result : Int!
+            
+       
+//            if resultType == Type.number {
+//                result = currentMemory.getNumberAddress(spaces: 1)
+//            } else {
+//                result = currentMemory.getDecimalAddress(spaces: 1)
+//            }
+            
+            result = currentMemory.getDecimalAddress(spaces: 1)
+            
+            let auxQuad = Quadruple.init(operand: operatorVm, leftOp: operand, rightOp: "___", result: String(result))
+            
+            qQuad.append(auxQuad)
+            
+            PilaO.insert(String(result), at: 0)
+            pTypes.insert(resultType, at: 0)
+        }
+    }
 
 
 	open func enterArea_tri(_ ctx: BasicLearnParser.Area_triContext) { }
 
-	open func exitArea_tri(_ ctx: BasicLearnParser.Area_triContext) { }
+	open func exitArea_tri(_ ctx: BasicLearnParser.Area_triContext) {
+        let rightOperand = PilaO.first!
+        let rightOperandType = pTypes.first
+        pTypes.removeFirst()
+        PilaO.removeFirst()
+        let leftOperand = PilaO.first!
+        let leftOperandType = pTypes.first
+        pTypes.removeFirst()
+        PilaO.removeFirst()
+
+        let resultType = semanticTypeCheck.checkOperation(op: "*", operand1: leftOperandType!, operand2: rightOperandType!)
+
+
+        if resultType != Type.error {
+
+            var result : Int!
+
+            switch resultType {
+            case Type.number:
+                result = currentMemory.getNumberAddress(spaces: 1)
+
+            case Type.decimal:
+                result = currentMemory.getDecimalAddress(spaces: 1)
+
+            default:
+                break
+            }
+
+            let auxQuad = Quadruple.init(operand: "AREATRI", leftOp: leftOperand, rightOp: rightOperand, result: String(result))
+
+            qQuad.append(auxQuad)
+
+
+            PilaO.insert(String(result), at: 0)
+            pTypes.insert(resultType, at: 0)
+
+        } else {
+            print("ERROR TYPE MISMATCH")
+            // HANDLE ERROR CORRECTLY
+    }
+}
 
 
 	open func enterSquare(_ ctx: BasicLearnParser.SquareContext) { }
 
-	open func exitSquare(_ ctx: BasicLearnParser.SquareContext) { }
+	open func exitSquare(_ ctx: BasicLearnParser.SquareContext) {
+        let operation = ctx.getChild(0)?.toStringTree()
+        
+        let operatorVm = operation!.uppercased()
+        
+        let rightOperand = PilaO.first!
+        let rightOperandType = pTypes.first
+        pTypes.removeFirst()
+        PilaO.removeFirst()
+        let leftOperand = PilaO.first!
+        let leftOperandType = pTypes.first
+        pTypes.removeFirst()
+        PilaO.removeFirst()
+        
+        let resultType = semanticTypeCheck.checkOperation(op: "*", operand1: leftOperandType!, operand2: rightOperandType!)
+      
+        if resultType != Type.error {
+          
+            
+            var result : Int!
+            
+            switch resultType {
+            case Type.number:
+                result = currentMemory.getNumberAddress(spaces: 1)
+                
+            case Type.decimal:
+                result = currentMemory.getDecimalAddress(spaces: 1)
+                
+            default:
+                break
+            }
+            
+            let auxQuad = Quadruple.init(operand: operatorVm, leftOp: leftOperand, rightOp: rightOperand, result: String(result))
+            
+            qQuad.append(auxQuad)
+            
+            
+            PilaO.insert(String(result), at: 0)
+            pTypes.insert(resultType, at: 0)
+            
+        } else {
+            print("ERROR TYPE MISMATCH")
+            // HANDLE ERROR CORRECTLY
+        }
+    }
 
 
 	open func enterEveryRule(_ ctx: ParserRuleContext) { }
