@@ -20,6 +20,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var outputView: UITextView!
     
     @IBAction func compile(_ sender: UIButton) {
+        cleanOutput()
         let compiler = MainCompiler()
         compiler.execute(code: codeView.text!, viewController: self)
     }
@@ -29,6 +30,10 @@ class ViewController: UIViewController {
             print(out)
             outputView.text += "\(out)\n"
         }
+    }
+    
+    func cleanOutput() {
+        outputView.text = ""
     }
 }
 

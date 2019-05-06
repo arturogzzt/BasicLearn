@@ -43,6 +43,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
     var paramTotal = 0
     //Variable para saber que memoria temporal utilizar
     var currentMemory : Memory = Memory.init(baseAddress: 0)
+
     
     var outputs = [String]()
 
@@ -202,11 +203,11 @@ open class BasicLearnBaseListener: BasicLearnListener {
         }
         
         // Para revisar si viene de un show
-        if let parent = ctx.parent as? BasicLearnParser.ShowContext {
-            if let show = getVariable(id: parent.expression()!.getText())?.address {
-                let auxQuad = Quadruple.init(operand: "SHOW", leftOp: "___", rightOp: "___", result: String(show))
-                qCuad.append(auxQuad)
-            }
+        if (ctx.parent as? BasicLearnParser.ShowContext) != nil {
+            let result = PilaO.first
+            PilaO.removeFirst()
+            let auxQuad = Quadruple.init(operand: "SHOW", leftOp: "___", rightOp: "___", result: result!)
+            qCuad.append(auxQuad)
         }
     }
 
@@ -476,6 +477,18 @@ open class BasicLearnBaseListener: BasicLearnListener {
                 PilaO.insert(String(constantExists(currentConstant: currConstant)), at: 0)
             }
             pTypes.insert(Type.bool, at: 0)
+        }
+        
+        if let currConstant = ctx.SENTENCE_CONST()?.getText() {
+            if constantExists(currentConstant: currConstant) == 0 {
+                let constantAddress = constantMemory.getSentenceAddress(spaces: 1)
+                constTable.append(Variable.init(name: currConstant, type: Type.sentence, address: constantAddress))
+                PilaO.insert(String(constantExists(currentConstant: currConstant)), at: 0)
+                constantMemory.saveSentenceConstant(value: currConstant, address: constantAddress)
+            } else {
+                PilaO.insert(String(constantExists(currentConstant: currConstant)), at: 0)
+            }
+            pTypes.insert(Type.sentence, at: 0)
         }
     }
 
