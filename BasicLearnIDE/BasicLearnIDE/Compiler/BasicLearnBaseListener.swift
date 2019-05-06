@@ -337,6 +337,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
         
         if let parent = ctx.parent as? BasicLearnParser.StatementContext {
             if (parent.getText().contains("return")) {
+                print(parent.getText())
                 let result = PilaO.first
                 PilaO.removeFirst()
                 let type = pTypes.first
@@ -420,6 +421,8 @@ open class BasicLearnBaseListener: BasicLearnListener {
 
 	open func enterFactor(_ ctx: BasicLearnParser.FactorContext) {
         if let currentId = ctx.ID()?.getText() {
+            
+            
             
             //Checa que la variable si exista
             guard let operand = getVariable(id: currentId) else {
@@ -925,7 +928,87 @@ open class BasicLearnBaseListener: BasicLearnListener {
 
 	open func enterPerimeter_tri(_ ctx: BasicLearnParser.Perimeter_triContext) { }
 
-	open func exitPerimeter_tri(_ ctx: BasicLearnParser.Perimeter_triContext) { }
+	open func exitPerimeter_tri(_ ctx: BasicLearnParser.Perimeter_triContext) {
+        let rightOperand = PilaO.first!
+        let rightOperandType = pTypes.first!
+        pTypes.removeFirst()
+        PilaO.removeFirst()
+        let leftOperand = PilaO.first!
+        let leftOperandType = pTypes.first!
+        PilaO.removeFirst()
+        pTypes.removeFirst()
+        
+        let resultType = semanticTypeCheck.checkOperation(op: "+", operand1: leftOperandType, operand2: rightOperandType)
+        
+        if resultType != Type.error {
+            
+            var result : Int!
+            
+            switch resultType {
+            case Type.number:
+                result = currentMemory.getNumberAddress(spaces: 1)
+                
+            case Type.decimal:
+                result = currentMemory.getDecimalAddress(spaces: 1)
+                
+            default:
+                break
+            }
+            
+            let auxQuad = Quadruple.init(operand: "+", leftOp: leftOperand, rightOp: rightOperand, result: String(result))
+            
+            qQuad.append(auxQuad)
+            
+            
+            PilaO.insert(String(result), at: 0)
+            pTypes.insert(resultType, at: 0)
+            
+        } else {
+            print("ERROR TYPE MISMATCH")
+            // HANDLE ERROR CORRECTLY
+        }
+        
+        
+        let newRightOperand = PilaO.first!
+        let newRightOperandType = pTypes.first!
+        pTypes.removeFirst()
+        PilaO.removeFirst()
+        let newLeftOperand = PilaO.first!
+        let newLeftOperandType = pTypes.first!
+        pTypes.removeFirst()
+        PilaO.removeFirst()
+        
+        let newResultType = semanticTypeCheck.checkOperation(op: "+", operand1: newLeftOperandType, operand2: newRightOperandType)
+        
+        
+        if newResultType != Type.error {
+            
+            var result : Int!
+            
+            switch newResultType {
+            case Type.number:
+                result = currentMemory.getNumberAddress(spaces: 1)
+                
+            case Type.decimal:
+                result = currentMemory.getDecimalAddress(spaces: 1)
+                
+            default:
+                break
+            }
+            
+            let auxQuad = Quadruple.init(operand: "PERIMETERTRI", leftOp: newLeftOperand, rightOp: newRightOperand, result: String(result))
+            
+            qQuad.append(auxQuad)
+            
+            
+            PilaO.insert(String(result), at: 0)
+            pTypes.insert(newResultType, at: 0)
+            
+        } else {
+            print("ERROR TYPE MISMATCH")
+            // HANDLE ERROR CORRECTLY
+        }
+    }
 
 
 	open func enterSquare_root_absolute(_ ctx: BasicLearnParser.Square_root_absoluteContext) { }

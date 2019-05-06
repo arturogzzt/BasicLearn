@@ -117,6 +117,8 @@ class VirtualMachine {
                 pythagorasHyp(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
             case "PYTHAGORASSIDE":
                 pythagorasSide(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
+            case "PERIMETERTRI":
+                add(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
             default:
                 break
             }
@@ -465,6 +467,8 @@ class VirtualMachine {
         default:
             break
         }
+        
+        quadIndex = subQuadIndex + 1
     }
     
     func show(resultAddress : Int) {
