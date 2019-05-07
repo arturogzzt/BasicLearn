@@ -123,7 +123,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
         
         // Testing vm
         let virtualMachine = VirtualMachine.init(quadruples: qQuad, globalMemory: globalMemory, localMemory: localMemory, constantMemory: constantMemory, temporalMemory: temporalMemory, localTemporalMemory : localTemporalMemory, dirFunc: dirFunc)
-        
+
         virtualMachine.executeProgram()
 
         outputs = virtualMachine.outputs
@@ -336,18 +336,32 @@ open class BasicLearnBaseListener: BasicLearnListener {
         }
         
         if let parent = ctx.parent as? BasicLearnParser.StatementContext {
-            if (parent.getText().contains("return")) {
+            if parent.RETURN() != nil {
                 print(parent.getText())
                 let result = PilaO.first
                 PilaO.removeFirst()
                 let type = pTypes.first
                 pTypes.removeFirst()
                 //TYPE CHECK ON RETURN FALTA
-                
+
                 let auxQuad = Quadruple.init(operand: "RET", leftOp: "---", rightOp: "---", result: String(result!))
                 qQuad.append(auxQuad)
             }
         }
+        
+//        if let parent = ctx.parent as? BasicLearnParser.StatementContext {
+//            if parent.RETURN() != nil {
+//                let result = PilaO.first
+//                PilaO.removeFirst()
+//                let type = pTypes.first
+//                pTypes.removeFirst()
+//                //TYPE CHECK ON RETURN FALTA
+//
+//                let auxQuad = Quadruple.init(operand: "RET", leftOp: "---", rightOp: "---", result: String(result!))
+//                qQuad.append(auxQuad)
+//            }
+//        }
+
     }
 
 
@@ -375,10 +389,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
             if resultType != Type.error {
                 
                 var result: Int!
-                
-//                if scope == "LOCAL" {
-//                    currentMemory = localTemporalMemory
-//                }
+            
                 switch resultType {
                 case Type.number:
                     result = currentMemory.getNumberAddress(spaces: 1)
@@ -612,9 +623,11 @@ open class BasicLearnBaseListener: BasicLearnListener {
 	open func exitType(_ ctx: BasicLearnParser.TypeContext) { }
 
 
-	open func enterStatement(_ ctx: BasicLearnParser.StatementContext) {}
+	open func enterStatement(_ ctx: BasicLearnParser.StatementContext) { }
 
-	open func exitStatement(_ ctx: BasicLearnParser.StatementContext) { }
+	open func exitStatement(_ ctx: BasicLearnParser.StatementContext) {
+
+    }
 
 
 	open func enterFunction(_ ctx: BasicLearnParser.FunctionContext) {

@@ -18,7 +18,6 @@ class VirtualMachine {
     var localTemporalMemory : Memory
     // Revisar si si necesito dirFunc
     var dirFunc = [Function]()
-//    var params = [Int]()
     
     var quadIndex : Int = 0
     
@@ -424,7 +423,7 @@ class VirtualMachine {
         
         switch paramType {
         case Type.number:
-         localMemory.saveNumber(address: localMemory.getNumberAddress(spaces: 1), value: paramValue as! Int)
+            localMemory.saveNumber(address: localMemory.getNumberAddress(spaces: 1), value: paramValue as! Int)
         case Type.decimal:
             localMemory.saveDecimal(address: localMemory.getDecimalAddress(spaces: 1), value: paramValue as! Float)
         case Type.bool:
@@ -457,7 +456,7 @@ class VirtualMachine {
         
         switch returnValueType {
         case Type.number:
-            globalMemory.saveNumber(address: globalMemory.getLastNumberAddress(spaces: 1), value: returnValueVal as! Int)
+            globalMemory.saveNumber(address: globalMemory.getNumberAddress(spaces: 1), value: returnValueVal as! Int)
         case Type.decimal:
             globalMemory.saveDecimal(address: globalMemory.getDecimalAddress(spaces: 1), value: returnValueVal as! Float)
         case Type.bool:
