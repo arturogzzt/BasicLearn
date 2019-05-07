@@ -55,7 +55,7 @@ class Memory{
     
     func getSentenceAddress(spaces:Int) -> Int{
         sentence = sentence + spaces
-        return (sentenceBase + base - spaces)
+        return (sentence + base - spaces)
     }
     
     func getBoolAddress(spaces:Int) -> Int{
@@ -63,47 +63,45 @@ class Memory{
         return (bool + base - spaces)
     }
     
-    // Funciones para obtener memoria en Máquina Virtual
-    // Revisa si las direcciones ya están siendo utilizadas
-    // Si ya están utilizadas regresa esa dirección, de otra manera regresa una nueva.
-    func getNumberAddr(address : Int, spaces : Int) -> Int {
-        for addr in numbers {
-            if addr.key == address {
-                return address
-            }
+    // Funciones para obtener la siguiente dirección disponible en memoria
+    func getLastNumberAddress(spaces : Int) -> Int {
+        var addresses = [Int]()
+        
+        for address in numbers {
+            addresses.append(address.key)
         }
-        number = number + spaces
-        return (number + base - spaces)
+        
+        return addresses.last! + 1
     }
     
-    func getDecimalAddr(address : Int, spaces : Int) -> Int {
-        for addr in decimals {
-            if addr.key == address {
-                return address
-            }
+    func getLastDecimalAddress(spaces : Int) -> Int {
+        var addresses = [Int]()
+        
+        for address in decimals {
+            addresses.append(address.key)
         }
-        decimal = decimal + spaces
-        return (decimal + base - spaces)
+        
+        return addresses.last! + 1
     }
     
-    func getBoolAddr(address : Int, spaces : Int) -> Int {
-        for addr in bools {
-            if addr.key == address {
-                return address
-            }
+    func getLastBoolAddress(spaces : Int) -> Int {
+        var addresses = [Int]()
+        
+        for address in bools {
+            addresses.append(address.key)
         }
-        bool = bool + spaces
-        return (bool + base - spaces)
+        
+        return addresses.last! + 1
     }
     
-    func getSentenceAddr(address : Int, spaces : Int) -> Int {
-        for addr in sentences {
-            if addr.key == address {
-                return address
-            }
+    func getLastSentenceAddress(spaces : Int) -> Int {
+        var addresses = [Int]()
+        
+        for address in sentences {
+            addresses.append(address.key)
         }
-        sentence = sentence + spaces
-        return (sentence + base - spaces)
+        
+        return addresses.last! + 1
     }
     
     // Funciones para limpiar memoria
@@ -185,4 +183,5 @@ class Memory{
     func saveSentence(address : Int, value : String) {
         self.sentences[address] = value
     }
+    
 }

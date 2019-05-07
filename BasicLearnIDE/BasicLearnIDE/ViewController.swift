@@ -17,11 +17,23 @@ class ViewController: UIViewController {
     }
     
     @IBOutlet weak var codeView: UITextView!
+    @IBOutlet weak var outputView: UITextView!
     
     @IBAction func compile(_ sender: UIButton) {
+        cleanOutput()
         let compiler = MainCompiler()
-        compiler.execute(code: codeView.text!)
+        compiler.execute(code: codeView.text!, viewController: self)
     }
     
+    func updateOutput(outputs : [String]) {
+        for out in outputs {
+            print(out)
+            outputView.text += "\(out)\n"
+        }
+    }
+    
+    func cleanOutput() {
+        outputView.text = ""
+    }
 }
 

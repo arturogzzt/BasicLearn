@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		411CA6F12281195B00785A3D /* BasicLearnLexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411CA6E82281195B00785A3D /* BasicLearnLexer.swift */; };
+		411CA6F22281195B00785A3D /* BasicLearnListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411CA6E92281195B00785A3D /* BasicLearnListener.swift */; };
+		411CA6F32281195B00785A3D /* BasicLearnLexer.tokens in Resources */ = {isa = PBXBuildFile; fileRef = 411CA6EA2281195B00785A3D /* BasicLearnLexer.tokens */; };
+		411CA6F42281195B00785A3D /* BasicLearnParserATN.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411CA6EB2281195B00785A3D /* BasicLearnParserATN.swift */; };
+		411CA6F52281195B00785A3D /* BasicLearnParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411CA6EC2281195B00785A3D /* BasicLearnParser.swift */; };
+		411CA6F62281195B00785A3D /* BasicLearn.interp in Resources */ = {isa = PBXBuildFile; fileRef = 411CA6ED2281195B00785A3D /* BasicLearn.interp */; };
+		411CA6F72281195B00785A3D /* BasicLearnLexer.interp in Resources */ = {isa = PBXBuildFile; fileRef = 411CA6EE2281195B00785A3D /* BasicLearnLexer.interp */; };
+		411CA6F82281195B00785A3D /* BasicLearn.tokens in Resources */ = {isa = PBXBuildFile; fileRef = 411CA6EF2281195B00785A3D /* BasicLearn.tokens */; };
+		411CA6F92281195B00785A3D /* BasicLearnLexerATN.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411CA6F02281195B00785A3D /* BasicLearnLexerATN.swift */; };
 		417E89F322795CF9004648D6 /* VirtualMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417E89F222795CF9004648D6 /* VirtualMachine.swift */; };
 		41C2EFBC225FED3000C90A1F /* MainCompiler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C2EFB6225FED3000C90A1F /* MainCompiler.swift */; };
 		41C2EFBD225FED3000C90A1F /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C2EFBA225FED3000C90A1F /* Types.swift */; };
@@ -60,6 +69,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		411CA6E82281195B00785A3D /* BasicLearnLexer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasicLearnLexer.swift; path = ../../../../../Desktop/grammar/BasicLearnLexer.swift; sourceTree = "<group>"; };
+		411CA6E92281195B00785A3D /* BasicLearnListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasicLearnListener.swift; path = ../../../../../Desktop/grammar/BasicLearnListener.swift; sourceTree = "<group>"; };
+		411CA6EA2281195B00785A3D /* BasicLearnLexer.tokens */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = BasicLearnLexer.tokens; path = ../../../../../Desktop/grammar/BasicLearnLexer.tokens; sourceTree = "<group>"; };
+		411CA6EB2281195B00785A3D /* BasicLearnParserATN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasicLearnParserATN.swift; path = ../../../../../Desktop/grammar/BasicLearnParserATN.swift; sourceTree = "<group>"; };
+		411CA6EC2281195B00785A3D /* BasicLearnParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasicLearnParser.swift; path = ../../../../../Desktop/grammar/BasicLearnParser.swift; sourceTree = "<group>"; };
+		411CA6ED2281195B00785A3D /* BasicLearn.interp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = BasicLearn.interp; path = ../../../../../Desktop/grammar/BasicLearn.interp; sourceTree = "<group>"; };
+		411CA6EE2281195B00785A3D /* BasicLearnLexer.interp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = BasicLearnLexer.interp; path = ../../../../../Desktop/grammar/BasicLearnLexer.interp; sourceTree = "<group>"; };
+		411CA6EF2281195B00785A3D /* BasicLearn.tokens */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = BasicLearn.tokens; path = ../../../../../Desktop/grammar/BasicLearn.tokens; sourceTree = "<group>"; };
+		411CA6F02281195B00785A3D /* BasicLearnLexerATN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasicLearnLexerATN.swift; path = ../../../../../Desktop/grammar/BasicLearnLexerATN.swift; sourceTree = "<group>"; };
 		417E89F222795CF9004648D6 /* VirtualMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualMachine.swift; sourceTree = "<group>"; };
 		41C2EFB6225FED3000C90A1F /* MainCompiler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCompiler.swift; sourceTree = "<group>"; };
 		41C2EFBA225FED3000C90A1F /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
@@ -259,6 +277,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				411CA6F32281195B00785A3D /* BasicLearnLexer.tokens in Resources */,
 				EC15170C225E87E80030D440 /* LaunchScreen.storyboard in Resources */,
 				ECCF50E32281E9F600DD904F /* BasicLearn.interp in Resources */,
 				EC151709225E87E80030D440 /* Assets.xcassets in Resources */,
@@ -278,7 +297,10 @@
 			files = (
 				ECCF50DF2281E9F600DD904F /* BasicLearnLexerATN.swift in Sources */,
 				EC1B7551227494D8007068DC /* Memory.swift in Sources */,
+				411CA6F12281195B00785A3D /* BasicLearnLexer.swift in Sources */,
+				411CA6F52281195B00785A3D /* BasicLearnParser.swift in Sources */,
 				417E89F322795CF9004648D6 /* VirtualMachine.swift in Sources */,
+				411CA6F92281195B00785A3D /* BasicLearnLexerATN.swift in Sources */,
 				41EAEBCC2274A66D00897C19 /* Variable.swift in Sources */,
 				EC151701225E87E40030D440 /* ViewController.swift in Sources */,
 				EC8D8068227DFE7400D3C2C6 /* descriptionDimension.swift in Sources */,
@@ -289,6 +311,7 @@
 				ECCF50E02281E9F600DD904F /* BasicLearnParserATN.swift in Sources */,
 				EC1516FF225E87E40030D440 /* AppDelegate.swift in Sources */,
 				41C2EFBC225FED3000C90A1F /* MainCompiler.swift in Sources */,
+				411CA6F42281195B00785A3D /* BasicLearnParserATN.swift in Sources */,
 				41EAEBCA2274A66600897C19 /* Function.swift in Sources */,
 				EC15174D225E93AC0030D440 /* BasicLearnBaseListener.swift in Sources */,
 				41C2EFBD225FED3000C90A1F /* Types.swift in Sources */,
