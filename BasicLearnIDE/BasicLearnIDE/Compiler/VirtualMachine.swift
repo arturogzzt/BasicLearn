@@ -27,6 +27,9 @@ class VirtualMachine {
     
     var semanticTypeCheck = semanticCube()
     
+    var localMemoryStack = [Memory]()
+    var localTemporalMemoryStack = [Memory]()
+    
     init(quadruples : [Quadruple], globalMemory : Memory, localMemory : Memory, constantMemory : Memory, temporalMemory : Memory, localTemporalMemory : Memory, dirFunc : [Function]) {
         self.quadruples = quadruples
         self.globalMemory = globalMemory
@@ -35,6 +38,9 @@ class VirtualMachine {
         self.temporalMemory = temporalMemory
         self.localTemporalMemory = localTemporalMemory
         self.dirFunc = dirFunc
+        
+        localMemoryStack.insert(localMemory, at: 0)
+        localTemporalMemoryStack.insert(localTemporalMemory, at: 0)
     }
     
     // Function to clean all memories but constant
@@ -47,8 +53,10 @@ class VirtualMachine {
     
     // Function to clean temporalMemory
     func cleanLocalMemory() {
-        self.localMemory.cleanMemory()
-        self.localTemporalMemory.cleanMemory()
+        self.localMemoryStack.removeFirst()
+        self.localTemporalMemoryStack.removeFirst()
+//        self.localMemory.cleanMemory()
+//        self.localTemporalMemory.cleanMemory()
     }
     
     func executeProgram() {
@@ -405,13 +413,8 @@ class VirtualMachine {
     }
     
     func era(function : String) {
-//        var currentFunction : Function
-//        
-//        for funct in dirFunc {
-//            if function == funct.name {
-//                currentFunction = funct
-//            }
-//        }
+        localMemoryStack.insert(Memory.init(baseAddress: 6000), at: 0)
+        localTemporalMemoryStack.insert(Memory.init(baseAddress: 24000), at: 0)
     }
     
     func param(paramAddress : Int, paramPosition : String) {
@@ -423,13 +426,13 @@ class VirtualMachine {
         
         switch paramType {
         case Type.number:
-            localMemory.saveNumber(address: localMemory.getNumberAddress(spaces: 1), value: paramValue as! Int)
+            localMemoryStack.first!.saveNumber(address: localMemoryStack.first!.getNumberAddress(spaces: 1), value: paramValue as! Int)
         case Type.decimal:
-            localMemory.saveDecimal(address: localMemory.getDecimalAddress(spaces: 1), value: paramValue as! Float)
+            localMemoryStack.first!.saveDecimal(address: localMemoryStack.first!.getDecimalAddress(spaces: 1), value: paramValue as! Float)
         case Type.bool:
-            localMemory.saveBool(address: localMemory.getBoolAddress(spaces: 1), value: paramValue as! Bool)
+            localMemoryStack.first!.saveBool(address: localMemoryStack.first!.getBoolAddress(spaces: 1), value: paramValue as! Bool)
         case Type.sentence:
-            localMemory.saveSentence(address: localMemory.getSentenceAddress(spaces: 1), value: paramValue as! String)
+            localMemoryStack.first!.saveSentence(address: localMemoryStack.first!.getSentenceAddress(spaces: 1), value: paramValue as! String)
         default:
             break
         }
@@ -616,13 +619,13 @@ class VirtualMachine {
         case _ where address < 6000:
             return self.globalMemory
         case _ where address < 12000:
-            return self.localMemory
+            return self.localMemoryStack.first!
         case _ where address < 18000:
             return self.constantMemory
         case _ where address < 24000:
             return self.temporalMemory
         default:
-            return self.localTemporalMemory
+            return self.localTemporalMemoryStack.first!
         }
     }
 }
