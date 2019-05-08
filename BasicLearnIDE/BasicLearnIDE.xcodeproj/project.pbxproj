@@ -47,6 +47,7 @@
 			remoteGlobalIDString = "Antlr4::Antlr4::Product";
 			remoteInfo = Antlr4;
 		};
+
 		ECCF513A2281EE1500DD904F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = ECCF51312281EE1500DD904F /* Antlr4.xcodeproj */;
@@ -74,6 +75,16 @@
 		41C2EFBA225FED3000C90A1F /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		41EAEBC92274A66600897C19 /* Function.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Function.swift; sourceTree = "<group>"; };
 		41EAEBCB2274A66D00897C19 /* Variable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Variable.swift; sourceTree = "<group>"; };
+		41F589C1228284B3008CB834 /* Antlr4.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Antlr4.xcodeproj; path = ../../../antlr4/runtime/Swift/Antlr4.xcodeproj; sourceTree = "<group>"; };
+		41F589E42282854F008CB834 /* BasicLearn.interp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = BasicLearn.interp; path = "../../../../../Library/Containers/com.apple.mail/Data/Library/Mail Downloads/627160E6-CD61-49EA-AF61-B7B86EB55365/BasicLearn.interp"; sourceTree = "<group>"; };
+		41F589E52282854F008CB834 /* BasicLearnLexer.interp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = BasicLearnLexer.interp; path = "../../../../../Library/Containers/com.apple.mail/Data/Library/Mail Downloads/62FC034A-2998-4986-8D75-64429BCA1176/BasicLearnLexer.interp"; sourceTree = "<group>"; };
+		41F589E62282854F008CB834 /* BasicLearnLexer.tokens */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = BasicLearnLexer.tokens; path = "../../../../../Library/Containers/com.apple.mail/Data/Library/Mail Downloads/2BAA3C59-F2F7-4155-939C-B9D3C3A23441/BasicLearnLexer.tokens"; sourceTree = "<group>"; };
+		41F589E72282854F008CB834 /* BasicLearn.tokens */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = BasicLearn.tokens; path = "../../../../../Library/Containers/com.apple.mail/Data/Library/Mail Downloads/B3AF59E8-2FD1-4B97-9E8C-6FB157A6DFDB/BasicLearn.tokens"; sourceTree = "<group>"; };
+		41F589E82282854F008CB834 /* BasicLearnParserATN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasicLearnParserATN.swift; path = "../../../../../Library/Containers/com.apple.mail/Data/Library/Mail Downloads/20B14190-3F54-4489-9E84-F5B3165EABEC/BasicLearnParserATN.swift"; sourceTree = "<group>"; };
+		41F589E92282854F008CB834 /* BasicLearnParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasicLearnParser.swift; path = "../../../../../Library/Containers/com.apple.mail/Data/Library/Mail Downloads/83DC3043-EB32-4ECF-A41C-D77ADF72C11C/BasicLearnParser.swift"; sourceTree = "<group>"; };
+		41F589EA2282854F008CB834 /* BasicLearnListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasicLearnListener.swift; path = "../../../../../Library/Containers/com.apple.mail/Data/Library/Mail Downloads/FAFC4C82-CE95-456E-BBB5-C6DE02EC6107/BasicLearnListener.swift"; sourceTree = "<group>"; };
+		41F589EB2282854F008CB834 /* BasicLearnLexer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasicLearnLexer.swift; path = "../../../../../Library/Containers/com.apple.mail/Data/Library/Mail Downloads/61F8D6C0-C432-4573-B548-78B60CEA1830/BasicLearnLexer.swift"; sourceTree = "<group>"; };
+		41F589EC2282854F008CB834 /* BasicLearnLexerATN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasicLearnLexerATN.swift; path = "../../../../../Library/Containers/com.apple.mail/Data/Library/Mail Downloads/46566D01-0D5F-4556-8A15-1EFB64480519/BasicLearnLexerATN.swift"; sourceTree = "<group>"; };
 		EC1516FB225E87E40030D440 /* BasicLearnIDE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BasicLearnIDE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC1516FE225E87E40030D440 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EC151700225E87E40030D440 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +122,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		41F589C0228283DE008CB834 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				411CA6E82281195B00785A3D /* BasicLearnLexer.swift */,
+				411CA6EC2281195B00785A3D /* BasicLearnParser.swift */,
+				411CA6F02281195B00785A3D /* BasicLearnLexerATN.swift */,
+				411CA6EB2281195B00785A3D /* BasicLearnParserATN.swift */,
+				411CA6EA2281195B00785A3D /* BasicLearnLexer.tokens */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		41F589C2228284B3008CB834 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				41F589C9228284B3008CB834 /* Antlr4.framework */,
+				41F589CB228284B3008CB834 /* Antlr4Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		EC1516F2225E87E30030D440 = {
 			isa = PBXGroup;
 			children = (
@@ -232,6 +264,7 @@
 				TargetAttributes = {
 					EC1516FA225E87E40030D440 = {
 						CreatedOnToolsVersion = 10.2;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -473,6 +506,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = BasicLearnIDE/Info.plist;
@@ -482,6 +516,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Mauricio-Garza.BasicLearnIDE";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "BasicLearnIDE/Compiler/BasicLearnIDE-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -491,6 +527,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = BasicLearnIDE/Info.plist;
@@ -500,6 +537,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Mauricio-Garza.BasicLearnIDE";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "BasicLearnIDE/Compiler/BasicLearnIDE-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

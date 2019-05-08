@@ -11,30 +11,39 @@ import Foundation
 class VirtualMachine {
     var quadruples = [Quadruple]()
     
+    var functions = [Function]()
+    
     var globalMemory : Memory
     var localMemory : Memory
     var constantMemory : Memory
     var temporalMemory : Memory
     var localTemporalMemory : Memory
-    // Revisar si si necesito dirFunc
-    var dirFunc = [Function]()
     
     var quadIndex : Int = 0
     
-    var subQuadIndex : Int = 0
+    var subQuadIndex = [Int]()
+    
+    var currentFunction : Int = 0
     
     var outputs = [String]()
     
     var semanticTypeCheck = semanticCube()
     
-    init(quadruples : [Quadruple], globalMemory : Memory, localMemory : Memory, constantMemory : Memory, temporalMemory : Memory, localTemporalMemory : Memory, dirFunc : [Function]) {
+    var localMemoryStack = [Memory]()
+    var localTemporalMemoryStack = [Memory]()
+    var currentFunctionAddress = [Int]()
+    
+    init(quadruples : [Quadruple], globalMemory : Memory, localMemory : Memory, constantMemory : Memory, temporalMemory : Memory, localTemporalMemory : Memory, functions : [Function]) {
         self.quadruples = quadruples
         self.globalMemory = globalMemory
         self.localMemory = localMemory
         self.constantMemory = constantMemory
         self.temporalMemory = temporalMemory
         self.localTemporalMemory = localTemporalMemory
-        self.dirFunc = dirFunc
+        self.functions = functions
+        
+        localMemoryStack.insert(localMemory, at: 0)
+        localTemporalMemoryStack.insert(localTemporalMemory, at: 0)
     }
     
     // Function to clean all memories but constant
@@ -47,8 +56,10 @@ class VirtualMachine {
     
     // Function to clean temporalMemory
     func cleanLocalMemory() {
-        self.localMemory.cleanMemory()
-        self.localTemporalMemory.cleanMemory()
+        self.localMemoryStack.removeFirst()
+        self.localTemporalMemoryStack.removeFirst()
+//        self.localMemory.cleanMemory()
+//        self.localTemporalMemory.cleanMemory()
     }
     
     func getAddressArray(auxString: String) -> Int{
@@ -796,31 +807,35 @@ class VirtualMachine {
     }
     
     func era(function : String) {
-//        var currentFunction : Function
-//        
-//        for funct in dirFunc {
-//            if function == funct.name {
-//                currentFunction = funct
-//            }
-//        }
+        for funct in functions {
+            if funct.name == function {
+                currentFunction = funct.address
+            }
+        }
+        
+//        localMemoryStack.insert(localMemoryStack.last!, at: 0)
+//        localTemporalMemoryStack.insert(localTemporalMemoryStack.last!, at: 0)
+       
+//
+
     }
     
     func param(paramAddress : Int, paramPosition : String) {
-//        let param = Int(String(paramPosition.last!))
         
         let(paramValue, paramType) = getMemory(address: paramAddress).getValue(address: paramAddress)
         
-//        params[param!] = paramAddress
+        localMemoryStack.insert(Memory.init(baseAddress: 6000), at: 0)
+        localTemporalMemoryStack.insert(Memory.init(baseAddress: 24000), at: 0)
         
         switch paramType {
         case Type.number:
-            localMemory.saveNumber(address: localMemory.getNumberAddress(spaces: 1), value: paramValue as! Int)
+            localMemoryStack.first!.saveNumber(address: localMemoryStack.first!.getNumberAddress(spaces: 1), value: paramValue as! Int)
         case Type.decimal:
-            localMemory.saveDecimal(address: localMemory.getDecimalAddress(spaces: 1), value: paramValue as! Float)
+            localMemoryStack.first!.saveDecimal(address: localMemoryStack.first!.getDecimalAddress(spaces: 1), value: paramValue as! Float)
         case Type.bool:
-            localMemory.saveBool(address: localMemory.getBoolAddress(spaces: 1), value: paramValue as! Bool)
+            localMemoryStack.first!.saveBool(address: localMemoryStack.first!.getBoolAddress(spaces: 1), value: paramValue as! Bool)
         case Type.sentence:
-            localMemory.saveSentence(address: localMemory.getSentenceAddress(spaces: 1), value: paramValue as! String)
+            localMemoryStack.first!.saveSentence(address: localMemoryStack.first!.getSentenceAddress(spaces: 1), value: paramValue as! String)
         default:
             break
         }
@@ -828,7 +843,7 @@ class VirtualMachine {
     
     func gosub(functionIndex : Int) {
         // Save current IP
-        subQuadIndex = quadIndex
+        subQuadIndex.insert(quadIndex, at: 0)
         
         // Update IP with the start of the function
         quadIndex = functionIndex - 1
@@ -839,26 +854,32 @@ class VirtualMachine {
         cleanLocalMemory()
         
         // Update IP with next line of sub
-        quadIndex = subQuadIndex + 1
+        quadIndex = subQuadIndex.first! + 1
+        subQuadIndex.removeFirst()
     }
     
     func ret(returnValueAddress : Int) {
+       
         let (returnValueVal, returnValueType) = getMemory(address: returnValueAddress).getValue(address: returnValueAddress)
         
         switch returnValueType {
         case Type.number:
-            globalMemory.saveNumber(address: globalMemory.getLastNumberAddress(spaces: 1), value: returnValueVal as! Int)
+            globalMemory.saveNumber(address: currentFunction, value: returnValueVal as! Int)
         case Type.decimal:
-            globalMemory.saveDecimal(address: globalMemory.getLastDecimalAddress(spaces: 1), value: returnValueVal as! Float)
+            globalMemory.saveDecimal(address: currentFunction, value: returnValueVal as! Float)
         case Type.bool:
-            globalMemory.saveBool(address: globalMemory.getLastBoolAddress(spaces: 1), value: returnValueVal as! Bool)
+            globalMemory.saveBool(address: currentFunction, value: returnValueVal as! Bool)
         case Type.sentence:
-            globalMemory.saveSentence(address: globalMemory.getLastSentenceAddress(spaces: 1), value: returnValueVal as! String)
+            globalMemory.saveSentence(address: currentFunction, value: returnValueVal as! String)
         default:
             break
         }
         
-        quadIndex = subQuadIndex + 1
+        quadIndex = subQuadIndex.first!
+        subQuadIndex.removeFirst()
+        localMemoryStack.removeFirst()
+        localTemporalMemoryStack.removeFirst()
+        
     }
     
     func show(resultAddress : Int) {
@@ -1043,13 +1064,13 @@ class VirtualMachine {
         case _ where address < 6000:
             return self.globalMemory
         case _ where address < 12000:
-            return self.localMemory
+            return self.localMemoryStack.first!
         case _ where address < 18000:
             return self.constantMemory
         case _ where address < 24000:
             return self.temporalMemory
         default:
-            return self.localTemporalMemory
+            return self.localTemporalMemoryStack.first!
         }
     }
 }
