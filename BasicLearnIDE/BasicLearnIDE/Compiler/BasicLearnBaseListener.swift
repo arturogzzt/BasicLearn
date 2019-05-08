@@ -43,6 +43,8 @@ open class BasicLearnBaseListener: BasicLearnListener {
     var paramTotal = 0
     //Variable para saber que memoria temporal utilizar
     var currentMemory : Memory = Memory.init(baseAddress: 0)
+    
+    var functions = [Function]()
 
     
     var outputs = [String]()
@@ -122,7 +124,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
         
         
         // Testing vm
-        let virtualMachine = VirtualMachine.init(quadruples: qQuad, globalMemory: globalMemory, localMemory: localMemory, constantMemory: constantMemory, temporalMemory: temporalMemory, localTemporalMemory : localTemporalMemory, dirFunc: dirFunc)
+        let virtualMachine = VirtualMachine.init(quadruples: qQuad, globalMemory: globalMemory, localMemory: localMemory, constantMemory: constantMemory, temporalMemory: temporalMemory, localTemporalMemory : localTemporalMemory, functions: functions)
 
         virtualMachine.executeProgram()
 
@@ -573,7 +575,9 @@ open class BasicLearnBaseListener: BasicLearnListener {
                 pTypes.insert(assignment.type, at: 0)
             } else {
                 print("Error: Esta variable no se encontro \(currentId)")
-                return }
+                return
+                
+            }
         }
     }
 
@@ -581,20 +585,31 @@ open class BasicLearnBaseListener: BasicLearnListener {
         
         if let result = ctx.ID(0)?.getText(){
             if POper.first == "=" {
-                let leftOperand = PilaO.first
-                let leftOperandType = pTypes.first
-                pTypes.removeFirst()
-                PilaO.removeFirst()
+                var leftOperand : String
+                var leftOperandType : Type
+
                 let op = POper.first
                 POper.removeFirst()
+                
+                if let functionCall = ctx.function_call()?.ID()?.getText() {
+                    leftOperandType = getFunction(id: functionCall)!.type
+                    leftOperand = String(getFunction(id: functionCall)!.address)
+                } else {
+                    leftOperand = PilaO.first!
+                    leftOperandType = pTypes.first!
+                    pTypes.removeFirst()
+                    PilaO.removeFirst()
+                 
+                }
                 
                 let resultVariableType = getVariable(id: result)!.type
                 let resultVariableAddress = getVariable(id: result)!.address
                 
-                _ = semanticTypeCheck.checkOperation(op: op!, operand1: leftOperandType!, operand2: resultVariableType)
+              
+                _ = semanticTypeCheck.checkOperation(op: op!, operand1: leftOperandType, operand2: resultVariableType)
                 
 //                qQuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: "---", result: result))
-                qQuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: "---", result: String(resultVariableAddress)))
+                qQuad.append(Quadruple.init(operand: op!, leftOp: leftOperand, rightOp: "---", result: String(resultVariableAddress)))
             }
         }
 
@@ -636,6 +651,20 @@ open class BasicLearnBaseListener: BasicLearnListener {
         
         let functionType = ctx.type()?.getText() ?? "Error"
         let functionName = ctx.ID()?.getText() ?? "Error"
+        var functionAddress = -1
+        
+        switch functionType {
+        case "number":
+            functionAddress = globalMemory.getNumberAddress(spaces: 1)
+        case "decimal":
+            functionAddress = globalMemory.getDecimalAddress(spaces: 1)
+        case "bool":
+            functionAddress = globalMemory.getBoolAddress(spaces: 1)
+        case "sentence" :
+            functionAddress = globalMemory.getSentenceAddress(spaces: 1)
+        default:
+            break
+        }
         
         for function in dirFunc {
             if functionName == function.name {
@@ -645,14 +674,14 @@ open class BasicLearnBaseListener: BasicLearnListener {
             }
         }
 
-        let function = Function.init(name: functionName, type: Type(type: functionType), address: 0, quadrupleNumber: qQuad.count)
+        let function = Function.init(name: functionName, type: Type(type: functionType), address: functionAddress, quadrupleNumber: qQuad.count)
         dirFunc.append(function)
 
 	}
 
 	open func exitFunction(_ ctx: BasicLearnParser.FunctionContext) {
         for function in dirFunc {
-            print("FUNCTION \(function.name) SCOPE: \(scope)")
+            print("FUNCTION \(function.name) SCOPE: \(scope) ADDRESS: \(function.address)")
             for variables in function.variables {
                 print("TYPE: \(variables.type) NAME: \(variables.name) ADDRESS: \(variables.address) PARAM:\(function.numParam) VARIABLES: \(function.numVariable)" )
             }
@@ -744,6 +773,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
         
         if bFunctionFound{
             let auxQuad = Quadruple.init(operand: "ERA", leftOp: "---", rightOp: "---", result: ctx.ID()!.getText())
+            functions.append(getFunction(id: ctx.ID()!.getText())!)
             qQuad.append(auxQuad)
             
         }else{
