@@ -45,6 +45,8 @@ open class BasicLearnBaseListener: BasicLearnListener {
     var currentMemory : Memory = Memory.init(baseAddress: 0)
     
     var functions = [Function]()
+    
+    var error = false
 
     
     var outputs = [String]()
@@ -110,6 +112,10 @@ open class BasicLearnBaseListener: BasicLearnListener {
     }
 
 	open func exitProgram(_ ctx: BasicLearnParser.ProgramContext) {
+        if error { return
+            
+        }
+        
         dirFunc.removeAll()
         
         var i = 0;
@@ -140,11 +146,13 @@ open class BasicLearnBaseListener: BasicLearnListener {
 	open func exitBody(_ ctx: BasicLearnParser.BodyContext) { }
 
 
-	open func enterExpression(_ ctx: BasicLearnParser.ExpressionContext) {
-
-    }
+	open func enterExpression(_ ctx: BasicLearnParser.ExpressionContext) { }
 
 	open func exitExpression(_ ctx: BasicLearnParser.ExpressionContext) {
+        
+        if error {
+            return
+        }
 
         //Para checar si viene de un If_Statement
         if ((ctx.parent as? BasicLearnParser.If_statementContext) != nil){
@@ -154,6 +162,8 @@ open class BasicLearnBaseListener: BasicLearnListener {
             pTypes.removeFirst()
             if exp_type != Type.bool {
                 print("Error Type Mismatch en IF")
+                outputs.append("Error Type Mismatch en IF")
+                error = true
             } else {
                 let result = PilaO.first
                 PilaO.removeFirst()
@@ -172,6 +182,8 @@ open class BasicLearnBaseListener: BasicLearnListener {
             pTypes.removeFirst()
             if (exp_type != Type.bool){
                 print("ERROR Type Mismatch en While_Statement")
+                error = true
+                outputs.append("ERROR Type Mismatch en While_Statement")
             } else {
                 let result = PilaO.first
                 PilaO.removeFirst()
@@ -198,9 +210,13 @@ open class BasicLearnBaseListener: BasicLearnListener {
                 paramCounter += 1
                 if paramCounter > paramTotal{
                     print("ERROR: Hay mas parametros que los declarados en funcion")
+                    error = true
+                    outputs.append("ERROR: Hay mas parametros que los declarados en funcion")
                 }
             } else {
                 print("TYPE MISMATCH IN FUNCTION CALL")
+                error = true
+                outputs.append("TYPE MISMATCH IN FUNCTION CALL")
             }
         }
         
@@ -218,6 +234,9 @@ open class BasicLearnBaseListener: BasicLearnListener {
 	open func enterExp(_ ctx: BasicLearnParser.ExpContext) { }
 
 	open func exitExp(_ ctx: BasicLearnParser.ExpContext) {
+        if error {
+            return
+        }
         
         if (POper.first == "<" || POper.first == ">" || POper.first == "<=" || POper.first == ">=" || POper.first == "equal" || POper.first == "notEqual") {
             let rightOperand = PilaO.first
@@ -261,7 +280,8 @@ open class BasicLearnBaseListener: BasicLearnListener {
                 
             } else {
                 print("ERROR TYPE MISMATCH")
-                // HANDLE ERROR CORRECTLY
+                error = true
+                outputs.append("ERROR TYPE MISMATCH")
             }
         }
 
@@ -300,6 +320,8 @@ open class BasicLearnBaseListener: BasicLearnListener {
             //Repeat necesita un number (INT) no un bool como los otros
             if(exp_type != Type.number){
                 print("Error Type Mismatch en Repeat Statement")
+                error = true
+                outputs.append("Error Type Mismatch en Repeat Statement")
             }else{
                 let result = PilaO.first
                 PilaO.removeFirst()
@@ -366,6 +388,8 @@ open class BasicLearnBaseListener: BasicLearnListener {
                     }
                 } else {
                     print("Error: Esta variable no se encontro \(currentId)")
+                    error = true
+                    outputs.append("Error: Esta variable no se encontro \(currentId)")
                     return }
             }
         }
@@ -387,6 +411,8 @@ open class BasicLearnBaseListener: BasicLearnListener {
                     }
                 } else {
                     print("Error: Esta variable no se encontro \(currentId)")
+                    error = true
+                    outputs.append("Error: Esta variable no se encontro \(currentId)")
                     return }
             }
         }
@@ -396,6 +422,9 @@ open class BasicLearnBaseListener: BasicLearnListener {
 	open func enterTerm(_ ctx: BasicLearnParser.TermContext) { }
 
 	open func exitTerm(_ ctx: BasicLearnParser.TermContext) {
+        if error {
+            return
+        }
         
         if POper.first == "+" || POper.first == "-" {
             let rightOperand = PilaO.first
@@ -439,7 +468,8 @@ open class BasicLearnBaseListener: BasicLearnListener {
                 
             } else {
                 print("ERROR TYPE MISMATCH")
-                // HANDLE ERROR CORRECTLY
+                error = true
+                outputs.append("ERROR TYPE MISMATCH")
             }
         }
 
@@ -456,6 +486,10 @@ open class BasicLearnBaseListener: BasicLearnListener {
 
 
 	open func enterFactor(_ ctx: BasicLearnParser.FactorContext) {
+        if error {
+            return
+        }
+        
         if let currentId = ctx.ID()?.getText() {
             
             
@@ -463,6 +497,8 @@ open class BasicLearnBaseListener: BasicLearnListener {
             //Checa que la variable si exista
             guard let operand = getVariable(id: currentId) else {
                 print("Error: Esta variable no se encontro \(currentId)")
+                error = true
+                outputs.append("Error: Esta variable no se encontro \(currentId)")
                 return }
             
             PilaO.insert((String(operand.address)), at: 0)
@@ -523,6 +559,10 @@ open class BasicLearnBaseListener: BasicLearnListener {
     }
 
 	open func exitFactor(_ ctx: BasicLearnParser.FactorContext) {
+        if error {
+            return
+        }
+        
         if POper.first == "*" || POper.first == "/" {
             
             let rightOperand = PilaO.first
@@ -541,10 +581,6 @@ open class BasicLearnBaseListener: BasicLearnListener {
             if resultType != Type.error {
                 
                 var result: Int!
-                
-//                if scope == "LOCAL" {
-//                    currentMemory = localTemporalMemory
-//                }
                 
                 switch resultType {
                 case Type.number:
@@ -571,7 +607,8 @@ open class BasicLearnBaseListener: BasicLearnListener {
                 
             } else {
                 print("ERROR TYPE MISMATCH")
-                // HANDLE ERROR CORRECTLY
+                error = true
+                outputs.append("ERROR TYPE MISMATCH")
             }
         }
         
@@ -589,6 +626,9 @@ open class BasicLearnBaseListener: BasicLearnListener {
 
 
 	open func enterAssignment(_ ctx: BasicLearnParser.AssignmentContext) {
+        if error {
+            return
+        }
 
         if let assign = ctx.ASSIGN()?.getText(){
             POper.insert(assign, at: 0)
@@ -597,8 +637,12 @@ open class BasicLearnBaseListener: BasicLearnListener {
             if let assignment = getVariable(id: currentId){
                 if !assignment.dimensionated && ctx.LEFTBRACKET() != nil{
                     print("Error, se intenta asignar dimension a variable que no es dimensionada")
+                    error = true
+                    outputs.append("Error, se intenta asignar dimension a variable que no es dimensionada")
                 }else if assignment.dimensionated && ctx.LEFTBRACKET() == nil{
                     print("Error, no se especifica que casilla")
+                    error = true
+                    outputs.append("Error, no se especifica que casilla")
                     
                 }else if (!assignment.dimensionated){
                     PilaO.insert(String(assignment.address), at: 0)
@@ -608,6 +652,8 @@ open class BasicLearnBaseListener: BasicLearnListener {
 
             } else {
                 print("Error: Esta variable no se encontro \(currentId)")
+                error = true
+                outputs.append("Error: Esta variable no se encontro \(currentId)")
                 return
                 
             }
@@ -615,6 +661,10 @@ open class BasicLearnBaseListener: BasicLearnListener {
     }
 
 	open func exitAssignment(_ ctx: BasicLearnParser.AssignmentContext) {
+        if error {
+            return
+        }
+        
         if ctx.LEFTBRACKET() != nil {
             if let result = ctx.ID()?.getText(){
                 if POper.first == "=" {
@@ -630,7 +680,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
                     let resultVariableType = getVariable(id: result)!.type
 //                    let resultVariableAddress = getVariable(id: result)!.address
                     
-                    let check = semanticTypeCheck.checkOperation(op: op!, operand1: leftOperandType!, operand2: resultVariableType)
+                    _ = semanticTypeCheck.checkOperation(op: op!, operand1: leftOperandType!, operand2: resultVariableType)
                     
                     //                qQuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: "---", result: result))
                     qQuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: "---", result: String(resultVariableAddress!)))
@@ -672,6 +722,9 @@ open class BasicLearnBaseListener: BasicLearnListener {
 
 
 	open func enterBlock(_ ctx: BasicLearnParser.BlockContext) {
+        if error {
+            return
+        }
         if let parent = ctx.parent as? BasicLearnParser.If_statementContext{
             if parent.getText().contains("else") && parent.block(1)! == ctx.self{ //Else que se asegura que entre al segundo bloque del else
                 let AuxQuad = Quadruple.init(operand: "GOTO", leftOp: "---", rightOp: "---", result: "PENDING")
@@ -694,12 +747,13 @@ open class BasicLearnBaseListener: BasicLearnListener {
 
 	open func enterStatement(_ ctx: BasicLearnParser.StatementContext) { }
 
-	open func exitStatement(_ ctx: BasicLearnParser.StatementContext) {
-
-    }
+	open func exitStatement(_ ctx: BasicLearnParser.StatementContext) { }
 
 
 	open func enterFunction(_ ctx: BasicLearnParser.FunctionContext) {
+        if error {
+            return
+        }
         scope = "LOCAL"
         currentMemory = localTemporalMemory
         
@@ -722,8 +776,9 @@ open class BasicLearnBaseListener: BasicLearnListener {
         
         for function in dirFunc {
             if functionName == function.name {
-                // TODO: handle error appropriately STOP COMPILATION && POP UP notif
                 print("Error, multiple declaration")
+                error = true
+                outputs.append("Error, multiple declaration")
                 return
             }
         }
@@ -734,6 +789,10 @@ open class BasicLearnBaseListener: BasicLearnListener {
 	}
 
 	open func exitFunction(_ ctx: BasicLearnParser.FunctionContext) {
+        if error {
+            return
+        }
+        
         for function in dirFunc {
             print("FUNCTION \(function.name) SCOPE: \(scope) ADDRESS: \(function.address)")
             for variables in function.variables {
@@ -753,6 +812,10 @@ open class BasicLearnBaseListener: BasicLearnListener {
 
 
 	open func enterDeclaration(_ ctx: BasicLearnParser.DeclarationContext) {
+        if error {
+            return
+        }
+        
         var iCounter = 0
         
         for newVariable in ctx.ID() {
@@ -765,21 +828,23 @@ open class BasicLearnBaseListener: BasicLearnListener {
             for param in parameterVerification {
                 if newVariable.description == param {
                     print("Error, multiple declaration")
+                    error = true
+                    outputs.append("Error, multiple declaration")
                     return
-                    // Handle error appropriately STOP COMPILATION && POP UP notif
                 }
             }
             
             for variable in dirFunc.last!.variables {
                 if variable.name == newVariable.description {
                     print("Error, multiple declaration")
+                    error = true
+                    print("Error, multiple declaration")
                     return
-                    // Handle error appropriately STOP COMPILATION && POP UP notif
                 }
             }
             for leftBracket in ctx.LEFTBRACKET(){
                 if((newVariable.getSymbol()?.getTokenIndex())!+1 == leftBracket.getSymbol()?.getTokenIndex()){
-                    print("HAY BRACKET ALV")
+                    
                     print(newVariable)
                     let limSup = Int((ctx.CTE_I(iCounter)?.getText())!)!
                     dimension = dimensionDescription.init(superior: limSup)
@@ -838,12 +903,13 @@ open class BasicLearnBaseListener: BasicLearnListener {
         dirFunc.last?.inserNumVariable(num: auxCountVariables! - auxNumParam!)
     }
 
-    open func exitDeclaration(_ ctx: BasicLearnParser.DeclarationContext) {
-        
-    }
+    open func exitDeclaration(_ ctx: BasicLearnParser.DeclarationContext) { }
 
 
 	open func enterFunction_call(_ ctx: BasicLearnParser.Function_callContext) {
+        if error {
+            return
+        }
         var bFunctionFound = false
         for function in dirFunc {
             if function.name == ctx.ID()!.getText(){
@@ -858,7 +924,9 @@ open class BasicLearnBaseListener: BasicLearnListener {
             qQuad.append(auxQuad)
             
         }else{
-             print("No se encontro la función \(ctx.ID()!.getText())")
+            print("No se encontro la función \(ctx.ID()!.getText())")
+            error = true
+            outputs.append("No se encontro la función \(ctx.ID()!.getText())")
         }
     }
 
@@ -882,6 +950,9 @@ open class BasicLearnBaseListener: BasicLearnListener {
 
 
 	open func enterParameters(_ ctx: BasicLearnParser.ParametersContext) {
+        if error {
+            return
+        }
 //        var paramAddress : Int!
         var parameterNames = [String]() // Arreglo auxiliar para guardar los nombres de los parametros
         
@@ -889,6 +960,8 @@ open class BasicLearnBaseListener: BasicLearnListener {
             for param in parameterVerification {
                 if parameter.getText() == param {
                     print("Error, multiple declaration")
+                    error = true
+                    outputs.append("Error, multiple declaration")
                     return
                 }
             }
@@ -931,11 +1004,12 @@ open class BasicLearnBaseListener: BasicLearnListener {
     }
 
 
-	open func enterIf_statement(_ ctx: BasicLearnParser.If_statementContext) {
-
-    }
+	open func enterIf_statement(_ ctx: BasicLearnParser.If_statementContext) { }
 
 	open func exitIf_statement(_ ctx: BasicLearnParser.If_statementContext) {
+        if error {
+            return
+        }
 
         let end = saltos.first
         saltos.removeFirst()
@@ -944,11 +1018,17 @@ open class BasicLearnBaseListener: BasicLearnListener {
 
 
 	open func enterRepeat_statement(_ ctx: BasicLearnParser.Repeat_statementContext) {
+        if error {
+            return
+        }
         //Se le pone el + 1 debido al cuadruplo de asignación de contador que se crea en exitExp
         saltos.insert(qQuad.count + 1, at: 0)
     }
 
 	open func exitRepeat_statement(_ ctx: BasicLearnParser.Repeat_statementContext) {
+        if error {
+            return
+        }
         print(repeatStatementAddresses)
         let end = saltos.first
         saltos.removeFirst()
@@ -978,10 +1058,16 @@ open class BasicLearnBaseListener: BasicLearnListener {
 
 
 	open func enterWhile_statement(_ ctx: BasicLearnParser.While_statementContext) {
+        if error {
+            return
+        }
         saltos.insert(qQuad.count, at: 0)
     }
 
 	open func exitWhile_statement(_ ctx: BasicLearnParser.While_statementContext) {
+        if error {
+            return
+        }
         let end = saltos.first
         saltos.removeFirst()
         let returnJump = saltos.first
@@ -1006,6 +1092,9 @@ open class BasicLearnBaseListener: BasicLearnListener {
 	open func enterPythagoras(_ ctx: BasicLearnParser.PythagorasContext) { }
 
 	open func exitPythagoras(_ ctx: BasicLearnParser.PythagorasContext) {
+        if error {
+            return
+        }
         let operation = ctx.getChild(0)?.toStringTree()
         let operatorVm = operation!.uppercased()
         
@@ -1035,7 +1124,8 @@ open class BasicLearnBaseListener: BasicLearnListener {
             
         } else {
             print("ERROR TYPE MISMATCH")
-            // HANDLE ERROR CORRECTLY
+            error = true
+            outputs.append("ERROR TYPE MISMATCH")
         }
     }
 
@@ -1053,6 +1143,9 @@ open class BasicLearnBaseListener: BasicLearnListener {
 	open func enterPerimeter_tri(_ ctx: BasicLearnParser.Perimeter_triContext) { }
 
 	open func exitPerimeter_tri(_ ctx: BasicLearnParser.Perimeter_triContext) {
+        if error {
+            return
+        }
         let rightOperand = PilaO.first!
         let rightOperandType = pTypes.first!
         pTypes.removeFirst()
@@ -1089,7 +1182,8 @@ open class BasicLearnBaseListener: BasicLearnListener {
             
         } else {
             print("ERROR TYPE MISMATCH")
-            // HANDLE ERROR CORRECTLY
+            error = true
+            outputs.append("ERROR TYPE MISMATCH")
         }
         
         
@@ -1130,7 +1224,8 @@ open class BasicLearnBaseListener: BasicLearnListener {
             
         } else {
             print("ERROR TYPE MISMATCH")
-            // HANDLE ERROR CORRECTLY
+            error = true
+            outputs.append("ERROR TYPE MISMATCH")
         }
     }
 
@@ -1138,6 +1233,9 @@ open class BasicLearnBaseListener: BasicLearnListener {
 	open func enterSquare_root_absolute(_ ctx: BasicLearnParser.Square_root_absoluteContext) { }
 
 	open func exitSquare_root_absolute(_ ctx: BasicLearnParser.Square_root_absoluteContext) {
+        if error {
+            return
+        }
         let operation = ctx.getChild(0)?.toStringTree()
         
         let operatorVm = operation!.uppercased()
@@ -1150,13 +1248,6 @@ open class BasicLearnBaseListener: BasicLearnListener {
         
         if resultType != Type.error {
             var result : Int!
-            
-       
-//            if resultType == Type.number {
-//                result = currentMemory.getNumberAddress(spaces: 1)
-//            } else {
-//                result = currentMemory.getDecimalAddress(spaces: 1)
-//            }
             
             result = currentMemory.getDecimalAddress(spaces: 1)
             
@@ -1173,6 +1264,9 @@ open class BasicLearnBaseListener: BasicLearnListener {
 	open func enterArea_tri(_ ctx: BasicLearnParser.Area_triContext) { }
 
 	open func exitArea_tri(_ ctx: BasicLearnParser.Area_triContext) {
+        if error {
+            return
+        }
         let rightOperand = PilaO.first!
         let rightOperandType = pTypes.first
         pTypes.removeFirst()
@@ -1210,7 +1304,8 @@ open class BasicLearnBaseListener: BasicLearnListener {
 
         } else {
             print("ERROR TYPE MISMATCH")
-            // HANDLE ERROR CORRECTLY
+            error = true
+            outputs.append("ERROR TYPE MISMATCH")
     }
 }
 
@@ -1218,6 +1313,9 @@ open class BasicLearnBaseListener: BasicLearnListener {
 	open func enterSquare(_ ctx: BasicLearnParser.SquareContext) { }
 
 	open func exitSquare(_ ctx: BasicLearnParser.SquareContext) {
+        if error {
+            return
+        }
         let operation = ctx.getChild(0)?.toStringTree()
         
         let operatorVm = operation!.uppercased()
@@ -1259,7 +1357,8 @@ open class BasicLearnBaseListener: BasicLearnListener {
             
         } else {
             print("ERROR TYPE MISMATCH")
-            // HANDLE ERROR CORRECTLY
+            error = true
+            outputs.append("ERROR TYPE MISMATCH")
         }
     }
 
