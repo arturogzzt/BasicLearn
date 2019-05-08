@@ -130,7 +130,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
         
         
         // Testing vm
-        let virtualMachine = VirtualMachine.init(quadruples: qQuad, globalMemory: globalMemory, localMemory: localMemory, constantMemory: constantMemory, temporalMemory: temporalMemory, localTemporalMemory : localTemporalMemory, functions: functions)
+        let virtualMachine = VirtualMachine.init(quadruples: qQuad, globalMemory: globalMemory, constantMemory: constantMemory, temporalMemory: temporalMemory, functions: functions)
 
         virtualMachine.executeProgram()
 
