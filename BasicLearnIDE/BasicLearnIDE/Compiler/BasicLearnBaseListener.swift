@@ -207,7 +207,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
             let result = PilaO.first
             PilaO.removeFirst()
             pTypes.removeFirst()
-            let auxQuad = Quadruple.init(operand: "SHOW", leftOp: "___", rightOp: "___", result: result!)
+            let auxQuad = Quadruple.init(operand: "SHOW", leftOp: "---", rightOp: "---", result: result!)
             qQuad.append(auxQuad)
         }
     }
@@ -1009,7 +1009,15 @@ open class BasicLearnBaseListener: BasicLearnListener {
 
 	open func enterSpecial_function(_ ctx: BasicLearnParser.Special_functionContext) { }
 
-	open func exitSpecial_function(_ ctx: BasicLearnParser.Special_functionContext) { }
+	open func exitSpecial_function(_ ctx: BasicLearnParser.Special_functionContext) {
+        if (ctx.parent as? BasicLearnParser.ShowContext) != nil {
+            let result = PilaO.first
+            PilaO.removeFirst()
+            pTypes.removeFirst()
+            let auxQuad = Quadruple.init(operand: "SHOW", leftOp: "---", rightOp: "---", result: result!)
+            qQuad.append(auxQuad)
+        }
+    }
 
 
 	open func enterShow(_ ctx: BasicLearnParser.ShowContext) { }
@@ -1095,12 +1103,16 @@ open class BasicLearnBaseListener: BasicLearnListener {
             switch array.type {
             case Type.number:
                 result = currentMemory.getNumberAddress(spaces: 1)
+                pTypes.insert(Type.number, at: 0)
             case Type.decimal:
                 result = currentMemory.getDecimalAddress(spaces: 1)
+                pTypes.insert(Type.decimal, at: 0)
             case Type.bool:
                 result = currentMemory.getBoolAddress(spaces: 1)
+                pTypes.insert(Type.bool, at: 0)
             case Type.sentence:
                 result = currentMemory.getSentenceAddress(spaces: 1)
+                pTypes.insert(Type.sentence, at: 0)
             default:
                 print("ERROR: No tiene type en List Functions")
                 break
@@ -1110,6 +1122,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
                 case "first_l":
                     let auxQuad = Quadruple.init(operand: "FIRST_L", leftOp: String(array.address), rightOp: "---", result: String(result))
                     qQuad.append(auxQuad)
+                    PilaO.insert(String(result), at: 0)
                 case "last_l":
                     let auxQuad = Quadruple.init(operand: "LAST_L", leftOp: String(array.address), rightOp: "---", result: String(result))
                     qQuad.append(auxQuad)
