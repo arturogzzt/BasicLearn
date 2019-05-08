@@ -215,9 +215,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
     }
 
 
-	open func enterExp(_ ctx: BasicLearnParser.ExpContext) {
-
-    }
+	open func enterExp(_ ctx: BasicLearnParser.ExpContext) { }
 
 	open func exitExp(_ ctx: BasicLearnParser.ExpContext) {
         
@@ -351,26 +349,51 @@ open class BasicLearnBaseListener: BasicLearnListener {
             }
         }
         
-//        if let parent = ctx.parent as? BasicLearnParser.StatementContext {
-//            if parent.RETURN() != nil {
-//                let result = PilaO.first
-//                PilaO.removeFirst()
-//                let type = pTypes.first
-//                pTypes.removeFirst()
-//                //TYPE CHECK ON RETURN FALTA
-//
-//                let auxQuad = Quadruple.init(operand: "RET", leftOp: "---", rightOp: "---", result: String(result!))
-//                qQuad.append(auxQuad)
-//            }
-//        }
-
+        if let parent = ctx.parent as? BasicLearnParser.AssignmentContext{
+            if let currentId = parent.ID()?.getText(){
+                if let assignment = getVariable(id: currentId){
+                    if(assignment.dimensionated && parent.LEFTBRACKET() != nil){
+                        let result = temporalMemory.getNumberAddress(spaces: 1)
+                        var auxQuad = Quadruple.init(operand: "VER", leftOp: PilaO.first!, rightOp: "1", result: String(assignment.descriptionDim[0].limSup))
+                        qCuad.append(auxQuad)
+                        auxQuad = Quadruple.init(operand: "+", leftOp: PilaO.first!, rightOp: "-1", result: String(result))
+                        qCuad.append(auxQuad)
+                        PilaO.removeFirst()
+                        let result1 = String(temporalMemory.getNumberAddress(spaces: 1))
+                        auxQuad = Quadruple.init(operand: "+", leftOp: String(result), rightOp: String(assignment.address), result: "("+result1+")")
+                        qCuad.append(auxQuad)
+                        PilaO.insert("("+result1+")", at: 0)
+                    }
+                } else {
+                    print("Error: Esta variable no se encontro \(currentId)")
+                    return }
+            }
+        }
+        
+        if let parent = ctx.parent as? BasicLearnParser.FactorContext{
+            if let currentId = parent.ID()?.getText(){
+                if let assignment = getVariable(id: currentId){
+                    if(assignment.dimensionated && parent.LEFTBRACKET() != nil){
+                        let result = temporalMemory.getNumberAddress(spaces: 1)
+                        var auxQuad = Quadruple.init(operand: "VER", leftOp: PilaO.first!, rightOp: "1", result: String(assignment.descriptionDim[0].limSup))
+                        qCuad.append(auxQuad)
+                        auxQuad = Quadruple.init(operand: "+", leftOp: PilaO.first!, rightOp: "-1", result: String(result))
+                        qCuad.append(auxQuad)
+                        PilaO.removeFirst()
+                        let result1 = String(temporalMemory.getNumberAddress(spaces: 1))
+                        auxQuad = Quadruple.init(operand: "+", leftOp: String(result), rightOp: String(assignment.address), result: "("+result1+")")
+                        qCuad.append(auxQuad)
+                        PilaO.insert("("+result1+")", at: 0)
+                    }
+                } else {
+                    print("Error: Esta variable no se encontro \(currentId)")
+                    return }
+            }
+        }
     }
 
 
-	open func enterTerm(_ ctx: BasicLearnParser.TermContext) {
-
-
-    }
+	open func enterTerm(_ ctx: BasicLearnParser.TermContext) { }
 
 	open func exitTerm(_ ctx: BasicLearnParser.TermContext) {
         
@@ -566,13 +589,23 @@ open class BasicLearnBaseListener: BasicLearnListener {
 
 
 	open func enterAssignment(_ ctx: BasicLearnParser.AssignmentContext) {
+
         if let assign = ctx.ASSIGN()?.getText(){
             POper.insert(assign, at: 0)
         }
-        if let currentId = ctx.ID(0)?.getText(){
+        if let currentId = ctx.ID()?.getText(){
             if let assignment = getVariable(id: currentId){
-                PilaO.insert(String(assignment.address), at: 0)
-                pTypes.insert(assignment.type, at: 0)
+                if !assignment.dimensionated && ctx.LEFTBRACKET() != nil{
+                    print("Error, se intenta asignar dimension a variable que no es dimensionada")
+                }else if assignment.dimensionated && ctx.LEFTBRACKET() == nil{
+                    print("Error, no se especifica que casilla")
+                    
+                }else if (!assignment.dimensionated){
+                    PilaO.insert(String(assignment.address), at: 0)
+                    pTypes.insert(assignment.type, at: 0)
+                    print("Current ID: \(currentId) Address:\(assignment.address)" )
+                }
+
             } else {
                 print("Error: Esta variable no se encontro \(currentId)")
                 return
@@ -582,9 +615,30 @@ open class BasicLearnBaseListener: BasicLearnListener {
     }
 
 	open func exitAssignment(_ ctx: BasicLearnParser.AssignmentContext) {
-        
-        if let result = ctx.ID(0)?.getText(){
-            if POper.first == "=" {
+        if ctx.LEFTBRACKET() != nil {
+            if let result = ctx.ID()?.getText(){
+                if POper.first == "=" {
+                    let leftOperand = PilaO.first
+                    let leftOperandType = pTypes.first
+                    pTypes.removeFirst()
+                    PilaO.removeFirst()
+                    let op = POper.first
+                    POper.removeFirst()
+                    let resultVariableAddress = PilaO.first
+                    PilaO.removeFirst()
+                    
+                    let resultVariableType = getVariable(id: result)!.type
+//                    let resultVariableAddress = getVariable(id: result)!.address
+                    
+                    let check = semanticTypeCheck.checkOperation(op: op!, operand1: leftOperandType!, operand2: resultVariableType)
+                    
+                    //                qCuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: "---", result: result))
+                    qCuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: "---", result: String(resultVariableAddress!)))
+                }
+            }
+        }else {
+            if let result = ctx.ID()?.getText(){
+                if POper.first == "=" {
                 var leftOperand : String
                 var leftOperandType : Type
 
@@ -610,9 +664,9 @@ open class BasicLearnBaseListener: BasicLearnListener {
                 
 //                qQuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: "---", result: result))
                 qQuad.append(Quadruple.init(operand: op!, leftOp: leftOperand, rightOp: "---", result: String(resultVariableAddress)))
+                }
             }
         }
-
 
     }
 
@@ -699,8 +753,13 @@ open class BasicLearnBaseListener: BasicLearnListener {
 
 
 	open func enterDeclaration(_ ctx: BasicLearnParser.DeclarationContext) {
+        var iCounter = 0
         
         for newVariable in ctx.ID() {
+            
+            var dimensioned = false
+            var spacesNeeded = 1
+            var dimension : dimensionDescription!
             let newVariableType = ctx.type()?.getText()
             
             for param in parameterVerification {
@@ -718,39 +777,59 @@ open class BasicLearnBaseListener: BasicLearnListener {
                     // Handle error appropriately STOP COMPILATION && POP UP notif
                 }
             }
+            for leftBracket in ctx.LEFTBRACKET(){
+                if((newVariable.getSymbol()?.getTokenIndex())!+1 == leftBracket.getSymbol()?.getTokenIndex()){
+                    print("HAY BRACKET ALV")
+                    print(newVariable)
+                    let limSup = Int((ctx.CTE_I(iCounter)?.getText())!)!
+                    dimension = dimensionDescription.init(superior: limSup)
+                    print(dimension.R)
+                    iCounter += 1
+                    dimensioned = true
+                }
+            }
+            
+            if(dimensioned){
+                spacesNeeded = dimension.R
+            }
             
             var memoryAddressVariable: Int! //Aqui se graba donde quedara el valor de dicha variable
             
             switch newVariableType {
             case "number":
                 if(scope == "GLOBAL"){
-                    memoryAddressVariable = globalMemory.getNumberAddress(spaces: 1)
+                    memoryAddressVariable = globalMemory.getNumberAddress(spaces: spacesNeeded)
                 }else{
-                    memoryAddressVariable = localMemory.getNumberAddress(spaces: 1)
+                    memoryAddressVariable = localMemory.getNumberAddress(spaces: spacesNeeded)
                 }
             case "sentence":
                 if(scope == "GLOBAL"){
-                    memoryAddressVariable = globalMemory.getSentenceAddress(spaces: 1)
+                    memoryAddressVariable = globalMemory.getSentenceAddress(spaces: spacesNeeded)
                 }else{
-                    memoryAddressVariable = localMemory.getSentenceAddress(spaces: 1)
+                    memoryAddressVariable = localMemory.getSentenceAddress(spaces: spacesNeeded)
                 }
             case "bool":
                 if(scope == "GLOBAL"){
-                    memoryAddressVariable = globalMemory.getBoolAddress(spaces: 1)
+                    memoryAddressVariable = globalMemory.getBoolAddress(spaces: spacesNeeded)
                 }else{
-                    memoryAddressVariable = localMemory.getBoolAddress(spaces: 1)
+                    memoryAddressVariable = localMemory.getBoolAddress(spaces: spacesNeeded)
                 }
             case "decimal":
                 if(scope == "GLOBAL"){
-                    memoryAddressVariable = globalMemory.getDecimalAddress(spaces: 1)
+                    memoryAddressVariable = globalMemory.getDecimalAddress(spaces: spacesNeeded)
                 }else{
-                    memoryAddressVariable = localMemory.getDecimalAddress(spaces: 1)
+                    memoryAddressVariable = localMemory.getDecimalAddress(spaces: spacesNeeded)
                 }
              default:
                 break
                 
             }
             let auxVariable = Variable.init(name: newVariable.description, type: Type(type: newVariableType!), address: memoryAddressVariable)
+            
+            if dimensioned {
+                auxVariable.isDimentioned()
+                auxVariable.descriptionDim.append(dimension)
+            }
             
             dirFunc.last?.variables.append(auxVariable)
         }
@@ -759,7 +838,9 @@ open class BasicLearnBaseListener: BasicLearnListener {
         dirFunc.last?.inserNumVariable(num: auxCountVariables! - auxNumParam!)
     }
 
-    open func exitDeclaration(_ ctx: BasicLearnParser.DeclarationContext) { }
+    open func exitDeclaration(_ ctx: BasicLearnParser.DeclarationContext) {
+        
+    }
 
 
 	open func enterFunction_call(_ ctx: BasicLearnParser.Function_callContext) {
