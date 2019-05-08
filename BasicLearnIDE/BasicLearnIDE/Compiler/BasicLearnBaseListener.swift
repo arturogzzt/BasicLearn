@@ -397,7 +397,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
                 print(parent.getText())
                 let result = PilaO.first
                 PilaO.removeFirst()
-                let type = pTypes.first
+                _ = pTypes.first
                 pTypes.removeFirst()
                 //TYPE CHECK ON RETURN FALTA
 
