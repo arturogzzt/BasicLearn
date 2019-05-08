@@ -355,13 +355,13 @@ open class BasicLearnBaseListener: BasicLearnListener {
                     if(assignment.dimensionated && parent.LEFTBRACKET() != nil){
                         let result = temporalMemory.getNumberAddress(spaces: 1)
                         var auxQuad = Quadruple.init(operand: "VER", leftOp: PilaO.first!, rightOp: "1", result: String(assignment.descriptionDim[0].limSup))
-                        qCuad.append(auxQuad)
+                        qQuad.append(auxQuad)
                         auxQuad = Quadruple.init(operand: "+", leftOp: PilaO.first!, rightOp: "-1", result: String(result))
-                        qCuad.append(auxQuad)
+                        qQuad.append(auxQuad)
                         PilaO.removeFirst()
                         let result1 = String(temporalMemory.getNumberAddress(spaces: 1))
                         auxQuad = Quadruple.init(operand: "+", leftOp: String(result), rightOp: String(assignment.address), result: "("+result1+")")
-                        qCuad.append(auxQuad)
+                        qQuad.append(auxQuad)
                         PilaO.insert("("+result1+")", at: 0)
                     }
                 } else {
@@ -376,13 +376,13 @@ open class BasicLearnBaseListener: BasicLearnListener {
                     if(assignment.dimensionated && parent.LEFTBRACKET() != nil){
                         let result = temporalMemory.getNumberAddress(spaces: 1)
                         var auxQuad = Quadruple.init(operand: "VER", leftOp: PilaO.first!, rightOp: "1", result: String(assignment.descriptionDim[0].limSup))
-                        qCuad.append(auxQuad)
+                        qQuad.append(auxQuad)
                         auxQuad = Quadruple.init(operand: "+", leftOp: PilaO.first!, rightOp: "-1", result: String(result))
-                        qCuad.append(auxQuad)
+                        qQuad.append(auxQuad)
                         PilaO.removeFirst()
                         let result1 = String(temporalMemory.getNumberAddress(spaces: 1))
                         auxQuad = Quadruple.init(operand: "+", leftOp: String(result), rightOp: String(assignment.address), result: "("+result1+")")
-                        qCuad.append(auxQuad)
+                        qQuad.append(auxQuad)
                         PilaO.insert("("+result1+")", at: 0)
                     }
                 } else {
@@ -632,8 +632,8 @@ open class BasicLearnBaseListener: BasicLearnListener {
                     
                     let check = semanticTypeCheck.checkOperation(op: op!, operand1: leftOperandType!, operand2: resultVariableType)
                     
-                    //                qCuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: "---", result: result))
-                    qCuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: "---", result: String(resultVariableAddress!)))
+                    //                qQuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: "---", result: result))
+                    qQuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: "---", result: String(resultVariableAddress!)))
                 }
             }
         }else {
