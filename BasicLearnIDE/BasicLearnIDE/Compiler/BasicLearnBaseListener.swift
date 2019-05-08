@@ -216,7 +216,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
 	open func enterExp(_ ctx: BasicLearnParser.ExpContext) { }
 
 	open func exitExp(_ ctx: BasicLearnParser.ExpContext) {
-        
+
         if (POper.first == "<" || POper.first == ">" || POper.first == "<=" || POper.first == ">=" || POper.first == "equal" || POper.first == "notEqual") {
             let rightOperand = PilaO.first
             let rightOperandType = pTypes.first
@@ -288,6 +288,41 @@ open class BasicLearnBaseListener: BasicLearnListener {
 
         }
         
+        if let parent = ctx.parent as? BasicLearnParser.FactorContext{
+            if let currentId = parent.ID()?.getText(){
+                if let assignment = getVariable(id: currentId){
+                    if(assignment.dimensionated && parent.LEFTBRACKET() != nil){
+                        let result = temporalMemory.getNumberAddress(spaces: 1)
+                        var auxQuad = Quadruple.init(operand: "VER", leftOp: PilaO.first!, rightOp: "1", result: String(assignment.descriptionDim[0].limSup))
+                        qQuad.append(auxQuad)
+                        
+                        let constantAddress = constantMemory.getNumberAddress(spaces: 1)
+                        constTable.append(Variable.init(name: "-1", type: Type.number, address: constantAddress))
+                        constantMemory.saveNumberConstant(value: -1, address: constantAddress)
+                        
+                        auxQuad = Quadruple.init(operand: "+", leftOp: PilaO.first!, rightOp: String(constantAddress), result: String(result))
+                        qQuad.append(auxQuad)
+                        PilaO.removeFirst()
+                        
+                        let dirBase = constantMemory.getNumberAddress(spaces: 1)
+                        constTable.append(Variable.init(name: String(assignment.address), type: Type.number, address: dirBase))
+                        constantMemory.saveNumberConstant(value: Int(assignment.address), address: dirBase)
+                        
+                        let result1 = String(temporalMemory.getNumberAddress(spaces: 1))
+                        auxQuad = Quadruple.init(operand: "+", leftOp: String(result), rightOp: String(dirBase), result: "("+result1+")")
+                        
+                        qQuad.append(auxQuad)
+                        PilaO.insert("("+result1+")", at: 0)
+                        
+                        if POper.first == "["{
+                            POper.removeFirst()
+                        }
+                    }
+                } else {
+                    print("Error: Esta variable no se encontro \(currentId)")
+                    return }
+            }
+        }
         //Para checar si viene de un repeat statement
         //REPEAT STATEMENT AQUI, NO EN EXPRESSION
         if ((ctx.parent as? BasicLearnParser.Repeat_statementContext) != nil) {
@@ -353,13 +388,22 @@ open class BasicLearnBaseListener: BasicLearnListener {
                     if(assignment.dimensionated && parent.LEFTBRACKET() != nil){
                         let result = temporalMemory.getNumberAddress(spaces: 1)
                         var auxQuad = Quadruple.init(operand: "VER", leftOp: PilaO.first!, rightOp: "1", result: String(assignment.descriptionDim[0].limSup))
-                        qCuad.append(auxQuad)
-                        auxQuad = Quadruple.init(operand: "+", leftOp: PilaO.first!, rightOp: "-1", result: String(result))
-                        qCuad.append(auxQuad)
+                        qQuad.append(auxQuad)
+                        
+                        let constantAddress = constantMemory.getNumberAddress(spaces: 1)
+                        constTable.append(Variable.init(name: "-1", type: Type.number, address: constantAddress))
+                        constantMemory.saveNumberConstant(value: -1, address: constantAddress)
+                        auxQuad = Quadruple.init(operand: "+", leftOp: PilaO.first!, rightOp: String(constantAddress), result: String(result))
+                        qQuad.append(auxQuad)
                         PilaO.removeFirst()
+                        
+                        let dirBase = constantMemory.getNumberAddress(spaces: 1)
+                        constTable.append(Variable.init(name: String(assignment.address), type: Type.number, address: dirBase))
+                        constantMemory.saveNumberConstant(value: Int(assignment.address), address: dirBase)
+                        
                         let result1 = String(temporalMemory.getNumberAddress(spaces: 1))
-                        auxQuad = Quadruple.init(operand: "+", leftOp: String(result), rightOp: String(assignment.address), result: "("+result1+")")
-                        qCuad.append(auxQuad)
+                        auxQuad = Quadruple.init(operand: "+", leftOp: String(result), rightOp: String(dirBase), result: "("+result1+")")
+                        qQuad.append(auxQuad)
                         PilaO.insert("("+result1+")", at: 0)
                     }
                 } else {
@@ -368,26 +412,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
             }
         }
         
-        if let parent = ctx.parent as? BasicLearnParser.FactorContext{
-            if let currentId = parent.ID()?.getText(){
-                if let assignment = getVariable(id: currentId){
-                    if(assignment.dimensionated && parent.LEFTBRACKET() != nil){
-                        let result = temporalMemory.getNumberAddress(spaces: 1)
-                        var auxQuad = Quadruple.init(operand: "VER", leftOp: PilaO.first!, rightOp: "1", result: String(assignment.descriptionDim[0].limSup))
-                        qCuad.append(auxQuad)
-                        auxQuad = Quadruple.init(operand: "+", leftOp: PilaO.first!, rightOp: "-1", result: String(result))
-                        qCuad.append(auxQuad)
-                        PilaO.removeFirst()
-                        let result1 = String(temporalMemory.getNumberAddress(spaces: 1))
-                        auxQuad = Quadruple.init(operand: "+", leftOp: String(result), rightOp: String(assignment.address), result: "("+result1+")")
-                        qCuad.append(auxQuad)
-                        PilaO.insert("("+result1+")", at: 0)
-                    }
-                } else {
-                    print("Error: Esta variable no se encontro \(currentId)")
-                    return }
-            }
-        }
+
     }
 
 
@@ -440,6 +465,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
                 // HANDLE ERROR CORRECTLY
             }
         }
+        
 
         if let parent = ctx.parent as? BasicLearnParser.ExpContext {
             if let add = parent.ADD()?.getText() {
@@ -454,70 +480,85 @@ open class BasicLearnBaseListener: BasicLearnListener {
 
 
 	open func enterFactor(_ ctx: BasicLearnParser.FactorContext) {
-        if let currentId = ctx.ID()?.getText() {
-            
-            
-            
-            //Checa que la variable si exista
-            guard let operand = getVariable(id: currentId) else {
-                print("Error: Esta variable no se encontro \(currentId)")
-                return }
-            
-            PilaO.insert((String(operand.address)), at: 0)
-            pTypes.insert(operand.type, at: 0)
-            
-        }
         
-        // Guardar las constantes en la tabla de constantes
-        if let currConstant = ctx.CTE_I()?.getText() {
-            if constantExists(currentConstant: currConstant) == 0 {
-                let constantAddress = constantMemory.getNumberAddress(spaces: 1)
-                constTable.append(Variable.init(name: currConstant, type: Type.number, address: constantAddress))
-                PilaO.insert(String(constantAddress), at: 0)
-                constantMemory.saveNumberConstant(value: Int(currConstant)!, address: constantAddress)
-            } else {
-                PilaO.insert(String(constantExists(currentConstant: currConstant)), at: 0)
+        if ctx.exp() == nil {
+            if let currentId = ctx.ID()?.getText(){
+                //Checa que la variable si exista
+                guard let operand = getVariable(id: currentId) else {
+                    print("Error: Esta variable no se encontro \(currentId)")
+                    return }
+                
+                PilaO.insert((String(operand.address)), at: 0)
+                pTypes.insert(operand.type, at: 0)
+                
             }
-            pTypes.insert(Type.number, at: 0)
-        }
-        
-        if let currConstant = ctx.CTE_F()?.getText() {
-            if constantExists(currentConstant: currConstant) == 0 {
-                let constantAddress = constantMemory.getDecimalAddress(spaces: 1)
-                constTable.append(Variable.init(name: currConstant, type: Type.decimal, address: constantAddress))
-                PilaO.insert(String(constantAddress), at: 0)
-                constantMemory.saveDecimalConstant(value: Float(currConstant)!, address: constantAddress)
-            } else {
-                PilaO.insert(String(constantExists(currentConstant: currConstant)), at: 0)
-            }
-            pTypes.insert(Type.decimal, at: 0)
-        }
-        
-        if ctx.getText() == "true" || ctx.getText() == "false" {
-            let currConstant = ctx.getText()
             
-            if constantExists(currentConstant: currConstant) == 0 {
-                let constantAddress = constantMemory.getBoolAddress(spaces: 1)
-                constTable.append(Variable.init(name: currConstant, type: Type.bool, address: constantAddress))
-                PilaO.insert(String(constantAddress), at: 0)
-                constantMemory.saveBoolConstant(value: Bool(currConstant)!, address: constantAddress)
-            } else {
-                PilaO.insert(String(constantExists(currentConstant: currConstant)), at: 0)
+            // Guardar las constantes en la tabla de constantes
+            if let currConstant = ctx.CTE_I()?.getText() {
+                if constantExists(currentConstant: currConstant) == 0 {
+                    let constantAddress = constantMemory.getNumberAddress(spaces: 1)
+                    constTable.append(Variable.init(name: currConstant, type: Type.number, address: constantAddress))
+                    PilaO.insert(String(constantAddress), at: 0)
+                    if ctx.getText().contains("-"){
+                        constantMemory.saveNumberConstant(value: -Int(currConstant)!, address: constantAddress)
+                    }else{
+                        constantMemory.saveNumberConstant(value: Int(currConstant)!, address: constantAddress)
+                    }
+                    
+                } else {
+                    PilaO.insert(String(constantExists(currentConstant: currConstant)), at: 0)
+                }
+                pTypes.insert(Type.number, at: 0)
             }
-            pTypes.insert(Type.bool, at: 0)
+            
+            if let currConstant = ctx.CTE_F()?.getText(){
+                if constantExists(currentConstant: currConstant) == 0 {
+                    let constantAddress = constantMemory.getDecimalAddress(spaces: 1)
+                    constTable.append(Variable.init(name: currConstant, type: Type.decimal, address: constantAddress))
+                    PilaO.insert(String(constantAddress), at: 0)
+                    if ctx.getText().contains("-"){
+                        constantMemory.saveDecimalConstant(value: -Float(currConstant)!, address: constantAddress)
+                    }else{
+                        constantMemory.saveDecimalConstant(value: Float(currConstant)!, address: constantAddress)
+                    }
+                    
+                } else {
+                    PilaO.insert(String(constantExists(currentConstant: currConstant)), at: 0)
+                }
+                pTypes.insert(Type.decimal, at: 0)
+            }
+            
+            if ctx.getText() == "true" || ctx.getText() == "false" {
+                let currConstant = ctx.getText()
+                
+                if constantExists(currentConstant: currConstant) == 0 {
+                    let constantAddress = constantMemory.getBoolAddress(spaces: 1)
+                    constTable.append(Variable.init(name: currConstant, type: Type.bool, address: constantAddress))
+                    PilaO.insert(String(constantAddress), at: 0)
+                    constantMemory.saveBoolConstant(value: Bool(currConstant)!, address: constantAddress)
+                } else {
+                    PilaO.insert(String(constantExists(currentConstant: currConstant)), at: 0)
+                }
+                pTypes.insert(Type.bool, at: 0)
+            }
+            
+            if let currConstant = ctx.SENTENCE_CONST()?.getText() {
+                if constantExists(currentConstant: currConstant) == 0 {
+                    let constantAddress = constantMemory.getSentenceAddress(spaces: 1)
+                    constTable.append(Variable.init(name: currConstant, type: Type.sentence, address: constantAddress))
+                    PilaO.insert(String(constantExists(currentConstant: currConstant)), at: 0)
+                    constantMemory.saveSentenceConstant(value: currConstant, address: constantAddress)
+                } else {
+                    PilaO.insert(String(constantExists(currentConstant: currConstant)), at: 0)
+                }
+                pTypes.insert(Type.sentence, at: 0)
+            }
+        } else {
+            POper.insert("[", at: 0)
         }
+
         
-        if let currConstant = ctx.SENTENCE_CONST()?.getText() {
-            if constantExists(currentConstant: currConstant) == 0 {
-                let constantAddress = constantMemory.getSentenceAddress(spaces: 1)
-                constTable.append(Variable.init(name: currConstant, type: Type.sentence, address: constantAddress))
-                PilaO.insert(String(constantExists(currentConstant: currConstant)), at: 0)
-                constantMemory.saveSentenceConstant(value: currConstant, address: constantAddress)
-            } else {
-                PilaO.insert(String(constantExists(currentConstant: currConstant)), at: 0)
-            }
-            pTypes.insert(Type.sentence, at: 0)
-        }
+
     }
 
 	open func exitFactor(_ ctx: BasicLearnParser.FactorContext) {
@@ -572,7 +613,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
                 // HANDLE ERROR CORRECTLY
             }
         }
-        
+
         if let parent = ctx.parent as? BasicLearnParser.TermContext{
             
             if let mult = parent.MULT()?.getText() {
@@ -630,7 +671,7 @@ open class BasicLearnBaseListener: BasicLearnListener {
                     let check = semanticTypeCheck.checkOperation(op: op!, operand1: leftOperandType!, operand2: resultVariableType)
                     
                     //                qCuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: "---", result: result))
-                    qCuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: "---", result: String(resultVariableAddress!)))
+                    qQuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: "---", result: String(resultVariableAddress!)))
                 }
             }
         }else{
@@ -646,10 +687,10 @@ open class BasicLearnBaseListener: BasicLearnListener {
                     let resultVariableType = getVariable(id: result)!.type
                     let resultVariableAddress = getVariable(id: result)!.address
                     
-                    let check = semanticTypeCheck.checkOperation(op: op!, operand1: leftOperandType!, operand2: resultVariableType)
+                    _ = semanticTypeCheck.checkOperation(op: op!, operand1: leftOperandType!, operand2: resultVariableType)
                     
                     //                qCuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: "---", result: result))
-                    qCuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: "---", result: String(resultVariableAddress)))
+                    qQuad.append(Quadruple.init(operand: op!, leftOp: leftOperand!, rightOp: "---", result: String(resultVariableAddress)))
                 }
             }
         }
@@ -753,11 +794,8 @@ open class BasicLearnBaseListener: BasicLearnListener {
             }
             for leftBracket in ctx.LEFTBRACKET(){
                 if((newVariable.getSymbol()?.getTokenIndex())!+1 == leftBracket.getSymbol()?.getTokenIndex()){
-                    print("HAY BRACKET ALV")
-                    print(newVariable)
                     let limSup = Int((ctx.CTE_I(iCounter)?.getText())!)!
                     dimension = dimensionDescription.init(superior: limSup)
-                    print(dimension.R)
                     iCounter += 1
                     dimensioned = true
                 }
@@ -803,9 +841,12 @@ open class BasicLearnBaseListener: BasicLearnListener {
             if dimensioned {
                 auxVariable.isDimentioned()
                 auxVariable.descriptionDim.append(dimension)
+                dirFunc.last?.variables.append(auxVariable)
+            }else{
+                dirFunc.last?.variables.append(auxVariable)
             }
             
-            dirFunc.last?.variables.append(auxVariable)
+            
         }
         let auxCountVariables = dirFunc.last?.variables.count
         let auxNumParam = dirFunc.last?.numParam
@@ -1015,12 +1056,81 @@ open class BasicLearnBaseListener: BasicLearnListener {
 
 	open func enterList_select(_ ctx: BasicLearnParser.List_selectContext) { }
 
-	open func exitList_select(_ ctx: BasicLearnParser.List_selectContext) { }
+	open func exitList_select(_ ctx: BasicLearnParser.List_selectContext) {
+        if let currentId = ctx.ID()?.getText(){
+            if let assignment = getVariable(id: currentId){
+                if(assignment.dimensionated && ctx.LEFTPAREN() != nil){
+                    let result = temporalMemory.getNumberAddress(spaces: 1)
+                    var auxQuad = Quadruple.init(operand: "VER", leftOp: PilaO.first!, rightOp: "1", result: String(assignment.descriptionDim[0].limSup))
+                    qQuad.append(auxQuad)
+                    
+                    let constantAddress = constantMemory.getNumberAddress(spaces: 1)
+                    constTable.append(Variable.init(name: "-1", type: Type.number, address: constantAddress))
+                    constantMemory.saveNumberConstant(value: -1, address: constantAddress)
+                    
+                    auxQuad = Quadruple.init(operand: "+", leftOp: PilaO.first!, rightOp: String(constantAddress), result: String(result))
+                    qQuad.append(auxQuad)
+                    PilaO.removeFirst()
+                    let dirBase = constantMemory.getNumberAddress(spaces: 1)
+                    constTable.append(Variable.init(name: String(assignment.address), type: Type.number, address: dirBase))
+                    constantMemory.saveNumberConstant(value: Int(assignment.address), address: dirBase)
+                    
+                    let result1 = String(temporalMemory.getNumberAddress(spaces: 1))
+                    auxQuad = Quadruple.init(operand: "+", leftOp: String(result), rightOp: String(dirBase), result: "("+result1+")")
+                    qQuad.append(auxQuad)
+                    PilaO.insert("("+result1+")", at: 0)
+                }
+            } else {
+                print("Error: Esta variable no se encontro \(currentId)")
+                return }
+        }
+    }
 
 
 	open func enterList_functions(_ ctx: BasicLearnParser.List_functionsContext) { }
 
-	open func exitList_functions(_ ctx: BasicLearnParser.List_functionsContext) { }
+	open func exitList_functions(_ ctx: BasicLearnParser.List_functionsContext) {
+        var result : Int!
+        if let array = getVariable(id: (ctx.ID()?.getText())!){
+            switch array.type {
+            case Type.number:
+                result = currentMemory.getNumberAddress(spaces: 1)
+            case Type.decimal:
+                result = currentMemory.getDecimalAddress(spaces: 1)
+            case Type.bool:
+                result = currentMemory.getBoolAddress(spaces: 1)
+            case Type.sentence:
+                result = currentMemory.getSentenceAddress(spaces: 1)
+            default:
+                print("ERROR: No tiene type en List Functions")
+                break
+            }
+            if array.dimensionated{
+                switch ctx.getChild(0)!.toStringTree() {
+                case "first_l":
+                    let auxQuad = Quadruple.init(operand: "FIRST_L", leftOp: String(array.address), rightOp: "---", result: String(result))
+                    qQuad.append(auxQuad)
+                case "last_l":
+                    let auxQuad = Quadruple.init(operand: "LAST_L", leftOp: String(array.address), rightOp: "---", result: String(result))
+                    qQuad.append(auxQuad)
+                case "order_l":
+                    let auxQuad = Quadruple.init(operand: "ORDER_L", leftOp: String(array.address), rightOp: "---", result: String(result))
+                    qQuad.append(auxQuad)
+                case "orderDesc_l":
+                    let auxQuad = Quadruple.init(operand: "ORDERDESC_L", leftOp: String(array.address), rightOp: "---", result: String(result))
+                    qQuad.append(auxQuad)
+                case "size_l":
+                    let auxQuad = Quadruple.init(operand: "SIZE_L", leftOp: String(array.address), rightOp: "---", result: String(result))
+                    qQuad.append(auxQuad)
+                default:
+                    print("Error, no se encontro ninguna función de lista")
+                }
+            }else{
+                print("ERROR: Esta variable no es un arreglo")
+            }
+        }
+
+    }
 
 
 	open func enterPerimeter_tri(_ ctx: BasicLearnParser.Perimeter_triContext) { }

@@ -7,61 +7,56 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		411CA6F12281195B00785A3D /* BasicLearnLexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411CA6E82281195B00785A3D /* BasicLearnLexer.swift */; };
-		411CA6F22281195B00785A3D /* BasicLearnListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411CA6E92281195B00785A3D /* BasicLearnListener.swift */; };
-		411CA6F32281195B00785A3D /* BasicLearnLexer.tokens in Resources */ = {isa = PBXBuildFile; fileRef = 411CA6EA2281195B00785A3D /* BasicLearnLexer.tokens */; };
-		411CA6F42281195B00785A3D /* BasicLearnParserATN.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411CA6EB2281195B00785A3D /* BasicLearnParserATN.swift */; };
-		411CA6F52281195B00785A3D /* BasicLearnParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411CA6EC2281195B00785A3D /* BasicLearnParser.swift */; };
-		411CA6F62281195B00785A3D /* BasicLearn.interp in Resources */ = {isa = PBXBuildFile; fileRef = 411CA6ED2281195B00785A3D /* BasicLearn.interp */; };
-		411CA6F72281195B00785A3D /* BasicLearnLexer.interp in Resources */ = {isa = PBXBuildFile; fileRef = 411CA6EE2281195B00785A3D /* BasicLearnLexer.interp */; };
-		411CA6F82281195B00785A3D /* BasicLearn.tokens in Resources */ = {isa = PBXBuildFile; fileRef = 411CA6EF2281195B00785A3D /* BasicLearn.tokens */; };
-		411CA6F92281195B00785A3D /* BasicLearnLexerATN.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411CA6F02281195B00785A3D /* BasicLearnLexerATN.swift */; };
-		417E89F322795CF9004648D6 /* VirtualMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417E89F222795CF9004648D6 /* VirtualMachine.swift */; };
-		41C2EFBC225FED3000C90A1F /* MainCompiler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C2EFB6225FED3000C90A1F /* MainCompiler.swift */; };
-		41C2EFBD225FED3000C90A1F /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C2EFBA225FED3000C90A1F /* Types.swift */; };
-		41EAEBCA2274A66600897C19 /* Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EAEBC92274A66600897C19 /* Function.swift */; };
-		41EAEBCC2274A66D00897C19 /* Variable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EAEBCB2274A66D00897C19 /* Variable.swift */; };
-		EC1516FF225E87E40030D440 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1516FE225E87E40030D440 /* AppDelegate.swift */; };
-		EC151701225E87E40030D440 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC151700225E87E40030D440 /* ViewController.swift */; };
 		EC151704225E87E40030D440 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC151702225E87E40030D440 /* Main.storyboard */; };
-		EC151707225E87E40030D440 /* BasicLearnIDE.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EC151705225E87E40030D440 /* BasicLearnIDE.xcdatamodeld */; };
 		EC151709225E87E80030D440 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC151708225E87E80030D440 /* Assets.xcassets */; };
 		EC15170C225E87E80030D440 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC15170A225E87E80030D440 /* LaunchScreen.storyboard */; };
-		EC15174D225E93AC0030D440 /* BasicLearnBaseListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC151741225E93AC0030D440 /* BasicLearnBaseListener.swift */; };
-		EC1B75452273658E007068DC /* Antlr4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC1B753D22736580007068DC /* Antlr4.framework */; };
-		EC1B754B22737464007068DC /* Quadruple.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1B754A22737464007068DC /* Quadruple.swift */; };
-		EC1B7551227494D8007068DC /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1B7550227494D8007068DC /* Memory.swift */; };
-		EC6EAF86227340B600D767DD /* SemanticCube.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6EAF85227340B600D767DD /* SemanticCube.swift */; };
-		EC8D8068227DFE7400D3C2C6 /* descriptionDimension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8D8067227DFE7400D3C2C6 /* descriptionDimension.swift */; };
-		ECCF50DE2281E9F600DD904F /* BasicLearnListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCF50D52281E9F600DD904F /* BasicLearnListener.swift */; };
-		ECCF50DF2281E9F600DD904F /* BasicLearnLexerATN.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCF50D62281E9F600DD904F /* BasicLearnLexerATN.swift */; };
-		ECCF50E02281E9F600DD904F /* BasicLearnParserATN.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCF50D72281E9F600DD904F /* BasicLearnParserATN.swift */; };
-		ECCF50E12281E9F600DD904F /* BasicLearnLexer.interp in Resources */ = {isa = PBXBuildFile; fileRef = ECCF50D82281E9F600DD904F /* BasicLearnLexer.interp */; };
-		ECCF50E22281E9F600DD904F /* BasicLearnLexer.tokens in Resources */ = {isa = PBXBuildFile; fileRef = ECCF50D92281E9F600DD904F /* BasicLearnLexer.tokens */; };
-		ECCF50E32281E9F600DD904F /* BasicLearn.interp in Resources */ = {isa = PBXBuildFile; fileRef = ECCF50DA2281E9F600DD904F /* BasicLearn.interp */; };
-		ECCF50E42281E9F600DD904F /* BasicLearn.tokens in Resources */ = {isa = PBXBuildFile; fileRef = ECCF50DB2281E9F600DD904F /* BasicLearn.tokens */; };
-		ECCF50E52281E9F600DD904F /* BasicLearnParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCF50DC2281E9F600DD904F /* BasicLearnParser.swift */; };
-		ECCF50E62281E9F600DD904F /* BasicLearnLexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCF50DD2281E9F600DD904F /* BasicLearnLexer.swift */; };
+		ECCF510C2281EC5800DD904F /* BasicLearnBaseListener.swift in Resources */ = {isa = PBXBuildFile; fileRef = EC151741225E93AC0030D440 /* BasicLearnBaseListener.swift */; };
+		ECCF51292281ED9D00DD904F /* BasicLearn.interp in Resources */ = {isa = PBXBuildFile; fileRef = ECCF51202281ED9D00DD904F /* BasicLearn.interp */; };
+		ECCF512A2281ED9D00DD904F /* BasicLearnLexer.tokens in Resources */ = {isa = PBXBuildFile; fileRef = ECCF51212281ED9D00DD904F /* BasicLearnLexer.tokens */; };
+		ECCF512B2281ED9D00DD904F /* BasicLearn.tokens in Resources */ = {isa = PBXBuildFile; fileRef = ECCF51222281ED9D00DD904F /* BasicLearn.tokens */; };
+		ECCF512D2281ED9D00DD904F /* BasicLearnLexer.interp in Resources */ = {isa = PBXBuildFile; fileRef = ECCF51242281ED9D00DD904F /* BasicLearnLexer.interp */; };
+		ECCF51402281EE2D00DD904F /* Antlr4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECCF51392281EE1500DD904F /* Antlr4.framework */; };
+		ECCF51412281EEBB00DD904F /* BasicLearn.interp in Sources */ = {isa = PBXBuildFile; fileRef = ECCF51202281ED9D00DD904F /* BasicLearn.interp */; };
+		ECCF51422281EEBB00DD904F /* BasicLearn.tokens in Sources */ = {isa = PBXBuildFile; fileRef = ECCF51222281ED9D00DD904F /* BasicLearn.tokens */; };
+		ECCF51432281EEBB00DD904F /* BasicLearnLexer.interp in Sources */ = {isa = PBXBuildFile; fileRef = ECCF51242281ED9D00DD904F /* BasicLearnLexer.interp */; };
+		ECCF51442281EEBB00DD904F /* BasicLearnLexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCF51272281ED9D00DD904F /* BasicLearnLexer.swift */; };
+		ECCF51452281EEBB00DD904F /* BasicLearnLexer.tokens in Sources */ = {isa = PBXBuildFile; fileRef = ECCF51212281ED9D00DD904F /* BasicLearnLexer.tokens */; };
+		ECCF51462281EEBB00DD904F /* BasicLearnLexerATN.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCF511F2281ED9D00DD904F /* BasicLearnLexerATN.swift */; };
+		ECCF51472281EEBB00DD904F /* BasicLearnListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCF51262281ED9D00DD904F /* BasicLearnListener.swift */; };
+		ECCF51482281EEBB00DD904F /* BasicLearnParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCF51232281ED9D00DD904F /* BasicLearnParser.swift */; };
+		ECCF51492281EEBB00DD904F /* BasicLearnParserATN.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCF51252281ED9D00DD904F /* BasicLearnParserATN.swift */; };
+		ECCF514A2281EEBB00DD904F /* BasicLearnBaseListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC151741225E93AC0030D440 /* BasicLearnBaseListener.swift */; };
+		ECCF514B2281EEBB00DD904F /* descriptionDimension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8D8067227DFE7400D3C2C6 /* descriptionDimension.swift */; };
+		ECCF514C2281EEBB00DD904F /* Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EAEBC92274A66600897C19 /* Function.swift */; };
+		ECCF514D2281EEBB00DD904F /* Variable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EAEBCB2274A66D00897C19 /* Variable.swift */; };
+		ECCF514E2281EEBB00DD904F /* MainCompiler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C2EFB6225FED3000C90A1F /* MainCompiler.swift */; };
+		ECCF514F2281EEBB00DD904F /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C2EFBA225FED3000C90A1F /* Types.swift */; };
+		ECCF51502281EEBB00DD904F /* SemanticCube.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6EAF85227340B600D767DD /* SemanticCube.swift */; };
+		ECCF51512281EEBB00DD904F /* Quadruple.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1B754A22737464007068DC /* Quadruple.swift */; };
+		ECCF51522281EEBB00DD904F /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1B7550227494D8007068DC /* Memory.swift */; };
+		ECCF51532281EEBB00DD904F /* VirtualMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417E89F222795CF9004648D6 /* VirtualMachine.swift */; };
+		ECCF51542281EEBB00DD904F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1516FE225E87E40030D440 /* AppDelegate.swift */; };
+		ECCF51552281EEBB00DD904F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC151700225E87E40030D440 /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		EC1B753C22736580007068DC /* PBXContainerItemProxy */ = {
+		ECCF51382281EE1500DD904F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = EC1B753522736580007068DC /* Antlr4.xcodeproj */;
+			containerPortal = ECCF51312281EE1500DD904F /* Antlr4.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = "Antlr4::Antlr4::Product";
 			remoteInfo = Antlr4;
 		};
-		EC1B753E22736580007068DC /* PBXContainerItemProxy */ = {
+		ECCF513A2281EE1500DD904F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = EC1B753522736580007068DC /* Antlr4.xcodeproj */;
+			containerPortal = ECCF51312281EE1500DD904F /* Antlr4.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = "Antlr4::Antlr4Tests::Product";
 			remoteInfo = Antlr4Tests;
 		};
-		EC1B754222736589007068DC /* PBXContainerItemProxy */ = {
+		ECCF513E2281EE2000DD904F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = EC1B753522736580007068DC /* Antlr4.xcodeproj */;
+			containerPortal = ECCF51312281EE1500DD904F /* Antlr4.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = "Antlr4::Antlr4";
 			remoteInfo = Antlr4;
@@ -69,15 +64,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		411CA6E82281195B00785A3D /* BasicLearnLexer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasicLearnLexer.swift; path = ../../../../../Desktop/grammar/BasicLearnLexer.swift; sourceTree = "<group>"; };
-		411CA6E92281195B00785A3D /* BasicLearnListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasicLearnListener.swift; path = ../../../../../Desktop/grammar/BasicLearnListener.swift; sourceTree = "<group>"; };
-		411CA6EA2281195B00785A3D /* BasicLearnLexer.tokens */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = BasicLearnLexer.tokens; path = ../../../../../Desktop/grammar/BasicLearnLexer.tokens; sourceTree = "<group>"; };
-		411CA6EB2281195B00785A3D /* BasicLearnParserATN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasicLearnParserATN.swift; path = ../../../../../Desktop/grammar/BasicLearnParserATN.swift; sourceTree = "<group>"; };
-		411CA6EC2281195B00785A3D /* BasicLearnParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasicLearnParser.swift; path = ../../../../../Desktop/grammar/BasicLearnParser.swift; sourceTree = "<group>"; };
-		411CA6ED2281195B00785A3D /* BasicLearn.interp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = BasicLearn.interp; path = ../../../../../Desktop/grammar/BasicLearn.interp; sourceTree = "<group>"; };
-		411CA6EE2281195B00785A3D /* BasicLearnLexer.interp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = BasicLearnLexer.interp; path = ../../../../../Desktop/grammar/BasicLearnLexer.interp; sourceTree = "<group>"; };
-		411CA6EF2281195B00785A3D /* BasicLearn.tokens */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = BasicLearn.tokens; path = ../../../../../Desktop/grammar/BasicLearn.tokens; sourceTree = "<group>"; };
-		411CA6F02281195B00785A3D /* BasicLearnLexerATN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasicLearnLexerATN.swift; path = ../../../../../Desktop/grammar/BasicLearnLexerATN.swift; sourceTree = "<group>"; };
+		411CA6E82281195B00785A3D /* BasicLearnLexer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasicLearnLexer.swift; path = /Desktop/grammar/BasicLearnLexer.swift; sourceTree = "<absolute>"; };
+		411CA6EA2281195B00785A3D /* BasicLearnLexer.tokens */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file; name = BasicLearnLexer.tokens; path = /Desktop/grammar/BasicLearnLexer.tokens; sourceTree = "<absolute>"; };
+		411CA6EB2281195B00785A3D /* BasicLearnParserATN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasicLearnParserATN.swift; path = /Desktop/grammar/BasicLearnParserATN.swift; sourceTree = "<absolute>"; };
+		411CA6EC2281195B00785A3D /* BasicLearnParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasicLearnParser.swift; path = /Desktop/grammar/BasicLearnParser.swift; sourceTree = "<absolute>"; };
+		411CA6F02281195B00785A3D /* BasicLearnLexerATN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasicLearnLexerATN.swift; path = /Desktop/grammar/BasicLearnLexerATN.swift; sourceTree = "<absolute>"; };
 		417E89F222795CF9004648D6 /* VirtualMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualMachine.swift; sourceTree = "<group>"; };
 		41C2EFB6225FED3000C90A1F /* MainCompiler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCompiler.swift; sourceTree = "<group>"; };
 		41C2EFBA225FED3000C90A1F /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
@@ -92,20 +83,20 @@
 		EC15170B225E87E80030D440 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EC15170D225E87E80030D440 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC151741225E93AC0030D440 /* BasicLearnBaseListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicLearnBaseListener.swift; sourceTree = "<group>"; };
-		EC1B753522736580007068DC /* Antlr4.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Antlr4.xcodeproj; path = ../../antlr4/runtime/Swift/Antlr4.xcodeproj; sourceTree = "<group>"; };
 		EC1B754A22737464007068DC /* Quadruple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quadruple.swift; sourceTree = "<group>"; };
 		EC1B7550227494D8007068DC /* Memory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memory.swift; sourceTree = "<group>"; };
 		EC6EAF85227340B600D767DD /* SemanticCube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SemanticCube.swift; sourceTree = "<group>"; };
 		EC8D8067227DFE7400D3C2C6 /* descriptionDimension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = descriptionDimension.swift; sourceTree = "<group>"; };
-		ECCF50D52281E9F600DD904F /* BasicLearnListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasicLearnListener.swift; path = ../../../../Autogen/BasicLearnListener.swift; sourceTree = "<group>"; };
-		ECCF50D62281E9F600DD904F /* BasicLearnLexerATN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasicLearnLexerATN.swift; path = ../../../../Autogen/BasicLearnLexerATN.swift; sourceTree = "<group>"; };
-		ECCF50D72281E9F600DD904F /* BasicLearnParserATN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasicLearnParserATN.swift; path = ../../../../Autogen/BasicLearnParserATN.swift; sourceTree = "<group>"; };
-		ECCF50D82281E9F600DD904F /* BasicLearnLexer.interp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = BasicLearnLexer.interp; path = ../../../../Autogen/BasicLearnLexer.interp; sourceTree = "<group>"; };
-		ECCF50D92281E9F600DD904F /* BasicLearnLexer.tokens */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = BasicLearnLexer.tokens; path = ../../../../Autogen/BasicLearnLexer.tokens; sourceTree = "<group>"; };
-		ECCF50DA2281E9F600DD904F /* BasicLearn.interp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = BasicLearn.interp; path = ../../../../Autogen/BasicLearn.interp; sourceTree = "<group>"; };
-		ECCF50DB2281E9F600DD904F /* BasicLearn.tokens */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = BasicLearn.tokens; path = ../../../../Autogen/BasicLearn.tokens; sourceTree = "<group>"; };
-		ECCF50DC2281E9F600DD904F /* BasicLearnParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasicLearnParser.swift; path = ../../../../Autogen/BasicLearnParser.swift; sourceTree = "<group>"; };
-		ECCF50DD2281E9F600DD904F /* BasicLearnLexer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasicLearnLexer.swift; path = ../../../../Autogen/BasicLearnLexer.swift; sourceTree = "<group>"; };
+		ECCF511F2281ED9D00DD904F /* BasicLearnLexerATN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasicLearnLexerATN.swift; path = ../../../../Autogen/BasicLearnLexerATN.swift; sourceTree = "<group>"; };
+		ECCF51202281ED9D00DD904F /* BasicLearn.interp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = BasicLearn.interp; path = ../../../../Autogen/BasicLearn.interp; sourceTree = "<group>"; };
+		ECCF51212281ED9D00DD904F /* BasicLearnLexer.tokens */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = BasicLearnLexer.tokens; path = ../../../../Autogen/BasicLearnLexer.tokens; sourceTree = "<group>"; };
+		ECCF51222281ED9D00DD904F /* BasicLearn.tokens */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = BasicLearn.tokens; path = ../../../../Autogen/BasicLearn.tokens; sourceTree = "<group>"; };
+		ECCF51232281ED9D00DD904F /* BasicLearnParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasicLearnParser.swift; path = ../../../../Autogen/BasicLearnParser.swift; sourceTree = "<group>"; };
+		ECCF51242281ED9D00DD904F /* BasicLearnLexer.interp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = BasicLearnLexer.interp; path = ../../../../Autogen/BasicLearnLexer.interp; sourceTree = "<group>"; };
+		ECCF51252281ED9D00DD904F /* BasicLearnParserATN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasicLearnParserATN.swift; path = ../../../../Autogen/BasicLearnParserATN.swift; sourceTree = "<group>"; };
+		ECCF51262281ED9D00DD904F /* BasicLearnListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasicLearnListener.swift; path = ../../../../Autogen/BasicLearnListener.swift; sourceTree = "<group>"; };
+		ECCF51272281ED9D00DD904F /* BasicLearnLexer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasicLearnLexer.swift; path = ../../../../Autogen/BasicLearnLexer.swift; sourceTree = "<group>"; };
+		ECCF51312281EE1500DD904F /* Antlr4.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Antlr4.xcodeproj; path = ../../antlr4/runtime/Swift/Antlr4.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,7 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC1B75452273658E007068DC /* Antlr4.framework in Frameworks */,
+				ECCF51402281EE2D00DD904F /* Antlr4.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,10 +114,11 @@
 		EC1516F2225E87E30030D440 = {
 			isa = PBXGroup;
 			children = (
-				EC1B753522736580007068DC /* Antlr4.xcodeproj */,
+				ECCF51312281EE1500DD904F /* Antlr4.xcodeproj */,
 				EC1516FD225E87E40030D440 /* BasicLearnIDE */,
 				EC1516FC225E87E40030D440 /* Products */,
 				EC1B75442273658E007068DC /* Frameworks */,
+				ECCF50EB2281EB1F00DD904F /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -156,15 +148,15 @@
 		EC151739225E93AC0030D440 /* Compiler */ = {
 			isa = PBXGroup;
 			children = (
-				ECCF50DA2281E9F600DD904F /* BasicLearn.interp */,
-				ECCF50DB2281E9F600DD904F /* BasicLearn.tokens */,
-				ECCF50D82281E9F600DD904F /* BasicLearnLexer.interp */,
-				ECCF50DD2281E9F600DD904F /* BasicLearnLexer.swift */,
-				ECCF50D92281E9F600DD904F /* BasicLearnLexer.tokens */,
-				ECCF50D62281E9F600DD904F /* BasicLearnLexerATN.swift */,
-				ECCF50D52281E9F600DD904F /* BasicLearnListener.swift */,
-				ECCF50DC2281E9F600DD904F /* BasicLearnParser.swift */,
-				ECCF50D72281E9F600DD904F /* BasicLearnParserATN.swift */,
+				ECCF51202281ED9D00DD904F /* BasicLearn.interp */,
+				ECCF51222281ED9D00DD904F /* BasicLearn.tokens */,
+				ECCF51242281ED9D00DD904F /* BasicLearnLexer.interp */,
+				ECCF51272281ED9D00DD904F /* BasicLearnLexer.swift */,
+				ECCF51212281ED9D00DD904F /* BasicLearnLexer.tokens */,
+				ECCF511F2281ED9D00DD904F /* BasicLearnLexerATN.swift */,
+				ECCF51262281ED9D00DD904F /* BasicLearnListener.swift */,
+				ECCF51232281ED9D00DD904F /* BasicLearnParser.swift */,
+				ECCF51252281ED9D00DD904F /* BasicLearnParserATN.swift */,
 				EC151741225E93AC0030D440 /* BasicLearnBaseListener.swift */,
 				EC8D8067227DFE7400D3C2C6 /* descriptionDimension.swift */,
 				41EAEBC92274A66600897C19 /* Function.swift */,
@@ -179,20 +171,32 @@
 			path = Compiler;
 			sourceTree = "<group>";
 		};
-		EC1B753622736580007068DC /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				EC1B753D22736580007068DC /* Antlr4.framework */,
-				EC1B753F22736580007068DC /* Antlr4Tests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		EC1B75442273658E007068DC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ECCF50EB2281EB1F00DD904F /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				411CA6E82281195B00785A3D /* BasicLearnLexer.swift */,
+				411CA6EC2281195B00785A3D /* BasicLearnParser.swift */,
+				411CA6F02281195B00785A3D /* BasicLearnLexerATN.swift */,
+				411CA6EB2281195B00785A3D /* BasicLearnParserATN.swift */,
+				411CA6EA2281195B00785A3D /* BasicLearnLexer.tokens */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		ECCF51322281EE1500DD904F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ECCF51392281EE1500DD904F /* Antlr4.framework */,
+				ECCF513B2281EE1500DD904F /* Antlr4Tests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,7 +213,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				EC1B754322736589007068DC /* PBXTargetDependency */,
+				ECCF513F2281EE2000DD904F /* PBXTargetDependency */,
 			);
 			name = BasicLearnIDE;
 			productName = BasicLearnIDE;
@@ -244,8 +248,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = EC1B753622736580007068DC /* Products */;
-					ProjectRef = EC1B753522736580007068DC /* Antlr4.xcodeproj */;
+					ProductGroup = ECCF51322281EE1500DD904F /* Products */;
+					ProjectRef = ECCF51312281EE1500DD904F /* Antlr4.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -256,18 +260,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		EC1B753D22736580007068DC /* Antlr4.framework */ = {
+		ECCF51392281EE1500DD904F /* Antlr4.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = Antlr4.framework;
-			remoteRef = EC1B753C22736580007068DC /* PBXContainerItemProxy */;
+			remoteRef = ECCF51382281EE1500DD904F /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		EC1B753F22736580007068DC /* Antlr4Tests.xctest */ = {
+		ECCF513B2281EE1500DD904F /* Antlr4Tests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = file;
 			path = Antlr4Tests.xctest;
-			remoteRef = EC1B753E22736580007068DC /* PBXContainerItemProxy */;
+			remoteRef = ECCF513A2281EE1500DD904F /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -277,13 +281,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				411CA6F32281195B00785A3D /* BasicLearnLexer.tokens in Resources */,
+				ECCF510C2281EC5800DD904F /* BasicLearnBaseListener.swift in Resources */,
 				EC15170C225E87E80030D440 /* LaunchScreen.storyboard in Resources */,
-				ECCF50E32281E9F600DD904F /* BasicLearn.interp in Resources */,
+				ECCF512D2281ED9D00DD904F /* BasicLearnLexer.interp in Resources */,
+				ECCF51292281ED9D00DD904F /* BasicLearn.interp in Resources */,
 				EC151709225E87E80030D440 /* Assets.xcassets in Resources */,
-				ECCF50E12281E9F600DD904F /* BasicLearnLexer.interp in Resources */,
-				ECCF50E42281E9F600DD904F /* BasicLearn.tokens in Resources */,
-				ECCF50E22281E9F600DD904F /* BasicLearnLexer.tokens in Resources */,
+				ECCF512B2281ED9D00DD904F /* BasicLearn.tokens in Resources */,
+				ECCF512A2281ED9D00DD904F /* BasicLearnLexer.tokens in Resources */,
 				EC151704225E87E40030D440 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -295,38 +299,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECCF50DF2281E9F600DD904F /* BasicLearnLexerATN.swift in Sources */,
-				EC1B7551227494D8007068DC /* Memory.swift in Sources */,
-				411CA6F12281195B00785A3D /* BasicLearnLexer.swift in Sources */,
-				411CA6F52281195B00785A3D /* BasicLearnParser.swift in Sources */,
-				417E89F322795CF9004648D6 /* VirtualMachine.swift in Sources */,
-				411CA6F92281195B00785A3D /* BasicLearnLexerATN.swift in Sources */,
-				41EAEBCC2274A66D00897C19 /* Variable.swift in Sources */,
-				EC151701225E87E40030D440 /* ViewController.swift in Sources */,
-				EC8D8068227DFE7400D3C2C6 /* descriptionDimension.swift in Sources */,
-				ECCF50E62281E9F600DD904F /* BasicLearnLexer.swift in Sources */,
-				EC151707225E87E40030D440 /* BasicLearnIDE.xcdatamodeld in Sources */,
-				EC6EAF86227340B600D767DD /* SemanticCube.swift in Sources */,
-				ECCF50E52281E9F600DD904F /* BasicLearnParser.swift in Sources */,
-				ECCF50E02281E9F600DD904F /* BasicLearnParserATN.swift in Sources */,
-				EC1516FF225E87E40030D440 /* AppDelegate.swift in Sources */,
-				41C2EFBC225FED3000C90A1F /* MainCompiler.swift in Sources */,
-				411CA6F42281195B00785A3D /* BasicLearnParserATN.swift in Sources */,
-				41EAEBCA2274A66600897C19 /* Function.swift in Sources */,
-				EC15174D225E93AC0030D440 /* BasicLearnBaseListener.swift in Sources */,
-				41C2EFBD225FED3000C90A1F /* Types.swift in Sources */,
-				EC1B754B22737464007068DC /* Quadruple.swift in Sources */,
-				ECCF50DE2281E9F600DD904F /* BasicLearnListener.swift in Sources */,
+				ECCF51412281EEBB00DD904F /* BasicLearn.interp in Sources */,
+				ECCF51422281EEBB00DD904F /* BasicLearn.tokens in Sources */,
+				ECCF51432281EEBB00DD904F /* BasicLearnLexer.interp in Sources */,
+				ECCF51442281EEBB00DD904F /* BasicLearnLexer.swift in Sources */,
+				ECCF51452281EEBB00DD904F /* BasicLearnLexer.tokens in Sources */,
+				ECCF51462281EEBB00DD904F /* BasicLearnLexerATN.swift in Sources */,
+				ECCF51472281EEBB00DD904F /* BasicLearnListener.swift in Sources */,
+				ECCF51482281EEBB00DD904F /* BasicLearnParser.swift in Sources */,
+				ECCF51492281EEBB00DD904F /* BasicLearnParserATN.swift in Sources */,
+				ECCF514A2281EEBB00DD904F /* BasicLearnBaseListener.swift in Sources */,
+				ECCF514B2281EEBB00DD904F /* descriptionDimension.swift in Sources */,
+				ECCF514C2281EEBB00DD904F /* Function.swift in Sources */,
+				ECCF514D2281EEBB00DD904F /* Variable.swift in Sources */,
+				ECCF514E2281EEBB00DD904F /* MainCompiler.swift in Sources */,
+				ECCF514F2281EEBB00DD904F /* Types.swift in Sources */,
+				ECCF51502281EEBB00DD904F /* SemanticCube.swift in Sources */,
+				ECCF51512281EEBB00DD904F /* Quadruple.swift in Sources */,
+				ECCF51522281EEBB00DD904F /* Memory.swift in Sources */,
+				ECCF51532281EEBB00DD904F /* VirtualMachine.swift in Sources */,
+				ECCF51542281EEBB00DD904F /* AppDelegate.swift in Sources */,
+				ECCF51552281EEBB00DD904F /* ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		EC1B754322736589007068DC /* PBXTargetDependency */ = {
+		ECCF513F2281EE2000DD904F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Antlr4;
-			targetProxy = EC1B754222736589007068DC /* PBXContainerItemProxy */;
+			targetProxy = ECCF513E2281EE2000DD904F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

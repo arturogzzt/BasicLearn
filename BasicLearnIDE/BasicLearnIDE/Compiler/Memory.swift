@@ -44,7 +44,14 @@ class Memory{
     //ahorita no me preocupo por arreglos
     //Spaces es cuanta memoria se va a ocupar (despues para arreglos)
     func getNumberAddress(spaces:Int) -> Int{
+        var auxNumber = number
         number = number + spaces
+        if spaces > 1 {
+            for _ in 0...spaces-1{
+                self.saveNumberConstant(value: 0, address: auxNumber)
+                auxNumber+=1
+            }
+        }
         return (number + base - spaces)
     }
     
