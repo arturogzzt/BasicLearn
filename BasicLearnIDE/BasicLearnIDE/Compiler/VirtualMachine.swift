@@ -62,6 +62,14 @@ class VirtualMachine {
 //        self.localTemporalMemory.cleanMemory()
     }
     
+    func getAddressArray(auxString: String) -> Int{
+        let index = auxString.index(auxString.startIndex , offsetBy: 1)
+        let index1 = auxString.index(auxString.endIndex, offsetBy: -2)
+        let subString = Int(auxString[index...index1])
+        let (memoryAddress, _) = getMemory(address: subString!).getValue(address: subString!)
+        return memoryAddress as! Int + 1
+    }
+    
     func executeProgram() {
         cleanAllMemory()
         
@@ -72,27 +80,399 @@ class VirtualMachine {
             
             switch op {
             case "+":
-                add(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
+                if (currentQuadruple.leftOp.contains("(") && currentQuadruple.rightOp.contains("(") && currentQuadruple.result.contains(")")){
+                    let auxString = currentQuadruple.result
+                    let index = auxString.index(auxString.startIndex , offsetBy: 1)
+                    let index1 = auxString.index(auxString.endIndex, offsetBy: -2)
+                    let subStringResult = auxString[index...index1]
+                    let auxStringRight = currentQuadruple.rightOp
+                    let rightSubstring = getAddressArray(auxString: auxStringRight)
+                    let auxStringLeft = currentQuadruple.leftOp
+                    let leftSubstring = getAddressArray(auxString: auxStringLeft)
+                    
+                    add(leftOperandAddress: leftSubstring, rightOperandAddress: rightSubstring, resultOperandAddress: Int(subStringResult)!)
+                } else if (currentQuadruple.leftOp.contains("(") && currentQuadruple.rightOp.contains("(")){
+                    let auxString = currentQuadruple.leftOp
+                    let subString = getAddressArray(auxString: auxString)
+                    let auxString1 = currentQuadruple.rightOp
+                    let subString1 = getAddressArray(auxString: auxString1)
+                    add(leftOperandAddress: subString, rightOperandAddress: subString1, resultOperandAddress: Int(currentQuadruple.result)!)
+                }
+                else if currentQuadruple.result.contains("("){
+                    let auxString = currentQuadruple.result
+                    let index = auxString.index(auxString.startIndex , offsetBy: 1)
+                    let index1 = auxString.index(auxString.endIndex, offsetBy: -2)
+                    let subString = auxString[index...index1]
+                     add(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(subString)!)
+                    
+                } else if currentQuadruple.leftOp.contains("("){
+                    let auxString = currentQuadruple.leftOp
+                    let subString = getAddressArray(auxString: auxString)
+                    add(leftOperandAddress: subString, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
+                }else if currentQuadruple.rightOp.contains("("){
+                    let auxString = currentQuadruple.rightOp
+                    let subString = getAddressArray(auxString: auxString)
+                    add(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: subString, resultOperandAddress: Int(currentQuadruple.result)!)
+                } else{
+                    add(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
+                }
+
             case "-":
-                substract(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
+                if (currentQuadruple.leftOp.contains("(") && currentQuadruple.rightOp.contains("(") && currentQuadruple.result.contains(")")){
+                    let auxString = currentQuadruple.result
+                    let index = auxString.index(auxString.startIndex , offsetBy: 1)
+                    let index1 = auxString.index(auxString.endIndex, offsetBy: -2)
+                    let subStringResult = auxString[index...index1]
+                    let auxStringRight = currentQuadruple.rightOp
+                    let rightSubstring = getAddressArray(auxString: auxStringRight)
+                    let auxStringLeft = currentQuadruple.leftOp
+                    let leftSubstring = getAddressArray(auxString: auxStringLeft)
+                    
+                    substract(leftOperandAddress: leftSubstring, rightOperandAddress: rightSubstring, resultOperandAddress: Int(subStringResult)!)
+                } else if (currentQuadruple.leftOp.contains("(") && currentQuadruple.rightOp.contains("(")){
+                    let auxString = currentQuadruple.leftOp
+                    let subString = getAddressArray(auxString: auxString)
+                    let auxString1 = currentQuadruple.rightOp
+                    let subString1 = getAddressArray(auxString: auxString1)
+                    substract(leftOperandAddress: subString, rightOperandAddress: subString1, resultOperandAddress: Int(currentQuadruple.result)!)
+                }
+                else if currentQuadruple.result.contains("("){
+                    let auxString = currentQuadruple.result
+                    let index = auxString.index(auxString.startIndex , offsetBy: 1)
+                    let index1 = auxString.index(auxString.endIndex, offsetBy: -2)
+                    let subString = auxString[index...index1]
+                    substract(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(subString)!)
+                    
+                } else if currentQuadruple.leftOp.contains("("){
+                    let auxString = currentQuadruple.leftOp
+                    let subString = getAddressArray(auxString: auxString)
+                    substract(leftOperandAddress: subString, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
+                }else if currentQuadruple.rightOp.contains("("){
+                    let auxString = currentQuadruple.rightOp
+                    let subString = getAddressArray(auxString: auxString)
+                    substract(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: subString, resultOperandAddress: Int(currentQuadruple.result)!)
+                } else{
+                    substract(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
+                }
             case "*":
-                multiply(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
+                if (currentQuadruple.leftOp.contains("(") && currentQuadruple.rightOp.contains("(") && currentQuadruple.result.contains(")")){
+                    let auxString = currentQuadruple.result
+                    let index = auxString.index(auxString.startIndex , offsetBy: 1)
+                    let index1 = auxString.index(auxString.endIndex, offsetBy: -2)
+                    let subStringResult = auxString[index...index1]
+                    let auxStringRight = currentQuadruple.rightOp
+                    let rightSubstring = getAddressArray(auxString: auxStringRight)
+                    let auxStringLeft = currentQuadruple.leftOp
+                    let leftSubstring = getAddressArray(auxString: auxStringLeft)
+                    
+                    multiply(leftOperandAddress: leftSubstring, rightOperandAddress: rightSubstring, resultOperandAddress: Int(subStringResult)!)
+                } else if (currentQuadruple.leftOp.contains("(") && currentQuadruple.rightOp.contains("(")){
+                    let auxString = currentQuadruple.leftOp
+                    let subString = getAddressArray(auxString: auxString)
+                    let auxString1 = currentQuadruple.rightOp
+                    let subString1 = getAddressArray(auxString: auxString1)
+                    multiply(leftOperandAddress: subString, rightOperandAddress: subString1, resultOperandAddress: Int(currentQuadruple.result)!)
+                }
+                else if currentQuadruple.result.contains("("){
+                    let auxString = currentQuadruple.result
+                    let index = auxString.index(auxString.startIndex , offsetBy: 1)
+                    let index1 = auxString.index(auxString.endIndex, offsetBy: -2)
+                    let subString = auxString[index...index1]
+                    multiply(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(subString)!)
+                    
+                } else if currentQuadruple.leftOp.contains("("){
+                    let auxString = currentQuadruple.leftOp
+                    let subString = getAddressArray(auxString: auxString)
+                    multiply(leftOperandAddress: subString, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
+                }else if currentQuadruple.rightOp.contains("("){
+                    let auxString = currentQuadruple.rightOp
+                    let subString = getAddressArray(auxString: auxString)
+                    multiply(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: subString, resultOperandAddress: Int(currentQuadruple.result)!)
+                } else{
+                    multiply(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
+                }
             case "/":
-                divide(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
+                if (currentQuadruple.leftOp.contains("(") && currentQuadruple.rightOp.contains("(") && currentQuadruple.result.contains(")")){
+                    let auxString = currentQuadruple.result
+                    let index = auxString.index(auxString.startIndex , offsetBy: 1)
+                    let index1 = auxString.index(auxString.endIndex, offsetBy: -2)
+                    let subStringResult = auxString[index...index1]
+                    let auxStringRight = currentQuadruple.rightOp
+                    let rightSubstring = getAddressArray(auxString: auxStringRight)
+                    let auxStringLeft = currentQuadruple.leftOp
+                    let leftSubstring = getAddressArray(auxString: auxStringLeft)
+                    
+                    divide(leftOperandAddress: leftSubstring, rightOperandAddress: rightSubstring, resultOperandAddress: Int(subStringResult)!)
+                } else if (currentQuadruple.leftOp.contains("(") && currentQuadruple.rightOp.contains("(")){
+                    let auxString = currentQuadruple.leftOp
+                    let subString = getAddressArray(auxString: auxString)
+                    let auxString1 = currentQuadruple.rightOp
+                    let subString1 = getAddressArray(auxString: auxString1)
+                    divide(leftOperandAddress: subString, rightOperandAddress: subString1, resultOperandAddress: Int(currentQuadruple.result)!)
+                }
+                else if currentQuadruple.result.contains("("){
+                    let auxString = currentQuadruple.result
+                    let index = auxString.index(auxString.startIndex , offsetBy: 1)
+                    let index1 = auxString.index(auxString.endIndex, offsetBy: -2)
+                    let subString = auxString[index...index1]
+                    divide(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(subString)!)
+                    
+                } else if currentQuadruple.leftOp.contains("("){
+                    let auxString = currentQuadruple.leftOp
+                    let subString = getAddressArray(auxString: auxString)
+                    divide(leftOperandAddress: subString, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
+                }else if currentQuadruple.rightOp.contains("("){
+                    let auxString = currentQuadruple.rightOp
+                    let subString = getAddressArray(auxString: auxString)
+                    divide(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: subString, resultOperandAddress: Int(currentQuadruple.result)!)
+                } else{
+                    divide(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
+                }
             case "=":
-                asign(leftOperandAddress: Int(currentQuadruple.leftOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
+                if currentQuadruple.result.contains("(") && currentQuadruple.leftOp.contains("("){
+                    let auxStringLeft = currentQuadruple.leftOp
+                    let subStringLeft = getAddressArray(auxString: auxStringLeft)
+                    let auxStringResult = currentQuadruple.result
+                    let subStringResult = getAddressArray(auxString: auxStringResult)
+                    asign(leftOperandAddress: subStringLeft, resultOperandAddress: subStringResult)
+                }else if currentQuadruple.leftOp.contains("("){
+                    let auxStringLeft = currentQuadruple.leftOp
+                    let subStringLeft = getAddressArray(auxString: auxStringLeft)
+                    asign(leftOperandAddress: subStringLeft, resultOperandAddress: Int(currentQuadruple.result)!)
+                }
+                else if currentQuadruple.result.contains("("){
+                    let auxString = currentQuadruple.result
+                    let index = auxString.index(auxString.startIndex , offsetBy: 1)
+                    let index1 = auxString.index(auxString.endIndex, offsetBy: -2)
+                    let subString = Int(auxString[index...index1])
+                    let (memoryAddress, _) = getMemory(address: subString!).getValue(address: subString!)
+                    asign(leftOperandAddress: Int(currentQuadruple.leftOp)!, resultOperandAddress: memoryAddress as! Int + 1)
+                }else{
+                    asign(leftOperandAddress: Int(currentQuadruple.leftOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
+                }
+
             case "<":
-                lessThan(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
+                if (currentQuadruple.leftOp.contains("(") && currentQuadruple.rightOp.contains("(") && currentQuadruple.result.contains(")")){
+                    let auxString = currentQuadruple.result
+                    let index = auxString.index(auxString.startIndex , offsetBy: 1)
+                    let index1 = auxString.index(auxString.endIndex, offsetBy: -2)
+                    let subStringResult = auxString[index...index1]
+                    let auxStringRight = currentQuadruple.rightOp
+                    let rightSubstring = getAddressArray(auxString: auxStringRight)
+                    let auxStringLeft = currentQuadruple.leftOp
+                    let leftSubstring = getAddressArray(auxString: auxStringLeft)
+                    
+                    lessThan(leftOperandAddress: leftSubstring, rightOperandAddress: rightSubstring, resultOperandAddress: Int(subStringResult)!)
+                } else if (currentQuadruple.leftOp.contains("(") && currentQuadruple.rightOp.contains("(")){
+                    let auxString = currentQuadruple.leftOp
+                    let subString = getAddressArray(auxString: auxString)
+                    let auxString1 = currentQuadruple.rightOp
+                    let subString1 = getAddressArray(auxString: auxString1)
+                    lessThan(leftOperandAddress: subString, rightOperandAddress: subString1, resultOperandAddress: Int(currentQuadruple.result)!)
+                }
+                else if currentQuadruple.result.contains("("){
+                    let auxString = currentQuadruple.result
+                    let index = auxString.index(auxString.startIndex , offsetBy: 1)
+                    let index1 = auxString.index(auxString.endIndex, offsetBy: -2)
+                    let subString = auxString[index...index1]
+                    lessThan(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(subString)!)
+                    
+                } else if currentQuadruple.leftOp.contains("("){
+                    let auxString = currentQuadruple.leftOp
+                    let subString = getAddressArray(auxString: auxString)
+                    lessThan(leftOperandAddress: subString, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
+                }else if currentQuadruple.rightOp.contains("("){
+                    let auxString = currentQuadruple.rightOp
+                    let subString = getAddressArray(auxString: auxString)
+                    lessThan(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: subString, resultOperandAddress: Int(currentQuadruple.result)!)
+                } else{
+                    lessThan(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
+                }
             case ">":
-                greaterThan(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
+                if (currentQuadruple.leftOp.contains("(") && currentQuadruple.rightOp.contains("(") && currentQuadruple.result.contains(")")){
+                    let auxString = currentQuadruple.result
+                    let index = auxString.index(auxString.startIndex , offsetBy: 1)
+                    let index1 = auxString.index(auxString.endIndex, offsetBy: -2)
+                    let subStringResult = auxString[index...index1]
+                    let auxStringRight = currentQuadruple.rightOp
+                    let rightSubstring = getAddressArray(auxString: auxStringRight)
+                    let auxStringLeft = currentQuadruple.leftOp
+                    let leftSubstring = getAddressArray(auxString: auxStringLeft)
+                    
+                    greaterThan(leftOperandAddress: leftSubstring, rightOperandAddress: rightSubstring, resultOperandAddress: Int(subStringResult)!)
+                } else if (currentQuadruple.leftOp.contains("(") && currentQuadruple.rightOp.contains("(")){
+                    let auxString = currentQuadruple.leftOp
+                    let subString = getAddressArray(auxString: auxString)
+                    let auxString1 = currentQuadruple.rightOp
+                    let subString1 = getAddressArray(auxString: auxString1)
+                    greaterThan(leftOperandAddress: subString, rightOperandAddress: subString1, resultOperandAddress: Int(currentQuadruple.result)!)
+                }
+                else if currentQuadruple.result.contains("("){
+                    let auxString = currentQuadruple.result
+                    let index = auxString.index(auxString.startIndex , offsetBy: 1)
+                    let index1 = auxString.index(auxString.endIndex, offsetBy: -2)
+                    let subString = auxString[index...index1]
+                    greaterThan(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(subString)!)
+                    
+                } else if currentQuadruple.leftOp.contains("("){
+                    let auxString = currentQuadruple.leftOp
+                    let subString = getAddressArray(auxString: auxString)
+                    greaterThan(leftOperandAddress: subString, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
+                }else if currentQuadruple.rightOp.contains("("){
+                    let auxString = currentQuadruple.rightOp
+                    let subString = getAddressArray(auxString: auxString)
+                    greaterThan(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: subString, resultOperandAddress: Int(currentQuadruple.result)!)
+                } else{
+                    greaterThan(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
+                }
             case "<=":
-                lessOrEqualThan(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
+                if (currentQuadruple.leftOp.contains("(") && currentQuadruple.rightOp.contains("(") && currentQuadruple.result.contains(")")){
+                    let auxString = currentQuadruple.result
+                    let index = auxString.index(auxString.startIndex , offsetBy: 1)
+                    let index1 = auxString.index(auxString.endIndex, offsetBy: -2)
+                    let subStringResult = auxString[index...index1]
+                    let auxStringRight = currentQuadruple.rightOp
+                    let rightSubstring = getAddressArray(auxString: auxStringRight)
+                    let auxStringLeft = currentQuadruple.leftOp
+                    let leftSubstring = getAddressArray(auxString: auxStringLeft)
+                    
+                    lessOrEqualThan(leftOperandAddress: leftSubstring, rightOperandAddress: rightSubstring, resultOperandAddress: Int(subStringResult)!)
+                } else if (currentQuadruple.leftOp.contains("(") && currentQuadruple.rightOp.contains("(")){
+                    let auxString = currentQuadruple.leftOp
+                    let subString = getAddressArray(auxString: auxString)
+                    let auxString1 = currentQuadruple.rightOp
+                    let subString1 = getAddressArray(auxString: auxString1)
+                    lessOrEqualThan(leftOperandAddress: subString, rightOperandAddress: subString1, resultOperandAddress: Int(currentQuadruple.result)!)
+                }
+                else if currentQuadruple.result.contains("("){
+                    let auxString = currentQuadruple.result
+                    let index = auxString.index(auxString.startIndex , offsetBy: 1)
+                    let index1 = auxString.index(auxString.endIndex, offsetBy: -2)
+                    let subString = auxString[index...index1]
+                    lessOrEqualThan(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(subString)!)
+                    
+                } else if currentQuadruple.leftOp.contains("("){
+                    let auxString = currentQuadruple.leftOp
+                    let subString = getAddressArray(auxString: auxString)
+                    lessOrEqualThan(leftOperandAddress: subString, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
+                }else if currentQuadruple.rightOp.contains("("){
+                    let auxString = currentQuadruple.rightOp
+                    let subString = getAddressArray(auxString: auxString)
+                    lessOrEqualThan(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: subString, resultOperandAddress: Int(currentQuadruple.result)!)
+                } else{
+                    lessOrEqualThan(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
+                }
             case ">=":
-                greaterOrEqualThan(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
+                if (currentQuadruple.leftOp.contains("(") && currentQuadruple.rightOp.contains("(") && currentQuadruple.result.contains(")")){
+                    let auxString = currentQuadruple.result
+                    let index = auxString.index(auxString.startIndex , offsetBy: 1)
+                    let index1 = auxString.index(auxString.endIndex, offsetBy: -2)
+                    let subStringResult = auxString[index...index1]
+                    let auxStringRight = currentQuadruple.rightOp
+                    let rightSubstring = getAddressArray(auxString: auxStringRight)
+                    let auxStringLeft = currentQuadruple.leftOp
+                    let leftSubstring = getAddressArray(auxString: auxStringLeft)
+                    
+                    greaterOrEqualThan(leftOperandAddress: leftSubstring, rightOperandAddress: rightSubstring, resultOperandAddress: Int(subStringResult)!)
+                } else if (currentQuadruple.leftOp.contains("(") && currentQuadruple.rightOp.contains("(")){
+                    let auxString = currentQuadruple.leftOp
+                    let subString = getAddressArray(auxString: auxString)
+                    let auxString1 = currentQuadruple.rightOp
+                    let subString1 = getAddressArray(auxString: auxString1)
+                    greaterOrEqualThan(leftOperandAddress: subString, rightOperandAddress: subString1, resultOperandAddress: Int(currentQuadruple.result)!)
+                }
+                else if currentQuadruple.result.contains("("){
+                    let auxString = currentQuadruple.result
+                    let index = auxString.index(auxString.startIndex , offsetBy: 1)
+                    let index1 = auxString.index(auxString.endIndex, offsetBy: -2)
+                    let subString = auxString[index...index1]
+                    greaterOrEqualThan(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(subString)!)
+                    
+                } else if currentQuadruple.leftOp.contains("("){
+                    let auxString = currentQuadruple.leftOp
+                    let subString = getAddressArray(auxString: auxString)
+                    greaterOrEqualThan(leftOperandAddress: subString, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
+                }else if currentQuadruple.rightOp.contains("("){
+                    let auxString = currentQuadruple.rightOp
+                    let subString = getAddressArray(auxString: auxString)
+                    greaterOrEqualThan(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: subString, resultOperandAddress: Int(currentQuadruple.result)!)
+                } else{
+                    greaterOrEqualThan(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
+                }
             case "equal":
-                equal(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
+                if (currentQuadruple.leftOp.contains("(") && currentQuadruple.rightOp.contains("(") && currentQuadruple.result.contains(")")){
+                    let auxString = currentQuadruple.result
+                    let index = auxString.index(auxString.startIndex , offsetBy: 1)
+                    let index1 = auxString.index(auxString.endIndex, offsetBy: -2)
+                    let subStringResult = auxString[index...index1]
+                    let auxStringRight = currentQuadruple.rightOp
+                    let rightSubstring = getAddressArray(auxString: auxStringRight)
+                    let auxStringLeft = currentQuadruple.leftOp
+                    let leftSubstring = getAddressArray(auxString: auxStringLeft)
+                    
+                    equal(leftOperandAddress: leftSubstring, rightOperandAddress: rightSubstring, resultOperandAddress: Int(subStringResult)!)
+                } else if (currentQuadruple.leftOp.contains("(") && currentQuadruple.rightOp.contains("(")){
+                    let auxString = currentQuadruple.leftOp
+                    let subString = getAddressArray(auxString: auxString)
+                    let auxString1 = currentQuadruple.rightOp
+                    let subString1 = getAddressArray(auxString: auxString1)
+                    equal(leftOperandAddress: subString, rightOperandAddress: subString1, resultOperandAddress: Int(currentQuadruple.result)!)
+                }
+                else if currentQuadruple.result.contains("("){
+                    let auxString = currentQuadruple.result
+                    let index = auxString.index(auxString.startIndex , offsetBy: 1)
+                    let index1 = auxString.index(auxString.endIndex, offsetBy: -2)
+                    let subString = auxString[index...index1]
+                    equal(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(subString)!)
+                    
+                } else if currentQuadruple.leftOp.contains("("){
+                    let auxString = currentQuadruple.leftOp
+                    let subString = getAddressArray(auxString: auxString)
+                    equal(leftOperandAddress: subString, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
+                }else if currentQuadruple.rightOp.contains("("){
+                    let auxString = currentQuadruple.rightOp
+                    let subString = getAddressArray(auxString: auxString)
+                    equal(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: subString, resultOperandAddress: Int(currentQuadruple.result)!)
+                } else{
+                    equal(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
+                }
             case "notEqual":
-                notEqual(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
+                if (currentQuadruple.leftOp.contains("(") && currentQuadruple.rightOp.contains("(") && currentQuadruple.result.contains(")")){
+                    let auxString = currentQuadruple.result
+                    let index = auxString.index(auxString.startIndex , offsetBy: 1)
+                    let index1 = auxString.index(auxString.endIndex, offsetBy: -2)
+                    let subStringResult = auxString[index...index1]
+                    let auxStringRight = currentQuadruple.rightOp
+                    let rightSubstring = getAddressArray(auxString: auxStringRight)
+                    let auxStringLeft = currentQuadruple.leftOp
+                    let leftSubstring = getAddressArray(auxString: auxStringLeft)
+                    
+                    notEqual(leftOperandAddress: leftSubstring, rightOperandAddress: rightSubstring, resultOperandAddress: Int(subStringResult)!)
+                } else if (currentQuadruple.leftOp.contains("(") && currentQuadruple.rightOp.contains("(")){
+                    let auxString = currentQuadruple.leftOp
+                    let subString = getAddressArray(auxString: auxString)
+                    let auxString1 = currentQuadruple.rightOp
+                    let subString1 = getAddressArray(auxString: auxString1)
+                    notEqual(leftOperandAddress: subString, rightOperandAddress: subString1, resultOperandAddress: Int(currentQuadruple.result)!)
+                }
+                else if currentQuadruple.result.contains("("){
+                    let auxString = currentQuadruple.result
+                    let index = auxString.index(auxString.startIndex , offsetBy: 1)
+                    let index1 = auxString.index(auxString.endIndex, offsetBy: -2)
+                    let subString = auxString[index...index1]
+                    notEqual(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(subString)!)
+                    
+                } else if currentQuadruple.leftOp.contains("("){
+                    let auxString = currentQuadruple.leftOp
+                    let subString = getAddressArray(auxString: auxString)
+                    notEqual(leftOperandAddress: subString, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
+                }else if currentQuadruple.rightOp.contains("("){
+                    let auxString = currentQuadruple.rightOp
+                    let subString = getAddressArray(auxString: auxString)
+                    notEqual(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: subString, resultOperandAddress: Int(currentQuadruple.result)!)
+                } else{
+                    notEqual(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
+                }
             case "GOTOF":
                 gotoF(resultAddress: Int(currentQuadruple.leftOp)!, newQuadIndex: Int(currentQuadruple.result)!)
             case "GOTO":
@@ -108,7 +488,14 @@ class VirtualMachine {
             case "RET":
                 ret(returnValueAddress: Int(currentQuadruple.result)!)
             case "SHOW":
-                show(resultAddress: Int(currentQuadruple.result)!)
+                if currentQuadruple.result.contains("("){
+                    let auxString = currentQuadruple.result
+                    let memory = getAddressArray(auxString: auxString)
+                    show(resultAddress: memory)
+                }else{
+                    show(resultAddress: Int(currentQuadruple.result)!)
+                }
+                
             case "AREATRI":
                 multiply(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
             case "AREASQ":
@@ -129,6 +516,10 @@ class VirtualMachine {
                 pythagorasSide(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
             case "PERIMETERTRI":
                 add(leftOperandAddress: Int(currentQuadruple.leftOp)!, rightOperandAddress: Int(currentQuadruple.rightOp)!, resultOperandAddress: Int(currentQuadruple.result)!)
+            case "VER":
+                verifyArray(result: Int(currentQuadruple.leftOp)!, limInf: Int(currentQuadruple.rightOp)!, limSup: Int(currentQuadruple.result)!)
+            case "FIRST_L":
+                firstArray(arrayAddress: Int(currentQuadruple.leftOp)!, resultAddress: Int(currentQuadruple.result)!)
             default:
                 break
             }
@@ -506,7 +897,7 @@ class VirtualMachine {
         default:
             resultString = String(resultValue as! String)
         }
-        
+        print(resultString)
         outputs.append(resultString)
     }
     
@@ -629,6 +1020,42 @@ class VirtualMachine {
             addedValue = sqrt(pow(leftVal, 2) - pow(rightVal, 2))
         }
         resultOperandMemory.saveDecimal(address: resultOperandAddress, value: Float(addedValue))
+    }
+    
+    func verifyArray(result: Int, limInf: Int, limSup: Int){
+        let (resultValue, resultType) = getMemory(address: result).getValue(address: result)
+        let auxResult = resultValue as! Int
+        if resultType == Type.number{
+            if auxResult+1 >= limInf && auxResult+1 <= limSup{
+                print("Verificacion correcta")
+            }else {
+                print("ERROR: Se sale del indice preestablecido del arreglo")
+            }
+        }else{
+            print("ERROR: Tiene que ser un number al accesar indice de un arreglo")
+        }
+    }
+    
+    func firstArray(arrayAddress: Int, resultAddress: Int){
+        let resultOperandMemory = getMemory(address: resultAddress)
+        let (resultValue, resultType) = getMemory(address: arrayAddress).getValue(address: arrayAddress)
+        switch resultType {
+        case Type.number:
+            let auxRes = resultValue as! Int
+            resultOperandMemory.saveNumber(address: resultAddress, value:auxRes )
+        case Type.decimal:
+            let auxRes = resultValue as! Float
+            resultOperandMemory.saveDecimal(address: resultAddress, value: auxRes )
+        case Type.bool:
+            let auxRes = resultValue as! Bool
+            resultOperandMemory.saveBool(address: resultAddress, value:auxRes)
+        case Type.sentence:
+            let auxRes = resultValue as! String
+            resultOperandMemory.saveSentence(address: resultAddress, value:auxRes )
+        default:
+            break
+        }
+        
     }
     
     // Función para obtener la memoria dependiendo del scope
