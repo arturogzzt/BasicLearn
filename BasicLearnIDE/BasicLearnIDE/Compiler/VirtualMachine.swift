@@ -507,7 +507,15 @@ class VirtualMachine {
             case "VER":
                 verifyArray(result: Int(currentQuadruple.leftOp)!, limInf: Int(currentQuadruple.rightOp)!, limSup: Int(currentQuadruple.result)!)
             case "FIRST_L":
-                firstArray(arrayAddress: Int(currentQuadruple.leftOp)!, resultAddress: Int(currentQuadruple.result)!)
+                firstLastArray(arrayAddress: Int(currentQuadruple.leftOp)!, resultAddress: Int(currentQuadruple.result)!)
+            case "LAST_L":
+                firstLastArray(arrayAddress: Int(currentQuadruple.leftOp)!, resultAddress: Int(currentQuadruple.result)!)
+            case "SIZE_L":
+                getNumberSize(beginArray: Int(currentQuadruple.leftOp)!, endArray: Int(currentQuadruple.rightOp)!, resultAddress: Int(currentQuadruple.result)!)
+            case "ORDER_L":
+                orderArray(beginArray: Int(currentQuadruple.leftOp)!, endArray: Int(currentQuadruple.rightOp)!)
+            case "ORDERDESC_L":
+                orderArrayDesc(beginArray: Int(currentQuadruple.leftOp)!, endArray: Int(currentQuadruple.rightOp)!)
             default:
                 break
             }
@@ -1011,7 +1019,7 @@ class VirtualMachine {
         }
     }
     
-    func firstArray(arrayAddress: Int, resultAddress: Int){
+    func firstLastArray(arrayAddress: Int, resultAddress: Int){
         let resultOperandMemory = getMemory(address: resultAddress)
         let (resultValue, resultType) = getMemory(address: arrayAddress).getValue(address: arrayAddress)
         switch resultType {
@@ -1028,11 +1036,180 @@ class VirtualMachine {
             let auxRes = resultValue as! String
             resultOperandMemory.saveSentence(address: resultAddress, value:auxRes )
         default:
+            print("ERROR: El índice seleccionado no tiene nada asignado (LAST O FIRST")
+            break
+        }
+    }
+    
+    func getNumberSize(beginArray: Int, endArray: Int, resultAddress: Int){
+        var iCounter = 0
+        let resultOperandMemory = getMemory(address: resultAddress)
+        for index in beginArray...endArray{
+            let (resultValue, _) = getMemory(address: index).getValue(address: index)
+            if resultValue as! Int != -1 {
+                iCounter += 1
+            }
+        }
+        resultOperandMemory.saveNumber(address: resultAddress, value: iCounter)
+    }
+    
+    func orderArray(beginArray: Int, endArray: Int){
+        var auxArrayType = Type.number
+        var iCounter = 0
+        var auxArray = [Any]()
+        for index in beginArray...endArray{
+            let memoryLoc = getMemory(address: index)
+            let (resultValue, resultType) = memoryLoc.getValue(address: index)
+            if resultValue as! Int != -1 {
+                iCounter += 1
+                auxArray.append(resultValue)
+                auxArrayType = resultType
+                switch auxArrayType {
+                case Type.number:
+                    memoryLoc.saveNumber(address: index, value: 0)
+                case Type.decimal:
+                    memoryLoc.saveDecimal(address: index, value: 0)
+                case Type.sentence:
+                    memoryLoc.saveSentence(address: index, value: "")
+                default:
+                    break
+                }
+            }
+        }
+        
+        switch auxArrayType {
+        case Type.number:
+            var numberArray = [Int]()
+            for item in auxArray{
+                numberArray.append(item as! Int)
+            }
+            numberArray.sort()
+            print(numberArray)
+            var iCounter = 0
+            let iSize = numberArray.count
+            while(iCounter < iSize){
+               let memoryLoc = getMemory(address: beginArray + iCounter)
+                memoryLoc.saveNumber(address: beginArray + iCounter, value: numberArray.first!)
+                numberArray.removeFirst()
+                iCounter += 1
+            }
+        case Type.decimal:
+            var decimalArray = [Float]()
+            for item in auxArray{
+                decimalArray.append(item as! Float)
+            }
+            decimalArray.sort()
+            
+            var iCounter = 0
+            let iSize = decimalArray.count
+            while(iCounter < iSize){
+                let memoryLoc = getMemory(address: beginArray + iCounter)
+                memoryLoc.saveDecimal(address: beginArray + iCounter, value: decimalArray.first!)
+                decimalArray.removeFirst()
+                iCounter += 1
+            }
+        case Type.sentence:
+            var sentenceArray = [String]()
+            for item in auxArray{
+                sentenceArray.append(item as! String)
+            }
+            sentenceArray.sort()
+            
+            var iCounter = 0
+            let iSize = sentenceArray.count
+            while(iCounter < iSize){
+                let memoryLoc = getMemory(address: beginArray + iCounter)
+                memoryLoc.saveSentence(address: beginArray + iCounter, value: sentenceArray.first!)
+                sentenceArray.removeFirst()
+                iCounter += 1
+            }
+            
+        case Type.bool:
+            print("Error: No se puede hacer sort en array de Bools")
+        default:
             break
         }
         
     }
     
+    func orderArrayDesc(beginArray: Int, endArray: Int){
+        var auxArrayType = Type.number
+        var iCounter = 0
+        var auxArray = [Any]()
+        for index in beginArray...endArray{
+            let memoryLoc = getMemory(address: index)
+            let (resultValue, resultType) = memoryLoc.getValue(address: index)
+            if resultValue as! Int != -1 {
+                iCounter += 1
+                auxArray.append(resultValue)
+                auxArrayType = resultType
+                switch auxArrayType {
+                case Type.number:
+                    memoryLoc.saveNumber(address: index, value: 0)
+                case Type.decimal:
+                    memoryLoc.saveDecimal(address: index, value: 0)
+                case Type.sentence:
+                    memoryLoc.saveSentence(address: index, value: "")
+                default:
+                    break
+                }
+            }
+        }
+        
+        switch auxArrayType {
+        case Type.number:
+            var numberArray = [Int]()
+            for item in auxArray{
+                numberArray.append(item as! Int)
+            }
+            numberArray.sort()
+            print(numberArray)
+            var iCounter = 0
+            let iSize = numberArray.count
+            while(iCounter < iSize){
+                let memoryLoc = getMemory(address: beginArray + iCounter)
+                memoryLoc.saveNumber(address: beginArray + iCounter, value: numberArray.last!)
+                numberArray.removeLast()
+                iCounter += 1
+            }
+        case Type.decimal:
+            var decimalArray = [Float]()
+            for item in auxArray{
+                decimalArray.append(item as! Float)
+            }
+            decimalArray.sort()
+            
+            var iCounter = 0
+            let iSize = decimalArray.count
+            while(iCounter < iSize){
+                let memoryLoc = getMemory(address: beginArray + iCounter)
+                memoryLoc.saveDecimal(address: beginArray + iCounter, value: decimalArray.last!)
+                decimalArray.removeLast()
+                iCounter += 1
+            }
+        case Type.sentence:
+            var sentenceArray = [String]()
+            for item in auxArray{
+                sentenceArray.append(item as! String)
+            }
+            sentenceArray.sort()
+            
+            var iCounter = 0
+            let iSize = sentenceArray.count
+            while(iCounter < iSize){
+                let memoryLoc = getMemory(address: beginArray + iCounter)
+                memoryLoc.saveSentence(address: beginArray + iCounter, value: sentenceArray.last!)
+                sentenceArray.removeLast()
+                iCounter += 1
+            }
+            
+        case Type.bool:
+            print("Error: No se puede hacer sort en array de Bools")
+        default:
+            break
+        }
+        
+    }
     // Función para obtener la memoria dependiendo del scope
     func getMemory(address: Int) -> Memory {
         switch address {

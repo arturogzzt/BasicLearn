@@ -438,28 +438,6 @@ open class BasicLearnBaseListener: BasicLearnListener {
             }
         }
         
-        if let parent = ctx.parent as? BasicLearnParser.FactorContext{
-            if let currentId = parent.ID()?.getText(){
-                if let assignment = getVariable(id: currentId){
-                    if(assignment.dimensionated && parent.LEFTBRACKET() != nil){
-                        let result = temporalMemory.getNumberAddress(spaces: 1)
-                        var auxQuad = Quadruple.init(operand: "VER", leftOp: PilaO.first!, rightOp: "1", result: String(assignment.descriptionDim[0].limSup))
-                        qQuad.append(auxQuad)
-                        auxQuad = Quadruple.init(operand: "+", leftOp: PilaO.first!, rightOp: "-1", result: String(result))
-                        qQuad.append(auxQuad)
-                        PilaO.removeFirst()
-                        let result1 = String(temporalMemory.getNumberAddress(spaces: 1))
-                        auxQuad = Quadruple.init(operand: "+", leftOp: String(result), rightOp: String(assignment.address), result: "("+result1+")")
-                        qQuad.append(auxQuad)
-                        PilaO.insert("("+result1+")", at: 0)
-                    }
-                } else {
-                    print("Error: Esta variable no se encontro \(currentId)")
-                    error = true
-                    outputs.append("Error: Esta variable no se encontro \(currentId)")
-                    return }
-            }
-        }
     }
 
 
@@ -1259,17 +1237,24 @@ open class BasicLearnBaseListener: BasicLearnListener {
                     qQuad.append(auxQuad)
                     PilaO.insert(String(result), at: 0)
                 case "last_l":
-                    let auxQuad = Quadruple.init(operand: "LAST_L", leftOp: String(array.address), rightOp: "---", result: String(result))
+                    let space = array.descriptionDim[0].R
+                    let auxQuad = Quadruple.init(operand: "LAST_L", leftOp: String(array.address + space - 1), rightOp: "---", result: String(result))
                     qQuad.append(auxQuad)
+                    PilaO.insert(String(result), at: 0)
                 case "order_l":
-                    let auxQuad = Quadruple.init(operand: "ORDER_L", leftOp: String(array.address), rightOp: "---", result: String(result))
+                    let space = array.descriptionDim[0].R
+                    let auxQuad = Quadruple.init(operand: "ORDER_L", leftOp: String(array.address), rightOp: String(array.address + space - 1), result: "---")
                     qQuad.append(auxQuad)
+                    
                 case "orderDesc_l":
-                    let auxQuad = Quadruple.init(operand: "ORDERDESC_L", leftOp: String(array.address), rightOp: "---", result: String(result))
+                    let space = array.descriptionDim[0].R
+                    let auxQuad = Quadruple.init(operand: "ORDERDESC_L", leftOp: String(array.address), rightOp: String(array.address + space - 1), result: "---")
                     qQuad.append(auxQuad)
                 case "size_l":
-                    let auxQuad = Quadruple.init(operand: "SIZE_L", leftOp: String(array.address), rightOp: "---", result: String(result))
+                    let space = array.descriptionDim[0].R
+                    let auxQuad = Quadruple.init(operand: "SIZE_L", leftOp: String(array.address), rightOp: String(array.address + space - 1), result: String(result))
                     qQuad.append(auxQuad)
+                    PilaO.insert(String(result), at: 0)
                 default:
                     print("Error, no se encontro ninguna función de lista")
                 }

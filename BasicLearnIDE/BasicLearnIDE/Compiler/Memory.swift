@@ -145,19 +145,40 @@ class Memory{
     
     // Funciones para obtener los valores de las llaves.
     func getNumberValue(address: Int) -> Int {
-        return self.numbers[address]!
+        if self.numbers[address] != nil{
+            return self.numbers[address]!
+        } else {
+            return -1
+        }
+        
     }
     
     func getDecimalValue(address: Int) -> Float {
-        return self.decimals[address]!
+        if self.decimals[address] != nil{
+            return self.decimals[address]!
+        }else{
+            return -1
+        }
+        
     }
     
     func getBoolValue(address: Int) -> Bool {
-        return self.bools[address]!
+        if self.bools[address] != nil {
+            return self.bools[address]!
+        } else {
+            print( "ERROR: Bool esta variable bool esta vacia")
+            return false
+        }
+        
     }
     
     func getSentenceValue(address: Int) -> String {
-        return self.sentences[address]!
+        if self.sentences[address] != nil {
+            return self.sentences[address]!
+        } else {
+            return "-1"
+        }
+        
     }
     
     // Función para obtener el valor dependiendo el tipo de dato
