@@ -14,10 +14,8 @@ class VirtualMachine {
     var functions = [Function]()
     
     var globalMemory : Memory
-    var localMemory : Memory
     var constantMemory : Memory
     var temporalMemory : Memory
-    var localTemporalMemory : Memory
     
     var quadIndex : Int = 0
     
@@ -31,35 +29,25 @@ class VirtualMachine {
     
     var localMemoryStack = [Memory]()
     var localTemporalMemoryStack = [Memory]()
-    var currentFunctionAddress = [Int]()
     
-    init(quadruples : [Quadruple], globalMemory : Memory, localMemory : Memory, constantMemory : Memory, temporalMemory : Memory, localTemporalMemory : Memory, functions : [Function]) {
+    init(quadruples : [Quadruple], globalMemory : Memory, constantMemory : Memory, temporalMemory : Memory, functions : [Function]) {
         self.quadruples = quadruples
         self.globalMemory = globalMemory
-        self.localMemory = localMemory
         self.constantMemory = constantMemory
         self.temporalMemory = temporalMemory
-        self.localTemporalMemory = localTemporalMemory
         self.functions = functions
-        
-        localMemoryStack.insert(localMemory, at: 0)
-        localTemporalMemoryStack.insert(localTemporalMemory, at: 0)
     }
     
     // Function to clean all memories but constant
     func cleanAllMemory() {
         self.temporalMemory.cleanMemory()
         self.globalMemory.cleanMemory()
-        self.localMemory.cleanMemory()
-        self.localTemporalMemory.cleanMemory()
     }
     
     // Function to clean temporalMemory
     func cleanLocalMemory() {
         self.localMemoryStack.removeFirst()
         self.localTemporalMemoryStack.removeFirst()
-//        self.localMemory.cleanMemory()
-//        self.localTemporalMemory.cleanMemory()
     }
     
     func getAddressArray(auxString: String) -> Int{
@@ -550,7 +538,6 @@ class VirtualMachine {
             }
             resultOperandMemory.saveDecimal(address: resultOperandAddress, value: addedValue)
         } else {
-            // HANDLE ERROR
             print("ERROR TYPE MISMATCH")
         }
     }
@@ -577,7 +564,6 @@ class VirtualMachine {
             }
             resultOperandMemory.saveDecimal(address: resultOperandAddress, value: addedValue)
         } else {
-            // HANDLE ERROR
             print("ERROR TYPE MISMATCH")
         }
     }
@@ -604,7 +590,6 @@ class VirtualMachine {
             }
             resultOperandMemory.saveDecimal(address: resultOperandAddress, value: addedValue)
         } else {
-            // HANDLE ERROR
             print("ERROR TYPE MISMATCH")
         }
     }
@@ -631,7 +616,6 @@ class VirtualMachine {
             }
             resultOperandMemory.saveDecimal(address: resultOperandAddress, value: addedValue)
         } else {
-            // HANDLE ERROR
             print("ERROR TYPE MISMATCH")
         }
     }
@@ -812,12 +796,6 @@ class VirtualMachine {
                 currentFunction = funct.address
             }
         }
-        
-//        localMemoryStack.insert(localMemoryStack.last!, at: 0)
-//        localTemporalMemoryStack.insert(localTemporalMemoryStack.last!, at: 0)
-       
-//
-
     }
     
     func param(paramAddress : Int, paramPosition : String) {
@@ -923,7 +901,6 @@ class VirtualMachine {
             }
             resultOperandMemory.saveDecimal(address: resultOperandAddress, value: addedValue)
         } else {
-            // HANDLE ERROR
             print("ERROR TYPE MISMATCH")
         }
     }
@@ -940,7 +917,6 @@ class VirtualMachine {
             let addedValue = sqrt(leftOperandValue as! Float)
             resultOperandMemory.saveDecimal(address: resultOperandAddress, value: addedValue)
         } else {
-            // handle error
             print("ERROR TYPE MISMATCH")
         }
         
@@ -959,7 +935,6 @@ class VirtualMachine {
             let addedValue = abs(leftOperandValue as! Float)
             resultOperandMemory.saveDecimal(address: resultOperandAddress, value: addedValue)
         } else {
-            // Handle error
             print("ERROR TYPE MISMATCH")
         }
     }
