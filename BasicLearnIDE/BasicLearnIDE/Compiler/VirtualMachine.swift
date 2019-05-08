@@ -29,7 +29,6 @@ class VirtualMachine {
     
     var localMemoryStack = [Memory]()
     var localTemporalMemoryStack = [Memory]()
-    var currentFunctionAddress = [Int]()
     
     init(quadruples : [Quadruple], globalMemory : Memory, constantMemory : Memory, temporalMemory : Memory, functions : [Function]) {
         self.quadruples = quadruples
@@ -49,8 +48,6 @@ class VirtualMachine {
     func cleanLocalMemory() {
         self.localMemoryStack.removeFirst()
         self.localTemporalMemoryStack.removeFirst()
-//        self.localMemory.cleanMemory()
-//        self.localTemporalMemory.cleanMemory()
     }
     
     func executeProgram() {
@@ -150,7 +147,6 @@ class VirtualMachine {
             }
             resultOperandMemory.saveDecimal(address: resultOperandAddress, value: addedValue)
         } else {
-            // HANDLE ERROR
             print("ERROR TYPE MISMATCH")
         }
     }
@@ -177,7 +173,6 @@ class VirtualMachine {
             }
             resultOperandMemory.saveDecimal(address: resultOperandAddress, value: addedValue)
         } else {
-            // HANDLE ERROR
             print("ERROR TYPE MISMATCH")
         }
     }
@@ -204,7 +199,6 @@ class VirtualMachine {
             }
             resultOperandMemory.saveDecimal(address: resultOperandAddress, value: addedValue)
         } else {
-            // HANDLE ERROR
             print("ERROR TYPE MISMATCH")
         }
     }
@@ -231,7 +225,6 @@ class VirtualMachine {
             }
             resultOperandMemory.saveDecimal(address: resultOperandAddress, value: addedValue)
         } else {
-            // HANDLE ERROR
             print("ERROR TYPE MISMATCH")
         }
     }
@@ -412,12 +405,6 @@ class VirtualMachine {
                 currentFunction = funct.address
             }
         }
-        
-//        localMemoryStack.insert(localMemoryStack.last!, at: 0)
-//        localTemporalMemoryStack.insert(localTemporalMemoryStack.last!, at: 0)
-       
-//
-
     }
     
     func param(paramAddress : Int, paramPosition : String) {
@@ -523,7 +510,6 @@ class VirtualMachine {
             }
             resultOperandMemory.saveDecimal(address: resultOperandAddress, value: addedValue)
         } else {
-            // HANDLE ERROR
             print("ERROR TYPE MISMATCH")
         }
     }
@@ -540,7 +526,6 @@ class VirtualMachine {
             let addedValue = sqrt(leftOperandValue as! Float)
             resultOperandMemory.saveDecimal(address: resultOperandAddress, value: addedValue)
         } else {
-            // handle error
             print("ERROR TYPE MISMATCH")
         }
         
@@ -559,7 +544,6 @@ class VirtualMachine {
             let addedValue = abs(leftOperandValue as! Float)
             resultOperandMemory.saveDecimal(address: resultOperandAddress, value: addedValue)
         } else {
-            // Handle error
             print("ERROR TYPE MISMATCH")
         }
     }
